@@ -31,6 +31,8 @@ uv run system-one-models \
 
 The demo reads [`datasets/base_eval_v1.jsonl`](datasets/base_eval_v1.jsonl), a small, versioned set of 11 synthetic SMS and email examples. Each case contains a manually assigned expected value for every question, and the compact output shows predictions, expected values, per-question matches, inference time, and a score summary. Add `--details` to show every choice probability. In an interactive terminal, headings and categories are colored; set `NO_COLOR=1` to disable color. The first timing includes loading the model and, on the very first run, downloading its checkpoint. Later demo timings are closer to inference time alone.
 
+The [label review](datasets/LABEL_REVIEW.md) records the annotation correction and rubric-dependent cases. The [prompt tuning report](datasets/PROMPT_TUNING.md) records measured improvements, remaining disagreements, and additional paraphrase checks. Because the prompts were tuned on these examples, their scores are development results rather than an independent evaluation.
+
 This is a **base evaluation set**, not a benchmark: it is small, synthetic, and manually labeled. Its aggregate scores only help reveal obvious behavior and regressions on these examples; they do not estimate real-world scam detection accuracy or replace a representative, reviewed, held-out dataset. Treat uncertain messages as needing review.
 
 ```sh
