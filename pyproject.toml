@@ -1,0 +1,24 @@
+[project]
+name = "system-one-models"
+version = "0.1.0"
+description = "Local Laya experiments for classifying scam SMS and email"
+readme = "README.md"
+authors = [
+    { name = "Benoit Jeaurond", email = "benoit@jeaurond.dev" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "laya>=0.3.20",
+]
+
+[project.scripts]
+system-one-models = "system_one_models.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
