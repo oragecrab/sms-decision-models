@@ -1,0 +1,1759 @@
+{
+  "id": "classification--balanced-compact",
+  "question_id": "classification",
+  "family": "balanced-compact",
+  "kind": "wording_description",
+  "sha256": "f588b09776f633e6ee7d9ed96d4c55c559984a4d57c72defe66baa39afb5cbfb",
+  "definition": {
+    "type": "choice",
+    "instructions": "Base the category on what is requested and how the message is framed. Routine notices and bills can be legitimate; ordinary advertisements can be marketing. Suspicious fees, explicit secret or identity/bank disclosure, and unsolicited remote access indicate suspected_scam. This judgment concerns textual suspicion, without verifying fraud or authenticity.",
+    "criteria": {
+      "legitimate": "Routine communication or normal service bill.",
+      "marketing": "Ordinary commercial advertisement or promotion.",
+      "suspected_scam": "Suspicious release fees, secret/identity/financial disclosure or unsolicited device access."
+    }
+  },
+  "status": "complete",
+  "predictions": [
+    {
+      "id": "sms_delivery_fee",
+      "language": "en",
+      "pair_id": "sms_delivery_fee",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.069,
+          "marketing": 0.0656,
+          "suspected_scam": 0.8654
+        },
+        "confidence": 0.5555,
+        "answer_confidence": 0.8654,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 46.30399995949119,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_delivery_fee",
+      "language": "fr",
+      "pair_id": "sms_delivery_fee",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.6793,
+          "marketing": 0.0251,
+          "suspected_scam": 0.2956
+        },
+        "confidence": 0.3488,
+        "answer_confidence": 0.6793,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 24.259208934381604,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0071,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_bank_statement",
+      "language": "en",
+      "pair_id": "email_bank_statement",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.7959,
+          "marketing": 0.1054,
+          "suspected_scam": 0.0987
+        },
+        "confidence": 0.4107,
+        "answer_confidence": 0.7959,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 49.886041902936995,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_bank_statement",
+      "language": "fr",
+      "pair_id": "email_bank_statement",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.9921,
+          "marketing": 0.0033,
+          "suspected_scam": 0.0046
+        },
+        "confidence": 0.9532,
+        "answer_confidence": 0.9921,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 27.125207940116525,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_retail_promotion",
+      "language": "en",
+      "pair_id": "sms_retail_promotion",
+      "expected": "marketing",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.0754,
+          "marketing": 0.3464,
+          "suspected_scam": 0.5782
+        },
+        "confidence": 0.2,
+        "answer_confidence": 0.5782,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 48.23216691147536,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_retail_promotion",
+      "language": "fr",
+      "pair_id": "sms_retail_promotion",
+      "expected": "marketing",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.0372,
+          "marketing": 0.9056,
+          "suspected_scam": 0.0572
+        },
+        "confidence": 0.6579,
+        "answer_confidence": 0.9056,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 27.05008303746581,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_government_rebate",
+      "language": "en",
+      "pair_id": "email_government_rebate",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.6926,
+          "marketing": 0.1389,
+          "suspected_scam": 0.1685
+        },
+        "confidence": 0.2457,
+        "answer_confidence": 0.6926,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 50.027041928842664,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_government_rebate",
+      "language": "fr",
+      "pair_id": "email_government_rebate",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.7778,
+          "marketing": 0.0324,
+          "suspected_scam": 0.1898
+        },
+        "confidence": 0.4338,
+        "answer_confidence": 0.7778,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 29.544458026066422,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0113,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_job_onboarding_fee",
+      "language": "en",
+      "pair_id": "sms_job_onboarding_fee",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.2687,
+          "marketing": 0.4513,
+          "suspected_scam": 0.28
+        },
+        "confidence": 0.0273,
+        "answer_confidence": 0.4513,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 51.64462502580136,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_job_onboarding_fee",
+      "language": "fr",
+      "pair_id": "sms_job_onboarding_fee",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.215,
+          "marketing": 0.6986,
+          "suspected_scam": 0.0864
+        },
+        "confidence": 0.2786,
+        "answer_confidence": 0.6986,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 31.902417074888945,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0609,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_remote_support",
+      "language": "en",
+      "pair_id": "email_remote_support",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.0801,
+          "marketing": 0.1177,
+          "suspected_scam": 0.8021
+        },
+        "confidence": 0.4257,
+        "answer_confidence": 0.8021,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 51.60166695713997,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_remote_support",
+      "language": "fr",
+      "pair_id": "email_remote_support",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.0015,
+          "marketing": 0.0003,
+          "suspected_scam": 0.9981
+        },
+        "confidence": 0.9869,
+        "answer_confidence": 0.9981,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 31.152292038314044,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0181,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_clinic_reminder",
+      "language": "en",
+      "pair_id": "sms_clinic_reminder",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.5646,
+          "marketing": 0.3138,
+          "suspected_scam": 0.1216
+        },
+        "confidence": 0.142,
+        "answer_confidence": 0.5646,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 49.87108299974352,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_clinic_reminder",
+      "language": "fr",
+      "pair_id": "sms_clinic_reminder",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.8384,
+          "marketing": 0.0067,
+          "suspected_scam": 0.1549
+        },
+        "confidence": 0.5719,
+        "answer_confidence": 0.8384,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 28.721332899294794,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0144,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_bank_security_code",
+      "language": "en",
+      "pair_id": "sms_bank_security_code",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.0702,
+          "marketing": 0.0473,
+          "suspected_scam": 0.8825
+        },
+        "confidence": 0.5985,
+        "answer_confidence": 0.8825,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 50.267792074009776,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_bank_security_code",
+      "language": "fr",
+      "pair_id": "sms_bank_security_code",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.012,
+          "marketing": 0.0004,
+          "suspected_scam": 0.9876
+        },
+        "confidence": 0.9373,
+        "answer_confidence": 0.9876,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 27.171708061359823,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0597,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_parcel_tracking",
+      "language": "en",
+      "pair_id": "email_parcel_tracking",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.8178,
+          "marketing": 0.0785,
+          "suspected_scam": 0.1036
+        },
+        "confidence": 0.4546,
+        "answer_confidence": 0.8178,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 52.254291949793696,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_parcel_tracking",
+      "language": "fr",
+      "pair_id": "email_parcel_tracking",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.9783,
+          "marketing": 0.0036,
+          "suspected_scam": 0.0181
+        },
+        "confidence": 0.8961,
+        "answer_confidence": 0.9783,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 27.441042009741068,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0546,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_utility_bill",
+      "language": "en",
+      "pair_id": "email_utility_bill",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.7135,
+          "marketing": 0.2061,
+          "suspected_scam": 0.0803
+        },
+        "confidence": 0.3001,
+        "answer_confidence": 0.7135,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 53.60904207918793,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_utility_bill",
+      "language": "fr",
+      "pair_id": "email_utility_bill",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.8879,
+          "marketing": 0.0199,
+          "suspected_scam": 0.0923
+        },
+        "confidence": 0.6329,
+        "answer_confidence": 0.8879,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 28.5767080495134,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_prize_claim",
+      "language": "en",
+      "pair_id": "sms_prize_claim",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.3962,
+          "marketing": 0.3103,
+          "suspected_scam": 0.2934
+        },
+        "confidence": 0.0081,
+        "answer_confidence": 0.3962,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 48.21074998471886,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_prize_claim",
+      "language": "fr",
+      "pair_id": "sms_prize_claim",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.1431,
+          "marketing": 0.6022,
+          "suspected_scam": 0.2547
+        },
+        "confidence": 0.1516,
+        "answer_confidence": 0.6022,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 29.084041016176343,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0345,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_streaming_security",
+      "language": "fr",
+      "pair_id": "fr_email_streaming_security",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.1761,
+          "marketing": 0.0164,
+          "suspected_scam": 0.8075
+        },
+        "confidence": 0.5032,
+        "answer_confidence": 0.8075,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 29.355417005717754,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_streaming_security",
+      "language": "en",
+      "pair_id": "fr_email_streaming_security",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.1205,
+          "marketing": 0.1025,
+          "suspected_scam": 0.777
+        },
+        "confidence": 0.3769,
+        "answer_confidence": 0.777,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 52.28770803660154,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_traffic_fine",
+      "language": "fr",
+      "pair_id": "fr_sms_traffic_fine",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.7592,
+          "marketing": 0.0067,
+          "suspected_scam": 0.2341
+        },
+        "confidence": 0.4698,
+        "answer_confidence": 0.7592,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 28.434708015993237,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0203,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_traffic_fine",
+      "language": "en",
+      "pair_id": "fr_sms_traffic_fine",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.2811,
+          "marketing": 0.1108,
+          "suspected_scam": 0.6081
+        },
+        "confidence": 0.1781,
+        "answer_confidence": 0.6081,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 50.12537504080683,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_hotel_offer",
+      "language": "fr",
+      "pair_id": "fr_email_hotel_offer",
+      "expected": "marketing",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.0104,
+          "marketing": 0.9881,
+          "suspected_scam": 0.0015
+        },
+        "confidence": 0.9373,
+        "answer_confidence": 0.9881,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 30.810125055722892,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0283,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_hotel_offer",
+      "language": "en",
+      "pair_id": "fr_email_hotel_offer",
+      "expected": "marketing",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.1038,
+          "marketing": 0.8185,
+          "suspected_scam": 0.0777
+        },
+        "confidence": 0.4561,
+        "answer_confidence": 0.8185,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 52.519041928462684,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0045,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_library_closure",
+      "language": "fr",
+      "pair_id": "fr_sms_library_closure",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.9861,
+          "marketing": 0.0062,
+          "suspected_scam": 0.0077
+        },
+        "confidence": 0.9246,
+        "answer_confidence": 0.9861,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 29.866334050893784,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0343,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_library_closure",
+      "language": "en",
+      "pair_id": "fr_sms_library_closure",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.6888,
+          "marketing": 0.1557,
+          "suspected_scam": 0.1555
+        },
+        "confidence": 0.2393,
+        "answer_confidence": 0.6888,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 51.50229192804545,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_insurance_receipt",
+      "language": "fr",
+      "pair_id": "fr_email_insurance_receipt",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.9976,
+          "marketing": 0.0012,
+          "suspected_scam": 0.0012
+        },
+        "confidence": 0.983,
+        "answer_confidence": 0.9976,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 28.57987501192838,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0293,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_insurance_receipt",
+      "language": "en",
+      "pair_id": "fr_email_insurance_receipt",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.8139,
+          "marketing": 0.1094,
+          "suspected_scam": 0.0768
+        },
+        "confidence": 0.4478,
+        "answer_confidence": 0.8139,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 50.03216699697077,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_pharmacy_password",
+      "language": "fr",
+      "pair_id": "fr_sms_pharmacy_password",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.3717,
+          "marketing": 0.0058,
+          "suspected_scam": 0.6225
+        },
+        "confidence": 0.3695,
+        "answer_confidence": 0.6225,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 29.215667047537863,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0297,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_pharmacy_password",
+      "language": "en",
+      "pair_id": "fr_sms_pharmacy_password",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.2143,
+          "marketing": 0.211,
+          "suspected_scam": 0.5747
+        },
+        "confidence": 0.111,
+        "answer_confidence": 0.5747,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 47.80366597697139,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_investment_wallet",
+      "language": "fr",
+      "pair_id": "fr_email_investment_wallet",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "suspected_scam",
+        "probabilities": {
+          "legitimate": 0.1981,
+          "marketing": 0.111,
+          "suspected_scam": 0.6908
+        },
+        "confidence": 0.2533,
+        "answer_confidence": 0.6908,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 27.22279098816216,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0111,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_investment_wallet",
+      "language": "en",
+      "pair_id": "fr_email_investment_wallet",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.2231,
+          "marketing": 0.5489,
+          "suspected_scam": 0.228
+        },
+        "confidence": 0.0888,
+        "answer_confidence": 0.5489,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 50.563290948048234,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_lottery_voucher",
+      "language": "fr",
+      "pair_id": "fr_sms_lottery_voucher",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.3398,
+          "marketing": 0.5759,
+          "suspected_scam": 0.0843
+        },
+        "confidence": 0.187,
+        "answer_confidence": 0.5759,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 28.38904201053083,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_lottery_voucher",
+      "language": "en",
+      "pair_id": "fr_sms_lottery_voucher",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.4804,
+          "marketing": 0.3015,
+          "suspected_scam": 0.218
+        },
+        "confidence": 0.0481,
+        "answer_confidence": 0.4804,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 49.13450009189546,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_building_inspection",
+      "language": "fr",
+      "pair_id": "fr_email_building_inspection",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.8768,
+          "marketing": 0.0399,
+          "suspected_scam": 0.0832
+        },
+        "confidence": 0.5897,
+        "answer_confidence": 0.8768,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 30.785207985900342,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0401,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_building_inspection",
+      "language": "en",
+      "pair_id": "fr_email_building_inspection",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.7411,
+          "marketing": 0.1837,
+          "suspected_scam": 0.0752
+        },
+        "confidence": 0.3375,
+        "answer_confidence": 0.7411,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 52.21858399454504,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.007,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_transit_schedule",
+      "language": "fr",
+      "pair_id": "fr_sms_transit_schedule",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.9297,
+          "marketing": 0.0223,
+          "suspected_scam": 0.048
+        },
+        "confidence": 0.7284,
+        "answer_confidence": 0.9297,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 28.213458019308746,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0426,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_transit_schedule",
+      "language": "en",
+      "pair_id": "fr_sms_transit_schedule",
+      "expected": "legitimate",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.6323,
+          "marketing": 0.2701,
+          "suspected_scam": 0.0976
+        },
+        "confidence": 0.2077,
+        "answer_confidence": 0.6323,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 46.167499967850745,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_recruiting_identity",
+      "language": "fr",
+      "pair_id": "fr_email_recruiting_identity",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "legitimate",
+        "probabilities": {
+          "legitimate": 0.8361,
+          "marketing": 0.0571,
+          "suspected_scam": 0.1068
+        },
+        "confidence": 0.4974,
+        "answer_confidence": 0.8361,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 30.957042006775737,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0059,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_recruiting_identity",
+      "language": "en",
+      "pair_id": "fr_email_recruiting_identity",
+      "expected": "suspected_scam",
+      "answer": {
+        "type": "choice",
+        "choice": "marketing",
+        "probabilities": {
+          "legitimate": 0.4376,
+          "marketing": 0.4444,
+          "suspected_scam": 0.118
+        },
+        "confidence": 0.1132,
+        "answer_confidence": 0.4444,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 54.07804204151034,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    }
+  ],
+  "summary": {
+    "correct": 30,
+    "total": 44,
+    "accuracy": 0.6818181818181818,
+    "per_language": {
+      "en": {
+        "correct": 15,
+        "total": 22,
+        "accuracy": 0.6818181818181818
+      },
+      "fr": {
+        "correct": 15,
+        "total": 22,
+        "accuracy": 0.6818181818181818
+      }
+    },
+    "latency_ms": {
+      "p50": 39.034958521369845,
+      "p95": 52.519041928462684
+    },
+    "answers_changed": 18,
+    "errors_fixed": 7,
+    "correct_broken": 11
+  }
+}

@@ -51,6 +51,8 @@ async def simulate_requests(
         router = create_router(device=device, offline=offline, cpu_threads=cpu_threads)
         router.load("english")
         classify({"channel": "sms", "body": "Routine notification. No action is needed."}, router)
+        router.load("multilingual")
+        classify({"channel": "sms", "body": "Avis courant. Aucune action nécessaire."}, router)
         return router
 
     def infer(state, submitted):

@@ -79,7 +79,7 @@ def _check_token_budget(context: Any) -> None:
             )
 
 
-def classify(state: dict[str, Any], router: Any | None = None) -> dict[str, Any]:
+def classify(state: dict[str, Any], router: Any | None = None, *, questions: dict | None = None, return_details: bool = False) -> dict[str, Any]:
     """Answer all questions, rejecting input that cannot be evaluated in full.
 
     Pass a Router instance to reuse a loaded model across multiple messages.
@@ -87,6 +87,6 @@ def classify(state: dict[str, Any], router: Any | None = None) -> dict[str, Any]
     if router is None:
         router = create_router()
     result = router.predict(
-        state, QUESTIONS, on_predict_start=_check_token_budget, hooks_raise=True
+        state, QUESTIONS if questions is None else questions, on_predict_start=_check_token_budget, hooks_raise=True
     )
-    return result["answers"]
+    return result if return_details else result["answers"]

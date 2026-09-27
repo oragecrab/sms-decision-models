@@ -1,0 +1,175 @@
+{
+  "version": "action-config-lock-v1",
+  "dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+  "configs": {
+    "original": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "balanced": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "direct_choice": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "single_or_none": "Zero or one independent recipient operation is requested.",
+            "multiple": "At least two independent recipient operations are requested together."
+          }
+        }
+      }
+    },
+    "direct_explicit": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "true": "Two or more independent tasks are requested together.",
+            "false": "At most one independent task is requested."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "direct_three": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+          "criteria": {
+            "zero_tasks": "No recipient task is explicitly requested.",
+            "one_task": "One recipient task is requested, including its steps or alternatives.",
+            "multiple_tasks": "At least two distinct recipient tasks are requested together."
+          }
+        }
+      }
+    },
+    "target_field": {
+      "kind": "pipeline",
+      "marked": false,
+      "gate": {
+        "request": {
+          "type": "choice",
+          "instructions": "Classify only target_span, using the complete source to interpret shared verbs, negation and conditions. Does the quoted source span explicitly request a concrete recipient operation? Use the full message to interpret shared verbs and conditions. Count directives, invitations and optional opt-outs. Exclude mere availability, factual statements, negated requests, promised rewards and sender operations.",
+          "criteria": {
+            "not_requested": "Information, absence of action, availability, sender activity or promised reward.",
+            "requested": "A concrete recipient operation explicitly requested or invited, including an opt-out."
+          }
+        }
+      },
+      "pair": {
+        "relationship": {
+          "type": "choice",
+          "instructions": "Judge only target_1 and target_2 in the complete source. Judge the relationship of the two quoted spans in the full message. Call then install are separate tasks. Click to pay, reply with data, multiple fields, and buy/send a voucher to pay are one task. Optional opt-outs count; advertising alone is not a purchase request.",
+          "criteria": {
+            "independent_together": "Two distinct recipient operations are both requested.",
+            "same_task_steps": "Steps, transport, fields or methods of the same recipient task.",
+            "alternatives": "Either operation may be done; both are not requested together.",
+            "unsupported": "At least one operation is not actually requested or applicable.",
+            "unclear": "The relationship cannot be resolved from the message."
+          }
+        }
+      }
+    },
+    "marked_target": {
+      "kind": "pipeline",
+      "marked": true,
+      "gate": {
+        "request": {
+          "type": "choice",
+          "instructions": "Classify only target_span, using the complete source to interpret shared verbs, negation and conditions. Does the quoted source span explicitly request a concrete recipient operation? Use the full message to interpret shared verbs and conditions. Count directives, invitations and optional opt-outs. Exclude mere availability, factual statements, negated requests, promised rewards and sender operations.",
+          "criteria": {
+            "not_requested": "Information, absence of action, availability, sender activity or promised reward.",
+            "requested": "A concrete recipient operation explicitly requested or invited, including an opt-out."
+          }
+        }
+      },
+      "pair": {
+        "relationship": {
+          "type": "choice",
+          "instructions": "Judge only target_1 and target_2 in the complete source. Judge the relationship of the two quoted spans in the full message. Call then install are separate tasks. Click to pay, reply with data, multiple fields, and buy/send a voucher to pay are one task. Optional opt-outs count; advertising alone is not a purchase request.",
+          "criteria": {
+            "independent_together": "Two distinct recipient operations are both requested.",
+            "same_task_steps": "Steps, transport, fields or methods of the same recipient task.",
+            "alternatives": "Either operation may be done; both are not requested together.",
+            "unsupported": "At least one operation is not actually requested or applicable.",
+            "unclear": "The relationship cannot be resolved from the message."
+          }
+        }
+      }
+    },
+    "marked_compact": {
+      "kind": "pipeline",
+      "marked": true,
+      "gate": {
+        "request": {
+          "type": "choice",
+          "instructions": "Classify only target_span in the message. Use surrounding text for the actor, shared verb, condition and negation. Is the recipient explicitly asked or invited to perform its operation? Optional opt-outs count. Facts, sender activity, promised results, available features and negated operations are not requests. A shared directive may apply to target_span.",
+          "criteria": {
+            "requested": "The target expresses an operation explicitly requested of the recipient.",
+            "not_requested": "The target does not express a requested recipient operation."
+          }
+        }
+      },
+      "pair": {
+        "relationship": {
+          "type": "choice",
+          "instructions": "Judge only target_1 and target_2 in the full message. Both must be requested recipient operations. Call then install are distinct tasks. Click to pay, reply with data, fields in one submission and buy/send a voucher for payment are parts of one task. Either/or choices are alternatives. Optional opt-outs count as requests.",
+          "criteria": {
+            "unsupported": "At least one passage does not express a requested recipient operation.",
+            "one_task_or_alternative": "Both are requested, but are parts of one task or alternatives.",
+            "independent_together": "Both are requested and constitute distinct recipient tasks."
+          }
+        }
+      }
+    }
+  },
+  "hashes": {
+    "original": "fd4eb1c742f9b1116cdab44ea5c162f8844f42b216f85446c4696e6aa9f12b21",
+    "balanced": "1688874f55dc9495ba224907470da02f4b537c4f4b462cacba04f3b753db675d",
+    "direct_choice": "8fa1dcea2bf74f13709fbe65eaf7e63680ec485f06436e17d253adba7dec993f",
+    "direct_explicit": "a4a19d88e565ffd8211947d03e905b5375776828c0a026fe86b21c9b237f36da",
+    "direct_three": "47a53adcf948e132785fd162eead08f642e411ee1eb7c9ec923222ad3ae58349",
+    "target_field": "e72dae571e10f140b70317d2a064c50598ebaf4f0b30b7ae9e3a3f4e1ee26a66",
+    "marked_target": "1fd6bd2d1ac5f3b5406baa51665720adca4d91f0aa433dbe1add3148dd07d020",
+    "marked_compact": "efd0b38f4df094de3b6df97dcd08458438fbfef8fc54f294eaafdcae0e1dda9a"
+  },
+  "selection_rule": "Maximize weaker-language balanced accuracy, sum, fewer missed tasks, then lower p50 latency",
+  "inference_started": false
+}

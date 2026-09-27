@@ -1,0 +1,5250 @@
+{
+  "schema_version": 1,
+  "version": "action-improvement-v1",
+  "created_at": "2026-09-27T14:21:15.304462+00:00",
+  "split": "heldout",
+  "dataset": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/datasets/action_boundary_eval_v1.jsonl",
+  "dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+  "harness_sha256": "6b82d09b97b1a266981795154fc9bb0584ea81c42f4a4c5db5a6ac36241031cb",
+  "configs": {
+    "original": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "balanced": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    }
+  },
+  "config_hashes": {
+    "original": "fd4eb1c742f9b1116cdab44ea5c162f8844f42b216f85446c4696e6aa9f12b21",
+    "balanced": "1688874f55dc9495ba224907470da02f4b537c4f4b462cacba04f3b753db675d"
+  },
+  "frozen_selection": {
+    "version": "action-multimodel-selection-v1",
+    "created_at": "2026-09-27T14:19:26.392914+00:00",
+    "dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+    "selected": "gliner_direct_three",
+    "config": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+          "criteria": {
+            "zero_tasks": "No recipient task is explicitly requested.",
+            "one_task": "One recipient task is requested, including its steps or alternatives.",
+            "multiple_tasks": "At least two distinct recipient tasks are requested together."
+          }
+        }
+      }
+    },
+    "config_sha256": "47a53adcf948e132785fd162eead08f642e411ee1eb7c9ec923222ad3ae58349",
+    "execution_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+    "rule": "Maximize weaker-language balanced accuracy, then both-language sum, then fewer missed tasks, then lower recorded positive p50 latency",
+    "development_ranks": {
+      "original": [
+        0.5416666666666666,
+        1.2916666666666665,
+        -5,
+        -44.868562545161694
+      ],
+      "balanced": [
+        0.5833333333333333,
+        1.2916666666666665,
+        -5,
+        -42.4600419937633
+      ],
+      "direct_choice": [
+        0.5416666666666667,
+        1.1666666666666667,
+        -15,
+        -43.09239605208859
+      ],
+      "direct_explicit": [
+        0.5833333333333333,
+        1.2916666666666665,
+        -6,
+        -49.93847955483943
+      ],
+      "direct_three": [
+        0.5416666666666666,
+        1.125,
+        -20,
+        -51.146999991033226
+      ],
+      "target_field": [
+        0.5416666666666666,
+        1.1666666666666665,
+        -3,
+        -343.4866460156627
+      ],
+      "marked_target": [
+        0.45833333333333337,
+        1.0833333333333335,
+        -5,
+        -353.64416654920205
+      ],
+      "marked_compact": [
+        0.4583333333333333,
+        0.9583333333333333,
+        -24,
+        -291.9342294917442
+      ],
+      "gliner_original": [
+        0.5416666666666666,
+        1.0833333333333333,
+        -22,
+        -961.3253755378537
+      ],
+      "gliner_balanced": [
+        0.5833333333333334,
+        1.2083333333333335,
+        -19,
+        -961.3253755378537
+      ],
+      "gliner_direct_choice": [
+        0.6666666666666666,
+        1.375,
+        0,
+        -961.3253755378537
+      ],
+      "gliner_direct_three": [
+        0.75,
+        1.5416666666666665,
+        -1,
+        -961.3253755378537
+      ],
+      "gliner_direct_explicit": [
+        0.5,
+        1.0,
+        -23,
+        -961.3253755378537
+      ],
+      "gliner_three_single": [
+        0.6666666666666666,
+        1.5,
+        -10,
+        -134.249750059098
+      ]
+    },
+    "development_summary": {
+      "original": {
+        "overall": {
+          "total": 48,
+          "correct": 31,
+          "accuracy": 0.6458333333333334,
+          "false_positives": 12,
+          "false_negatives": 5,
+          "agreed": 33,
+          "coverage": 0.6875,
+          "accepted_errors": 10,
+          "rejected_errors": 7,
+          "selective_accuracy": 0.696969696969697,
+          "positive_latency_ms": {
+            "p50": 44.868562545161694,
+            "p95": 62.46541696600616
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 18,
+            "accuracy": 0.75,
+            "false_positives": 4,
+            "false_negatives": 2,
+            "agreed": 18,
+            "coverage": 0.75,
+            "accepted_errors": 4,
+            "rejected_errors": 2,
+            "selective_accuracy": 0.7777777777777778,
+            "positive_latency_ms": {
+              "p50": 52.953770966269076,
+              "p95": 62.760750064626336
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 13,
+            "accuracy": 0.5416666666666666,
+            "false_positives": 8,
+            "false_negatives": 3,
+            "agreed": 15,
+            "coverage": 0.625,
+            "accepted_errors": 6,
+            "rejected_errors": 5,
+            "selective_accuracy": 0.6,
+            "positive_latency_ms": {
+              "p50": 33.25297898845747,
+              "p95": 44.01095805224031
+            }
+          }
+        }
+      },
+      "balanced": {
+        "overall": {
+          "total": 48,
+          "correct": 31,
+          "accuracy": 0.6458333333333334,
+          "false_positives": 12,
+          "false_negatives": 5,
+          "agreed": 32,
+          "coverage": 0.6666666666666666,
+          "accepted_errors": 8,
+          "rejected_errors": 9,
+          "selective_accuracy": 0.75,
+          "positive_latency_ms": {
+            "p50": 42.4600419937633,
+            "p95": 61.00566603709012
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 17,
+            "accuracy": 0.7083333333333334,
+            "false_positives": 3,
+            "false_negatives": 4,
+            "agreed": 20,
+            "coverage": 0.8333333333333334,
+            "accepted_errors": 5,
+            "rejected_errors": 2,
+            "selective_accuracy": 0.75,
+            "positive_latency_ms": {
+              "p50": 50.94802100211382,
+              "p95": 63.285832991823554
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 14,
+            "accuracy": 0.5833333333333334,
+            "false_positives": 9,
+            "false_negatives": 1,
+            "agreed": 12,
+            "coverage": 0.5,
+            "accepted_errors": 3,
+            "rejected_errors": 7,
+            "selective_accuracy": 0.75,
+            "positive_latency_ms": {
+              "p50": 32.8339789994061,
+              "p95": 39.26166601013392
+            }
+          }
+        }
+      },
+      "direct_choice": {
+        "overall": {
+          "total": 48,
+          "correct": 28,
+          "accuracy": 0.5833333333333334,
+          "false_positives": 5,
+          "false_negatives": 15,
+          "agreed": 34,
+          "coverage": 0.7083333333333334,
+          "accepted_errors": 13,
+          "rejected_errors": 7,
+          "selective_accuracy": 0.6176470588235294,
+          "positive_latency_ms": {
+            "p50": 43.09239605208859,
+            "p95": 69.856624933891
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 15,
+            "accuracy": 0.625,
+            "false_positives": 3,
+            "false_negatives": 6,
+            "agreed": 14,
+            "coverage": 0.5833333333333334,
+            "accepted_errors": 4,
+            "rejected_errors": 5,
+            "selective_accuracy": 0.7142857142857143,
+            "positive_latency_ms": {
+              "p50": 58.616666530724615,
+              "p95": 72.74458289612085
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 13,
+            "accuracy": 0.5416666666666666,
+            "false_positives": 2,
+            "false_negatives": 9,
+            "agreed": 20,
+            "coverage": 0.8333333333333334,
+            "accepted_errors": 9,
+            "rejected_errors": 2,
+            "selective_accuracy": 0.55,
+            "positive_latency_ms": {
+              "p50": 32.21816697623581,
+              "p95": 37.96670900192112
+            }
+          }
+        }
+      },
+      "direct_explicit": {
+        "overall": {
+          "total": 48,
+          "correct": 31,
+          "accuracy": 0.6458333333333334,
+          "false_positives": 11,
+          "false_negatives": 6,
+          "agreed": 33,
+          "coverage": 0.6875,
+          "accepted_errors": 10,
+          "rejected_errors": 7,
+          "selective_accuracy": 0.696969696969697,
+          "positive_latency_ms": {
+            "p50": 49.93847955483943,
+            "p95": 68.1418749736622
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 17,
+            "accuracy": 0.7083333333333334,
+            "false_positives": 5,
+            "false_negatives": 2,
+            "agreed": 23,
+            "coverage": 0.9583333333333334,
+            "accepted_errors": 7,
+            "rejected_errors": 0,
+            "selective_accuracy": 0.6956521739130435,
+            "positive_latency_ms": {
+              "p50": 61.42672948772088,
+              "p95": 76.83620799798518
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 14,
+            "accuracy": 0.5833333333333334,
+            "false_positives": 6,
+            "false_negatives": 4,
+            "agreed": 10,
+            "coverage": 0.4166666666666667,
+            "accepted_errors": 3,
+            "rejected_errors": 7,
+            "selective_accuracy": 0.7,
+            "positive_latency_ms": {
+              "p50": 32.93602098710835,
+              "p95": 42.77183406520635
+            }
+          }
+        }
+      },
+      "direct_three": {
+        "overall": {
+          "total": 48,
+          "correct": 27,
+          "accuracy": 0.5625,
+          "false_positives": 1,
+          "false_negatives": 20,
+          "agreed": 31,
+          "coverage": 0.6458333333333334,
+          "accepted_errors": 12,
+          "rejected_errors": 9,
+          "selective_accuracy": 0.6129032258064516,
+          "positive_latency_ms": {
+            "p50": 51.146999991033226,
+            "p95": 79.89925006404519
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 13,
+            "accuracy": 0.5416666666666666,
+            "false_positives": 1,
+            "false_negatives": 10,
+            "agreed": 8,
+            "coverage": 0.3333333333333333,
+            "accepted_errors": 2,
+            "rejected_errors": 9,
+            "selective_accuracy": 0.75,
+            "positive_latency_ms": {
+              "p50": 69.34472901048139,
+              "p95": 82.32495898846537
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 14,
+            "accuracy": 0.5833333333333334,
+            "false_positives": 0,
+            "false_negatives": 10,
+            "agreed": 23,
+            "coverage": 0.9583333333333334,
+            "accepted_errors": 10,
+            "rejected_errors": 0,
+            "selective_accuracy": 0.5652173913043478,
+            "positive_latency_ms": {
+              "p50": 35.47252051066607,
+              "p95": 44.15441700257361
+            }
+          }
+        }
+      },
+      "target_field": {
+        "overall": {
+          "total": 48,
+          "correct": 28,
+          "accuracy": 0.5833333333333334,
+          "false_positives": 17,
+          "false_negatives": 3,
+          "agreed": 24,
+          "coverage": 0.5,
+          "accepted_errors": 8,
+          "rejected_errors": 12,
+          "selective_accuracy": 0.6666666666666666,
+          "positive_latency_ms": {
+            "p50": 343.4866460156627,
+            "p95": 831.313458038494
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 15,
+            "accuracy": 0.625,
+            "false_positives": 9,
+            "false_negatives": 0,
+            "agreed": 18,
+            "coverage": 0.75,
+            "accepted_errors": 6,
+            "rejected_errors": 3,
+            "selective_accuracy": 0.6666666666666666,
+            "positive_latency_ms": {
+              "p50": 494.98447903897613,
+              "p95": 949.6759999310598
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 13,
+            "accuracy": 0.5416666666666666,
+            "false_positives": 8,
+            "false_negatives": 3,
+            "agreed": 6,
+            "coverage": 0.25,
+            "accepted_errors": 2,
+            "rejected_errors": 9,
+            "selective_accuracy": 0.6666666666666666,
+            "positive_latency_ms": {
+              "p50": 217.31752099003643,
+              "p95": 459.631709032692
+            }
+          }
+        }
+      },
+      "marked_target": {
+        "overall": {
+          "total": 48,
+          "correct": 26,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 17,
+          "false_negatives": 5,
+          "agreed": 24,
+          "coverage": 0.5,
+          "accepted_errors": 9,
+          "rejected_errors": 13,
+          "selective_accuracy": 0.625,
+          "positive_latency_ms": {
+            "p50": 353.64416654920205,
+            "p95": 765.8720420440659
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 15,
+            "accuracy": 0.625,
+            "false_positives": 9,
+            "false_negatives": 0,
+            "agreed": 16,
+            "coverage": 0.6666666666666666,
+            "accepted_errors": 5,
+            "rejected_errors": 4,
+            "selective_accuracy": 0.6875,
+            "positive_latency_ms": {
+              "p50": 506.5001039765775,
+              "p95": 788.7462079524994
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 11,
+            "accuracy": 0.4583333333333333,
+            "false_positives": 8,
+            "false_negatives": 5,
+            "agreed": 8,
+            "coverage": 0.3333333333333333,
+            "accepted_errors": 4,
+            "rejected_errors": 9,
+            "selective_accuracy": 0.5,
+            "positive_latency_ms": {
+              "p50": 235.66627100808546,
+              "p95": 426.7535409890115
+            }
+          }
+        }
+      },
+      "marked_compact": {
+        "overall": {
+          "total": 48,
+          "correct": 23,
+          "accuracy": 0.4791666666666667,
+          "false_positives": 1,
+          "false_negatives": 24,
+          "agreed": 27,
+          "coverage": 0.5625,
+          "accepted_errors": 12,
+          "rejected_errors": 13,
+          "selective_accuracy": 0.5555555555555556,
+          "positive_latency_ms": {
+            "p50": 291.9342294917442,
+            "p95": 734.6852079499513
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 12,
+            "accuracy": 0.5,
+            "false_positives": 0,
+            "false_negatives": 12,
+            "agreed": 5,
+            "coverage": 0.20833333333333334,
+            "accepted_errors": 1,
+            "rejected_errors": 11,
+            "selective_accuracy": 0.8,
+            "positive_latency_ms": {
+              "p50": 380.6320625008084,
+              "p95": 825.8949579903856
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 11,
+            "accuracy": 0.4583333333333333,
+            "false_positives": 1,
+            "false_negatives": 12,
+            "agreed": 22,
+            "coverage": 0.9166666666666666,
+            "accepted_errors": 11,
+            "rejected_errors": 2,
+            "selective_accuracy": 0.5,
+            "positive_latency_ms": {
+              "p50": 225.0621040002443,
+              "p95": 570.7260000053793
+            }
+          }
+        }
+      },
+      "gliner_original": {
+        "overall": {
+          "total": 48,
+          "correct": 26,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 0,
+          "false_negatives": 22,
+          "agreed": 37,
+          "coverage": 0.7708333333333334,
+          "accepted_errors": 22,
+          "rejected_errors": 0,
+          "selective_accuracy": 0.40540540540540543,
+          "positive_latency_ms": {
+            "p50": 961.3253755378537,
+            "p95": 1227.6691669831052
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 13,
+            "accuracy": 0.5416666666666666,
+            "false_positives": 0,
+            "false_negatives": 11,
+            "agreed": 20,
+            "coverage": 0.8333333333333334,
+            "accepted_errors": 11,
+            "rejected_errors": 0,
+            "selective_accuracy": 0.45,
+            "positive_latency_ms": {
+              "p50": 961.0131669905968,
+              "p95": 1214.3467500573024
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 13,
+            "accuracy": 0.5416666666666666,
+            "false_positives": 0,
+            "false_negatives": 11,
+            "agreed": 17,
+            "coverage": 0.7083333333333334,
+            "accepted_errors": 11,
+            "rejected_errors": 0,
+            "selective_accuracy": 0.35294117647058826,
+            "positive_latency_ms": {
+              "p50": 981.2324170488864,
+              "p95": 1227.6691669831052
+            }
+          }
+        }
+      },
+      "gliner_balanced": {
+        "overall": {
+          "total": 48,
+          "correct": 29,
+          "accuracy": 0.6041666666666666,
+          "false_positives": 0,
+          "false_negatives": 19,
+          "agreed": 18,
+          "coverage": 0.375,
+          "accepted_errors": 14,
+          "rejected_errors": 5,
+          "selective_accuracy": 0.2222222222222222,
+          "positive_latency_ms": {
+            "p50": 961.3253755378537,
+            "p95": 1227.6691669831052
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 14,
+            "accuracy": 0.5833333333333334,
+            "false_positives": 0,
+            "false_negatives": 10,
+            "agreed": 12,
+            "coverage": 0.5,
+            "accepted_errors": 9,
+            "rejected_errors": 1,
+            "selective_accuracy": 0.25,
+            "positive_latency_ms": {
+              "p50": 961.0131669905968,
+              "p95": 1214.3467500573024
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 15,
+            "accuracy": 0.625,
+            "false_positives": 0,
+            "false_negatives": 9,
+            "agreed": 6,
+            "coverage": 0.25,
+            "accepted_errors": 5,
+            "rejected_errors": 4,
+            "selective_accuracy": 0.16666666666666666,
+            "positive_latency_ms": {
+              "p50": 981.2324170488864,
+              "p95": 1227.6691669831052
+            }
+          }
+        }
+      },
+      "gliner_direct_choice": {
+        "overall": {
+          "total": 48,
+          "correct": 33,
+          "accuracy": 0.6875,
+          "false_positives": 15,
+          "false_negatives": 0,
+          "agreed": 24,
+          "coverage": 0.5,
+          "accepted_errors": 13,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.4583333333333333,
+          "positive_latency_ms": {
+            "p50": 961.3253755378537,
+            "p95": 1227.6691669831052
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 16,
+            "accuracy": 0.6666666666666666,
+            "false_positives": 8,
+            "false_negatives": 0,
+            "agreed": 10,
+            "coverage": 0.4166666666666667,
+            "accepted_errors": 6,
+            "rejected_errors": 2,
+            "selective_accuracy": 0.4,
+            "positive_latency_ms": {
+              "p50": 961.0131669905968,
+              "p95": 1214.3467500573024
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 17,
+            "accuracy": 0.7083333333333334,
+            "false_positives": 7,
+            "false_negatives": 0,
+            "agreed": 14,
+            "coverage": 0.5833333333333334,
+            "accepted_errors": 7,
+            "rejected_errors": 0,
+            "selective_accuracy": 0.5,
+            "positive_latency_ms": {
+              "p50": 981.2324170488864,
+              "p95": 1227.6691669831052
+            }
+          }
+        }
+      },
+      "gliner_direct_three": {
+        "overall": {
+          "total": 48,
+          "correct": 37,
+          "accuracy": 0.7708333333333334,
+          "false_positives": 10,
+          "false_negatives": 1,
+          "agreed": 14,
+          "coverage": 0.2916666666666667,
+          "accepted_errors": 6,
+          "rejected_errors": 5,
+          "selective_accuracy": 0.5714285714285714,
+          "positive_latency_ms": {
+            "p50": 961.3253755378537,
+            "p95": 1227.6691669831052
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 18,
+            "accuracy": 0.75,
+            "false_positives": 6,
+            "false_negatives": 0,
+            "agreed": 5,
+            "coverage": 0.20833333333333334,
+            "accepted_errors": 3,
+            "rejected_errors": 3,
+            "selective_accuracy": 0.4,
+            "positive_latency_ms": {
+              "p50": 961.0131669905968,
+              "p95": 1214.3467500573024
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 19,
+            "accuracy": 0.7916666666666666,
+            "false_positives": 4,
+            "false_negatives": 1,
+            "agreed": 9,
+            "coverage": 0.375,
+            "accepted_errors": 3,
+            "rejected_errors": 2,
+            "selective_accuracy": 0.6666666666666666,
+            "positive_latency_ms": {
+              "p50": 981.2324170488864,
+              "p95": 1227.6691669831052
+            }
+          }
+        }
+      },
+      "gliner_direct_explicit": {
+        "overall": {
+          "total": 48,
+          "correct": 24,
+          "accuracy": 0.5,
+          "false_positives": 1,
+          "false_negatives": 23,
+          "agreed": 16,
+          "coverage": 0.3333333333333333,
+          "accepted_errors": 13,
+          "rejected_errors": 11,
+          "selective_accuracy": 0.1875,
+          "positive_latency_ms": {
+            "p50": 961.3253755378537,
+            "p95": 1227.6691669831052
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 12,
+            "accuracy": 0.5,
+            "false_positives": 1,
+            "false_negatives": 11,
+            "agreed": 11,
+            "coverage": 0.4583333333333333,
+            "accepted_errors": 8,
+            "rejected_errors": 4,
+            "selective_accuracy": 0.2727272727272727,
+            "positive_latency_ms": {
+              "p50": 961.0131669905968,
+              "p95": 1214.3467500573024
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 12,
+            "accuracy": 0.5,
+            "false_positives": 0,
+            "false_negatives": 12,
+            "agreed": 5,
+            "coverage": 0.20833333333333334,
+            "accepted_errors": 5,
+            "rejected_errors": 7,
+            "selective_accuracy": 0.0,
+            "positive_latency_ms": {
+              "p50": 981.2324170488864,
+              "p95": 1227.6691669831052
+            }
+          }
+        }
+      },
+      "gliner_three_single": {
+        "overall": {
+          "total": 48,
+          "correct": 36,
+          "accuracy": 0.75,
+          "false_positives": 2,
+          "false_negatives": 10,
+          "agreed": 6,
+          "coverage": 0.125,
+          "accepted_errors": 3,
+          "rejected_errors": 9,
+          "selective_accuracy": 0.5,
+          "positive_latency_ms": {
+            "p50": 134.249750059098,
+            "p95": 184.7572079859674
+          }
+        },
+        "per_language": {
+          "en": {
+            "total": 24,
+            "correct": 20,
+            "accuracy": 0.8333333333333334,
+            "false_positives": 2,
+            "false_negatives": 2,
+            "agreed": 4,
+            "coverage": 0.16666666666666666,
+            "accepted_errors": 2,
+            "rejected_errors": 2,
+            "selective_accuracy": 0.5,
+            "positive_latency_ms": {
+              "p50": 127.90756247704849,
+              "p95": 174.49087498243898
+            }
+          },
+          "fr": {
+            "total": 24,
+            "correct": 16,
+            "accuracy": 0.6666666666666666,
+            "false_positives": 0,
+            "false_negatives": 8,
+            "agreed": 2,
+            "coverage": 0.08333333333333333,
+            "accepted_errors": 1,
+            "rejected_errors": 7,
+            "selective_accuracy": 0.5,
+            "positive_latency_ms": {
+              "p50": 144.20300046913326,
+              "p95": 184.7572079859674
+            }
+          }
+        }
+      }
+    },
+    "development_promotion": {
+      "per_language": {
+        "en": {
+          "candidate": {
+            "recall": 1.0,
+            "specificity": 0.5,
+            "balanced_accuracy": 0.75
+          },
+          "reference": {
+            "recall": 0.6666666666666666,
+            "specificity": 0.75,
+            "balanced_accuracy": 0.7083333333333333
+          },
+          "balanced_accuracy_preserved": true,
+          "positive_recall_preserved": true
+        },
+        "fr": {
+          "candidate": {
+            "recall": 0.9166666666666666,
+            "specificity": 0.6666666666666666,
+            "balanced_accuracy": 0.7916666666666666
+          },
+          "reference": {
+            "recall": 0.9166666666666666,
+            "specificity": 0.25,
+            "balanced_accuracy": 0.5833333333333333
+          },
+          "balanced_accuracy_preserved": true,
+          "positive_recall_preserved": true
+        }
+      },
+      "weaker_language_improved": true,
+      "passes": true
+    },
+    "heldout_used": false,
+    "comparator_hashes": {
+      "original": "fd4eb1c742f9b1116cdab44ea5c162f8844f42b216f85446c4696e6aa9f12b21",
+      "balanced": "1688874f55dc9495ba224907470da02f4b537c4f4b462cacba04f3b753db675d"
+    },
+    "development_model": {
+      "backend": "laya",
+      "model": "laya",
+      "requested_device": "mps",
+      "devices": {
+        "english": "mps",
+        "multilingual": "mps"
+      },
+      "checkpoints": {
+        "english": {
+          "repo": "convaiinnovations/laya",
+          "subfolder": null,
+          "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+          "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/dd/dd8562d713759821a0bc049e79abd09e5817d218d18fa51478ad16986d018764",
+          "weights_bytes": 842609210,
+          "device": "mps",
+          "dtype": "torch.float16",
+          "amp_enabled": true,
+          "mps_amp_min_rows": 10000,
+          "temperature_raw": [
+            1.6369030475616455,
+            1.2514300346374512,
+            1.983399510383606
+          ],
+          "temperature": [
+            1.6369030475616455,
+            1.2514300346374512,
+            1.983399510383606
+          ],
+          "temperature_by_options_raw": {
+            "choice:3-5": 1.7601518630981445,
+            "choice:6-10": 1.0000158548355103,
+            "score:3-5": 1.2514300346374512,
+            "noul:2": 1.983399510383606,
+            "choice:11+": 0.10058280825614929,
+            "choice:2": 1.9063563346862793
+          },
+          "temperature_by_options": {
+            "choice:3-5": 1.7601518630981445,
+            "choice:6-10": 1.0000158548355103,
+            "score:3-5": 1.2514300346374512,
+            "noul:2": 1.983399510383606,
+            "choice:11+": 0.5,
+            "choice:2": 1.9063563346862793
+          },
+          "config": {
+            "encoder": "answerdotai/ModernBERT-large",
+            "head_layers": 2,
+            "max_len": 512,
+            "head_max_len": 192,
+            "max_prefixes": 6,
+            "act_costs": {
+              "escalate": 0.5
+            },
+            "cost_wrong_act": 3.0,
+            "amp_dtype": "bf16",
+            "model_name": "rl-agent",
+            "temperature": [
+              1.6369030475616455,
+              1.2514300346374512,
+              1.983399510383606
+            ],
+            "temperature_by_options": {
+              "choice:3-5": 1.7601518630981445,
+              "choice:6-10": 1.0000158548355103,
+              "score:3-5": 1.2514300346374512,
+              "noul:2": 1.983399510383606,
+              "choice:11+": 0.10058280825614929,
+              "choice:2": 1.9063563346862793
+            },
+            "training": {
+              "updates": 7313,
+              "epochs_completed": 1,
+              "hours": 1.96,
+              "world_size": 1,
+              "fine_tuned_from_checkpoint": true
+            }
+          }
+        },
+        "multilingual": {
+          "repo": "convaiinnovations/laya",
+          "subfolder": "multilingual",
+          "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+          "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/53/53499790a05bdabd4023a797e9e2776d39efd3bac72d6ddaed70495da40c6eb0",
+          "weights_bytes": 643835514,
+          "device": "mps",
+          "dtype": "torch.float16",
+          "amp_enabled": true,
+          "mps_amp_min_rows": 10000,
+          "temperature_raw": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "temperature": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "temperature_by_options_raw": {},
+          "temperature_by_options": {},
+          "config": {
+            "encoder": "jhu-clsp/mmBERT-base",
+            "head_layers": 2,
+            "max_len": 1024,
+            "head_max_len": 256,
+            "max_prefixes": 6,
+            "act_costs": {
+              "escalate": 0.5
+            },
+            "cost_wrong_act": 3.0,
+            "amp_dtype": "bf16",
+            "model_name": "rl-agent",
+            "temperature": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "temperature_by_options": {},
+            "training": {
+              "updates": 15987,
+              "epochs_completed": 4,
+              "hours": 4.97,
+              "world_size": 1,
+              "fine_tuned_from_checkpoint": false
+            }
+          }
+        }
+      },
+      "torch_threads": 2
+    },
+    "development_packages": {
+      "laya": "0.3.20",
+      "torch": "2.14.0",
+      "transformers": "5.17.0",
+      "numpy": "1.26.4"
+    },
+    "selected_runtime": {
+      "model": {
+        "backend": "gliner",
+        "model": "fastino/GLiNER2.5-Decide",
+        "revision": null,
+        "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+        "device": "mps",
+        "requested_device": "mps",
+        "schema_mode": "all_heads_one_pass",
+        "temperature": 1.0,
+        "input_token_limit": 4096,
+        "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf",
+        "torch_threads": 2,
+        "checkpoints": {
+          "snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+          "files": {
+            "config.json": {
+              "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/b6cb696d01e64a2a1389be0e7eaa03cda538e763",
+              "bytes": 594,
+              "sha256": "e748e5b80575471c91b3f0dd00f513ba58242544fcb7e1236e0021e61abd7673"
+            },
+            "model.safetensors": {
+              "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/40a5a23ff860dc3dff426cecd1048cacdd29c648c96db209dad818e9686dc997",
+              "bytes": 1945828140
+            },
+            "special_tokens_map.json": {
+              "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/4f5d30b2c191a6fe27a92901a543cfad1f9832ab",
+              "bytes": 2414,
+              "sha256": "84ea70143f533d7e99b393d87f20010887a9ac2cba955828ef313886e4e83f4f"
+            },
+            "tokenizer.json": {
+              "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/846fee96bd81469a49d54a6e37909cf2070a8833",
+              "bytes": 8333952,
+              "sha256": "3ad87d9ffe669147063e70850927dd2da90249e2acc5c8527f1eb65df467bcc8"
+            },
+            "tokenizer_config.json": {
+              "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/eaa0e9bae635e8571f2501ade39b3be479d3fa0f",
+              "bytes": 3356,
+              "sha256": "323199a4e946039410899f3779f2aa3eaef1500213c512727ad0f623d4f21309"
+            }
+          }
+        },
+        "parameter_dtype": "torch.float32"
+      },
+      "packages": {
+        "gliner2": "2.0.0",
+        "torch": "2.14.0",
+        "transformers": "4.57.6",
+        "numpy": "1.26.4"
+      }
+    },
+    "sources": {
+      "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json": "5603980f512f88c098f418759faa3a773898a2ad5d42430ee14d551ba551455e",
+      "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json": "eafa4ebccf45e6c873ab9b5f2b92ab55c3f93a0ab1e80e558371e7cfb09ee520",
+      "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-single-development-v1.json": "1fa160d3c3a471f486d75f3741ec8295cf70937a5099f82dcd1eda6efcc96236"
+    },
+    "configs": {
+      "original": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+            "criteria": {
+              "true": "Yes, it asks for two or more distinct actions.",
+              "false": "No, it asks for at most one distinct action."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        }
+      },
+      "balanced": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "Yes, it asks for two or more distinct actions.",
+              "false": "No, it asks for at most one distinct action."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        }
+      },
+      "direct_choice": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "choice",
+            "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+            "criteria": {
+              "single_or_none": "Zero or one independent recipient operation is requested.",
+              "multiple": "At least two independent recipient operations are requested together."
+            }
+          }
+        }
+      },
+      "direct_explicit": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+            "criteria": {
+              "true": "Two or more independent tasks are requested together.",
+              "false": "At most one independent task is requested."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        }
+      },
+      "direct_three": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "choice",
+            "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+            "criteria": {
+              "zero_tasks": "No recipient task is explicitly requested.",
+              "one_task": "One recipient task is requested, including its steps or alternatives.",
+              "multiple_tasks": "At least two distinct recipient tasks are requested together."
+            }
+          }
+        }
+      },
+      "target_field": {
+        "kind": "pipeline",
+        "marked": false,
+        "gate": {
+          "request": {
+            "type": "choice",
+            "instructions": "Classify only target_span, using the complete source to interpret shared verbs, negation and conditions. Does the quoted source span explicitly request a concrete recipient operation? Use the full message to interpret shared verbs and conditions. Count directives, invitations and optional opt-outs. Exclude mere availability, factual statements, negated requests, promised rewards and sender operations.",
+            "criteria": {
+              "not_requested": "Information, absence of action, availability, sender activity or promised reward.",
+              "requested": "A concrete recipient operation explicitly requested or invited, including an opt-out."
+            }
+          }
+        },
+        "pair": {
+          "relationship": {
+            "type": "choice",
+            "instructions": "Judge only target_1 and target_2 in the complete source. Judge the relationship of the two quoted spans in the full message. Call then install are separate tasks. Click to pay, reply with data, multiple fields, and buy/send a voucher to pay are one task. Optional opt-outs count; advertising alone is not a purchase request.",
+            "criteria": {
+              "independent_together": "Two distinct recipient operations are both requested.",
+              "same_task_steps": "Steps, transport, fields or methods of the same recipient task.",
+              "alternatives": "Either operation may be done; both are not requested together.",
+              "unsupported": "At least one operation is not actually requested or applicable.",
+              "unclear": "The relationship cannot be resolved from the message."
+            }
+          }
+        }
+      },
+      "marked_target": {
+        "kind": "pipeline",
+        "marked": true,
+        "gate": {
+          "request": {
+            "type": "choice",
+            "instructions": "Classify only target_span, using the complete source to interpret shared verbs, negation and conditions. Does the quoted source span explicitly request a concrete recipient operation? Use the full message to interpret shared verbs and conditions. Count directives, invitations and optional opt-outs. Exclude mere availability, factual statements, negated requests, promised rewards and sender operations.",
+            "criteria": {
+              "not_requested": "Information, absence of action, availability, sender activity or promised reward.",
+              "requested": "A concrete recipient operation explicitly requested or invited, including an opt-out."
+            }
+          }
+        },
+        "pair": {
+          "relationship": {
+            "type": "choice",
+            "instructions": "Judge only target_1 and target_2 in the complete source. Judge the relationship of the two quoted spans in the full message. Call then install are separate tasks. Click to pay, reply with data, multiple fields, and buy/send a voucher to pay are one task. Optional opt-outs count; advertising alone is not a purchase request.",
+            "criteria": {
+              "independent_together": "Two distinct recipient operations are both requested.",
+              "same_task_steps": "Steps, transport, fields or methods of the same recipient task.",
+              "alternatives": "Either operation may be done; both are not requested together.",
+              "unsupported": "At least one operation is not actually requested or applicable.",
+              "unclear": "The relationship cannot be resolved from the message."
+            }
+          }
+        }
+      },
+      "marked_compact": {
+        "kind": "pipeline",
+        "marked": true,
+        "gate": {
+          "request": {
+            "type": "choice",
+            "instructions": "Classify only target_span in the message. Use surrounding text for the actor, shared verb, condition and negation. Is the recipient explicitly asked or invited to perform its operation? Optional opt-outs count. Facts, sender activity, promised results, available features and negated operations are not requests. A shared directive may apply to target_span.",
+            "criteria": {
+              "requested": "The target expresses an operation explicitly requested of the recipient.",
+              "not_requested": "The target does not express a requested recipient operation."
+            }
+          }
+        },
+        "pair": {
+          "relationship": {
+            "type": "choice",
+            "instructions": "Judge only target_1 and target_2 in the full message. Both must be requested recipient operations. Call then install are distinct tasks. Click to pay, reply with data, fields in one submission and buy/send a voucher for payment are parts of one task. Either/or choices are alternatives. Optional opt-outs count as requests.",
+            "criteria": {
+              "unsupported": "At least one passage does not express a requested recipient operation.",
+              "one_task_or_alternative": "Both are requested, but are parts of one task or alternatives.",
+              "independent_together": "Both are requested and constitute distinct recipient tasks."
+            }
+          }
+        }
+      },
+      "gliner_original": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+            "criteria": {
+              "true": "Yes, it asks for two or more distinct actions.",
+              "false": "No, it asks for at most one distinct action."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        }
+      },
+      "gliner_balanced": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "Yes, it asks for two or more distinct actions.",
+              "false": "No, it asks for at most one distinct action."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        }
+      },
+      "gliner_direct_choice": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "choice",
+            "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+            "criteria": {
+              "single_or_none": "Zero or one independent recipient operation is requested.",
+              "multiple": "At least two independent recipient operations are requested together."
+            }
+          }
+        }
+      },
+      "gliner_direct_three": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "choice",
+            "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+            "criteria": {
+              "zero_tasks": "No recipient task is explicitly requested.",
+              "one_task": "One recipient task is requested, including its steps or alternatives.",
+              "multiple_tasks": "At least two distinct recipient tasks are requested together."
+            }
+          }
+        }
+      },
+      "gliner_direct_explicit": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+            "criteria": {
+              "true": "Two or more independent tasks are requested together.",
+              "false": "At most one independent task is requested."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        }
+      },
+      "gliner_three_single": {
+        "kind": "direct",
+        "questions": {
+          "multiple_actions": {
+            "type": "choice",
+            "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+            "criteria": {
+              "zero_tasks": "No recipient task is explicitly requested.",
+              "one_task": "One recipient task is requested, including its steps or alternatives.",
+              "multiple_tasks": "At least two distinct recipient tasks are requested together."
+            }
+          }
+        },
+        "head_key": "gliner_direct_three",
+        "execution": "single_head"
+      }
+    },
+    "source_by_policy": {
+      "original": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "balanced": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "direct_choice": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "direct_explicit": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "direct_three": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "target_field": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "marked_target": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "marked_compact": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+      "gliner_original": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+      "gliner_balanced": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+      "gliner_direct_choice": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+      "gliner_direct_three": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+      "gliner_direct_explicit": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+      "gliner_three_single": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-single-development-v1.json"
+    }
+  },
+  "model": {
+    "backend": "laya",
+    "model": "laya",
+    "requested_device": "mps",
+    "devices": {
+      "english": "mps",
+      "multilingual": "mps"
+    },
+    "checkpoints": {
+      "english": {
+        "repo": "convaiinnovations/laya",
+        "subfolder": null,
+        "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/dd/dd8562d713759821a0bc049e79abd09e5817d218d18fa51478ad16986d018764",
+        "weights_bytes": 842609210,
+        "device": "mps",
+        "dtype": "torch.float16",
+        "amp_enabled": true,
+        "mps_amp_min_rows": 10000,
+        "temperature_raw": [
+          1.6369030475616455,
+          1.2514300346374512,
+          1.983399510383606
+        ],
+        "temperature": [
+          1.6369030475616455,
+          1.2514300346374512,
+          1.983399510383606
+        ],
+        "temperature_by_options_raw": {
+          "choice:3-5": 1.7601518630981445,
+          "choice:6-10": 1.0000158548355103,
+          "score:3-5": 1.2514300346374512,
+          "noul:2": 1.983399510383606,
+          "choice:11+": 0.10058280825614929,
+          "choice:2": 1.9063563346862793
+        },
+        "temperature_by_options": {
+          "choice:3-5": 1.7601518630981445,
+          "choice:6-10": 1.0000158548355103,
+          "score:3-5": 1.2514300346374512,
+          "noul:2": 1.983399510383606,
+          "choice:11+": 0.5,
+          "choice:2": 1.9063563346862793
+        },
+        "config": {
+          "encoder": "answerdotai/ModernBERT-large",
+          "head_layers": 2,
+          "max_len": 512,
+          "head_max_len": 192,
+          "max_prefixes": 6,
+          "act_costs": {
+            "escalate": 0.5
+          },
+          "cost_wrong_act": 3.0,
+          "amp_dtype": "bf16",
+          "model_name": "rl-agent",
+          "temperature": [
+            1.6369030475616455,
+            1.2514300346374512,
+            1.983399510383606
+          ],
+          "temperature_by_options": {
+            "choice:3-5": 1.7601518630981445,
+            "choice:6-10": 1.0000158548355103,
+            "score:3-5": 1.2514300346374512,
+            "noul:2": 1.983399510383606,
+            "choice:11+": 0.10058280825614929,
+            "choice:2": 1.9063563346862793
+          },
+          "training": {
+            "updates": 7313,
+            "epochs_completed": 1,
+            "hours": 1.96,
+            "world_size": 1,
+            "fine_tuned_from_checkpoint": true
+          }
+        }
+      },
+      "multilingual": {
+        "repo": "convaiinnovations/laya",
+        "subfolder": "multilingual",
+        "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/53/53499790a05bdabd4023a797e9e2776d39efd3bac72d6ddaed70495da40c6eb0",
+        "weights_bytes": 643835514,
+        "device": "mps",
+        "dtype": "torch.float16",
+        "amp_enabled": true,
+        "mps_amp_min_rows": 10000,
+        "temperature_raw": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "temperature": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "temperature_by_options_raw": {},
+        "temperature_by_options": {},
+        "config": {
+          "encoder": "jhu-clsp/mmBERT-base",
+          "head_layers": 2,
+          "max_len": 1024,
+          "head_max_len": 256,
+          "max_prefixes": 6,
+          "act_costs": {
+            "escalate": 0.5
+          },
+          "cost_wrong_act": 3.0,
+          "amp_dtype": "bf16",
+          "model_name": "rl-agent",
+          "temperature": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "temperature_by_options": {},
+          "training": {
+            "updates": 15987,
+            "epochs_completed": 4,
+            "hours": 4.97,
+            "world_size": 1,
+            "fine_tuned_from_checkpoint": false
+          }
+        }
+      }
+    },
+    "torch_threads": 2
+  },
+  "packages": {
+    "laya": "0.3.20",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "numpy": "1.26.4"
+  },
+  "predictions": [
+    {
+      "id": "dev_p01_archive_attendance__en",
+      "pair_id": "dev_p01_archive_attendance",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5919,
+              "confidence": 0.5919,
+              "answer_confidence": 0.5919,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5919,
+          "positive_ms": 43.66991703864187,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1433,
+              "confidence": 0.8567,
+              "answer_confidence": 0.8567,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 50.81500008236617,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6475,
+              "confidence": 0.6475,
+              "answer_confidence": 0.6475,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6475,
+          "positive_ms": 43.374417000450194,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1777,
+              "confidence": 0.8223,
+              "answer_confidence": 0.8223,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 53.88749996200204,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_p01_archive_attendance__fr",
+      "pair_id": "dev_p01_archive_attendance",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4784,
+              "confidence": 0.5216,
+              "answer_confidence": 0.5216,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5216000000000001,
+          "positive_ms": 21.688916021957994,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8528,
+              "confidence": 0.8528,
+              "answer_confidence": 0.8528,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 31.746416934765875,
+          "accepted": true
+        },
+        "original": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0201,
+              "confidence": 0.9799,
+              "answer_confidence": 0.9799,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.9799,
+          "positive_ms": 23.563166963867843,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9991,
+              "confidence": 0.9991,
+              "answer_confidence": 0.9991,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 29.151999973692,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.037,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_p06_two_votes__en",
+      "pair_id": "dev_p06_two_votes",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8384,
+              "confidence": 0.8384,
+              "answer_confidence": 0.8384,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8384,
+          "positive_ms": 51.695041940547526,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1128,
+              "confidence": 0.8872,
+              "answer_confidence": 0.8872,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 55.60750002041459,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7781,
+              "confidence": 0.7781,
+              "answer_confidence": 0.7781,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7781,
+          "positive_ms": 44.58591702859849,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1558,
+              "confidence": 0.8442,
+              "answer_confidence": 0.8442,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.06274997442961,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_p06_two_votes__fr",
+      "pair_id": "dev_p06_two_votes",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9632,
+              "confidence": 0.9632,
+              "answer_confidence": 0.9632,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.9632,
+          "positive_ms": 27.735832962207496,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1613,
+              "confidence": 0.8387,
+              "answer_confidence": 0.8387,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 31.651291996240616,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8214,
+              "confidence": 0.8214,
+              "answer_confidence": 0.8214,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8214,
+          "positive_ms": 31.748542096465826,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.953,
+              "confidence": 0.953,
+              "answer_confidence": 0.953,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 31.712041003629565,
+          "accepted": false
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0129,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_p11_two_appointments__en",
+      "pair_id": "dev_p11_two_appointments",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7523,
+              "confidence": 0.7523,
+              "answer_confidence": 0.7523,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7523,
+          "positive_ms": 42.77375002857298,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0361,
+              "confidence": 0.9639,
+              "answer_confidence": 0.9639,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 45.938124996609986,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6723,
+              "confidence": 0.6723,
+              "answer_confidence": 0.6723,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6723,
+          "positive_ms": 42.57699998561293,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0871,
+              "confidence": 0.9129,
+              "answer_confidence": 0.9129,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 45.8213749807328,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_p11_two_appointments__fr",
+      "pair_id": "dev_p11_two_appointments",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9209,
+              "confidence": 0.9209,
+              "answer_confidence": 0.9209,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.9209,
+          "positive_ms": 26.467291987501085,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3319,
+              "confidence": 0.6681,
+              "answer_confidence": 0.6681,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 30.535624944604933,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8672,
+              "confidence": 0.8672,
+              "answer_confidence": 0.8672,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8672,
+          "positive_ms": 27.22216595429927,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1305,
+              "confidence": 0.8695,
+              "answer_confidence": 0.8695,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 28.41616701334715,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0359,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n01_one_form__en",
+      "pair_id": "dev_n01_one_form",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4257,
+              "confidence": 0.5743,
+              "answer_confidence": 0.5743,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5743,
+          "positive_ms": 42.2745420364663,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2756,
+              "confidence": 0.7244,
+              "answer_confidence": 0.7244,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 46.3149999268353,
+          "accepted": false
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5288,
+              "confidence": 0.5288,
+              "answer_confidence": 0.5288,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5288,
+          "positive_ms": 43.8922910252586,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.331,
+              "confidence": 0.669,
+              "answer_confidence": 0.669,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 48.56741696130484,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n01_one_form__fr",
+      "pair_id": "dev_n01_one_form",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7415,
+              "confidence": 0.7415,
+              "answer_confidence": 0.7415,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7415,
+          "positive_ms": 29.4085000641644,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3405,
+              "confidence": 0.6595,
+              "answer_confidence": 0.6595,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 33.67870801594108,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7949,
+              "confidence": 0.7949,
+              "answer_confidence": 0.7949,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7949,
+          "positive_ms": 24.41325003746897,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3065,
+              "confidence": 0.6935,
+              "answer_confidence": 0.6935,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 27.516874950379133,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0138,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n02_navigation_pay__en",
+      "pair_id": "dev_n02_navigation_pay",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4826,
+              "confidence": 0.5174,
+              "answer_confidence": 0.5174,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5174000000000001,
+          "positive_ms": 45.76954199001193,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.21,
+              "confidence": 0.79,
+              "answer_confidence": 0.79,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 46.50141694582999,
+          "accepted": false
+        },
+        "balanced": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4986,
+              "confidence": 0.5014,
+              "answer_confidence": 0.5014,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5014000000000001,
+          "positive_ms": 41.91070899832994,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6739,
+              "confidence": 0.6739,
+              "answer_confidence": 0.6739,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 49.84933300875127,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n02_navigation_pay__fr",
+      "pair_id": "dev_n02_navigation_pay",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6651,
+              "confidence": 0.6651,
+              "answer_confidence": 0.6651,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6651,
+          "positive_ms": 30.226291972212493,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3817,
+              "confidence": 0.6183,
+              "answer_confidence": 0.6183,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 27.178082964383066,
+          "accepted": true
+        },
+        "original": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.369,
+              "confidence": 0.631,
+              "answer_confidence": 0.631,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.631,
+          "positive_ms": 27.926667011342943,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6374,
+              "confidence": 0.6374,
+              "answer_confidence": 0.6374,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 29.23666697461158,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0189,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n03_alternative_delivery__en",
+      "pair_id": "dev_n03_alternative_delivery",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7672,
+              "confidence": 0.7672,
+              "answer_confidence": 0.7672,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7672,
+          "positive_ms": 41.45291703753173,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1049,
+              "confidence": 0.8951,
+              "answer_confidence": 0.8951,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.007375047542155,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6299,
+              "confidence": 0.6299,
+              "answer_confidence": 0.6299,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6299,
+          "positive_ms": 42.415083036758006,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5579,
+              "confidence": 0.5579,
+              "answer_confidence": 0.5579,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 48.25816606171429,
+          "accepted": false
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n03_alternative_delivery__fr",
+      "pair_id": "dev_n03_alternative_delivery",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6496,
+              "confidence": 0.6496,
+              "answer_confidence": 0.6496,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6496,
+          "positive_ms": 28.169916942715645,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3791,
+              "confidence": 0.6209,
+              "answer_confidence": 0.6209,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 29.055917053483427,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8049,
+              "confidence": 0.8049,
+              "answer_confidence": 0.8049,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8049,
+          "positive_ms": 29.85758299473673,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1597,
+              "confidence": 0.8403,
+              "answer_confidence": 0.8403,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 28.720082947984338,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n07_permission__en",
+      "pair_id": "dev_n07_permission",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1809,
+              "confidence": 0.8191,
+              "answer_confidence": 0.8191,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8190999999999999,
+          "positive_ms": 42.29774989653379,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5819,
+              "confidence": 0.5819,
+              "answer_confidence": 0.5819,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 44.5268340408802,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2489,
+              "confidence": 0.7511,
+              "answer_confidence": 0.7511,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7511,
+          "positive_ms": 42.40383405704051,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.758,
+              "confidence": 0.758,
+              "answer_confidence": 0.758,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.83420800231397,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n07_permission__fr",
+      "pair_id": "dev_n07_permission",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.565,
+              "confidence": 0.565,
+              "answer_confidence": 0.565,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.565,
+          "positive_ms": 27.223917073570192,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3273,
+              "confidence": 0.6727,
+              "answer_confidence": 0.6727,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 32.49133308418095,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5532,
+              "confidence": 0.5532,
+              "answer_confidence": 0.5532,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5532,
+          "positive_ms": 24.399916059337556,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2067,
+              "confidence": 0.7933,
+              "answer_confidence": 0.7933,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 33.50208303891122,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0319,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n12_payment_methods__en",
+      "pair_id": "dev_n12_payment_methods",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7708,
+              "confidence": 0.7708,
+              "answer_confidence": 0.7708,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7708,
+          "positive_ms": 38.784708944149315,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1309,
+              "confidence": 0.8691,
+              "answer_confidence": 0.8691,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.877041972242296,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8865,
+              "confidence": 0.8865,
+              "answer_confidence": 0.8865,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8865,
+          "positive_ms": 42.51570801716298,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.219,
+              "confidence": 0.781,
+              "answer_confidence": 0.781,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 46.706250053830445,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "dev_n12_payment_methods__fr",
+      "pair_id": "dev_n12_payment_methods",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8406,
+              "confidence": 0.8406,
+              "answer_confidence": 0.8406,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8406,
+          "positive_ms": 29.157917015254498,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.849,
+              "confidence": 0.849,
+              "answer_confidence": 0.849,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 28.20054197218269,
+          "accepted": false
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8433,
+              "confidence": 0.8433,
+              "answer_confidence": 0.8433,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8433,
+          "positive_ms": 28.89741596300155,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7951,
+              "confidence": 0.7951,
+              "answer_confidence": 0.7951,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 32.91758301202208,
+          "accepted": false
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0127,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p01_two_files__en",
+      "pair_id": "held_p01_two_files",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.705,
+              "confidence": 0.705,
+              "answer_confidence": 0.705,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.705,
+          "positive_ms": 43.79899997729808,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0956,
+              "confidence": 0.9044,
+              "answer_confidence": 0.9044,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 49.717542016878724,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7813,
+              "confidence": 0.7813,
+              "answer_confidence": 0.7813,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7813,
+          "positive_ms": 42.6910410169512,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1261,
+              "confidence": 0.8739,
+              "answer_confidence": 0.8739,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 46.02962511125952,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p01_two_files__fr",
+      "pair_id": "held_p01_two_files",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8157,
+              "confidence": 0.8157,
+              "answer_confidence": 0.8157,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8157,
+          "positive_ms": 25.082790991291404,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5592,
+              "confidence": 0.5592,
+              "answer_confidence": 0.5592,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 25.841000024229288,
+          "accepted": false
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7869,
+              "confidence": 0.7869,
+              "answer_confidence": 0.7869,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7869,
+          "positive_ms": 24.632041924633086,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2742,
+              "confidence": 0.7258,
+              "answer_confidence": 0.7258,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 26.422083959914744,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0205,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p02_read_acknowledge__en",
+      "pair_id": "held_p02_read_acknowledge",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7258,
+              "confidence": 0.7258,
+              "answer_confidence": 0.7258,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7258,
+          "positive_ms": 44.48104207403958,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0923,
+              "confidence": 0.9077,
+              "answer_confidence": 0.9077,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 50.32687494531274,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6932,
+              "confidence": 0.6932,
+              "answer_confidence": 0.6932,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6932,
+          "positive_ms": 39.40991696435958,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4461,
+              "confidence": 0.5539,
+              "answer_confidence": 0.5539,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 48.384708003140986,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p02_read_acknowledge__fr",
+      "pair_id": "held_p02_read_acknowledge",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8112,
+              "confidence": 0.8112,
+              "answer_confidence": 0.8112,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8112,
+          "positive_ms": 24.562500067986548,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3649,
+              "confidence": 0.6351,
+              "answer_confidence": 0.6351,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 24.445208022370934,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5581,
+              "confidence": 0.5581,
+              "answer_confidence": 0.5581,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5581,
+          "positive_ms": 24.277291959151626,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2338,
+              "confidence": 0.7662,
+              "answer_confidence": 0.7662,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 22.744791000150144,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0422,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p04_condition_applies__en",
+      "pair_id": "held_p04_condition_applies",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4153,
+              "confidence": 0.5847,
+              "answer_confidence": 0.5847,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5847,
+          "positive_ms": 42.30487497989088,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2634,
+              "confidence": 0.7366,
+              "answer_confidence": 0.7366,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 46.404374996200204,
+          "accepted": false
+        },
+        "balanced": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4079,
+              "confidence": 0.5921,
+              "answer_confidence": 0.5921,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5921000000000001,
+          "positive_ms": 43.793249991722405,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6201,
+              "confidence": 0.6201,
+              "answer_confidence": 0.6201,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.32549993786961,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p04_condition_applies__fr",
+      "pair_id": "held_p04_condition_applies",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6182,
+              "confidence": 0.6182,
+              "answer_confidence": 0.6182,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6182,
+          "positive_ms": 27.14708400890231,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4312,
+              "confidence": 0.5688,
+              "answer_confidence": 0.5688,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 28.450749930925667,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6126,
+              "confidence": 0.6126,
+              "answer_confidence": 0.6126,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6126,
+          "positive_ms": 24.686707998625934,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3593,
+              "confidence": 0.6407,
+              "answer_confidence": 0.6407,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 30.236958991736174,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0642,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p05_two_accounts__en",
+      "pair_id": "held_p05_two_accounts",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6045,
+              "confidence": 0.6045,
+              "answer_confidence": 0.6045,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6045,
+          "positive_ms": 40.50083295442164,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2016,
+              "confidence": 0.7984,
+              "answer_confidence": 0.7984,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 51.48383299820125,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6182,
+              "confidence": 0.6182,
+              "answer_confidence": 0.6182,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6182,
+          "positive_ms": 42.488791048526764,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3293,
+              "confidence": 0.6707,
+              "answer_confidence": 0.6707,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 48.21766703389585,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p05_two_accounts__fr",
+      "pair_id": "held_p05_two_accounts",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6662,
+              "confidence": 0.6662,
+              "answer_confidence": 0.6662,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6662,
+          "positive_ms": 22.251541959121823,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4836,
+              "confidence": 0.5164,
+              "answer_confidence": 0.5164,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 26.542457984760404,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5838,
+              "confidence": 0.5838,
+              "answer_confidence": 0.5838,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5838,
+          "positive_ms": 25.657125050202012,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8938,
+              "confidence": 0.8938,
+              "answer_confidence": 0.8938,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 26.05220803525299,
+          "accepted": false
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p08_shared_verb_contact__en",
+      "pair_id": "held_p08_shared_verb_contact",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8661,
+              "confidence": 0.8661,
+              "answer_confidence": 0.8661,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8661,
+          "positive_ms": 47.31191694736481,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0244,
+              "confidence": 0.9756,
+              "answer_confidence": 0.9756,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 50.8596251020208,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9311,
+              "confidence": 0.9311,
+              "answer_confidence": 0.9311,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.9311,
+          "positive_ms": 43.19741693325341,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0371,
+              "confidence": 0.9629,
+              "answer_confidence": 0.9629,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 55.47241598833352,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_p08_shared_verb_contact__fr",
+      "pair_id": "held_p08_shared_verb_contact",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8839,
+              "confidence": 0.8839,
+              "answer_confidence": 0.8839,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8839,
+          "positive_ms": 24.834582931362092,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1977,
+              "confidence": 0.8023,
+              "answer_confidence": 0.8023,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 28.40333292260766,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9272,
+              "confidence": 0.9272,
+              "answer_confidence": 0.9272,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.9272,
+          "positive_ms": 29.61704204790294,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0976,
+              "confidence": 0.9024,
+              "answer_confidence": 0.9024,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 26.493708952330053,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0118,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_n03_alternative_confirmation__en",
+      "pair_id": "held_n03_alternative_confirmation",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8977,
+              "confidence": 0.8977,
+              "answer_confidence": 0.8977,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8977,
+          "positive_ms": 46.733375056646764,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.0377,
+              "confidence": 0.9623,
+              "answer_confidence": 0.9623,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.30608407407999,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8086,
+              "confidence": 0.8086,
+              "answer_confidence": 0.8086,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8086,
+          "positive_ms": 40.64979194663465,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2283,
+              "confidence": 0.7717,
+              "answer_confidence": 0.7717,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 46.663332963362336,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_n03_alternative_confirmation__fr",
+      "pair_id": "held_n03_alternative_confirmation",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8013,
+              "confidence": 0.8013,
+              "answer_confidence": 0.8013,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8013,
+          "positive_ms": 23.84779101703316,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4569,
+              "confidence": 0.5431,
+              "answer_confidence": 0.5431,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 26.546292006969452,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8382,
+              "confidence": 0.8382,
+              "answer_confidence": 0.8382,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.8382,
+          "positive_ms": 26.72845800407231,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1552,
+              "confidence": 0.8448,
+              "answer_confidence": 0.8448,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 26.939083938486874,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0146,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_n05_checkout_steps__en",
+      "pair_id": "held_n05_checkout_steps",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.569,
+              "confidence": 0.569,
+              "answer_confidence": 0.569,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.569,
+          "positive_ms": 40.228166966699064,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.2009,
+              "confidence": 0.7991,
+              "answer_confidence": 0.7991,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.38650005310774,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4416,
+              "confidence": 0.5584,
+              "answer_confidence": 0.5584,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5584,
+          "positive_ms": 42.534708976745605,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6371,
+              "confidence": 0.6371,
+              "answer_confidence": 0.6371,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 47.43120807688683,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_n05_checkout_steps__fr",
+      "pair_id": "held_n05_checkout_steps",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6062,
+              "confidence": 0.6062,
+              "answer_confidence": 0.6062,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6062,
+          "positive_ms": 28.439583024010062,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3948,
+              "confidence": 0.6052,
+              "answer_confidence": 0.6052,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 29.559875023551285,
+          "accepted": true
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6799,
+              "confidence": 0.6799,
+              "answer_confidence": 0.6799,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6799,
+          "positive_ms": 26.591583038680255,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.1984,
+              "confidence": 0.8016,
+              "answer_confidence": 0.8016,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 24.84879200346768,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.017,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_n07_form_negation__en",
+      "pair_id": "held_n07_form_negation",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "original": {
+          "predicted": false,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.3923,
+              "confidence": 0.6077,
+              "answer_confidence": 0.6077,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6077,
+          "positive_ms": 47.017250093631446,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6447,
+              "confidence": 0.6447,
+              "answer_confidence": 0.6447,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 46.53604107443243,
+          "accepted": true
+        },
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5179,
+              "confidence": 0.5179,
+              "answer_confidence": 0.5179,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.5179,
+          "positive_ms": 43.714124942198396,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5402,
+              "confidence": 0.5402,
+              "answer_confidence": 0.5402,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 51.56999989412725,
+          "accepted": false
+        }
+      },
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "held_n07_form_negation__fr",
+      "pair_id": "held_n07_form_negation",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "balanced": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6919,
+              "confidence": 0.6919,
+              "answer_confidence": 0.6919,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.6919,
+          "positive_ms": 25.508334045298398,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.5423,
+              "confidence": 0.5423,
+              "answer_confidence": 0.5423,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 27.52037497702986,
+          "accepted": false
+        },
+        "original": {
+          "predicted": true,
+          "unresolved": false,
+          "answers": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.7159,
+              "confidence": 0.7159,
+              "answer_confidence": 0.7159,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "answer_confidence": 0.7159,
+          "positive_ms": 24.988957913592458,
+          "negative": {
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4781,
+              "confidence": 0.5219,
+              "answer_confidence": 0.5219,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "negative_questions": {
+            "multiple_actions": {
+              "type": "noul",
+              "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+              "criteria": {
+                "true": "No, it asks for at most one distinct action.",
+                "false": "Yes, it asks for two or more distinct actions."
+              },
+              "labels": {
+                "true": "A",
+                "false": "B"
+              }
+            }
+          },
+          "negative_ms": 26.307999971322715,
+          "accepted": true
+        }
+      },
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0181,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    }
+  ],
+  "summary": {
+    "original": {
+      "overall": {
+        "total": 32,
+        "correct": 19,
+        "accuracy": 0.59375,
+        "false_positives": 11,
+        "false_negatives": 2,
+        "agreed": 26,
+        "coverage": 0.8125,
+        "accepted_errors": 11,
+        "rejected_errors": 2,
+        "selective_accuracy": 0.5769230769230769,
+        "positive_latency_ms": {
+          "p50": 35.26662552030757,
+          "p95": 47.31191694736481
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 16,
+          "correct": 11,
+          "accuracy": 0.6875,
+          "false_positives": 4,
+          "false_negatives": 1,
+          "agreed": 13,
+          "coverage": 0.8125,
+          "accepted_errors": 4,
+          "rejected_errors": 1,
+          "selective_accuracy": 0.6923076923076923,
+          "positive_latency_ms": {
+            "p50": 43.22183353360742,
+            "p95": 51.695041940547526
+          }
+        },
+        "fr": {
+          "total": 16,
+          "correct": 8,
+          "accuracy": 0.5,
+          "false_positives": 7,
+          "false_negatives": 1,
+          "agreed": 13,
+          "coverage": 0.8125,
+          "accepted_errors": 7,
+          "rejected_errors": 1,
+          "selective_accuracy": 0.46153846153846156,
+          "positive_latency_ms": {
+            "p50": 26.124354044441134,
+            "p95": 31.748542096465826
+          }
+        }
+      }
+    },
+    "balanced": {
+      "overall": {
+        "total": 32,
+        "correct": 17,
+        "accuracy": 0.53125,
+        "false_positives": 13,
+        "false_negatives": 2,
+        "agreed": 27,
+        "coverage": 0.84375,
+        "accepted_errors": 11,
+        "rejected_errors": 4,
+        "selective_accuracy": 0.5925925925925926,
+        "positive_latency_ms": {
+          "p50": 34.81810446828604,
+          "p95": 43.8922910252586
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 16,
+          "correct": 10,
+          "accuracy": 0.625,
+          "false_positives": 5,
+          "false_negatives": 1,
+          "agreed": 14,
+          "coverage": 0.875,
+          "accepted_errors": 4,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.7142857142857143,
+          "positive_latency_ms": {
+            "p50": 42.55585448117927,
+            "p95": 44.58591702859849
+          }
+        },
+        "fr": {
+          "total": 16,
+          "correct": 7,
+          "accuracy": 0.4375,
+          "false_positives": 8,
+          "false_negatives": 1,
+          "agreed": 13,
+          "coverage": 0.8125,
+          "accepted_errors": 7,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.46153846153846156,
+          "positive_latency_ms": {
+            "p50": 26.807187998201698,
+            "p95": 30.226291972212493
+          }
+        }
+      }
+    }
+  }
+}

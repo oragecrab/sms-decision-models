@@ -1,0 +1,214 @@
+{
+  "version": "task-count-policy-v1",
+  "created_at": "2026-09-27T14:19:26.392624+00:00",
+  "selected": "gliner_three_binary_half",
+  "dataset_sha256": "0f36d0ac1c4a3b890030d398b512a1a8fb5d57e9300f3b643d5533a08352f100",
+  "execution": {
+    "head_key": "gliner_direct_three",
+    "positive_questions": {
+      "gliner_original": {
+        "type": "noul",
+        "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+        "criteria": {
+          "true": "Yes, it asks for two or more distinct actions.",
+          "false": "No, it asks for at most one distinct action."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      },
+      "gliner_balanced": {
+        "type": "noul",
+        "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+        "criteria": {
+          "true": "Yes, it asks for two or more distinct actions.",
+          "false": "No, it asks for at most one distinct action."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      },
+      "gliner_direct_choice": {
+        "type": "choice",
+        "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+        "criteria": {
+          "single_or_none": "Zero or one independent recipient operation is requested.",
+          "multiple": "At least two independent recipient operations are requested together."
+        }
+      },
+      "gliner_direct_three": {
+        "type": "choice",
+        "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+        "criteria": {
+          "zero_tasks": "No recipient task is explicitly requested.",
+          "one_task": "One recipient task is requested, including its steps or alternatives.",
+          "multiple_tasks": "At least two distinct recipient tasks are requested together."
+        }
+      },
+      "gliner_direct_explicit": {
+        "type": "noul",
+        "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+        "criteria": {
+          "true": "Two or more independent tasks are requested together.",
+          "false": "At most one independent task is requested."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      }
+    },
+    "negative_questions": {
+      "gliner_original": {
+        "type": "noul",
+        "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+        "criteria": {
+          "true": "No, it asks for at most one distinct action.",
+          "false": "Yes, it asks for two or more distinct actions."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      },
+      "gliner_balanced": {
+        "type": "noul",
+        "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+        "criteria": {
+          "true": "No, it asks for at most one distinct action.",
+          "false": "Yes, it asks for two or more distinct actions."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      },
+      "gliner_direct_choice": {
+        "type": "noul",
+        "instructions": "Does the message request at most ONE independent recipient task? Count explicit invitations and optional opt-outs. Ignore alternatives, navigation, reply transport, fields and payment steps. Call then install are two tasks; buying/sending a voucher for payment is one.",
+        "criteria": {
+          "true": "At most one independent task is requested.",
+          "false": "At least two independent tasks are requested together."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      },
+      "gliner_direct_three": {
+        "type": "noul",
+        "instructions": "Does the message request at most ONE independent recipient task? Count explicit invitations and optional opt-outs. Ignore alternatives, navigation, reply transport, fields and payment steps. Call then install are two tasks; buying/sending a voucher for payment is one.",
+        "criteria": {
+          "true": "At most one independent task is requested.",
+          "false": "At least two independent tasks are requested together."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      },
+      "gliner_direct_explicit": {
+        "type": "noul",
+        "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+        "criteria": {
+          "true": "At most one independent task is requested.",
+          "false": "Two or more independent tasks are requested together."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      }
+    },
+    "multiple_labels": [
+      "multiple_tasks"
+    ],
+    "decision": "binary_probability",
+    "positive_threshold": 0.5
+  },
+  "execution_sha256": "a1e24bb312cda256f878b8014ca355395f69e86da465872617967d0f12cae1ba",
+  "model": {
+    "model": "fastino/GLiNER2.5-Decide",
+    "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+    "checkpoints": {
+      "snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+      "files": {
+        "config.json": {
+          "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/b6cb696d01e64a2a1389be0e7eaa03cda538e763",
+          "bytes": 594,
+          "sha256": "e748e5b80575471c91b3f0dd00f513ba58242544fcb7e1236e0021e61abd7673"
+        },
+        "model.safetensors": {
+          "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/40a5a23ff860dc3dff426cecd1048cacdd29c648c96db209dad818e9686dc997",
+          "bytes": 1945828140
+        },
+        "special_tokens_map.json": {
+          "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/4f5d30b2c191a6fe27a92901a543cfad1f9832ab",
+          "bytes": 2414,
+          "sha256": "84ea70143f533d7e99b393d87f20010887a9ac2cba955828ef313886e4e83f4f"
+        },
+        "tokenizer.json": {
+          "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/846fee96bd81469a49d54a6e37909cf2070a8833",
+          "bytes": 8333952,
+          "sha256": "3ad87d9ffe669147063e70850927dd2da90249e2acc5c8527f1eb65df467bcc8"
+        },
+        "tokenizer_config.json": {
+          "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/eaa0e9bae635e8571f2501ade39b3be479d3fa0f",
+          "bytes": 3356,
+          "sha256": "323199a4e946039410899f3779f2aa3eaef1500213c512727ad0f623d4f21309"
+        }
+      }
+    },
+    "tested_device": "mps",
+    "parameter_dtype": "torch.float32"
+  },
+  "packages": {
+    "gliner2": "2.0.0",
+    "torch": "2.14.0",
+    "transformers": "4.57.6",
+    "numpy": "1.26.4"
+  },
+  "heldout_used": false,
+  "previous_selection": "gliner_direct_three",
+  "decoder_note": "Binary decision uses the actual multiple_tasks category probability versus the combined zero_tasks/one_task mass; fixed0.5equal-cost cutoff. Raw multiclass argmax remains separatelyreported; no probability is invented and confidence is not assumedcalibrated.",
+  "assessment_plan": "Use only previous development and v4regression outputs to characterize this fixed mathematicaldecoder. New reviewed suspicious/routine synthetic scenarios are sealed for finalassessment; previousbenignheldout is not reused for selection. No furtherdecoderchoice afternewtest.",
+  "development_promotion_previous_decoder": {
+    "per_language": {
+      "en": {
+        "candidate": {
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75
+        },
+        "reference": {
+          "recall": 0.6666666666666666,
+          "specificity": 0.75,
+          "balanced_accuracy": 0.7083333333333333
+        },
+        "balanced_accuracy_preserved": true,
+        "positive_recall_preserved": true
+      },
+      "fr": {
+        "candidate": {
+          "recall": 0.9166666666666666,
+          "specificity": 0.6666666666666666,
+          "balanced_accuracy": 0.7916666666666666
+        },
+        "reference": {
+          "recall": 0.9166666666666666,
+          "specificity": 0.25,
+          "balanced_accuracy": 0.5833333333333333
+        },
+        "balanced_accuracy_preserved": true,
+        "positive_recall_preserved": true
+      }
+    },
+    "weaker_language_improved": true,
+    "passes": true
+  },
+  "selection_dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+  "assessment_source_sha256": "5e3f37d2e261d144bacc52d917b01e8d1b89d4d8b7de75b761571a1c5e2d8f7d",
+  "assessment": "Fresh reviewed mixed-context test; fixed before inference"
+}

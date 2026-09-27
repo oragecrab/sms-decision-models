@@ -69,9 +69,10 @@ def test_shared_worker_keeps_event_loop_responsive_and_preserves_order(monkeypat
 
     result = asyncio.run(scenario())
     assert len(fake_router) == 1
-    assert set(fake_router[0].loads) == {"english"}
+    assert set(fake_router[0].loads) == {"english", "multilingual"}
     assert calls[0] == "Routine notification. No action is needed."
-    assert calls[1:] == ["first", "second", "third"]
+    assert calls[1] == "Avis courant. Aucune action nécessaire."
+    assert calls[2:] == ["first", "second", "third"]
     assert len(inference_threads) == 1
     assert main_thread not in inference_threads
     assert [item.answers["body"] for item in result.requests] == ["first", "second", "third"]
@@ -230,4 +231,4 @@ def test_simulation_forwards_device_and_offline_once(monkeypatch, fake_router):
     ))
     assert options == [("mps", True)]
     assert len(fake_router) == 1
-    assert result.devices == {"english": "cpu"}
+    assert result.devices == {"english": "cpu", "multilingual": "cpu"}

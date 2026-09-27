@@ -1,0 +1,2800 @@
+{
+  "schema_version": 1,
+  "version": "frozen-task-count-heldout-v1",
+  "created_at": "2026-09-27T14:20:05.393562+00:00",
+  "split": "heldout",
+  "dataset": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/datasets/action_boundary_eval_v1.jsonl",
+  "dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+  "frozen_policy": {
+    "version": "task-count-policy-v1",
+    "created_at": "2026-09-27T14:19:26.392624+00:00",
+    "selected": "gliner_direct_three",
+    "dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+    "execution": {
+      "head_key": "gliner_direct_three",
+      "positive_questions": {
+        "gliner_original": {
+          "type": "noul",
+          "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        },
+        "gliner_balanced": {
+          "type": "noul",
+          "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        },
+        "gliner_direct_choice": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "single_or_none": "Zero or one independent recipient operation is requested.",
+            "multiple": "At least two independent recipient operations are requested together."
+          }
+        },
+        "gliner_direct_three": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+          "criteria": {
+            "zero_tasks": "No recipient task is explicitly requested.",
+            "one_task": "One recipient task is requested, including its steps or alternatives.",
+            "multiple_tasks": "At least two distinct recipient tasks are requested together."
+          }
+        },
+        "gliner_direct_explicit": {
+          "type": "noul",
+          "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "true": "Two or more independent tasks are requested together.",
+            "false": "At most one independent task is requested."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      },
+      "negative_questions": {
+        "gliner_original": {
+          "type": "noul",
+          "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+          "criteria": {
+            "true": "No, it asks for at most one distinct action.",
+            "false": "Yes, it asks for two or more distinct actions."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        },
+        "gliner_balanced": {
+          "type": "noul",
+          "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+          "criteria": {
+            "true": "No, it asks for at most one distinct action.",
+            "false": "Yes, it asks for two or more distinct actions."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        },
+        "gliner_direct_choice": {
+          "type": "noul",
+          "instructions": "Does the message request at most ONE independent recipient task? Count explicit invitations and optional opt-outs. Ignore alternatives, navigation, reply transport, fields and payment steps. Call then install are two tasks; buying/sending a voucher for payment is one.",
+          "criteria": {
+            "true": "At most one independent task is requested.",
+            "false": "At least two independent tasks are requested together."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        },
+        "gliner_direct_three": {
+          "type": "noul",
+          "instructions": "Does the message request at most ONE independent recipient task? Count explicit invitations and optional opt-outs. Ignore alternatives, navigation, reply transport, fields and payment steps. Call then install are two tasks; buying/sending a voucher for payment is one.",
+          "criteria": {
+            "true": "At most one independent task is requested.",
+            "false": "At least two independent tasks are requested together."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        },
+        "gliner_direct_explicit": {
+          "type": "noul",
+          "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "true": "At most one independent task is requested.",
+            "false": "Two or more independent tasks are requested together."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      },
+      "multiple_labels": [
+        "multiple_tasks"
+      ]
+    },
+    "execution_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+    "model": {
+      "model": "fastino/GLiNER2.5-Decide",
+      "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+      "checkpoints": {
+        "snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+        "files": {
+          "config.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/b6cb696d01e64a2a1389be0e7eaa03cda538e763",
+            "bytes": 594,
+            "sha256": "e748e5b80575471c91b3f0dd00f513ba58242544fcb7e1236e0021e61abd7673"
+          },
+          "model.safetensors": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/40a5a23ff860dc3dff426cecd1048cacdd29c648c96db209dad818e9686dc997",
+            "bytes": 1945828140
+          },
+          "special_tokens_map.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/4f5d30b2c191a6fe27a92901a543cfad1f9832ab",
+            "bytes": 2414,
+            "sha256": "84ea70143f533d7e99b393d87f20010887a9ac2cba955828ef313886e4e83f4f"
+          },
+          "tokenizer.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/846fee96bd81469a49d54a6e37909cf2070a8833",
+            "bytes": 8333952,
+            "sha256": "3ad87d9ffe669147063e70850927dd2da90249e2acc5c8527f1eb65df467bcc8"
+          },
+          "tokenizer_config.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/eaa0e9bae635e8571f2501ade39b3be479d3fa0f",
+            "bytes": 3356,
+            "sha256": "323199a4e946039410899f3779f2aa3eaef1500213c512727ad0f623d4f21309"
+          }
+        }
+      },
+      "tested_device": "mps",
+      "parameter_dtype": "torch.float32"
+    },
+    "packages": {
+      "gliner2": "2.0.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6",
+      "numpy": "1.26.4"
+    },
+    "development_promotion": {
+      "per_language": {
+        "en": {
+          "candidate": {
+            "recall": 1.0,
+            "specificity": 0.5,
+            "balanced_accuracy": 0.75
+          },
+          "reference": {
+            "recall": 0.6666666666666666,
+            "specificity": 0.75,
+            "balanced_accuracy": 0.7083333333333333
+          },
+          "balanced_accuracy_preserved": true,
+          "positive_recall_preserved": true
+        },
+        "fr": {
+          "candidate": {
+            "recall": 0.9166666666666666,
+            "specificity": 0.6666666666666666,
+            "balanced_accuracy": 0.7916666666666666
+          },
+          "reference": {
+            "recall": 0.9166666666666666,
+            "specificity": 0.25,
+            "balanced_accuracy": 0.5833333333333333
+          },
+          "balanced_accuracy_preserved": true,
+          "positive_recall_preserved": true
+        }
+      },
+      "weaker_language_improved": true,
+      "passes": true
+    },
+    "heldout_used": false
+  },
+  "policy_file_sha256": "4af1b8a0bd05f7dfbc4ceee898cee35afd5c20bf168227dd150d3463b86127d7",
+  "harness_sha256": "fde1a5fcaf65862eb8200d0b542a1fecde2eefdbf3914e0f1d3b83d4f49dfbd6",
+  "predictions": [
+    {
+      "id": "dev_p01_archive_attendance__en",
+      "pair_id": "dev_p01_archive_attendance",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.08367743166370217,
+            "one_task": 0.14074575440945844,
+            "multiple_tasks": 0.7755768139268394
+          },
+          "selected_category_probability": 0.7755768139268394,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.36432092051453074
+            },
+            "gliner_balanced": {
+              "noul": 0.39262685338368253
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.22185311258138585,
+                "multiple": 0.778146887418614
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.08367743166370217,
+                "one_task": 0.14074575440945844,
+                "multiple_tasks": 0.7755768139268394
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.2817314676202957
+            }
+          },
+          "positive_ms": 520.8880000282079,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.7277261734938059
+            },
+            "gliner_balanced": {
+              "noul": 0.7003005563693026
+            },
+            "gliner_direct_choice": {
+              "noul": 0.5969798502889139
+            },
+            "gliner_direct_three": {
+              "noul": 0.6415421332497125
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.6325578107856931
+            }
+          },
+          "negative_ms": 510.2667920291424,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_p01_archive_attendance__fr",
+      "pair_id": "dev_p01_archive_attendance",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.14046823901925426,
+            "one_task": 0.2272792322710253,
+            "multiple_tasks": 0.6322525287097205
+          },
+          "selected_category_probability": 0.6322525287097205,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.43771101812267293
+            },
+            "gliner_balanced": {
+              "noul": 0.46770454944123735
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.2890940241089009,
+                "multiple": 0.7109059758910992
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.14046823901925426,
+                "one_task": 0.2272792322710253,
+                "multiple_tasks": 0.6322525287097205
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.41014381644642206
+            }
+          },
+          "positive_ms": 547.2280830144882,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.6390907988362067
+            },
+            "gliner_balanced": {
+              "noul": 0.5969790077799015
+            },
+            "gliner_direct_choice": {
+              "noul": 0.5341851339225326
+            },
+            "gliner_direct_three": {
+              "noul": 0.5633433436314682
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.5487665542025505
+            }
+          },
+          "negative_ms": 536.1600000178441,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_p06_two_votes__en",
+      "pair_id": "dev_p06_two_votes",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.05297016965278084,
+            "one_task": 0.06951353274514463,
+            "multiple_tasks": 0.8775162976020745
+          },
+          "selected_category_probability": 0.8775162976020745,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.3484099823058435
+            },
+            "gliner_balanced": {
+              "noul": 0.3912304874437123
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.0593642315871724,
+                "multiple": 0.9406357684128275
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.05297016965278084,
+                "one_task": 0.06951353274514463,
+                "multiple_tasks": 0.8775162976020745
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.3348393282869706
+            }
+          },
+          "positive_ms": 527.6044169440866,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.807496570240776
+            },
+            "gliner_balanced": {
+              "noul": 0.7857901013051531
+            },
+            "gliner_direct_choice": {
+              "noul": 0.6986905844760787
+            },
+            "gliner_direct_three": {
+              "noul": 0.7255428870542532
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.7062016838490364
+            }
+          },
+          "negative_ms": 522.2200410207734,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_p06_two_votes__fr",
+      "pair_id": "dev_p06_two_votes",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.189252019495225,
+            "one_task": 0.19621514193138917,
+            "multiple_tasks": 0.6145328385733859
+          },
+          "selected_category_probability": 0.6145328385733859,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4483214544848272
+            },
+            "gliner_balanced": {
+              "noul": 0.4781138041971848
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.24195054017032175,
+                "multiple": 0.7580494598296782
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.189252019495225,
+                "one_task": 0.19621514193138917,
+                "multiple_tasks": 0.6145328385733859
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.45087555168519317
+            }
+          },
+          "positive_ms": 577.6744999457151,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.6078782354605705
+            },
+            "gliner_balanced": {
+              "noul": 0.5677999908831229
+            },
+            "gliner_direct_choice": {
+              "noul": 0.5462670976798933
+            },
+            "gliner_direct_three": {
+              "noul": 0.5680978815203364
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.555959666769849
+            }
+          },
+          "negative_ms": 561.721375095658,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_p11_two_appointments__en",
+      "pair_id": "dev_p11_two_appointments",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.06269237994623378,
+            "one_task": 0.0881871167030729,
+            "multiple_tasks": 0.8491205033506933
+          },
+          "selected_category_probability": 0.8491205033506933,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.36923131233600254
+            },
+            "gliner_balanced": {
+              "noul": 0.4143050043290183
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.09562261554959378,
+                "multiple": 0.9043773844504062
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.06269237994623378,
+                "one_task": 0.0881871167030729,
+                "multiple_tasks": 0.8491205033506933
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4092365489216748
+            }
+          },
+          "positive_ms": 521.6722079785541,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.8002954471955807
+            },
+            "gliner_balanced": {
+              "noul": 0.7830468914618157
+            },
+            "gliner_direct_choice": {
+              "noul": 0.7068004315030268
+            },
+            "gliner_direct_three": {
+              "noul": 0.718735674824078
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.6591422032870481
+            }
+          },
+          "negative_ms": 513.5226249694824,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_p11_two_appointments__fr",
+      "pair_id": "dev_p11_two_appointments",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.07523404601792522,
+            "one_task": 0.09288922138794209,
+            "multiple_tasks": 0.8318767325941326
+          },
+          "selected_category_probability": 0.8318767325941326,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.44508366056418974
+            },
+            "gliner_balanced": {
+              "noul": 0.5015047696622984
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.10599211330766911,
+                "multiple": 0.8940078866923308
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.07523404601792522,
+                "one_task": 0.09288922138794209,
+                "multiple_tasks": 0.8318767325941326
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.47437255975930054
+            }
+          },
+          "positive_ms": 556.260333978571,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.7435481018483575
+            },
+            "gliner_balanced": {
+              "noul": 0.7225318400238979
+            },
+            "gliner_direct_choice": {
+              "noul": 0.6537814252336681
+            },
+            "gliner_direct_three": {
+              "noul": 0.6709126578135359
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.6288654020965123
+            }
+          },
+          "negative_ms": 548.4128749230877,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_n01_one_form__en",
+      "pair_id": "dev_n01_one_form",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.21240161076780809,
+            "one_task": 0.305873929295873,
+            "multiple_tasks": 0.48172445993631885
+          },
+          "selected_category_probability": 0.48172445993631885,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4072768368172003
+            },
+            "gliner_balanced": {
+              "noul": 0.42542532797901594
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.39842398390934414,
+                "multiple": 0.6015760160906559
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.21240161076780809,
+                "one_task": 0.305873929295873,
+                "multiple_tasks": 0.48172445993631885
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.40923160985607193
+            }
+          },
+          "positive_ms": 514.8542920360342,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.4700269039133714
+            },
+            "gliner_balanced": {
+              "noul": 0.4244022602136204
+            },
+            "gliner_direct_choice": {
+              "noul": 0.40307345476997325
+            },
+            "gliner_direct_three": {
+              "noul": 0.4230492735940529
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4159891533266428
+            }
+          },
+          "negative_ms": 515.97487507388,
+          "accepted": true,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_n01_one_form__fr",
+      "pair_id": "dev_n01_one_form",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.2088604070456728,
+            "one_task": 0.3618018707392368,
+            "multiple_tasks": 0.4293377222150904
+          },
+          "selected_category_probability": 0.4293377222150904,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4266916422902349
+            },
+            "gliner_balanced": {
+              "noul": 0.4367587212646223
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.43859124219908807,
+                "multiple": 0.5614087578009119
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.2088604070456728,
+                "one_task": 0.3618018707392368,
+                "multiple_tasks": 0.4293377222150904
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4445324632530247
+            }
+          },
+          "positive_ms": 565.1531670009717,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.47673438665785123
+            },
+            "gliner_balanced": {
+              "noul": 0.4187934322488361
+            },
+            "gliner_direct_choice": {
+              "noul": 0.39876226120397607
+            },
+            "gliner_direct_three": {
+              "noul": 0.4143117226159033
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.3831350103006458
+            }
+          },
+          "negative_ms": 552.6787079870701,
+          "accepted": true,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_n02_navigation_pay__en",
+      "pair_id": "dev_n02_navigation_pay",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.1241969198654401,
+            "one_task": 0.2780630591050645,
+            "multiple_tasks": 0.5977400210294954
+          },
+          "selected_category_probability": 0.5977400210294954,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4628450987163846
+            },
+            "gliner_balanced": {
+              "noul": 0.47510451465414616
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.31829338583616673,
+                "multiple": 0.6817066141638333
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.1241969198654401,
+                "one_task": 0.2780630591050645,
+                "multiple_tasks": 0.5977400210294954
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4500764483333256
+            }
+          },
+          "positive_ms": 503.6733750021085,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5582713271481949
+            },
+            "gliner_balanced": {
+              "noul": 0.5296285467057917
+            },
+            "gliner_direct_choice": {
+              "noul": 0.4646785989353597
+            },
+            "gliner_direct_three": {
+              "noul": 0.48628798374334353
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4412320708591734
+            }
+          },
+          "negative_ms": 502.5723329745233,
+          "accepted": true,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_n02_navigation_pay__fr",
+      "pair_id": "dev_n02_navigation_pay",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.14089918432333196,
+            "one_task": 0.2818631606991952,
+            "multiple_tasks": 0.5772376549774728
+          },
+          "selected_category_probability": 0.5772376549774728,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4601940881636577
+            },
+            "gliner_balanced": {
+              "noul": 0.4720114064041258
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.3269307382956423,
+                "multiple": 0.6730692617043578
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.14089918432333196,
+                "one_task": 0.2818631606991952,
+                "multiple_tasks": 0.5772376549774728
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4598864012861071
+            }
+          },
+          "positive_ms": 531.9226660067216,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5548533898262381
+            },
+            "gliner_balanced": {
+              "noul": 0.5068418522616874
+            },
+            "gliner_direct_choice": {
+              "noul": 0.45438725705433824
+            },
+            "gliner_direct_three": {
+              "noul": 0.47223298580821393
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4314605855384649
+            }
+          },
+          "negative_ms": 522.5909580476582,
+          "accepted": true,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "dev_n03_alternative_delivery__en",
+      "pair_id": "dev_n03_alternative_delivery",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.2798680958403812,
+            "one_task": 0.4161266170442644,
+            "multiple_tasks": 0.30400528711535446
+          },
+          "selected_category_probability": 0.4161266170442644,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.45626369817877893
+            },
+            "gliner_balanced": {
+              "noul": 0.44584800005969044
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.4864982741918478,
+                "multiple": 0.5135017258081522
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.2798680958403812,
+                "one_task": 0.4161266170442644,
+                "multiple_tasks": 0.30400528711535446
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4837982817554908
+            }
+          },
+          "positive_ms": 524.296542047523,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5191016049548246
+            },
+            "gliner_balanced": {
+              "noul": 0.4722875901621331
+            },
+            "gliner_direct_choice": {
+              "noul": 0.3877943891013544
+            },
+            "gliner_direct_three": {
+              "noul": 0.39845429242760755
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.393899108073844
+            }
+          },
+          "negative_ms": 516.9135000323877,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "dev_n03_alternative_delivery__fr",
+      "pair_id": "dev_n03_alternative_delivery",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.35944872655850957,
+            "one_task": 0.43943724774104065,
+            "multiple_tasks": 0.20111402570044978
+          },
+          "selected_category_probability": 0.43943724774104065,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4194729492722956
+            },
+            "gliner_balanced": {
+              "noul": 0.41063792568449786
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.614735532316236,
+                "multiple": 0.38526446768376404
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.35944872655850957,
+                "one_task": 0.43943724774104065,
+                "multiple_tasks": 0.20111402570044978
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4352374663853903
+            }
+          },
+          "positive_ms": 539.5778339589015,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.42699214394994617
+            },
+            "gliner_balanced": {
+              "noul": 0.3549627336067316
+            },
+            "gliner_direct_choice": {
+              "noul": 0.3367352169250438
+            },
+            "gliner_direct_three": {
+              "noul": 0.3660436797468299
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.30675483038006923
+            }
+          },
+          "negative_ms": 533.2763750338927,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "dev_n07_permission__en",
+      "pair_id": "dev_n07_permission",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "zero_tasks",
+          "probabilities": {
+            "zero_tasks": 0.6157071180719296,
+            "one_task": 0.22465730260274172,
+            "multiple_tasks": 0.15963557932532868
+          },
+          "selected_category_probability": 0.6157071180719296,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.29280005158213807
+            },
+            "gliner_balanced": {
+              "noul": 0.2258462029416262
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.5727841645885335,
+                "multiple": 0.4272158354114664
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "zero_tasks",
+              "probabilities": {
+                "zero_tasks": 0.6157071180719296,
+                "one_task": 0.22465730260274172,
+                "multiple_tasks": 0.15963557932532868
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4142604576144273
+            }
+          },
+          "positive_ms": 527.8543749591336,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.3917988256075244
+            },
+            "gliner_balanced": {
+              "noul": 0.3338014332155406
+            },
+            "gliner_direct_choice": {
+              "noul": 0.35774200420531915
+            },
+            "gliner_direct_three": {
+              "noul": 0.38379576347163985
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.35565059194901555
+            }
+          },
+          "negative_ms": 518.4603750240058,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "dev_n07_permission__fr",
+      "pair_id": "dev_n07_permission",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "zero_tasks",
+          "probabilities": {
+            "zero_tasks": 0.5899599368421736,
+            "one_task": 0.2439535804534401,
+            "multiple_tasks": 0.16608648270438633
+          },
+          "selected_category_probability": 0.5899599368421736,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.3363828027436405
+            },
+            "gliner_balanced": {
+              "noul": 0.2938384419090905
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.5659181447991436,
+                "multiple": 0.43408185520085646
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "zero_tasks",
+              "probabilities": {
+                "zero_tasks": 0.5899599368421736,
+                "one_task": 0.2439535804534401,
+                "multiple_tasks": 0.16608648270438633
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4307678854923326
+            }
+          },
+          "positive_ms": 583.3290000446141,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.42120699202351636
+            },
+            "gliner_balanced": {
+              "noul": 0.3333253989168007
+            },
+            "gliner_direct_choice": {
+              "noul": 0.37627537865708527
+            },
+            "gliner_direct_three": {
+              "noul": 0.4000597353425666
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.3636079088727105
+            }
+          },
+          "negative_ms": 569.7818329790607,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "dev_n12_payment_methods__en",
+      "pair_id": "dev_n12_payment_methods",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.24290945246806703,
+            "one_task": 0.42939127956037126,
+            "multiple_tasks": 0.3276992679715616
+          },
+          "selected_category_probability": 0.42939127956037126,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.473571994719511
+            },
+            "gliner_balanced": {
+              "noul": 0.4636115293310992
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.5018169185266482,
+                "multiple": 0.4981830814733518
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.24290945246806703,
+                "one_task": 0.42939127956037126,
+                "multiple_tasks": 0.3276992679715616
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.48298725388818986
+            }
+          },
+          "positive_ms": 512.0536660542712,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.46644761052582867
+            },
+            "gliner_balanced": {
+              "noul": 0.40519238440699207
+            },
+            "gliner_direct_choice": {
+              "noul": 0.36971367203595473
+            },
+            "gliner_direct_three": {
+              "noul": 0.3954463019883535
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.3415633569040506
+            }
+          },
+          "negative_ms": 501.48945790715516,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "dev_n12_payment_methods__fr",
+      "pair_id": "dev_n12_payment_methods",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.2996788605793335,
+            "one_task": 0.4419241948704452,
+            "multiple_tasks": 0.2583969445502214
+          },
+          "selected_category_probability": 0.4419241948704452,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4436169786490901
+            },
+            "gliner_balanced": {
+              "noul": 0.44275052673267756
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.549725166383093,
+                "multiple": 0.45027483361690696
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.2996788605793335,
+                "one_task": 0.4419241948704452,
+                "multiple_tasks": 0.2583969445502214
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4628785210097327
+            }
+          },
+          "positive_ms": 547.7919999975711,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.4651934895527855
+            },
+            "gliner_balanced": {
+              "noul": 0.39444777186557506
+            },
+            "gliner_direct_choice": {
+              "noul": 0.3741350012424839
+            },
+            "gliner_direct_three": {
+              "noul": 0.39853411763086527
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.3428654035850401
+            }
+          },
+          "negative_ms": 523.3571670250967,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "held_p01_two_files__en",
+      "pair_id": "held_p01_two_files",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.12208579292361083,
+            "one_task": 0.1342953049629368,
+            "multiple_tasks": 0.7436189021134525
+          },
+          "selected_category_probability": 0.7436189021134525,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.44633430924528017
+            },
+            "gliner_balanced": {
+              "noul": 0.470096474842836
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.13980285055498196,
+                "multiple": 0.860197149445018
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.12208579292361083,
+                "one_task": 0.1342953049629368,
+                "multiple_tasks": 0.7436189021134525
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.48243977223983325
+            }
+          },
+          "positive_ms": 512.0515000307932,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.7244744833637234
+            },
+            "gliner_balanced": {
+              "noul": 0.7012681693233632
+            },
+            "gliner_direct_choice": {
+              "noul": 0.6347196186902521
+            },
+            "gliner_direct_three": {
+              "noul": 0.6439679723070052
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.6392549203722333
+            }
+          },
+          "negative_ms": 502.20137496944517,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p01_two_files__fr",
+      "pair_id": "held_p01_two_files",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.1417199318668213,
+            "one_task": 0.1577290364105226,
+            "multiple_tasks": 0.7005510317226561
+          },
+          "selected_category_probability": 0.7005510317226561,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.45766201954558045
+            },
+            "gliner_balanced": {
+              "noul": 0.47562160788669156
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.1724643437860636,
+                "multiple": 0.8275356562139364
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.1417199318668213,
+                "one_task": 0.1577290364105226,
+                "multiple_tasks": 0.7005510317226561
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.43238178640030245
+            }
+          },
+          "positive_ms": 537.5115839997306,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.6843179267586529
+            },
+            "gliner_balanced": {
+              "noul": 0.6116951807236473
+            },
+            "gliner_direct_choice": {
+              "noul": 0.5524698701675084
+            },
+            "gliner_direct_three": {
+              "noul": 0.5712008346738078
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.5681592642284363
+            }
+          },
+          "negative_ms": 535.3055419400334,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p02_read_acknowledge__en",
+      "pair_id": "held_p02_read_acknowledge",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.10301613008822459,
+            "one_task": 0.14156981275104244,
+            "multiple_tasks": 0.755414057160733
+          },
+          "selected_category_probability": 0.755414057160733,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.385061619249603
+            },
+            "gliner_balanced": {
+              "noul": 0.4165052825592247
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.18084663627373612,
+                "multiple": 0.8191533637262639
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.10301613008822459,
+                "one_task": 0.14156981275104244,
+                "multiple_tasks": 0.755414057160733
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.26934674535719716
+            }
+          },
+          "positive_ms": 511.7360840085894,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.7080845945280136
+            },
+            "gliner_balanced": {
+              "noul": 0.6868981829669706
+            },
+            "gliner_direct_choice": {
+              "noul": 0.6067227843240479
+            },
+            "gliner_direct_three": {
+              "noul": 0.657826630232373
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.6649525498674835
+            }
+          },
+          "negative_ms": 495.182832935825,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p02_read_acknowledge__fr",
+      "pair_id": "held_p02_read_acknowledge",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.18209628868719754,
+            "one_task": 0.24332336159874846,
+            "multiple_tasks": 0.5745803497140539
+          },
+          "selected_category_probability": 0.5745803497140539,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.44108405393808897
+            },
+            "gliner_balanced": {
+              "noul": 0.4558096325047374
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.28421847089646385,
+                "multiple": 0.7157815291035361
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.18209628868719754,
+                "one_task": 0.24332336159874846,
+                "multiple_tasks": 0.5745803497140539
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.3800114389346582
+            }
+          },
+          "positive_ms": 521.6814590385184,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.6201566907360239
+            },
+            "gliner_balanced": {
+              "noul": 0.5705072139924903
+            },
+            "gliner_direct_choice": {
+              "noul": 0.5398520788382846
+            },
+            "gliner_direct_three": {
+              "noul": 0.5607026922795659
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.5500803668912374
+            }
+          },
+          "negative_ms": 510.252375039272,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p04_condition_applies__en",
+      "pair_id": "held_p04_condition_applies",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.2848748431234384,
+            "one_task": 0.3725798457800979,
+            "multiple_tasks": 0.3425453110964637
+          },
+          "selected_category_probability": 0.3725798457800979,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.42786136397623065
+            },
+            "gliner_balanced": {
+              "noul": 0.440363880087732
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.4539508924143644,
+                "multiple": 0.5460491075856355
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.2848748431234384,
+                "one_task": 0.3725798457800979,
+                "multiple_tasks": 0.3425453110964637
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.43343668058148016
+            }
+          },
+          "positive_ms": 526.3754170155153,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5304929098722391
+            },
+            "gliner_balanced": {
+              "noul": 0.469045749696569
+            },
+            "gliner_direct_choice": {
+              "noul": 0.4104389557270453
+            },
+            "gliner_direct_three": {
+              "noul": 0.4317721127553243
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.37900634172036946
+            }
+          },
+          "negative_ms": 517.2428330406547,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "held_p04_condition_applies__fr",
+      "pair_id": "held_p04_condition_applies",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.2605366700116416,
+            "one_task": 0.3604327342321377,
+            "multiple_tasks": 0.3790305957562207
+          },
+          "selected_category_probability": 0.3790305957562207,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4322696394335678
+            },
+            "gliner_balanced": {
+              "noul": 0.4467888547808447
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.43160766582008225,
+                "multiple": 0.5683923341799179
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.2605366700116416,
+                "one_task": 0.3604327342321377,
+                "multiple_tasks": 0.3790305957562207
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.44128165157200894
+            }
+          },
+          "positive_ms": 571.1920410394669,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5410114781902564
+            },
+            "gliner_balanced": {
+              "noul": 0.4752477817591334
+            },
+            "gliner_direct_choice": {
+              "noul": 0.42405842834919677
+            },
+            "gliner_direct_three": {
+              "noul": 0.4502429628829221
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4042521405934548
+            }
+          },
+          "negative_ms": 550.1008330611512,
+          "accepted": true,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p05_two_accounts__en",
+      "pair_id": "held_p05_two_accounts",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.1610738674452142,
+            "one_task": 0.19371873150703237,
+            "multiple_tasks": 0.6452074010477534
+          },
+          "selected_category_probability": 0.6452074010477534,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.47182264724712764
+            },
+            "gliner_balanced": {
+              "noul": 0.4980869312061382
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.19987622213040268,
+                "multiple": 0.8001237778695973
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.1610738674452142,
+                "one_task": 0.19371873150703237,
+                "multiple_tasks": 0.6452074010477534
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4639959822844596
+            }
+          },
+          "positive_ms": 513.8965410878882,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.708687203635133
+            },
+            "gliner_balanced": {
+              "noul": 0.6634565675444573
+            },
+            "gliner_direct_choice": {
+              "noul": 0.5869597152964557
+            },
+            "gliner_direct_three": {
+              "noul": 0.6034401934582948
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.5907855236241134
+            }
+          },
+          "negative_ms": 502.8662079712376,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p05_two_accounts__fr",
+      "pair_id": "held_p05_two_accounts",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.2282172050779272,
+            "one_task": 0.25512415004668687,
+            "multiple_tasks": 0.5166586448753859
+          },
+          "selected_category_probability": 0.5166586448753859,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.440656281509972
+            },
+            "gliner_balanced": {
+              "noul": 0.47014242551548613
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.2751024674156119,
+                "multiple": 0.724897532584388
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.2282172050779272,
+                "one_task": 0.25512415004668687,
+                "multiple_tasks": 0.5166586448753859
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4469468816623308
+            }
+          },
+          "positive_ms": 554.6202500117943,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5890299514933637
+            },
+            "gliner_balanced": {
+              "noul": 0.5354082859568796
+            },
+            "gliner_direct_choice": {
+              "noul": 0.502092432588446
+            },
+            "gliner_direct_three": {
+              "noul": 0.5148175976600985
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.490671290087536
+            }
+          },
+          "negative_ms": 539.01908302214,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p08_shared_verb_contact__en",
+      "pair_id": "held_p08_shared_verb_contact",
+      "language": "en",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.09828838512827931,
+            "one_task": 0.123802365101514,
+            "multiple_tasks": 0.7779092497702067
+          },
+          "selected_category_probability": 0.7779092497702067,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.3775593232182721
+            },
+            "gliner_balanced": {
+              "noul": 0.4084004766835663
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.07166042495154905,
+                "multiple": 0.928339575048451
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.09828838512827931,
+                "one_task": 0.123802365101514,
+                "multiple_tasks": 0.7779092497702067
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.34684582259384655
+            }
+          },
+          "positive_ms": 531.5766249550506,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.7363212871996837
+            },
+            "gliner_balanced": {
+              "noul": 0.718946695239732
+            },
+            "gliner_direct_choice": {
+              "noul": 0.6491467969715121
+            },
+            "gliner_direct_three": {
+              "noul": 0.6683183615853568
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.6660807414439214
+            }
+          },
+          "negative_ms": 508.99454101454467,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_p08_shared_verb_contact__fr",
+      "pair_id": "held_p08_shared_verb_contact",
+      "language": "fr",
+      "expected": true,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.13632452064166786,
+            "one_task": 0.16416746857380837,
+            "multiple_tasks": 0.6995080107845238
+          },
+          "selected_category_probability": 0.6995080107845238,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4387582994922225
+            },
+            "gliner_balanced": {
+              "noul": 0.4638699351437458
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.10987691224352945,
+                "multiple": 0.8901230877564705
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.13632452064166786,
+                "one_task": 0.16416746857380837,
+                "multiple_tasks": 0.6995080107845238
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.44186087037311583
+            }
+          },
+          "positive_ms": 657.2119169868529,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.6988428964093124
+            },
+            "gliner_balanced": {
+              "noul": 0.6723196907581483
+            },
+            "gliner_direct_choice": {
+              "noul": 0.613371990302483
+            },
+            "gliner_direct_three": {
+              "noul": 0.6250427945305029
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.5964249039567797
+            }
+          },
+          "negative_ms": 546.1218750569969,
+          "accepted": false,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_n03_alternative_confirmation__en",
+      "pair_id": "held_n03_alternative_confirmation",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.2919707713051952,
+            "one_task": 0.4934230120215154,
+            "multiple_tasks": 0.2146062166732894
+          },
+          "selected_category_probability": 0.4934230120215154,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.45421192626294243
+            },
+            "gliner_balanced": {
+              "noul": 0.43511696252364307
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.5674175634693646,
+                "multiple": 0.43258243653063544
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.2919707713051952,
+                "one_task": 0.4934230120215154,
+                "multiple_tasks": 0.2146062166732894
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.45161525979917566
+            }
+          },
+          "positive_ms": 516.8675829190761,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.4410252189158177
+            },
+            "gliner_balanced": {
+              "noul": 0.39980042734440024
+            },
+            "gliner_direct_choice": {
+              "noul": 0.3772710309296528
+            },
+            "gliner_direct_three": {
+              "noul": 0.3992326400518573
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.32870320306612455
+            }
+          },
+          "negative_ms": 495.2235830714926,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "held_n03_alternative_confirmation__fr",
+      "pair_id": "held_n03_alternative_confirmation",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.35520562702408476,
+            "one_task": 0.40346408534612227,
+            "multiple_tasks": 0.24133028762979294
+          },
+          "selected_category_probability": 0.40346408534612227,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4261211517719817
+            },
+            "gliner_balanced": {
+              "noul": 0.42220364476488875
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.5381370834804279,
+                "multiple": 0.4618629165195721
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.35520562702408476,
+                "one_task": 0.40346408534612227,
+                "multiple_tasks": 0.24133028762979294
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4360669011079129
+            }
+          },
+          "positive_ms": 509.8017080454156,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5220307836227028
+            },
+            "gliner_balanced": {
+              "noul": 0.46081625777665236
+            },
+            "gliner_direct_choice": {
+              "noul": 0.4186957596634593
+            },
+            "gliner_direct_three": {
+              "noul": 0.44172705966232617
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.37914456111758027
+            }
+          },
+          "negative_ms": 513.1429999601096,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "held_n05_checkout_steps__en",
+      "pair_id": "held_n05_checkout_steps",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.11707126353969388,
+            "one_task": 0.2645463933999737,
+            "multiple_tasks": 0.6183823430603324
+          },
+          "selected_category_probability": 0.6183823430603324,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4319240009026558
+            },
+            "gliner_balanced": {
+              "noul": 0.4632793940044899
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.27133842892828375,
+                "multiple": 0.7286615710717163
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.11707126353969388,
+                "one_task": 0.2645463933999737,
+                "multiple_tasks": 0.6183823430603324
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4291410820949545
+            }
+          },
+          "positive_ms": 503.1675830250606,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5791121691190846
+            },
+            "gliner_balanced": {
+              "noul": 0.5596658542693862
+            },
+            "gliner_direct_choice": {
+              "noul": 0.44073842927447743
+            },
+            "gliner_direct_three": {
+              "noul": 0.4588848931656614
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4500123269658127
+            }
+          },
+          "negative_ms": 503.7050419487059,
+          "accepted": true,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_n05_checkout_steps__fr",
+      "pair_id": "held_n05_checkout_steps",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": true,
+          "task_count_band": "multiple_tasks",
+          "probabilities": {
+            "zero_tasks": 0.1313297906224447,
+            "one_task": 0.28420700639616125,
+            "multiple_tasks": 0.5844632029813941
+          },
+          "selected_category_probability": 0.5844632029813941,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.4598959423599495
+            },
+            "gliner_balanced": {
+              "noul": 0.4729727992672158
+            },
+            "gliner_direct_choice": {
+              "choice": "multiple",
+              "probabilities": {
+                "single_or_none": 0.30301182019958367,
+                "multiple": 0.6969881798004163
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "multiple_tasks",
+              "probabilities": {
+                "zero_tasks": 0.1313297906224447,
+                "one_task": 0.28420700639616125,
+                "multiple_tasks": 0.5844632029813941
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4579450836519658
+            }
+          },
+          "positive_ms": 538.3511659456417,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.5740218309790621
+            },
+            "gliner_balanced": {
+              "noul": 0.5355648051077092
+            },
+            "gliner_direct_choice": {
+              "noul": 0.4652907539618855
+            },
+            "gliner_direct_three": {
+              "noul": 0.47752886311320264
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.45180592799874836
+            }
+          },
+          "negative_ms": 518.9676249865443,
+          "accepted": true,
+          "predicted": true
+        }
+      }
+    },
+    {
+      "id": "held_n07_form_negation__en",
+      "pair_id": "held_n07_form_negation",
+      "language": "en",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.29022896079383226,
+            "one_task": 0.47379673372902437,
+            "multiple_tasks": 0.23597430547714338
+          },
+          "selected_category_probability": 0.47379673372902437,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.3990989341405605
+            },
+            "gliner_balanced": {
+              "noul": 0.3966847677955782
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.6435022168904989,
+                "multiple": 0.3564977831095011
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.29022896079383226,
+                "one_task": 0.47379673372902437,
+                "multiple_tasks": 0.23597430547714338
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4842642346601024
+            }
+          },
+          "positive_ms": 517.4295419128612,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.2474675573988604
+            },
+            "gliner_balanced": {
+              "noul": 0.23094436463217027
+            },
+            "gliner_direct_choice": {
+              "noul": 0.28709177521723084
+            },
+            "gliner_direct_three": {
+              "noul": 0.3078154731635334
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.2783057732336617
+            }
+          },
+          "negative_ms": 506.8096669856459,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    },
+    {
+      "id": "held_n07_form_negation__fr",
+      "pair_id": "held_n07_form_negation",
+      "language": "fr",
+      "expected": false,
+      "policies": {
+        "gliner_direct_three": {
+          "multiple_actions": false,
+          "task_count_band": "one_task",
+          "probabilities": {
+            "zero_tasks": 0.39627241604224805,
+            "one_task": 0.45261751692665386,
+            "multiple_tasks": 0.15111006703109814
+          },
+          "selected_category_probability": 0.45261751692665386,
+          "unresolved": false,
+          "positive_answers": {
+            "gliner_original": {
+              "noul": 0.3900294337344444
+            },
+            "gliner_balanced": {
+              "noul": 0.3863800325964036
+            },
+            "gliner_direct_choice": {
+              "choice": "single_or_none",
+              "probabilities": {
+                "single_or_none": 0.7033209213878434,
+                "multiple": 0.29667907861215664
+              }
+            },
+            "gliner_direct_three": {
+              "choice": "one_task",
+              "probabilities": {
+                "zero_tasks": 0.39627241604224805,
+                "one_task": 0.45261751692665386,
+                "multiple_tasks": 0.15111006703109814
+              }
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.4507580723030795
+            }
+          },
+          "positive_ms": 575.5290420493111,
+          "policy_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+          "model": {
+            "backend": "gliner",
+            "model": "fastino/GLiNER2.5-Decide",
+            "revision": "7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+            "device": "mps",
+            "requested_device": "mps",
+            "schema_mode": "all_heads_one_pass",
+            "temperature": 1.0,
+            "input_token_limit": 4096,
+            "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf"
+          },
+          "negative": {
+            "gliner_original": {
+              "noul": 0.2944771305439767
+            },
+            "gliner_balanced": {
+              "noul": 0.2740677233102563
+            },
+            "gliner_direct_choice": {
+              "noul": 0.2996887603668403
+            },
+            "gliner_direct_three": {
+              "noul": 0.3253917886923091
+            },
+            "gliner_direct_explicit": {
+              "noul": 0.2784696893594172
+            }
+          },
+          "negative_ms": 559.403375023976,
+          "accepted": false,
+          "predicted": false
+        }
+      }
+    }
+  ],
+  "summary": {
+    "gliner_direct_three": {
+      "overall": {
+        "total": 32,
+        "correct": 25,
+        "accuracy": 0.78125,
+        "false_positives": 6,
+        "false_negatives": 1,
+        "agreed": 7,
+        "coverage": 0.21875,
+        "accepted_errors": 6,
+        "rejected_errors": 1,
+        "selective_accuracy": 0.14285714285714285,
+        "positive_latency_ms": {
+          "p50": 527.7293959516101,
+          "p95": 583.3290000446141
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 16,
+          "correct": 12,
+          "accuracy": 0.75,
+          "false_positives": 3,
+          "false_negatives": 1,
+          "agreed": 3,
+          "coverage": 0.1875,
+          "accepted_errors": 3,
+          "rejected_errors": 1,
+          "selective_accuracy": 0.0,
+          "positive_latency_ms": {
+            "p50": 517.1485624159686,
+            "p95": 531.5766249550506
+          }
+        },
+        "fr": {
+          "total": 16,
+          "correct": 13,
+          "accuracy": 0.8125,
+          "false_positives": 3,
+          "false_negatives": 0,
+          "agreed": 4,
+          "coverage": 0.25,
+          "accepted_errors": 3,
+          "rejected_errors": 0,
+          "selective_accuracy": 0.25,
+          "positive_latency_ms": {
+            "p50": 551.2061250046827,
+            "p95": 657.2119169868529
+          }
+        }
+      }
+    }
+  }
+}

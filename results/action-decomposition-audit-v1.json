@@ -1,0 +1,5049 @@
+{
+  "schema_version": 1,
+  "annotation_method": "Manual source-only review of proposal file and annotation rubric; no prediction outputs or dataset expected labels consulted during this annotation. Explicit coordinated requests retain inherited verbs; alternatives and same-task steps share groups. Promotional benefits and negation-scoped fragments are excluded. Earlier task context included dataset examples; this is a diagnostic rubric review, not a blinded independent holdout annotation.",
+  "sources": {
+    "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/datasets/action_span_audit_v1.json": "a4a448791d95e160cdc11b708ef2332204ca8cecd22ebd3a9ff573918ca389fc",
+    "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-decomposition-v1.json": "60c84ee3c20f70b535538c4a3fb019f29cd40e2e7df675d829306f41875cf3de",
+    "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-decomposition-variants-v1.json": "e21a6b259c4baecc38b3f6a769a5b9afbc1aa082561e21002c84d2af07dcd634"
+  },
+  "dataset_sha256": "b6929972f02ad5036059b42884380317c141f9da1f5a862d9e2a4f93eee72538",
+  "note": "False-positive cause flags may overlap. Gate recall measures audited proposed spans, not arbitrary unproposed operations. This is diagnostic rubric review, not held-out validation.",
+  "variants": {
+    "noul_gate_choice_pairs": {
+      "all": {
+        "summary": {
+          "candidate_true_positive": 48,
+          "candidate_false_positive": 78,
+          "candidate_false_negative": 2,
+          "candidate_true_negative": 28,
+          "gate_loses_all_true_independent_pairs": 1,
+          "relationship_false_negative_with_true_pair_available": 1,
+          "false_positive_with_unsupported_span": 23,
+          "false_positive_with_same_task_or_alternative": 3,
+          "predicted_independent_pairs": 94,
+          "incorrect_independent_pairs": 88,
+          "unresolved_messages": 5,
+          "candidate_precision": 0.38095238095238093,
+          "candidate_recall": 0.96,
+          "pair_precision": 0.06382978723404255
+        },
+        "examples": [
+          {
+            "id": "sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "fr_translation_sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "email_bank_statement",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "fr_translation_email_bank_statement",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "fr_translation_sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared submit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "fr_translation_email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared transmit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "fr_translation_sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "email_remote_support",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ]
+            ],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "fr_translation_email_remote_support",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "fr_translation_sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [
+              "c1"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "fr_translation_sms_bank_security_code",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "email_parcel_tracking",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "fr_translation_email_parcel_tracking",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "email_utility_bill",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "fr_translation_email_utility_bill",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_translation_sms_prize_claim",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "en_translation_fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "en_translation_fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "en_translation_fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "fr_sms_library_closure",
+            "gate_false_positives": [
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "en_translation_fr_sms_library_closure",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c2",
+                "c4"
+              ]
+            ],
+            "notes": "Receipt is informational; neither payment nor reply requested."
+          },
+          {
+            "id": "en_translation_fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Oversplit c5 appears affirmative alone, but inherits no from coordinated source phrase; not a request."
+          },
+          {
+            "id": "fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "en_translation_fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "en_translation_fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "en_translation_fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "en_translation_fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ]
+            ],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "fr_sms_transit_schedule",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Schedule information; booking, confirmation and reply explicitly unnecessary."
+          },
+          {
+            "id": "en_translation_fr_sms_transit_schedule",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c3 appears affirmative alone but inherits no from full coordinated source phrase; not a request."
+          },
+          {
+            "id": "fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          },
+          {
+            "id": "en_translation_fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c0",
+                "c5"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c1",
+                "c5"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c5"
+              ],
+              [
+                "c3",
+                "c5"
+              ],
+              [
+                "c4",
+                "c5"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      },
+      "en": {
+        "summary": {
+          "candidate_true_positive": 25,
+          "candidate_false_positive": 36,
+          "candidate_false_negative": 0,
+          "candidate_true_negative": 18,
+          "gate_loses_all_true_independent_pairs": 0,
+          "relationship_false_negative_with_true_pair_available": 0,
+          "false_positive_with_unsupported_span": 15,
+          "false_positive_with_same_task_or_alternative": 3,
+          "predicted_independent_pairs": 79,
+          "incorrect_independent_pairs": 75,
+          "unresolved_messages": 0,
+          "candidate_precision": 0.4098360655737705,
+          "candidate_recall": 1.0,
+          "pair_precision": 0.05063291139240506
+        },
+        "examples": [
+          {
+            "id": "sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "email_bank_statement",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared submit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "email_remote_support",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ]
+            ],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "email_parcel_tracking",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "email_utility_bill",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "en_translation_fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "en_translation_fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "en_translation_fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "en_translation_fr_sms_library_closure",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "en_translation_fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Oversplit c5 appears affirmative alone, but inherits no from coordinated source phrase; not a request."
+          },
+          {
+            "id": "en_translation_fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "en_translation_fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "en_translation_fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "en_translation_fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ]
+            ],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "en_translation_fr_sms_transit_schedule",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c3 appears affirmative alone but inherits no from full coordinated source phrase; not a request."
+          },
+          {
+            "id": "en_translation_fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c0",
+                "c5"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c1",
+                "c5"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c5"
+              ],
+              [
+                "c3",
+                "c5"
+              ],
+              [
+                "c4",
+                "c5"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      },
+      "fr": {
+        "summary": {
+          "candidate_true_positive": 23,
+          "candidate_false_positive": 42,
+          "candidate_false_negative": 2,
+          "candidate_true_negative": 10,
+          "gate_loses_all_true_independent_pairs": 1,
+          "relationship_false_negative_with_true_pair_available": 1,
+          "false_positive_with_unsupported_span": 8,
+          "false_positive_with_same_task_or_alternative": 0,
+          "predicted_independent_pairs": 15,
+          "incorrect_independent_pairs": 13,
+          "unresolved_messages": 5,
+          "candidate_precision": 0.35384615384615387,
+          "candidate_recall": 0.92,
+          "pair_precision": 0.13333333333333333
+        },
+        "examples": [
+          {
+            "id": "fr_translation_sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "fr_translation_email_bank_statement",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "fr_translation_sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "fr_translation_email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared transmit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "fr_translation_sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "fr_translation_email_remote_support",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "fr_translation_sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [
+              "c1"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "fr_translation_sms_bank_security_code",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "fr_translation_email_parcel_tracking",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "fr_translation_email_utility_bill",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "fr_translation_sms_prize_claim",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "fr_sms_library_closure",
+            "gate_false_positives": [
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c2",
+                "c4"
+              ]
+            ],
+            "notes": "Receipt is informational; neither payment nor reply requested."
+          },
+          {
+            "id": "fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "fr_sms_transit_schedule",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Schedule information; booking, confirmation and reply explicitly unnecessary."
+          },
+          {
+            "id": "fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      }
+    },
+    "choice_gate_choice_pairs": {
+      "all": {
+        "summary": {
+          "candidate_true_positive": 45,
+          "candidate_false_positive": 73,
+          "candidate_false_negative": 5,
+          "candidate_true_negative": 33,
+          "gate_loses_all_true_independent_pairs": 2,
+          "relationship_false_negative_with_true_pair_available": 2,
+          "false_positive_with_unsupported_span": 19,
+          "false_positive_with_same_task_or_alternative": 1,
+          "predicted_independent_pairs": 70,
+          "incorrect_independent_pairs": 66,
+          "unresolved_messages": 6,
+          "candidate_precision": 0.3813559322033898,
+          "candidate_recall": 0.9,
+          "pair_precision": 0.05714285714285714
+        },
+        "examples": [
+          {
+            "id": "sms_delivery_fee",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "fr_translation_sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "email_bank_statement",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "fr_translation_email_bank_statement",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "fr_translation_sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "email_government_rebate",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared submit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "fr_translation_email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared transmit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "fr_translation_sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "email_remote_support",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "fr_translation_email_remote_support",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "sms_clinic_reminder",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1",
+              "c2"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "fr_translation_sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "fr_translation_sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "email_parcel_tracking",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "fr_translation_email_parcel_tracking",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "email_utility_bill",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "fr_translation_email_utility_bill",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_translation_sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "en_translation_fr_email_streaming_security",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "en_translation_fr_sms_traffic_fine",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "en_translation_fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "fr_sms_library_closure",
+            "gate_false_positives": [
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "en_translation_fr_sms_library_closure",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c4"
+              ]
+            ],
+            "notes": "Receipt is informational; neither payment nor reply requested."
+          },
+          {
+            "id": "en_translation_fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Oversplit c5 appears affirmative alone, but inherits no from coordinated source phrase; not a request."
+          },
+          {
+            "id": "fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "en_translation_fr_sms_pharmacy_password",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "en_translation_fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "en_translation_fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "en_translation_fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ]
+            ],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "fr_sms_transit_schedule",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Schedule information; booking, confirmation and reply explicitly unnecessary."
+          },
+          {
+            "id": "en_translation_fr_sms_transit_schedule",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c3 appears affirmative alone but inherits no from full coordinated source phrase; not a request."
+          },
+          {
+            "id": "fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          },
+          {
+            "id": "en_translation_fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c0",
+                "c5"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c1",
+                "c5"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c5"
+              ],
+              [
+                "c3",
+                "c5"
+              ],
+              [
+                "c4",
+                "c5"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      },
+      "en": {
+        "summary": {
+          "candidate_true_positive": 20,
+          "candidate_false_positive": 25,
+          "candidate_false_negative": 5,
+          "candidate_true_negative": 29,
+          "gate_loses_all_true_independent_pairs": 2,
+          "relationship_false_negative_with_true_pair_available": 0,
+          "false_positive_with_unsupported_span": 11,
+          "false_positive_with_same_task_or_alternative": 1,
+          "predicted_independent_pairs": 51,
+          "incorrect_independent_pairs": 49,
+          "unresolved_messages": 0,
+          "candidate_precision": 0.4444444444444444,
+          "candidate_recall": 0.8,
+          "pair_precision": 0.0392156862745098
+        },
+        "examples": [
+          {
+            "id": "sms_delivery_fee",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "email_bank_statement",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "email_government_rebate",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared submit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "email_remote_support",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "sms_clinic_reminder",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1",
+              "c2"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "email_parcel_tracking",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "email_utility_bill",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "en_translation_fr_email_streaming_security",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "en_translation_fr_sms_traffic_fine",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "en_translation_fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "en_translation_fr_sms_library_closure",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "en_translation_fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Oversplit c5 appears affirmative alone, but inherits no from coordinated source phrase; not a request."
+          },
+          {
+            "id": "en_translation_fr_sms_pharmacy_password",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "en_translation_fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "en_translation_fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "en_translation_fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ]
+            ],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "en_translation_fr_sms_transit_schedule",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c3 appears affirmative alone but inherits no from full coordinated source phrase; not a request."
+          },
+          {
+            "id": "en_translation_fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c0",
+                "c5"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c1",
+                "c5"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c5"
+              ],
+              [
+                "c3",
+                "c5"
+              ],
+              [
+                "c4",
+                "c5"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      },
+      "fr": {
+        "summary": {
+          "candidate_true_positive": 25,
+          "candidate_false_positive": 48,
+          "candidate_false_negative": 0,
+          "candidate_true_negative": 4,
+          "gate_loses_all_true_independent_pairs": 0,
+          "relationship_false_negative_with_true_pair_available": 2,
+          "false_positive_with_unsupported_span": 8,
+          "false_positive_with_same_task_or_alternative": 0,
+          "predicted_independent_pairs": 19,
+          "incorrect_independent_pairs": 17,
+          "unresolved_messages": 6,
+          "candidate_precision": 0.3424657534246575,
+          "candidate_recall": 1.0,
+          "pair_precision": 0.10526315789473684
+        },
+        "examples": [
+          {
+            "id": "fr_translation_sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "fr_translation_email_bank_statement",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "fr_translation_sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "fr_translation_email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared transmit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "fr_translation_sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "fr_translation_email_remote_support",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "fr_translation_sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "fr_translation_sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "fr_translation_email_parcel_tracking",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "fr_translation_email_utility_bill",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "fr_translation_sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "fr_sms_library_closure",
+            "gate_false_positives": [
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c4"
+              ]
+            ],
+            "notes": "Receipt is informational; neither payment nor reply requested."
+          },
+          {
+            "id": "fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "fr_sms_transit_schedule",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Schedule information; booking, confirmation and reply explicitly unnecessary."
+          },
+          {
+            "id": "fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      }
+    },
+    "choice_gate_split_pairs": {
+      "all": {
+        "summary": {
+          "candidate_true_positive": 45,
+          "candidate_false_positive": 73,
+          "candidate_false_negative": 5,
+          "candidate_true_negative": 33,
+          "gate_loses_all_true_independent_pairs": 2,
+          "relationship_false_negative_with_true_pair_available": 1,
+          "false_positive_with_unsupported_span": 19,
+          "false_positive_with_same_task_or_alternative": 4,
+          "predicted_independent_pairs": 86,
+          "incorrect_independent_pairs": 83,
+          "unresolved_messages": 0,
+          "candidate_precision": 0.3813559322033898,
+          "candidate_recall": 0.9,
+          "pair_precision": 0.03488372093023256
+        },
+        "examples": [
+          {
+            "id": "sms_delivery_fee",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "fr_translation_sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "email_bank_statement",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "fr_translation_email_bank_statement",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "fr_translation_sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "email_government_rebate",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared submit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "fr_translation_email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared transmit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "fr_translation_sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "email_remote_support",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "fr_translation_email_remote_support",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ]
+            ],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "sms_clinic_reminder",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1",
+              "c2"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "fr_translation_sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "fr_translation_sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "email_parcel_tracking",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "fr_translation_email_parcel_tracking",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "email_utility_bill",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "fr_translation_email_utility_bill",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_translation_sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "en_translation_fr_email_streaming_security",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "en_translation_fr_sms_traffic_fine",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "en_translation_fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "fr_sms_library_closure",
+            "gate_false_positives": [
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "en_translation_fr_sms_library_closure",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Receipt is informational; neither payment nor reply requested."
+          },
+          {
+            "id": "en_translation_fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c5 appears affirmative alone, but inherits no from coordinated source phrase; not a request."
+          },
+          {
+            "id": "fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "en_translation_fr_sms_pharmacy_password",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "en_translation_fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "en_translation_fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "en_translation_fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "fr_sms_transit_schedule",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Schedule information; booking, confirmation and reply explicitly unnecessary."
+          },
+          {
+            "id": "en_translation_fr_sms_transit_schedule",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c3 appears affirmative alone but inherits no from full coordinated source phrase; not a request."
+          },
+          {
+            "id": "fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c0",
+                "c5"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c1",
+                "c5"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c5"
+              ],
+              [
+                "c3",
+                "c5"
+              ],
+              [
+                "c4",
+                "c5"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          },
+          {
+            "id": "en_translation_fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      },
+      "en": {
+        "summary": {
+          "candidate_true_positive": 20,
+          "candidate_false_positive": 25,
+          "candidate_false_negative": 5,
+          "candidate_true_negative": 29,
+          "gate_loses_all_true_independent_pairs": 2,
+          "relationship_false_negative_with_true_pair_available": 1,
+          "false_positive_with_unsupported_span": 0,
+          "false_positive_with_same_task_or_alternative": 0,
+          "predicted_independent_pairs": 0,
+          "incorrect_independent_pairs": 0,
+          "unresolved_messages": 0,
+          "candidate_precision": 0.4444444444444444,
+          "candidate_recall": 0.8,
+          "pair_precision": null
+        },
+        "examples": [
+          {
+            "id": "sms_delivery_fee",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "email_bank_statement",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "email_government_rebate",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared submit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "email_remote_support",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "sms_clinic_reminder",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1",
+              "c2"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "email_parcel_tracking",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "email_utility_bill",
+            "gate_false_positives": [
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "en_translation_fr_email_streaming_security",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c3"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "en_translation_fr_sms_traffic_fine",
+            "gate_false_positives": [],
+            "gate_false_negatives": [
+              "c1"
+            ],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "en_translation_fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "en_translation_fr_sms_library_closure",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "en_translation_fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c5 appears affirmative alone, but inherits no from coordinated source phrase; not a request."
+          },
+          {
+            "id": "en_translation_fr_sms_pharmacy_password",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "en_translation_fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "en_translation_fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "en_translation_fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "en_translation_fr_sms_transit_schedule",
+            "gate_false_positives": [],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [],
+            "notes": "Oversplit c3 appears affirmative alone but inherits no from full coordinated source phrase; not a request."
+          },
+          {
+            "id": "en_translation_fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      },
+      "fr": {
+        "summary": {
+          "candidate_true_positive": 25,
+          "candidate_false_positive": 48,
+          "candidate_false_negative": 0,
+          "candidate_true_negative": 4,
+          "gate_loses_all_true_independent_pairs": 0,
+          "relationship_false_negative_with_true_pair_available": 0,
+          "false_positive_with_unsupported_span": 19,
+          "false_positive_with_same_task_or_alternative": 4,
+          "predicted_independent_pairs": 86,
+          "incorrect_independent_pairs": 83,
+          "unresolved_messages": 0,
+          "candidate_precision": 0.3424657534246575,
+          "candidate_recall": 1.0,
+          "pair_precision": 0.03488372093023256
+        },
+        "examples": [
+          {
+            "id": "fr_translation_sms_delivery_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "One fee payment; link is its transport."
+          },
+          {
+            "id": "fr_translation_email_bank_statement",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Viewing availability alongside no action needed is not a request."
+          },
+          {
+            "id": "fr_translation_sms_retail_promotion",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Discount availability is advertising; explicit STOP is one requested task."
+          },
+          {
+            "id": "fr_translation_email_government_rebate",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Shared transmit verb applies to bank details fragment; two fields of one submission."
+          },
+          {
+            "id": "fr_translation_sms_job_onboarding_fee",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Job selection is promised benefit; onboarding payment is sole request."
+          },
+          {
+            "id": "fr_translation_email_remote_support",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ]
+            ],
+            "notes": "Contact support then install are separate operations despite shared repair goal."
+          },
+          {
+            "id": "fr_translation_sms_clinic_reminder",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Confirm OR call to reschedule are explicit alternative requests, not both."
+          },
+          {
+            "id": "fr_translation_sms_bank_security_code",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Reply transports the one code-disclosure task."
+          },
+          {
+            "id": "fr_translation_email_parcel_tracking",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Delivery record and explicit no-action statement; no request."
+          },
+          {
+            "id": "fr_translation_email_utility_bill",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "Two alternative payment methods for one bill."
+          },
+          {
+            "id": "fr_translation_sms_prize_claim",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Claim by paying is one fee-payment task, not separate claim and payment."
+          },
+          {
+            "id": "fr_email_streaming_security",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 1,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Install software plus call adviser are separate requested operations."
+          },
+          {
+            "id": "fr_sms_traffic_fine",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Buy gift card and send number are steps of one fine payment."
+          },
+          {
+            "id": "fr_email_hotel_offer",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Book package is concrete request. Treat-yourself invitation and enjoy renovated rooms are promotional framing/benefits, not independent operations."
+          },
+          {
+            "id": "fr_sms_library_closure",
+            "gate_false_positives": [
+              "c1",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c3"
+              ]
+            ],
+            "notes": "Library availability/closure is informational; explicitly no task requested."
+          },
+          {
+            "id": "fr_email_insurance_receipt",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c1",
+                "c2"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c4"
+              ],
+              [
+                "c3",
+                "c4"
+              ]
+            ],
+            "notes": "Receipt is informational; neither payment nor reply requested."
+          },
+          {
+            "id": "fr_sms_pharmacy_password",
+            "gate_false_positives": [
+              "c0"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ]
+            ],
+            "notes": "Password disclosure is sole task; reply is transport, preservation is benefit."
+          },
+          {
+            "id": "fr_email_investment_wallet",
+            "gate_false_positives": [
+              "c0",
+              "c1"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Recovery-phrase disclosure is sole task; activation/gains are purpose or benefit."
+          },
+          {
+            "id": "fr_sms_lottery_voucher",
+            "gate_false_positives": [
+              "c0",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Pay voucher fee is sole request; voucher-code sentence merely describes payment method."
+          },
+          {
+            "id": "fr_email_building_inspection",
+            "gate_false_positives": [
+              "c0",
+              "c3"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c2",
+                "c3"
+              ]
+            ],
+            "notes": "One reply indicating preference. Oversplit c3 is an appointment-time alternative, not an additional recipient operation; interpret c2 with full source."
+          },
+          {
+            "id": "fr_sms_transit_schedule",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c2"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 0,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c1",
+                "c2"
+              ]
+            ],
+            "notes": "Schedule information; booking, confirmation and reply explicitly unnecessary."
+          },
+          {
+            "id": "fr_email_recruiting_identity",
+            "gate_false_positives": [
+              "c0",
+              "c1",
+              "c5"
+            ],
+            "gate_false_negatives": [],
+            "retained_true_independent_pairs": 2,
+            "incorrect_pair_witnesses": [
+              [
+                "c0",
+                "c1"
+              ],
+              [
+                "c0",
+                "c2"
+              ],
+              [
+                "c0",
+                "c3"
+              ],
+              [
+                "c0",
+                "c4"
+              ],
+              [
+                "c0",
+                "c5"
+              ],
+              [
+                "c1",
+                "c3"
+              ],
+              [
+                "c1",
+                "c4"
+              ],
+              [
+                "c1",
+                "c5"
+              ],
+              [
+                "c2",
+                "c3"
+              ],
+              [
+                "c2",
+                "c5"
+              ],
+              [
+                "c3",
+                "c5"
+              ],
+              [
+                "c4",
+                "c5"
+              ]
+            ],
+            "notes": "Shared send verb applies to credentials fragment; passport and credentials are fields of one disclosure submission, followed by independent recruiter call."
+          }
+        ]
+      }
+    }
+  }
+}

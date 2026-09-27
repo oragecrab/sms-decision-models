@@ -1,0 +1,1643 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-27T00:03:10.373542+00:00",
+  "dataset": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/datasets/base_eval_v1.jsonl",
+  "dataset_sha256": "96468a25e9614aa68407495c894ff0467c5d76d8e92dd18f41a1313b376a130e",
+  "questions": {
+    "classification": {
+      "type": "choice",
+      "instructions": "Classify by risk, not claimed authority. Requests for identity or bank details to release benefits, fees to obtain employment or winnings, unexpected parcel fees, secret codes, and unsolicited remote access indicate suspected scams. Ordinary discounts are marketing; routine notices and bills are legitimate.",
+      "criteria": {
+        "legitimate": "Routine account notices, appointment reminders, personal messages, or normal service bills.",
+        "marketing": "Commercial sales, discounts, product promotions, or ordinary advertising.",
+        "suspected_scam": "Likely phishing or fraud: suspicious fees, requests for secret codes or identity/financial details, or unsolicited remote access."
+      }
+    },
+    "industry": {
+      "type": "choice",
+      "instructions": "Which business or service is the message about? Classify the service being provided, not the method used to pay for it. Identify the claimed industry without verifying identity.",
+      "criteria": {
+        "banking_finance": "Banks, financial accounts, investing, insurance, or personal finance.",
+        "retail_ecommerce": "Shopping, online orders, marketplaces, or consumer products.",
+        "shipping_logistics": "Parcel delivery, postal services, freight, or courier tracking.",
+        "government_public_services": "Government agencies, taxes, benefits, water, electricity, utilities, or public services.",
+        "technology_telecom": "Software, online accounts, devices, internet, or phone services.",
+        "healthcare": "Healthcare providers, pharmacies, medical services, or health insurance.",
+        "employment": "Jobs, recruiting, payroll, or workplace services.",
+        "travel_hospitality": "Travel, accommodation, transport, or hospitality.",
+        "other": "A recognizable industry that does not fit the listed categories.",
+        "unclear": "There is not enough information to identify an industry."
+      }
+    },
+    "urgent_action": {
+      "type": "noul",
+      "instructions": "Does the message pressure the recipient to act soon, meet a deadline, or risk a stated negative consequence if they delay? Judge the wording, not whether the deadline is genuine.",
+      "criteria": {
+        "true": "Yes, the message pressures the recipient to act soon or meet a deadline.",
+        "false": "No, it does not pressure the recipient to act soon or meet a deadline."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    },
+    "sentiment": {
+      "type": "choice",
+      "instructions": "What emotional tone does the sender express, regardless of whether the message is honest?",
+      "criteria": {
+        "happy": "Positive, cheerful, celebratory, enthusiastic, or presenting a treat or exciting reward.",
+        "neutral": "Factual or matter-of-fact, without clear positive or negative emotional framing.",
+        "sad": "Negative, worried, frustrated, threatening, alarming, or distressing tone."
+      }
+    },
+    "requested_action": {
+      "type": "choice",
+      "instructions": "What is the main action requested by this message?",
+      "criteria": {
+        "no_action": "No concrete action; informational or a notification only.",
+        "reply_or_contact": "Reply, call, contact someone, unsubscribe, or continue elsewhere.",
+        "click_or_scan": "Open a link, visit a website, or scan a QR code.",
+        "sign_in_or_verify": "Sign in, reset a password, or verify an account or identity.",
+        "share_sensitive_info_or_documents": "Provide passwords, security codes, personal or financial details, or documents.",
+        "pay_or_transfer": "Pay a fee, bill, fine, or send money, gift cards, or cryptocurrency.",
+        "purchase_or_claim": "Buy, subscribe, redeem an offer, or claim a prize, refund, or benefit.",
+        "open_or_download_attachment": "Open or download an attachment or file.",
+        "install_or_grant_access": "Install software or grant remote access to a device or account.",
+        "approve_login_or_transaction": "Approve a login, multi-factor prompt, or transaction.",
+        "update_account_or_delivery_details": "Change account, payment, profile, or delivery details.",
+        "other_or_unclear": "Another requested action, or the requested action is too vague to tell."
+      }
+    },
+    "multiple_actions": {
+      "type": "noul",
+      "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+      "criteria": {
+        "true": "Yes, it asks for two or more distinct actions.",
+        "false": "No, it asks for at most one distinct action."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    },
+    "message_hook": {
+      "type": "choice",
+      "instructions": "Identify the main premise attracting attention, regardless of truth. Prefer government for government benefits. A record or reminder is not a debt or emergency without such a claim.",
+      "criteria": {
+        "account_or_payment_problem": "A blocked account, security alert, failed transaction, or account problem.",
+        "delivery_or_order_update": "A parcel, delivery fee, address issue, or order update.",
+        "invoice_or_debt": "Money owed: a bill, invoice, debt, fine, or overdue payment; not a bank statement.",
+        "prize_refund_or_gift": "A nongovernment prize, refund, compensation, giveaway, or free gift.",
+        "government_or_legal_matter": "Government benefits or rebates, taxes, police, courts, or legal matters.",
+        "job_or_investment": "A job, paid task, investment, or promised financial return.",
+        "tech_support_or_subscription": "A device/security problem or subscription renewal.",
+        "relationship_or_emergency": "A personal relationship or family emergency; not routine appointments.",
+        "sale_or_promotion": "A sale, product promotion, or ordinary subscription offer.",
+        "none_or_other_unclear": "Other premises, routine records or appointments, or no clear hook."
+      }
+    },
+    "sensitive_data_requested": {
+      "type": "noul",
+      "instructions": "Does the message request a password, one-time security code, government identity number, bank account details, card details, or identity document from the recipient? Routine sign-in, payment and opt-out instructions alone do not request disclosure.",
+      "criteria": {
+        "true": "Yes, it asks the recipient to disclose security codes, passwords, bank/card details or government identity data.",
+        "false": "No, it does not ask the recipient to disclose those sensitive details."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    }
+  },
+  "packages": {
+    "laya": "0.3.20",
+    "decider-ai": "1.5.0",
+    "jevk5": "0.3.0",
+    "sentence-transformers": "5.7.0",
+    "torch": "2.14.0",
+    "transformers": "5.17.0"
+  },
+  "runs": [
+    {
+      "model": {
+        "backend": "clm",
+        "model": "Contrastive-LM/CLM-v0.1-8B",
+        "revision": null,
+        "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--Contrastive-LM--CLM-v0.1-8B/snapshots/e939398d4556fcd9400c76fa8c5a513202f42b0a",
+        "encoder": "Qwen/Qwen3-8B",
+        "encoder_snapshot": "/Users/sol/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "encoder_revision": null,
+        "device": "mps",
+        "requested_device": "mps",
+        "runtime": "transformers_last_token_pooling",
+        "input_token_limit": 2048,
+        "embedding_cache": "4096 exact texts; states and candidates",
+        "head_scale": 100.0,
+        "reference_code_commit": "bb42c6c5bf914fd449bed2f6ca65be80602cb1f7"
+      },
+      "startup_and_warmup_ms": 55275.514167035,
+      "examples": 11,
+      "exact_match_accuracy": 0,
+      "per_question": {
+        "classification": {
+          "accuracy": 0.6363636363636364,
+          "nll": 0.8285063561208516,
+          "brier": 0.39452845689291827
+        },
+        "industry": {
+          "accuracy": 0.09090909090909091,
+          "nll": 2.6804178249691937,
+          "brier": 1.0120572972855235
+        },
+        "urgent_action": {
+          "accuracy": 0.8181818181818182,
+          "nll": 0.46998366255286533,
+          "brier": 0.31282149091959677
+        },
+        "sentiment": {
+          "accuracy": 0.2727272727272727,
+          "nll": 3.803705497159958,
+          "brier": 1.410964755831832
+        },
+        "requested_action": {
+          "accuracy": 0.5454545454545454,
+          "nll": 1.9584684105231225,
+          "brier": 0.7359386801092609
+        },
+        "multiple_actions": {
+          "accuracy": 0.18181818181818182,
+          "nll": 1.7192575797538987,
+          "brier": 1.2244076752629935
+        },
+        "message_hook": {
+          "accuracy": 0.09090909090909091,
+          "nll": 5.300365466572834,
+          "brier": 1.425413864148683
+        },
+        "sensitive_data_requested": {
+          "accuracy": 0.7272727272727273,
+          "nll": 0.5453980988859112,
+          "brier": 0.36875433169836097
+        }
+      },
+      "latency_ms": {
+        "p50": 2317.575457971543,
+        "p95": 2894.6294999914244
+      },
+      "predictions": [
+        {
+          "id": "sms_delivery_fee",
+          "expected": {
+            "classification": "suspected_scam",
+            "industry": "shipping_logistics",
+            "urgent_action": true,
+            "sentiment": "sad",
+            "requested_action": "pay_or_transfer",
+            "multiple_actions": false,
+            "message_hook": "delivery_or_order_update",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "suspected_scam",
+              "confidence": 0.5801008476471877,
+              "probabilities": {
+                "legitimate": 0.2785983303302378,
+                "marketing": 0.0013344379049704202,
+                "suspected_scam": 0.7200672317647918
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "technology_telecom",
+              "confidence": 0.21837267864861865,
+              "probabilities": {
+                "banking_finance": 0.03621312363337647,
+                "retail_ecommerce": 0.21390566382300008,
+                "shipping_logistics": 0.00261802646350173,
+                "government_public_services": 0.02400037431894667,
+                "technology_telecom": 0.2965354107837568,
+                "healthcare": 0.007593868923614488,
+                "employment": 0.07833135118321187,
+                "travel_hospitality": 0.05557131377833242,
+                "other": 0.27941906398326055,
+                "unclear": 0.005811803108998995
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.7460501074987074
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9898601730006662,
+              "probabilities": {
+                "happy": 0.006356863306390613,
+                "neutral": 0.00040302135983193887,
+                "sad": 0.9932401153337774
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "share_sensitive_info_or_documents",
+              "confidence": 0.8392570788726724,
+              "probabilities": {
+                "no_action": 0.008721193040959854,
+                "reply_or_contact": 0.07321117929957799,
+                "click_or_scan": 6.797819441264017e-05,
+                "sign_in_or_verify": 0.00032316719874631906,
+                "share_sensitive_info_or_documents": 0.8526523222999497,
+                "pay_or_transfer": 0.009576383845164575,
+                "purchase_or_claim": 7.988825025500599e-05,
+                "open_or_download_attachment": 0.0005969495190998212,
+                "install_or_grant_access": 0.0003205715711816025,
+                "approve_login_or_transaction": 0.04530594386944582,
+                "update_account_or_delivery_details": 0.0014772275528910552,
+                "other_or_unclear": 0.007667195358315629
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8777320649616583
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.756900026500801,
+              "probabilities": {
+                "account_or_payment_problem": 0.09073155370243534,
+                "delivery_or_order_update": 0.00065067343381964,
+                "invoice_or_debt": 0.0641757904132119,
+                "prize_refund_or_gift": 0.7812100238507209,
+                "government_or_legal_matter": 0.00044848558070263316,
+                "job_or_investment": 0.049350594094501266,
+                "tech_support_or_subscription": 0.0002076177585425378,
+                "relationship_or_emergency": 0.0010810548822397896,
+                "sale_or_promotion": 0.012107639100065052,
+                "none_or_other_unclear": 3.6567183761010915e-05
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.33072361207039125
+            }
+          },
+          "inference_ms": 15.054750023409724,
+          "matches": {
+            "classification": true,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": true,
+            "requested_action": false,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.7200672317647918,
+            "industry": 0.00261802646350173,
+            "urgent_action": 0.7460501074987074,
+            "sentiment": 0.9932401153337774,
+            "requested_action": 0.009576383845164575,
+            "multiple_actions": 0.12226793503834166,
+            "message_hook": 0.00065067343381964,
+            "sensitive_data_requested": 0.6692763879296088
+          },
+          "brier": {
+            "classification": 0.15598116511914528,
+            "industry": 1.2177375210016714,
+            "urgent_action": 0.12898109580283618,
+            "sentiment": 8.626817801324722e-05,
+            "requested_action": 1.715505029334084,
+            "multiple_actions": 1.5408271557237136,
+            "message_hook": 1.6239224151088651,
+            "sensitive_data_requested": 0.2187562151617733
+          }
+        },
+        {
+          "id": "email_bank_statement",
+          "expected": {
+            "classification": "legitimate",
+            "industry": "banking_finance",
+            "urgent_action": false,
+            "sentiment": "neutral",
+            "requested_action": "no_action",
+            "multiple_actions": false,
+            "message_hook": "none_or_other_unclear",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "suspected_scam",
+              "confidence": 0.3018021788375978,
+              "probabilities": {
+                "legitimate": 0.4617374123077771,
+                "marketing": 0.0037278018004910213,
+                "suspected_scam": 0.5345347858917319
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "other",
+              "confidence": 0.4832433813401029,
+              "probabilities": {
+                "banking_finance": 0.02801195946897555,
+                "retail_ecommerce": 0.2008369785781693,
+                "shipping_logistics": 0.00043042760318423866,
+                "government_public_services": 0.04827991064982972,
+                "technology_telecom": 0.035996000453463094,
+                "healthcare": 0.030235278701555537,
+                "employment": 0.08243197694061113,
+                "travel_hospitality": 0.03246953576708481,
+                "other": 0.5349190432060926,
+                "unclear": 0.006388888631034003
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.0225751818706145
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9951214064214668,
+              "probabilities": {
+                "happy": 0.0006756630341568743,
+                "neutral": 0.0025767326848652487,
+                "sad": 0.9967476042809779
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "no_action",
+              "confidence": 0.9536301089102854,
+              "probabilities": {
+                "no_action": 0.957494266501095,
+                "reply_or_contact": 0.033192123106190186,
+                "click_or_scan": 5.893917086025394e-07,
+                "sign_in_or_verify": 1.426430095233249e-05,
+                "share_sensitive_info_or_documents": 6.440719442988464e-05,
+                "pay_or_transfer": 2.8396532968747532e-05,
+                "purchase_or_claim": 2.230003643724926e-06,
+                "open_or_download_attachment": 7.457537040633693e-06,
+                "install_or_grant_access": 1.989434268439629e-06,
+                "approve_login_or_transaction": 0.00016356792751420543,
+                "update_account_or_delivery_details": 1.8804329055738103e-05,
+                "other_or_unclear": 0.009011903741132608
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.4292503879746931
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.8287584715723094,
+              "probabilities": {
+                "account_or_payment_problem": 0.03751832998982993,
+                "delivery_or_order_update": 0.00042340779849546923,
+                "invoice_or_debt": 0.054006406832378444,
+                "prize_refund_or_gift": 0.8458826244150784,
+                "government_or_legal_matter": 0.0002989850060007134,
+                "job_or_investment": 0.04305733308569686,
+                "tech_support_or_subscription": 6.51448076642101e-05,
+                "relationship_or_emergency": 0.00555515746399295,
+                "sale_or_promotion": 0.013102697478688228,
+                "none_or_other_unclear": 8.991312217468701e-05
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.31125918994179663
+            }
+          },
+          "inference_ms": 2894.6294999914244,
+          "matches": {
+            "classification": false,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": false,
+            "requested_action": true,
+            "multiple_actions": true,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.4617374123077771,
+            "industry": 0.02801195946897555,
+            "urgent_action": 0.9774248181293855,
+            "sentiment": 0.0025767326848652487,
+            "requested_action": 0.957494266501095,
+            "multiple_actions": 0.5707496120253068,
+            "message_hook": 8.991312217468701e-05,
+            "sensitive_data_requested": 0.6887408100582033
+          },
+          "brier": {
+            "classification": 0.5754679471437113,
+            "industry": 1.2836657643245608,
+            "urgent_action": 0.0010192776729826417,
+            "sentiment": 1.9883594173420034,
+            "requested_action": 0.0029897011566986254,
+            "multiple_actions": 0.36851179115284916,
+            "message_hook": 1.721718660489695,
+            "sensitive_data_requested": 0.1937645666464469
+          }
+        },
+        {
+          "id": "sms_retail_promotion",
+          "expected": {
+            "classification": "marketing",
+            "industry": "retail_ecommerce",
+            "urgent_action": true,
+            "sentiment": "happy",
+            "requested_action": "reply_or_contact",
+            "multiple_actions": false,
+            "message_hook": "sale_or_promotion",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "legitimate",
+              "confidence": 0.93073501061552,
+              "probabilities": {
+                "legitimate": 0.9538233404103467,
+                "marketing": 0.005598074364600072,
+                "suspected_scam": 0.040578585225053324
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "other",
+              "confidence": 0.6066008076291907,
+              "probabilities": {
+                "banking_finance": 0.009884829143077608,
+                "retail_ecommerce": 0.13966570584565077,
+                "shipping_logistics": 0.0007540573959983742,
+                "government_public_services": 0.023806188526092995,
+                "technology_telecom": 0.02481801096568005,
+                "healthcare": 0.016838249816133917,
+                "employment": 0.10258349735739178,
+                "travel_hospitality": 0.03446763593142702,
+                "other": 0.6459407268662716,
+                "unclear": 0.0012410981522759895
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.15808192835425147
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9192830616123288,
+              "probabilities": {
+                "happy": 0.04830656787876315,
+                "neutral": 0.005504724379684264,
+                "sad": 0.9461887077415525
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "reply_or_contact",
+              "confidence": 0.970050288463002,
+              "probabilities": {
+                "no_action": 0.0025988447303356447,
+                "reply_or_contact": 0.9725460977577518,
+                "click_or_scan": 8.891095565235043e-05,
+                "sign_in_or_verify": 7.597635394347093e-05,
+                "share_sensitive_info_or_documents": 2.859004479461481e-05,
+                "pay_or_transfer": 0.0007135184589876999,
+                "purchase_or_claim": 0.00011220377581085307,
+                "open_or_download_attachment": 0.00018675366438315229,
+                "install_or_grant_access": 4.424066745852942e-06,
+                "approve_login_or_transaction": 0.013316284454612623,
+                "update_account_or_delivery_details": 0.0007039397958277177,
+                "other_or_unclear": 0.00962445594115422
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.710171546262928
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.7969288185743212,
+              "probabilities": {
+                "account_or_payment_problem": 0.01730136229911895,
+                "delivery_or_order_update": 0.0005752366494068471,
+                "invoice_or_debt": 0.11083568719819713,
+                "prize_refund_or_gift": 0.8172359367168891,
+                "government_or_legal_matter": 0.001981643539655626,
+                "job_or_investment": 0.03784179793066338,
+                "tech_support_or_subscription": 5.418129233617363e-05,
+                "relationship_or_emergency": 0.0047846801849379525,
+                "sale_or_promotion": 0.009280095924361473,
+                "none_or_other_unclear": 0.0001093782644333192
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.22640725507606949
+            }
+          },
+          "inference_ms": 2533.6480420082808,
+          "matches": {
+            "classification": false,
+            "industry": false,
+            "urgent_action": false,
+            "sentiment": false,
+            "requested_action": true,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.005598074364600072,
+            "industry": 0.13966570584565077,
+            "urgent_action": 0.15808192835425147,
+            "sentiment": 0.04830656787876315,
+            "requested_action": 0.9725460977577518,
+            "multiple_actions": 0.289828453737072,
+            "message_hook": 0.009280095924361473,
+            "sensitive_data_requested": 0.7735927449239305
+          },
+          "brier": {
+            "classification": 1.9002607759978105,
+            "industry": 1.170691925891036,
+            "urgent_action": 1.4176520787273914,
+            "sentiment": 1.8010237613908244,
+            "requested_action": 0.0010314909470720448,
+            "multiple_actions": 1.0086872502429562,
+            "message_hook": 1.663443558829911,
+            "sensitive_data_requested": 0.10252049030216079
+          }
+        },
+        {
+          "id": "email_government_rebate",
+          "expected": {
+            "classification": "suspected_scam",
+            "industry": "government_public_services",
+            "urgent_action": true,
+            "sentiment": "neutral",
+            "requested_action": "share_sensitive_info_or_documents",
+            "multiple_actions": false,
+            "message_hook": "government_or_legal_matter",
+            "sensitive_data_requested": true
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "suspected_scam",
+              "confidence": 0.7671991438091667,
+              "probabilities": {
+                "legitimate": 0.15266029260179692,
+                "marketing": 0.0025402781920919764,
+                "suspected_scam": 0.8447994292061111
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "other",
+              "confidence": 0.42955721345938497,
+              "probabilities": {
+                "banking_finance": 0.05368809843729311,
+                "retail_ecommerce": 0.09611257327515078,
+                "shipping_logistics": 0.0003407617901724604,
+                "government_public_services": 0.057064524341614874,
+                "technology_telecom": 0.052514282263055885,
+                "healthcare": 0.01615456345826653,
+                "employment": 0.15699174242295444,
+                "travel_hospitality": 0.07781637258356494,
+                "other": 0.4866014921134465,
+                "unclear": 0.0027155893144805683
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.9474671241127897
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9909258184030786,
+              "probabilities": {
+                "happy": 0.004389291254747362,
+                "neutral": 0.0016601631432002553,
+                "sad": 0.9939505456020524
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "share_sensitive_info_or_documents",
+              "confidence": 0.9316784401371102,
+              "probabilities": {
+                "no_action": 0.00504561893060067,
+                "reply_or_contact": 0.004936329597628599,
+                "click_or_scan": 3.565475508048936e-06,
+                "sign_in_or_verify": 0.00029197387377632495,
+                "share_sensitive_info_or_documents": 0.9373719034590177,
+                "pay_or_transfer": 0.0009885660567751032,
+                "purchase_or_claim": 2.6509116189219693e-05,
+                "open_or_download_attachment": 2.5271449125647133e-05,
+                "install_or_grant_access": 5.5687638758712215e-05,
+                "approve_login_or_transaction": 0.04795969255505513,
+                "update_account_or_delivery_details": 6.27589547197895e-05,
+                "other_or_unclear": 0.0032321228928450085
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9300032056076655
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.8857683074204014,
+              "probabilities": {
+                "account_or_payment_problem": 0.04179940588593662,
+                "delivery_or_order_update": 0.00017599690865528525,
+                "invoice_or_debt": 0.0060353666839136596,
+                "prize_refund_or_gift": 0.8971914766783612,
+                "government_or_legal_matter": 0.0002498287797873282,
+                "job_or_investment": 0.032588323719649606,
+                "tech_support_or_subscription": 0.00023740319692497388,
+                "relationship_or_emergency": 0.0008672278211865713,
+                "sale_or_promotion": 0.020809836140744244,
+                "none_or_other_unclear": 4.5134184840627517e-05
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.9192059067318614
+            }
+          },
+          "inference_ms": 2317.575457971543,
+          "matches": {
+            "classification": true,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": false,
+            "requested_action": true,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.8447994292061111,
+            "industry": 0.057064524341614874,
+            "urgent_action": 0.9474671241127897,
+            "sentiment": 0.0016601631432002553,
+            "requested_action": 0.9373719034590177,
+            "multiple_actions": 0.06999679439233453,
+            "message_hook": 0.0002498287797873282,
+            "sensitive_data_requested": 0.9192059067318614
+          },
+          "brier": {
+            "classification": 0.0473988351253084,
+            "industry": 1.1717563673746343,
+            "urgent_action": 0.005519406097962091,
+            "sentiment": 1.9846393828355982,
+            "requested_action": 0.006283753730488809,
+            "multiple_actions": 1.7298119248810675,
+            "message_hook": 1.807732456242009,
+            "sensitive_data_requested": 0.013055371014041351
+          }
+        },
+        {
+          "id": "sms_job_onboarding_fee",
+          "expected": {
+            "classification": "suspected_scam",
+            "industry": "employment",
+            "urgent_action": true,
+            "sentiment": "happy",
+            "requested_action": "pay_or_transfer",
+            "multiple_actions": false,
+            "message_hook": "job_or_investment",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "suspected_scam",
+              "confidence": 0.6284466723496827,
+              "probabilities": {
+                "legitimate": 0.2449818165203506,
+                "marketing": 0.0027204019131944106,
+                "suspected_scam": 0.7522977815664551
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "retail_ecommerce",
+              "confidence": 0.12323227064154282,
+              "probabilities": {
+                "banking_finance": 0.08773636918376944,
+                "retail_ecommerce": 0.21090904357738854,
+                "shipping_logistics": 0.0010111721424031622,
+                "government_public_services": 0.01861832929435284,
+                "technology_telecom": 0.20851868468392923,
+                "healthcare": 0.017780649777202416,
+                "employment": 0.19243562832644368,
+                "travel_hospitality": 0.06219292723555224,
+                "other": 0.19926615311061643,
+                "unclear": 0.0015310426683420235
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.6064392770576534
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9888997261778861,
+              "probabilities": {
+                "happy": 0.004865290928609559,
+                "neutral": 0.002534891619466309,
+                "sad": 0.992599817451924
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "reply_or_contact",
+              "confidence": 0.3554634504551626,
+              "probabilities": {
+                "no_action": 0.02361062726441892,
+                "reply_or_contact": 0.40917482958389906,
+                "click_or_scan": 4.2569442832519425e-05,
+                "sign_in_or_verify": 0.0004679007559918047,
+                "share_sensitive_info_or_documents": 0.29030616726679853,
+                "pay_or_transfer": 0.05008265993102367,
+                "purchase_or_claim": 0.002345289605888081,
+                "open_or_download_attachment": 0.00030386025398202387,
+                "install_or_grant_access": 0.0006752939479644279,
+                "approve_login_or_transaction": 0.19446565631917023,
+                "update_account_or_delivery_details": 0.00037322733711966927,
+                "other_or_unclear": 0.028151918290911106
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9230672068727481
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.7977422623434001,
+              "probabilities": {
+                "account_or_payment_problem": 0.04814254992160835,
+                "delivery_or_order_update": 0.0002633502019728761,
+                "invoice_or_debt": 0.032745565066030914,
+                "prize_refund_or_gift": 0.8179680361090601,
+                "government_or_legal_matter": 0.000642291600109395,
+                "job_or_investment": 0.0891125787509312,
+                "tech_support_or_subscription": 0.00011216863629976792,
+                "relationship_or_emergency": 0.002234837709770121,
+                "sale_or_promotion": 0.008716437710847706,
+                "none_or_other_unclear": 6.218429336954762e-05
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.5257064934416427
+            }
+          },
+          "inference_ms": 2260.1352089550346,
+          "matches": {
+            "classification": true,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": false,
+            "requested_action": false,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": false
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.7522977815664551,
+            "industry": 0.19243562832644368,
+            "urgent_action": 0.6064392770576534,
+            "sentiment": 0.004865290928609559,
+            "requested_action": 0.05008265993102367,
+            "multiple_actions": 0.07693279312725188,
+            "message_hook": 0.0891125787509312,
+            "sensitive_data_requested": 0.47429350655835734
+          },
+          "brier": {
+            "classification": 0.12137988002907962,
+            "industry": 0.7920616716256978,
+            "urgent_action": 0.3097800852858049,
+            "sentiment": 1.9755539124797163,
+            "requested_action": 1.1932179573710193,
+            "multiple_actions": 1.7041061368077135,
+            "message_hook": 1.502259048556813,
+            "sensitive_data_requested": 0.5527346344934158
+          }
+        },
+        {
+          "id": "email_remote_support",
+          "expected": {
+            "classification": "suspected_scam",
+            "industry": "technology_telecom",
+            "urgent_action": true,
+            "sentiment": "sad",
+            "requested_action": "install_or_grant_access",
+            "multiple_actions": true,
+            "message_hook": "tech_support_or_subscription",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "suspected_scam",
+              "confidence": 0.7512749778312732,
+              "probabilities": {
+                "legitimate": 0.16171196203012939,
+                "marketing": 0.004104719415688599,
+                "suspected_scam": 0.8341833185541822
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "other",
+              "confidence": 0.48203273914107536,
+              "probabilities": {
+                "banking_finance": 0.022546310301455,
+                "retail_ecommerce": 0.06666332733794417,
+                "shipping_logistics": 0.00040453675680672465,
+                "government_public_services": 0.009094255611978196,
+                "technology_telecom": 0.23987208632552293,
+                "healthcare": 0.006141415794646354,
+                "employment": 0.09639976726534961,
+                "travel_hospitality": 0.02318767525624227,
+                "other": 0.5338294652269678,
+                "unclear": 0.0018611601230869147
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.8245436192489718
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9876172412109225,
+              "probabilities": {
+                "happy": 0.0070032693039820525,
+                "neutral": 0.0012519032220695645,
+                "sad": 0.9917448274739483
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "share_sensitive_info_or_documents",
+              "confidence": 0.9291651144463581,
+              "probabilities": {
+                "no_action": 0.0038984376321734215,
+                "reply_or_contact": 0.0039277471758371795,
+                "click_or_scan": 3.298419532358584e-05,
+                "sign_in_or_verify": 0.00037482666701460336,
+                "share_sensitive_info_or_documents": 0.9350680215758282,
+                "pay_or_transfer": 0.0004984948433114055,
+                "purchase_or_claim": 9.678750464951807e-07,
+                "open_or_download_attachment": 0.0007005369237095313,
+                "install_or_grant_access": 0.014260626728836974,
+                "approve_login_or_transaction": 0.04009375045964039,
+                "update_account_or_delivery_details": 2.5115796925490604e-05,
+                "other_or_unclear": 0.0011184901263526328
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9396386165772986
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.751435372006475,
+              "probabilities": {
+                "account_or_payment_problem": 0.02661477177339774,
+                "delivery_or_order_update": 0.0002696033414320903,
+                "invoice_or_debt": 0.09510886159689659,
+                "prize_refund_or_gift": 0.7762918348058275,
+                "government_or_legal_matter": 0.001178846459380461,
+                "job_or_investment": 0.09198560541484334,
+                "tech_support_or_subscription": 0.000172036440907857,
+                "relationship_or_emergency": 0.0024911000556656266,
+                "sale_or_promotion": 0.005731341675297054,
+                "none_or_other_unclear": 0.00015599843635169303
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.6389747710551714
+            }
+          },
+          "inference_ms": 2442.4281670944765,
+          "matches": {
+            "classification": true,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": true,
+            "requested_action": false,
+            "multiple_actions": true,
+            "message_hook": false,
+            "sensitive_data_requested": false
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.8341833185541822,
+            "industry": 0.23987208632552293,
+            "urgent_action": 0.8245436192489718,
+            "sentiment": 0.9917448274739483,
+            "requested_action": 0.014260626728836974,
+            "multiple_actions": 0.9396386165772986,
+            "message_hook": 0.000172036440907857,
+            "sensitive_data_requested": 0.3610252289448286
+          },
+          "brier": {
+            "classification": 0.05366277923081937,
+            "industry": 0.8776753118642918,
+            "urgent_action": 0.06156988309249956,
+            "sentiment": 0.00011876091605640389,
+            "requested_action": 1.8476745833145085,
+            "multiple_actions": 0.007286993217404734,
+            "message_hook": 1.6205409032925973,
+            "sensitive_data_requested": 0.8165775160900175
+          }
+        },
+        {
+          "id": "sms_clinic_reminder",
+          "expected": {
+            "classification": "legitimate",
+            "industry": "healthcare",
+            "urgent_action": false,
+            "sentiment": "neutral",
+            "requested_action": "reply_or_contact",
+            "multiple_actions": false,
+            "message_hook": "none_or_other_unclear",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "legitimate",
+              "confidence": 0.9186331893284936,
+              "probabilities": {
+                "legitimate": 0.945755459552329,
+                "marketing": 0.0006846411398252007,
+                "suspected_scam": 0.05355989930784571
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "employment",
+              "confidence": 0.24863573059971866,
+              "probabilities": {
+                "banking_finance": 0.01527612216438824,
+                "retail_ecommerce": 0.11097998790561965,
+                "shipping_logistics": 0.001233222024086753,
+                "government_public_services": 0.04570918522257931,
+                "technology_telecom": 0.03443216780625866,
+                "healthcare": 0.22771180640619143,
+                "employment": 0.3237721575397468,
+                "travel_hospitality": 0.07596103307712378,
+                "other": 0.16355887230376062,
+                "unclear": 0.0013654455502447086
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.13650044266684416
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9812027774982791,
+              "probabilities": {
+                "happy": 0.008160047526576593,
+                "neutral": 0.004371434141237429,
+                "sad": 0.9874685183321861
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "reply_or_contact",
+              "confidence": 0.9289446373033584,
+              "probabilities": {
+                "no_action": 0.0010536496108576637,
+                "reply_or_contact": 0.9348659175280786,
+                "click_or_scan": 8.565142404322616e-05,
+                "sign_in_or_verify": 0.000122693042463661,
+                "share_sensitive_info_or_documents": 1.041585713032701e-05,
+                "pay_or_transfer": 0.00016322909448104192,
+                "purchase_or_claim": 5.978897058414682e-05,
+                "open_or_download_attachment": 0.0004602132480175789,
+                "install_or_grant_access": 4.1233461934214905e-06,
+                "approve_login_or_transaction": 0.02706009072965389,
+                "update_account_or_delivery_details": 0.0007534979028495608,
+                "other_or_unclear": 0.03536072924564685
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8612355477014835
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.8214075981584369,
+              "probabilities": {
+                "account_or_payment_problem": 0.03104370986914191,
+                "delivery_or_order_update": 0.0010489629234530207,
+                "invoice_or_debt": 0.04631316876683993,
+                "prize_refund_or_gift": 0.8392668383425932,
+                "government_or_legal_matter": 0.0008092317734643177,
+                "job_or_investment": 0.008307976878127928,
+                "tech_support_or_subscription": 0.0002467509124428374,
+                "relationship_or_emergency": 0.06111717855732215,
+                "sale_or_promotion": 0.011407693972248901,
+                "none_or_other_unclear": 0.0004384880043657806
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.47765076255833167
+            }
+          },
+          "inference_ms": 2234.7831670194864,
+          "matches": {
+            "classification": true,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": false,
+            "requested_action": true,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.945755459552329,
+            "industry": 0.22771180640619143,
+            "urgent_action": 0.8634995573331559,
+            "sentiment": 0.004371434141237429,
+            "requested_action": 0.9348659175280786,
+            "multiple_actions": 0.13876445229851653,
+            "message_hook": 0.0004384880043657806,
+            "sensitive_data_requested": 0.5223492374416683
+          },
+          "brier": {
+            "classification": 0.005811601715735929,
+            "industry": 0.749607253913327,
+            "urgent_action": 0.037264741696488815,
+            "sentiment": 1.9664369022267754,
+            "requested_action": 0.006227020849065279,
+            "multiple_actions": 1.4834533372493484,
+            "message_hook": 1.7105369472699066,
+            "sensitive_data_requested": 0.4563005019451115
+          }
+        },
+        {
+          "id": "sms_bank_security_code",
+          "expected": {
+            "classification": "suspected_scam",
+            "industry": "banking_finance",
+            "urgent_action": true,
+            "sentiment": "sad",
+            "requested_action": "share_sensitive_info_or_documents",
+            "multiple_actions": false,
+            "message_hook": "account_or_payment_problem",
+            "sensitive_data_requested": true
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "suspected_scam",
+              "confidence": 0.8427466060828722,
+              "probabilities": {
+                "legitimate": 0.10354673574355229,
+                "marketing": 0.0012888602011995925,
+                "suspected_scam": 0.8951644040552481
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "other",
+              "confidence": 0.2810706825412561,
+              "probabilities": {
+                "banking_finance": 0.03175303407598038,
+                "retail_ecommerce": 0.1426110077206181,
+                "shipping_logistics": 0.0005283445416313872,
+                "government_public_services": 0.019695873866388918,
+                "technology_telecom": 0.3076771851509754,
+                "healthcare": 0.012459713693291501,
+                "employment": 0.08968701423469308,
+                "travel_hospitality": 0.03290175507021564,
+                "other": 0.3529636142871305,
+                "unclear": 0.009722457359075098
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.7149515605408311
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9950004793258358,
+              "probabilities": {
+                "happy": 0.0023228924438848646,
+                "neutral": 0.0010101213388911674,
+                "sad": 0.9966669862172238
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "share_sensitive_info_or_documents",
+              "confidence": 0.3810544074851422,
+              "probabilities": {
+                "no_action": 0.049768405425185465,
+                "reply_or_contact": 0.2547382946077736,
+                "click_or_scan": 0.00014951295180289502,
+                "sign_in_or_verify": 0.00067066768103152,
+                "share_sensitive_info_or_documents": 0.43263320686138035,
+                "pay_or_transfer": 0.0050195086185214,
+                "purchase_or_claim": 4.245218697668889e-05,
+                "open_or_download_attachment": 0.0016166459549447985,
+                "install_or_grant_access": 0.002126813002293982,
+                "approve_login_or_transaction": 0.20510848404492274,
+                "update_account_or_delivery_details": 0.00032122263751699955,
+                "other_or_unclear": 0.047804786027649614
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.879476295863788
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.48663872256369045,
+              "probabilities": {
+                "account_or_payment_problem": 0.35769654288512415,
+                "delivery_or_order_update": 0.0004990282249642482,
+                "invoice_or_debt": 0.038754694279688535,
+                "prize_refund_or_gift": 0.5379748503073214,
+                "government_or_legal_matter": 0.0005500451578208072,
+                "job_or_investment": 0.05386029195439601,
+                "tech_support_or_subscription": 0.00029457298764959497,
+                "relationship_or_emergency": 0.0016753023415690626,
+                "sale_or_promotion": 0.008680242119993891,
+                "none_or_other_unclear": 1.4429741472404058e-05
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.5740338294531528
+            }
+          },
+          "inference_ms": 2119.53279201407,
+          "matches": {
+            "classification": true,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": true,
+            "requested_action": true,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.8951644040552481,
+            "industry": 0.03175303407598038,
+            "urgent_action": 0.7149515605408311,
+            "sentiment": 0.9966669862172238,
+            "requested_action": 0.43263320686138035,
+            "multiple_actions": 0.12052370413621205,
+            "message_hook": 0.35769654288512415,
+            "sensitive_data_requested": 0.5740338294531528
+          },
+          "brier": {
+            "classification": 0.021714089820854567,
+            "industry": 1.1868529130639893,
+            "urgent_action": 0.16250522567621498,
+            "sentiment": 1.752515530131662e-05,
+            "requested_action": 0.4336612681488934,
+            "multiple_actions": 1.546957109972578,
+            "message_hook": 0.7064523197645357,
+            "sensitive_data_requested": 0.36289435690069133
+          }
+        },
+        {
+          "id": "email_parcel_tracking",
+          "expected": {
+            "classification": "legitimate",
+            "industry": "shipping_logistics",
+            "urgent_action": false,
+            "sentiment": "neutral",
+            "requested_action": "no_action",
+            "multiple_actions": false,
+            "message_hook": "delivery_or_order_update",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "suspected_scam",
+              "confidence": 0.3140367823800201,
+              "probabilities": {
+                "legitimate": 0.4540222140389538,
+                "marketing": 0.003286597707699471,
+                "suspected_scam": 0.5426911882533467
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "other",
+              "confidence": 0.40872882803134597,
+              "probabilities": {
+                "banking_finance": 0.02495487342052244,
+                "retail_ecommerce": 0.25837114242566994,
+                "shipping_logistics": 0.011731101215913475,
+                "government_public_services": 0.021691593354215253,
+                "technology_telecom": 0.017246052479084888,
+                "healthcare": 0.013302945770096185,
+                "employment": 0.11616504910582946,
+                "travel_hospitality": 0.06665023554471367,
+                "other": 0.4678559452282114,
+                "unclear": 0.0020310614557434055
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.029392874574926914
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.980965377026334,
+              "probabilities": {
+                "happy": 0.008962639513076732,
+                "neutral": 0.0037271091360338814,
+                "sad": 0.9873102513508893
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "no_action",
+              "confidence": 0.864243851043399,
+              "probabilities": {
+                "no_action": 0.875556863456449,
+                "reply_or_contact": 0.10907454827465857,
+                "click_or_scan": 8.729512175809055e-07,
+                "sign_in_or_verify": 4.401431712466355e-06,
+                "share_sensitive_info_or_documents": 1.068404624870002e-05,
+                "pay_or_transfer": 5.356685106672971e-05,
+                "purchase_or_claim": 3.0387333174965013e-06,
+                "open_or_download_attachment": 4.7444566965819496e-05,
+                "install_or_grant_access": 1.2010465538601516e-06,
+                "approve_login_or_transaction": 6.017217454268633e-05,
+                "update_account_or_delivery_details": 0.00036940723921235515,
+                "other_or_unclear": 0.014817799228054663
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.6941208731372184
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.8971097635130876,
+              "probabilities": {
+                "account_or_payment_problem": 0.012365219832502819,
+                "delivery_or_order_update": 0.0019471549512534666,
+                "invoice_or_debt": 0.03474035490902056,
+                "prize_refund_or_gift": 0.9073987871617788,
+                "government_or_legal_matter": 0.0003319943191242897,
+                "job_or_investment": 0.01804190673620374,
+                "tech_support_or_subscription": 9.689784569594718e-05,
+                "relationship_or_emergency": 0.01140768146145534,
+                "sale_or_promotion": 0.013405100700169103,
+                "none_or_other_unclear": 0.0002649020827960139
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.2998858978931426
+            }
+          },
+          "inference_ms": 2430.02400000114,
+          "matches": {
+            "classification": false,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": false,
+            "requested_action": true,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.4540222140389538,
+            "industry": 0.011731101215913475,
+            "urgent_action": 0.9706071254250731,
+            "sentiment": 0.0037271091360338814,
+            "requested_action": 0.875556863456449,
+            "multiple_actions": 0.3058791268627816,
+            "message_hook": 0.0019471549512534666,
+            "sensitive_data_requested": 0.7001141021068574
+          },
+          "brier": {
+            "classification": 0.5926162702952477,
+            "industry": 1.281828612392155,
+            "urgent_action": 0.0017278821515547692,
+            "sentiment": 1.9674215344000419,
+            "requested_action": 0.02760306383583398,
+            "multiple_actions": 0.9636075730495488,
+            "message_hook": 1.8214773634755947,
+            "sensitive_data_requested": 0.17986310351035267
+          }
+        },
+        {
+          "id": "email_utility_bill",
+          "expected": {
+            "classification": "legitimate",
+            "industry": "government_public_services",
+            "urgent_action": false,
+            "sentiment": "neutral",
+            "requested_action": "pay_or_transfer",
+            "multiple_actions": false,
+            "message_hook": "invoice_or_debt",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "legitimate",
+              "confidence": 0.6018868699017693,
+              "probabilities": {
+                "legitimate": 0.7345912466011796,
+                "marketing": 0.005630528451838343,
+                "suspected_scam": 0.2597782249469822
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "employment",
+              "confidence": 0.33869850648455485,
+              "probabilities": {
+                "banking_finance": 0.014268312377438702,
+                "retail_ecommerce": 0.10460930185269249,
+                "shipping_logistics": 0.0028192813661041902,
+                "government_public_services": 0.2360142403076202,
+                "technology_telecom": 0.04145448937914671,
+                "healthcare": 0.06780505964363964,
+                "employment": 0.4048286558360994,
+                "travel_hospitality": 0.04484231589362259,
+                "other": 0.08236995206425375,
+                "unclear": 0.0009883912793824164
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.1288318033566793
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9946140293354404,
+              "probabilities": {
+                "happy": 0.0025012927698480373,
+                "neutral": 0.0010893543398583882,
+                "sad": 0.9964093528902936
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "approve_login_or_transaction",
+              "confidence": 0.5093036069039804,
+              "probabilities": {
+                "no_action": 0.01700659981095575,
+                "reply_or_contact": 0.30619282446320306,
+                "click_or_scan": 2.967082671280231e-05,
+                "sign_in_or_verify": 0.00036715130515477593,
+                "share_sensitive_info_or_documents": 0.0034287356593226373,
+                "pay_or_transfer": 0.012641920522287712,
+                "purchase_or_claim": 0.00022201843697894556,
+                "open_or_download_attachment": 0.0020135055953928362,
+                "install_or_grant_access": 1.4964058194818335e-05,
+                "approve_login_or_transaction": 0.5501949729953153,
+                "update_account_or_delivery_details": 0.006201832763086375,
+                "other_or_unclear": 0.10168580356339497
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.9305675228337195
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.7765610828026018,
+              "probabilities": {
+                "account_or_payment_problem": 0.020699046471142575,
+                "delivery_or_order_update": 0.000539792588427909,
+                "invoice_or_debt": 0.0873384344120247,
+                "prize_refund_or_gift": 0.7989049745223417,
+                "government_or_legal_matter": 0.0008601644039714971,
+                "job_or_investment": 0.06103581663021832,
+                "tech_support_or_subscription": 0.00010116262066152854,
+                "relationship_or_emergency": 0.011553366030107834,
+                "sale_or_promotion": 0.018734981210306922,
+                "none_or_other_unclear": 0.00023226111079702573
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.35869784375140085
+            }
+          },
+          "inference_ms": 2346.742375055328,
+          "matches": {
+            "classification": true,
+            "industry": false,
+            "urgent_action": true,
+            "sentiment": false,
+            "requested_action": false,
+            "multiple_actions": false,
+            "message_hook": false,
+            "sensitive_data_requested": true
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.7345912466011796,
+            "industry": 0.2360142403076202,
+            "urgent_action": 0.8711681966433207,
+            "sentiment": 0.0010893543398583882,
+            "requested_action": 0.012641920522287712,
+            "multiple_actions": 0.06943247716628054,
+            "message_hook": 0.0873384344120247,
+            "sensitive_data_requested": 0.6413021562485992
+          },
+          "brier": {
+            "classification": 0.13795823538796773,
+            "industry": 0.7738277407364902,
+            "urgent_action": 0.03319526711226817,
+            "sentiment": 1.9906603330059354,
+            "requested_action": 1.382028216614623,
+            "multiple_actions": 1.73191182910577,
+            "message_hook": 1.4758396882800855,
+            "sensitive_data_requested": 0.2573282862238087
+          }
+        },
+        {
+          "id": "sms_prize_claim",
+          "expected": {
+            "classification": "suspected_scam",
+            "industry": "retail_ecommerce",
+            "urgent_action": true,
+            "sentiment": "happy",
+            "requested_action": "pay_or_transfer",
+            "multiple_actions": false,
+            "message_hook": "prize_refund_or_gift",
+            "sensitive_data_requested": false
+          },
+          "answers": {
+            "classification": {
+              "type": "choice",
+              "choice": "legitimate",
+              "confidence": 0.40247516003305284,
+              "probabilities": {
+                "legitimate": 0.6016501066887019,
+                "marketing": 0.0029735391792410893,
+                "suspected_scam": 0.395376354132057
+              }
+            },
+            "industry": {
+              "type": "choice",
+              "choice": "retail_ecommerce",
+              "confidence": 0.21119879110226586,
+              "probabilities": {
+                "banking_finance": 0.0617074352792968,
+                "retail_ecommerce": 0.2900789119920393,
+                "shipping_logistics": 0.0003802478642131719,
+                "government_public_services": 0.023845713854682274,
+                "technology_telecom": 0.16666792647858966,
+                "healthcare": 0.0194465342285455,
+                "employment": 0.1347698622838939,
+                "travel_hospitality": 0.034331344064065156,
+                "other": 0.26656684213490256,
+                "unclear": 0.0022051818197716907
+              }
+            },
+            "urgent_action": {
+              "type": "noul",
+              "noul": 0.19943099710282275
+            },
+            "sentiment": {
+              "type": "choice",
+              "choice": "sad",
+              "confidence": 0.9401407130108915,
+              "probabilities": {
+                "happy": 0.038484335493244544,
+                "neutral": 0.0014218558328278103,
+                "sad": 0.9600938086739277
+              }
+            },
+            "requested_action": {
+              "type": "choice",
+              "choice": "share_sensitive_info_or_documents",
+              "confidence": 0.6582791573925416,
+              "probabilities": {
+                "no_action": 0.0069231048365483395,
+                "reply_or_contact": 0.12827591085969747,
+                "click_or_scan": 0.00043539705601623393,
+                "sign_in_or_verify": 0.0009755282516653523,
+                "share_sensitive_info_or_documents": 0.6867558942764965,
+                "pay_or_transfer": 0.016480686396846068,
+                "purchase_or_claim": 0.0005112316477155303,
+                "open_or_download_attachment": 0.0009395925411819522,
+                "install_or_grant_access": 0.0007169111066908572,
+                "approve_login_or_transaction": 0.15376324397974092,
+                "update_account_or_delivery_details": 0.0011089196198669183,
+                "other_or_unclear": 0.003113579427533831
+              }
+            },
+            "multiple_actions": {
+              "type": "noul",
+              "noul": 0.8316619885776854
+            },
+            "message_hook": {
+              "type": "choice",
+              "choice": "prize_refund_or_gift",
+              "confidence": 0.845255381613697,
+              "probabilities": {
+                "account_or_payment_problem": 0.020754659305374033,
+                "delivery_or_order_update": 0.00015297907246139477,
+                "invoice_or_debt": 0.05954938409384347,
+                "prize_refund_or_gift": 0.8607298434523273,
+                "government_or_legal_matter": 0.00016722687505480908,
+                "job_or_investment": 0.0459460358516291,
+                "tech_support_or_subscription": 0.00017309987012892474,
+                "relationship_or_emergency": 0.0004395290823919443,
+                "sale_or_promotion": 0.012031916038652942,
+                "none_or_other_unclear": 5.532635813612462e-05
+              }
+            },
+            "sensitive_data_requested": {
+              "type": "noul",
+              "noul": 0.6717524121259821
+            }
+          },
+          "inference_ms": 2267.6735419081524,
+          "matches": {
+            "classification": false,
+            "industry": true,
+            "urgent_action": false,
+            "sentiment": false,
+            "requested_action": false,
+            "multiple_actions": false,
+            "message_hook": true,
+            "sensitive_data_requested": false
+          },
+          "exact_match": false,
+          "gold_probabilities": {
+            "classification": 0.395376354132057,
+            "industry": 0.2900789119920393,
+            "urgent_action": 0.19943099710282275,
+            "sentiment": 0.038484335493244544,
+            "requested_action": 0.016480686396846068,
+            "multiple_actions": 0.16833801142231464,
+            "message_hook": 0.8607298434523273,
+            "sensitive_data_requested": 0.32824758787401787
+          },
+          "brier": {
+            "classification": 0.7275614459564207,
+            "industry": 0.6269251879529047,
+            "urgent_action": 1.2818214567995612,
+            "sentiment": 1.8462945162198852,
+            "requested_action": 1.4791033958995827,
+            "multiple_actions": 1.38332332648998,
+            "message_hook": 0.025629144325501455,
+            "sensitive_data_requested": 0.9025026063941507
+          }
+        }
+      ]
+    }
+  ]
+}

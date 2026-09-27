@@ -1,0 +1,1343 @@
+{
+  "version": "action-multimodel-selection-v1",
+  "created_at": "2026-09-27T14:19:26.392914+00:00",
+  "dataset_sha256": "0f36d0ac1c4a3b890030d398b512a1a8fb5d57e9300f3b643d5533a08352f100",
+  "selected": "gliner_direct_three",
+  "config": {
+    "kind": "direct",
+    "questions": {
+      "multiple_actions": {
+        "type": "choice",
+        "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+        "criteria": {
+          "zero_tasks": "No recipient task is explicitly requested.",
+          "one_task": "One recipient task is requested, including its steps or alternatives.",
+          "multiple_tasks": "At least two distinct recipient tasks are requested together."
+        }
+      }
+    }
+  },
+  "config_sha256": "47a53adcf948e132785fd162eead08f642e411ee1eb7c9ec923222ad3ae58349",
+  "execution_sha256": "314e0b3345003f4ffdc5ffac0ad7bdafb1e3c218eae992ab64287a5cf6a29a9f",
+  "rule": "Maximize weaker-language balanced accuracy, then both-language sum, then fewer missed tasks, then lower recorded positive p50 latency",
+  "development_ranks": {
+    "original": [
+      0.5416666666666666,
+      1.2916666666666665,
+      -5,
+      -44.868562545161694
+    ],
+    "balanced": [
+      0.5833333333333333,
+      1.2916666666666665,
+      -5,
+      -42.4600419937633
+    ],
+    "direct_choice": [
+      0.5416666666666667,
+      1.1666666666666667,
+      -15,
+      -43.09239605208859
+    ],
+    "direct_explicit": [
+      0.5833333333333333,
+      1.2916666666666665,
+      -6,
+      -49.93847955483943
+    ],
+    "direct_three": [
+      0.5416666666666666,
+      1.125,
+      -20,
+      -51.146999991033226
+    ],
+    "target_field": [
+      0.5416666666666666,
+      1.1666666666666665,
+      -3,
+      -343.4866460156627
+    ],
+    "marked_target": [
+      0.45833333333333337,
+      1.0833333333333335,
+      -5,
+      -353.64416654920205
+    ],
+    "marked_compact": [
+      0.4583333333333333,
+      0.9583333333333333,
+      -24,
+      -291.9342294917442
+    ],
+    "gliner_original": [
+      0.5416666666666666,
+      1.0833333333333333,
+      -22,
+      -961.3253755378537
+    ],
+    "gliner_balanced": [
+      0.5833333333333334,
+      1.2083333333333335,
+      -19,
+      -961.3253755378537
+    ],
+    "gliner_direct_choice": [
+      0.6666666666666666,
+      1.375,
+      0,
+      -961.3253755378537
+    ],
+    "gliner_direct_three": [
+      0.75,
+      1.5416666666666665,
+      -1,
+      -961.3253755378537
+    ],
+    "gliner_direct_explicit": [
+      0.5,
+      1.0,
+      -23,
+      -961.3253755378537
+    ],
+    "gliner_three_single": [
+      0.6666666666666666,
+      1.5,
+      -10,
+      -134.249750059098
+    ]
+  },
+  "development_summary": {
+    "original": {
+      "overall": {
+        "total": 48,
+        "correct": 31,
+        "accuracy": 0.6458333333333334,
+        "false_positives": 12,
+        "false_negatives": 5,
+        "agreed": 33,
+        "coverage": 0.6875,
+        "accepted_errors": 10,
+        "rejected_errors": 7,
+        "selective_accuracy": 0.696969696969697,
+        "positive_latency_ms": {
+          "p50": 44.868562545161694,
+          "p95": 62.46541696600616
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 18,
+          "accuracy": 0.75,
+          "false_positives": 4,
+          "false_negatives": 2,
+          "agreed": 18,
+          "coverage": 0.75,
+          "accepted_errors": 4,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.7777777777777778,
+          "positive_latency_ms": {
+            "p50": 52.953770966269076,
+            "p95": 62.760750064626336
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 13,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 8,
+          "false_negatives": 3,
+          "agreed": 15,
+          "coverage": 0.625,
+          "accepted_errors": 6,
+          "rejected_errors": 5,
+          "selective_accuracy": 0.6,
+          "positive_latency_ms": {
+            "p50": 33.25297898845747,
+            "p95": 44.01095805224031
+          }
+        }
+      }
+    },
+    "balanced": {
+      "overall": {
+        "total": 48,
+        "correct": 31,
+        "accuracy": 0.6458333333333334,
+        "false_positives": 12,
+        "false_negatives": 5,
+        "agreed": 32,
+        "coverage": 0.6666666666666666,
+        "accepted_errors": 8,
+        "rejected_errors": 9,
+        "selective_accuracy": 0.75,
+        "positive_latency_ms": {
+          "p50": 42.4600419937633,
+          "p95": 61.00566603709012
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 17,
+          "accuracy": 0.7083333333333334,
+          "false_positives": 3,
+          "false_negatives": 4,
+          "agreed": 20,
+          "coverage": 0.8333333333333334,
+          "accepted_errors": 5,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.75,
+          "positive_latency_ms": {
+            "p50": 50.94802100211382,
+            "p95": 63.285832991823554
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 14,
+          "accuracy": 0.5833333333333334,
+          "false_positives": 9,
+          "false_negatives": 1,
+          "agreed": 12,
+          "coverage": 0.5,
+          "accepted_errors": 3,
+          "rejected_errors": 7,
+          "selective_accuracy": 0.75,
+          "positive_latency_ms": {
+            "p50": 32.8339789994061,
+            "p95": 39.26166601013392
+          }
+        }
+      }
+    },
+    "direct_choice": {
+      "overall": {
+        "total": 48,
+        "correct": 28,
+        "accuracy": 0.5833333333333334,
+        "false_positives": 5,
+        "false_negatives": 15,
+        "agreed": 34,
+        "coverage": 0.7083333333333334,
+        "accepted_errors": 13,
+        "rejected_errors": 7,
+        "selective_accuracy": 0.6176470588235294,
+        "positive_latency_ms": {
+          "p50": 43.09239605208859,
+          "p95": 69.856624933891
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 15,
+          "accuracy": 0.625,
+          "false_positives": 3,
+          "false_negatives": 6,
+          "agreed": 14,
+          "coverage": 0.5833333333333334,
+          "accepted_errors": 4,
+          "rejected_errors": 5,
+          "selective_accuracy": 0.7142857142857143,
+          "positive_latency_ms": {
+            "p50": 58.616666530724615,
+            "p95": 72.74458289612085
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 13,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 2,
+          "false_negatives": 9,
+          "agreed": 20,
+          "coverage": 0.8333333333333334,
+          "accepted_errors": 9,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.55,
+          "positive_latency_ms": {
+            "p50": 32.21816697623581,
+            "p95": 37.96670900192112
+          }
+        }
+      }
+    },
+    "direct_explicit": {
+      "overall": {
+        "total": 48,
+        "correct": 31,
+        "accuracy": 0.6458333333333334,
+        "false_positives": 11,
+        "false_negatives": 6,
+        "agreed": 33,
+        "coverage": 0.6875,
+        "accepted_errors": 10,
+        "rejected_errors": 7,
+        "selective_accuracy": 0.696969696969697,
+        "positive_latency_ms": {
+          "p50": 49.93847955483943,
+          "p95": 68.1418749736622
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 17,
+          "accuracy": 0.7083333333333334,
+          "false_positives": 5,
+          "false_negatives": 2,
+          "agreed": 23,
+          "coverage": 0.9583333333333334,
+          "accepted_errors": 7,
+          "rejected_errors": 0,
+          "selective_accuracy": 0.6956521739130435,
+          "positive_latency_ms": {
+            "p50": 61.42672948772088,
+            "p95": 76.83620799798518
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 14,
+          "accuracy": 0.5833333333333334,
+          "false_positives": 6,
+          "false_negatives": 4,
+          "agreed": 10,
+          "coverage": 0.4166666666666667,
+          "accepted_errors": 3,
+          "rejected_errors": 7,
+          "selective_accuracy": 0.7,
+          "positive_latency_ms": {
+            "p50": 32.93602098710835,
+            "p95": 42.77183406520635
+          }
+        }
+      }
+    },
+    "direct_three": {
+      "overall": {
+        "total": 48,
+        "correct": 27,
+        "accuracy": 0.5625,
+        "false_positives": 1,
+        "false_negatives": 20,
+        "agreed": 31,
+        "coverage": 0.6458333333333334,
+        "accepted_errors": 12,
+        "rejected_errors": 9,
+        "selective_accuracy": 0.6129032258064516,
+        "positive_latency_ms": {
+          "p50": 51.146999991033226,
+          "p95": 79.89925006404519
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 13,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 1,
+          "false_negatives": 10,
+          "agreed": 8,
+          "coverage": 0.3333333333333333,
+          "accepted_errors": 2,
+          "rejected_errors": 9,
+          "selective_accuracy": 0.75,
+          "positive_latency_ms": {
+            "p50": 69.34472901048139,
+            "p95": 82.32495898846537
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 14,
+          "accuracy": 0.5833333333333334,
+          "false_positives": 0,
+          "false_negatives": 10,
+          "agreed": 23,
+          "coverage": 0.9583333333333334,
+          "accepted_errors": 10,
+          "rejected_errors": 0,
+          "selective_accuracy": 0.5652173913043478,
+          "positive_latency_ms": {
+            "p50": 35.47252051066607,
+            "p95": 44.15441700257361
+          }
+        }
+      }
+    },
+    "target_field": {
+      "overall": {
+        "total": 48,
+        "correct": 28,
+        "accuracy": 0.5833333333333334,
+        "false_positives": 17,
+        "false_negatives": 3,
+        "agreed": 24,
+        "coverage": 0.5,
+        "accepted_errors": 8,
+        "rejected_errors": 12,
+        "selective_accuracy": 0.6666666666666666,
+        "positive_latency_ms": {
+          "p50": 343.4866460156627,
+          "p95": 831.313458038494
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 15,
+          "accuracy": 0.625,
+          "false_positives": 9,
+          "false_negatives": 0,
+          "agreed": 18,
+          "coverage": 0.75,
+          "accepted_errors": 6,
+          "rejected_errors": 3,
+          "selective_accuracy": 0.6666666666666666,
+          "positive_latency_ms": {
+            "p50": 494.98447903897613,
+            "p95": 949.6759999310598
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 13,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 8,
+          "false_negatives": 3,
+          "agreed": 6,
+          "coverage": 0.25,
+          "accepted_errors": 2,
+          "rejected_errors": 9,
+          "selective_accuracy": 0.6666666666666666,
+          "positive_latency_ms": {
+            "p50": 217.31752099003643,
+            "p95": 459.631709032692
+          }
+        }
+      }
+    },
+    "marked_target": {
+      "overall": {
+        "total": 48,
+        "correct": 26,
+        "accuracy": 0.5416666666666666,
+        "false_positives": 17,
+        "false_negatives": 5,
+        "agreed": 24,
+        "coverage": 0.5,
+        "accepted_errors": 9,
+        "rejected_errors": 13,
+        "selective_accuracy": 0.625,
+        "positive_latency_ms": {
+          "p50": 353.64416654920205,
+          "p95": 765.8720420440659
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 15,
+          "accuracy": 0.625,
+          "false_positives": 9,
+          "false_negatives": 0,
+          "agreed": 16,
+          "coverage": 0.6666666666666666,
+          "accepted_errors": 5,
+          "rejected_errors": 4,
+          "selective_accuracy": 0.6875,
+          "positive_latency_ms": {
+            "p50": 506.5001039765775,
+            "p95": 788.7462079524994
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 11,
+          "accuracy": 0.4583333333333333,
+          "false_positives": 8,
+          "false_negatives": 5,
+          "agreed": 8,
+          "coverage": 0.3333333333333333,
+          "accepted_errors": 4,
+          "rejected_errors": 9,
+          "selective_accuracy": 0.5,
+          "positive_latency_ms": {
+            "p50": 235.66627100808546,
+            "p95": 426.7535409890115
+          }
+        }
+      }
+    },
+    "marked_compact": {
+      "overall": {
+        "total": 48,
+        "correct": 23,
+        "accuracy": 0.4791666666666667,
+        "false_positives": 1,
+        "false_negatives": 24,
+        "agreed": 27,
+        "coverage": 0.5625,
+        "accepted_errors": 12,
+        "rejected_errors": 13,
+        "selective_accuracy": 0.5555555555555556,
+        "positive_latency_ms": {
+          "p50": 291.9342294917442,
+          "p95": 734.6852079499513
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 12,
+          "accuracy": 0.5,
+          "false_positives": 0,
+          "false_negatives": 12,
+          "agreed": 5,
+          "coverage": 0.20833333333333334,
+          "accepted_errors": 1,
+          "rejected_errors": 11,
+          "selective_accuracy": 0.8,
+          "positive_latency_ms": {
+            "p50": 380.6320625008084,
+            "p95": 825.8949579903856
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 11,
+          "accuracy": 0.4583333333333333,
+          "false_positives": 1,
+          "false_negatives": 12,
+          "agreed": 22,
+          "coverage": 0.9166666666666666,
+          "accepted_errors": 11,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.5,
+          "positive_latency_ms": {
+            "p50": 225.0621040002443,
+            "p95": 570.7260000053793
+          }
+        }
+      }
+    },
+    "gliner_original": {
+      "overall": {
+        "total": 48,
+        "correct": 26,
+        "accuracy": 0.5416666666666666,
+        "false_positives": 0,
+        "false_negatives": 22,
+        "agreed": 37,
+        "coverage": 0.7708333333333334,
+        "accepted_errors": 22,
+        "rejected_errors": 0,
+        "selective_accuracy": 0.40540540540540543,
+        "positive_latency_ms": {
+          "p50": 961.3253755378537,
+          "p95": 1227.6691669831052
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 13,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 0,
+          "false_negatives": 11,
+          "agreed": 20,
+          "coverage": 0.8333333333333334,
+          "accepted_errors": 11,
+          "rejected_errors": 0,
+          "selective_accuracy": 0.45,
+          "positive_latency_ms": {
+            "p50": 961.0131669905968,
+            "p95": 1214.3467500573024
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 13,
+          "accuracy": 0.5416666666666666,
+          "false_positives": 0,
+          "false_negatives": 11,
+          "agreed": 17,
+          "coverage": 0.7083333333333334,
+          "accepted_errors": 11,
+          "rejected_errors": 0,
+          "selective_accuracy": 0.35294117647058826,
+          "positive_latency_ms": {
+            "p50": 981.2324170488864,
+            "p95": 1227.6691669831052
+          }
+        }
+      }
+    },
+    "gliner_balanced": {
+      "overall": {
+        "total": 48,
+        "correct": 29,
+        "accuracy": 0.6041666666666666,
+        "false_positives": 0,
+        "false_negatives": 19,
+        "agreed": 18,
+        "coverage": 0.375,
+        "accepted_errors": 14,
+        "rejected_errors": 5,
+        "selective_accuracy": 0.2222222222222222,
+        "positive_latency_ms": {
+          "p50": 961.3253755378537,
+          "p95": 1227.6691669831052
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 14,
+          "accuracy": 0.5833333333333334,
+          "false_positives": 0,
+          "false_negatives": 10,
+          "agreed": 12,
+          "coverage": 0.5,
+          "accepted_errors": 9,
+          "rejected_errors": 1,
+          "selective_accuracy": 0.25,
+          "positive_latency_ms": {
+            "p50": 961.0131669905968,
+            "p95": 1214.3467500573024
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 15,
+          "accuracy": 0.625,
+          "false_positives": 0,
+          "false_negatives": 9,
+          "agreed": 6,
+          "coverage": 0.25,
+          "accepted_errors": 5,
+          "rejected_errors": 4,
+          "selective_accuracy": 0.16666666666666666,
+          "positive_latency_ms": {
+            "p50": 981.2324170488864,
+            "p95": 1227.6691669831052
+          }
+        }
+      }
+    },
+    "gliner_direct_choice": {
+      "overall": {
+        "total": 48,
+        "correct": 33,
+        "accuracy": 0.6875,
+        "false_positives": 15,
+        "false_negatives": 0,
+        "agreed": 24,
+        "coverage": 0.5,
+        "accepted_errors": 13,
+        "rejected_errors": 2,
+        "selective_accuracy": 0.4583333333333333,
+        "positive_latency_ms": {
+          "p50": 961.3253755378537,
+          "p95": 1227.6691669831052
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 16,
+          "accuracy": 0.6666666666666666,
+          "false_positives": 8,
+          "false_negatives": 0,
+          "agreed": 10,
+          "coverage": 0.4166666666666667,
+          "accepted_errors": 6,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.4,
+          "positive_latency_ms": {
+            "p50": 961.0131669905968,
+            "p95": 1214.3467500573024
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 17,
+          "accuracy": 0.7083333333333334,
+          "false_positives": 7,
+          "false_negatives": 0,
+          "agreed": 14,
+          "coverage": 0.5833333333333334,
+          "accepted_errors": 7,
+          "rejected_errors": 0,
+          "selective_accuracy": 0.5,
+          "positive_latency_ms": {
+            "p50": 981.2324170488864,
+            "p95": 1227.6691669831052
+          }
+        }
+      }
+    },
+    "gliner_direct_three": {
+      "overall": {
+        "total": 48,
+        "correct": 37,
+        "accuracy": 0.7708333333333334,
+        "false_positives": 10,
+        "false_negatives": 1,
+        "agreed": 14,
+        "coverage": 0.2916666666666667,
+        "accepted_errors": 6,
+        "rejected_errors": 5,
+        "selective_accuracy": 0.5714285714285714,
+        "positive_latency_ms": {
+          "p50": 961.3253755378537,
+          "p95": 1227.6691669831052
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 18,
+          "accuracy": 0.75,
+          "false_positives": 6,
+          "false_negatives": 0,
+          "agreed": 5,
+          "coverage": 0.20833333333333334,
+          "accepted_errors": 3,
+          "rejected_errors": 3,
+          "selective_accuracy": 0.4,
+          "positive_latency_ms": {
+            "p50": 961.0131669905968,
+            "p95": 1214.3467500573024
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 19,
+          "accuracy": 0.7916666666666666,
+          "false_positives": 4,
+          "false_negatives": 1,
+          "agreed": 9,
+          "coverage": 0.375,
+          "accepted_errors": 3,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.6666666666666666,
+          "positive_latency_ms": {
+            "p50": 981.2324170488864,
+            "p95": 1227.6691669831052
+          }
+        }
+      }
+    },
+    "gliner_direct_explicit": {
+      "overall": {
+        "total": 48,
+        "correct": 24,
+        "accuracy": 0.5,
+        "false_positives": 1,
+        "false_negatives": 23,
+        "agreed": 16,
+        "coverage": 0.3333333333333333,
+        "accepted_errors": 13,
+        "rejected_errors": 11,
+        "selective_accuracy": 0.1875,
+        "positive_latency_ms": {
+          "p50": 961.3253755378537,
+          "p95": 1227.6691669831052
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 12,
+          "accuracy": 0.5,
+          "false_positives": 1,
+          "false_negatives": 11,
+          "agreed": 11,
+          "coverage": 0.4583333333333333,
+          "accepted_errors": 8,
+          "rejected_errors": 4,
+          "selective_accuracy": 0.2727272727272727,
+          "positive_latency_ms": {
+            "p50": 961.0131669905968,
+            "p95": 1214.3467500573024
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 12,
+          "accuracy": 0.5,
+          "false_positives": 0,
+          "false_negatives": 12,
+          "agreed": 5,
+          "coverage": 0.20833333333333334,
+          "accepted_errors": 5,
+          "rejected_errors": 7,
+          "selective_accuracy": 0.0,
+          "positive_latency_ms": {
+            "p50": 981.2324170488864,
+            "p95": 1227.6691669831052
+          }
+        }
+      }
+    },
+    "gliner_three_single": {
+      "overall": {
+        "total": 48,
+        "correct": 36,
+        "accuracy": 0.75,
+        "false_positives": 2,
+        "false_negatives": 10,
+        "agreed": 6,
+        "coverage": 0.125,
+        "accepted_errors": 3,
+        "rejected_errors": 9,
+        "selective_accuracy": 0.5,
+        "positive_latency_ms": {
+          "p50": 134.249750059098,
+          "p95": 184.7572079859674
+        }
+      },
+      "per_language": {
+        "en": {
+          "total": 24,
+          "correct": 20,
+          "accuracy": 0.8333333333333334,
+          "false_positives": 2,
+          "false_negatives": 2,
+          "agreed": 4,
+          "coverage": 0.16666666666666666,
+          "accepted_errors": 2,
+          "rejected_errors": 2,
+          "selective_accuracy": 0.5,
+          "positive_latency_ms": {
+            "p50": 127.90756247704849,
+            "p95": 174.49087498243898
+          }
+        },
+        "fr": {
+          "total": 24,
+          "correct": 16,
+          "accuracy": 0.6666666666666666,
+          "false_positives": 0,
+          "false_negatives": 8,
+          "agreed": 2,
+          "coverage": 0.08333333333333333,
+          "accepted_errors": 1,
+          "rejected_errors": 7,
+          "selective_accuracy": 0.5,
+          "positive_latency_ms": {
+            "p50": 144.20300046913326,
+            "p95": 184.7572079859674
+          }
+        }
+      }
+    }
+  },
+  "development_promotion": {
+    "per_language": {
+      "en": {
+        "candidate": {
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75
+        },
+        "reference": {
+          "recall": 0.6666666666666666,
+          "specificity": 0.75,
+          "balanced_accuracy": 0.7083333333333333
+        },
+        "balanced_accuracy_preserved": true,
+        "positive_recall_preserved": true
+      },
+      "fr": {
+        "candidate": {
+          "recall": 0.9166666666666666,
+          "specificity": 0.6666666666666666,
+          "balanced_accuracy": 0.7916666666666666
+        },
+        "reference": {
+          "recall": 0.9166666666666666,
+          "specificity": 0.25,
+          "balanced_accuracy": 0.5833333333333333
+        },
+        "balanced_accuracy_preserved": true,
+        "positive_recall_preserved": true
+      }
+    },
+    "weaker_language_improved": true,
+    "passes": true
+  },
+  "heldout_used": false,
+  "comparator_hashes": {
+    "original": "fd4eb1c742f9b1116cdab44ea5c162f8844f42b216f85446c4696e6aa9f12b21",
+    "balanced": "1688874f55dc9495ba224907470da02f4b537c4f4b462cacba04f3b753db675d"
+  },
+  "development_model": {
+    "backend": "laya",
+    "model": "laya",
+    "requested_device": "mps",
+    "devices": {
+      "english": "mps",
+      "multilingual": "mps"
+    },
+    "checkpoints": {
+      "english": {
+        "repo": "convaiinnovations/laya",
+        "subfolder": null,
+        "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/dd/dd8562d713759821a0bc049e79abd09e5817d218d18fa51478ad16986d018764",
+        "weights_bytes": 842609210,
+        "device": "mps",
+        "dtype": "torch.float16",
+        "amp_enabled": true,
+        "mps_amp_min_rows": 10000,
+        "temperature_raw": [
+          1.6369030475616455,
+          1.2514300346374512,
+          1.983399510383606
+        ],
+        "temperature": [
+          1.6369030475616455,
+          1.2514300346374512,
+          1.983399510383606
+        ],
+        "temperature_by_options_raw": {
+          "choice:3-5": 1.7601518630981445,
+          "choice:6-10": 1.0000158548355103,
+          "score:3-5": 1.2514300346374512,
+          "noul:2": 1.983399510383606,
+          "choice:11+": 0.10058280825614929,
+          "choice:2": 1.9063563346862793
+        },
+        "temperature_by_options": {
+          "choice:3-5": 1.7601518630981445,
+          "choice:6-10": 1.0000158548355103,
+          "score:3-5": 1.2514300346374512,
+          "noul:2": 1.983399510383606,
+          "choice:11+": 0.5,
+          "choice:2": 1.9063563346862793
+        },
+        "config": {
+          "encoder": "answerdotai/ModernBERT-large",
+          "head_layers": 2,
+          "max_len": 512,
+          "head_max_len": 192,
+          "max_prefixes": 6,
+          "act_costs": {
+            "escalate": 0.5
+          },
+          "cost_wrong_act": 3.0,
+          "amp_dtype": "bf16",
+          "model_name": "rl-agent",
+          "temperature": [
+            1.6369030475616455,
+            1.2514300346374512,
+            1.983399510383606
+          ],
+          "temperature_by_options": {
+            "choice:3-5": 1.7601518630981445,
+            "choice:6-10": 1.0000158548355103,
+            "score:3-5": 1.2514300346374512,
+            "noul:2": 1.983399510383606,
+            "choice:11+": 0.10058280825614929,
+            "choice:2": 1.9063563346862793
+          },
+          "training": {
+            "updates": 7313,
+            "epochs_completed": 1,
+            "hours": 1.96,
+            "world_size": 1,
+            "fine_tuned_from_checkpoint": true
+          }
+        }
+      },
+      "multilingual": {
+        "repo": "convaiinnovations/laya",
+        "subfolder": "multilingual",
+        "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/53/53499790a05bdabd4023a797e9e2776d39efd3bac72d6ddaed70495da40c6eb0",
+        "weights_bytes": 643835514,
+        "device": "mps",
+        "dtype": "torch.float16",
+        "amp_enabled": true,
+        "mps_amp_min_rows": 10000,
+        "temperature_raw": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "temperature": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "temperature_by_options_raw": {},
+        "temperature_by_options": {},
+        "config": {
+          "encoder": "jhu-clsp/mmBERT-base",
+          "head_layers": 2,
+          "max_len": 1024,
+          "head_max_len": 256,
+          "max_prefixes": 6,
+          "act_costs": {
+            "escalate": 0.5
+          },
+          "cost_wrong_act": 3.0,
+          "amp_dtype": "bf16",
+          "model_name": "rl-agent",
+          "temperature": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "temperature_by_options": {},
+          "training": {
+            "updates": 15987,
+            "epochs_completed": 4,
+            "hours": 4.97,
+            "world_size": 1,
+            "fine_tuned_from_checkpoint": false
+          }
+        }
+      }
+    },
+    "torch_threads": 2
+  },
+  "development_packages": {
+    "laya": "0.3.20",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "numpy": "1.26.4"
+  },
+  "selected_runtime": {
+    "model": {
+      "backend": "gliner",
+      "model": "fastino/GLiNER2.5-Decide",
+      "revision": null,
+      "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+      "device": "mps",
+      "requested_device": "mps",
+      "schema_mode": "all_heads_one_pass",
+      "temperature": 1.0,
+      "input_token_limit": 4096,
+      "runtime_commit": "55656fbfa01d3d4a77485e1a1eeeaf682990ccdf",
+      "torch_threads": 2,
+      "checkpoints": {
+        "snapshot": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/snapshots/7ee5da4c2415e32259bcdc0b1a7367c32ce8d6f6",
+        "files": {
+          "config.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/b6cb696d01e64a2a1389be0e7eaa03cda538e763",
+            "bytes": 594,
+            "sha256": "e748e5b80575471c91b3f0dd00f513ba58242544fcb7e1236e0021e61abd7673"
+          },
+          "model.safetensors": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/40a5a23ff860dc3dff426cecd1048cacdd29c648c96db209dad818e9686dc997",
+            "bytes": 1945828140
+          },
+          "special_tokens_map.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/4f5d30b2c191a6fe27a92901a543cfad1f9832ab",
+            "bytes": 2414,
+            "sha256": "84ea70143f533d7e99b393d87f20010887a9ac2cba955828ef313886e4e83f4f"
+          },
+          "tokenizer.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/846fee96bd81469a49d54a6e37909cf2070a8833",
+            "bytes": 8333952,
+            "sha256": "3ad87d9ffe669147063e70850927dd2da90249e2acc5c8527f1eb65df467bcc8"
+          },
+          "tokenizer_config.json": {
+            "resolved": "/Users/sol/.cache/huggingface/hub/models--fastino--GLiNER2.5-Decide/blobs/eaa0e9bae635e8571f2501ade39b3be479d3fa0f",
+            "bytes": 3356,
+            "sha256": "323199a4e946039410899f3779f2aa3eaef1500213c512727ad0f623d4f21309"
+          }
+        }
+      },
+      "parameter_dtype": "torch.float32"
+    },
+    "packages": {
+      "gliner2": "2.0.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6",
+      "numpy": "1.26.4"
+    }
+  },
+  "sources": {
+    "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json": "5603980f512f88c098f418759faa3a773898a2ad5d42430ee14d551ba551455e",
+    "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json": "eafa4ebccf45e6c873ab9b5f2b92ab55c3f93a0ab1e80e558371e7cfb09ee520",
+    "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-single-development-v1.json": "1fa160d3c3a471f486d75f3741ec8295cf70937a5099f82dcd1eda6efcc96236"
+  },
+  "configs": {
+    "original": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "balanced": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "direct_choice": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "single_or_none": "Zero or one independent recipient operation is requested.",
+            "multiple": "At least two independent recipient operations are requested together."
+          }
+        }
+      }
+    },
+    "direct_explicit": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "true": "Two or more independent tasks are requested together.",
+            "false": "At most one independent task is requested."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "direct_three": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+          "criteria": {
+            "zero_tasks": "No recipient task is explicitly requested.",
+            "one_task": "One recipient task is requested, including its steps or alternatives.",
+            "multiple_tasks": "At least two distinct recipient tasks are requested together."
+          }
+        }
+      }
+    },
+    "target_field": {
+      "kind": "pipeline",
+      "marked": false,
+      "gate": {
+        "request": {
+          "type": "choice",
+          "instructions": "Classify only target_span, using the complete source to interpret shared verbs, negation and conditions. Does the quoted source span explicitly request a concrete recipient operation? Use the full message to interpret shared verbs and conditions. Count directives, invitations and optional opt-outs. Exclude mere availability, factual statements, negated requests, promised rewards and sender operations.",
+          "criteria": {
+            "not_requested": "Information, absence of action, availability, sender activity or promised reward.",
+            "requested": "A concrete recipient operation explicitly requested or invited, including an opt-out."
+          }
+        }
+      },
+      "pair": {
+        "relationship": {
+          "type": "choice",
+          "instructions": "Judge only target_1 and target_2 in the complete source. Judge the relationship of the two quoted spans in the full message. Call then install are separate tasks. Click to pay, reply with data, multiple fields, and buy/send a voucher to pay are one task. Optional opt-outs count; advertising alone is not a purchase request.",
+          "criteria": {
+            "independent_together": "Two distinct recipient operations are both requested.",
+            "same_task_steps": "Steps, transport, fields or methods of the same recipient task.",
+            "alternatives": "Either operation may be done; both are not requested together.",
+            "unsupported": "At least one operation is not actually requested or applicable.",
+            "unclear": "The relationship cannot be resolved from the message."
+          }
+        }
+      }
+    },
+    "marked_target": {
+      "kind": "pipeline",
+      "marked": true,
+      "gate": {
+        "request": {
+          "type": "choice",
+          "instructions": "Classify only target_span, using the complete source to interpret shared verbs, negation and conditions. Does the quoted source span explicitly request a concrete recipient operation? Use the full message to interpret shared verbs and conditions. Count directives, invitations and optional opt-outs. Exclude mere availability, factual statements, negated requests, promised rewards and sender operations.",
+          "criteria": {
+            "not_requested": "Information, absence of action, availability, sender activity or promised reward.",
+            "requested": "A concrete recipient operation explicitly requested or invited, including an opt-out."
+          }
+        }
+      },
+      "pair": {
+        "relationship": {
+          "type": "choice",
+          "instructions": "Judge only target_1 and target_2 in the complete source. Judge the relationship of the two quoted spans in the full message. Call then install are separate tasks. Click to pay, reply with data, multiple fields, and buy/send a voucher to pay are one task. Optional opt-outs count; advertising alone is not a purchase request.",
+          "criteria": {
+            "independent_together": "Two distinct recipient operations are both requested.",
+            "same_task_steps": "Steps, transport, fields or methods of the same recipient task.",
+            "alternatives": "Either operation may be done; both are not requested together.",
+            "unsupported": "At least one operation is not actually requested or applicable.",
+            "unclear": "The relationship cannot be resolved from the message."
+          }
+        }
+      }
+    },
+    "marked_compact": {
+      "kind": "pipeline",
+      "marked": true,
+      "gate": {
+        "request": {
+          "type": "choice",
+          "instructions": "Classify only target_span in the message. Use surrounding text for the actor, shared verb, condition and negation. Is the recipient explicitly asked or invited to perform its operation? Optional opt-outs count. Facts, sender activity, promised results, available features and negated operations are not requests. A shared directive may apply to target_span.",
+          "criteria": {
+            "requested": "The target expresses an operation explicitly requested of the recipient.",
+            "not_requested": "The target does not express a requested recipient operation."
+          }
+        }
+      },
+      "pair": {
+        "relationship": {
+          "type": "choice",
+          "instructions": "Judge only target_1 and target_2 in the full message. Both must be requested recipient operations. Call then install are distinct tasks. Click to pay, reply with data, fields in one submission and buy/send a voucher for payment are parts of one task. Either/or choices are alternatives. Optional opt-outs count as requests.",
+          "criteria": {
+            "unsupported": "At least one passage does not express a requested recipient operation.",
+            "one_task_or_alternative": "Both are requested, but are parts of one task or alternatives.",
+            "independent_together": "Both are requested and constitute distinct recipient tasks."
+          }
+        }
+      }
+    },
+    "gliner_original": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "gliner_balanced": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "gliner_direct_choice": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "single_or_none": "Zero or one independent recipient operation is requested.",
+            "multiple": "At least two independent recipient operations are requested together."
+          }
+        }
+      }
+    },
+    "gliner_direct_three": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+          "criteria": {
+            "zero_tasks": "No recipient task is explicitly requested.",
+            "one_task": "One recipient task is requested, including its steps or alternatives.",
+            "multiple_tasks": "At least two distinct recipient tasks are requested together."
+          }
+        }
+      }
+    },
+    "gliner_direct_explicit": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "true": "Two or more independent tasks are requested together.",
+            "false": "At most one independent task is requested."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "gliner_three_single": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+          "criteria": {
+            "zero_tasks": "No recipient task is explicitly requested.",
+            "one_task": "One recipient task is requested, including its steps or alternatives.",
+            "multiple_tasks": "At least two distinct recipient tasks are requested together."
+          }
+        }
+      },
+      "head_key": "gliner_direct_three",
+      "execution": "single_head"
+    }
+  },
+  "source_by_policy": {
+    "original": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "balanced": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "direct_choice": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "direct_explicit": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "direct_three": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "target_field": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "marked_target": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "marked_compact": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-development-v1.json",
+    "gliner_original": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+    "gliner_balanced": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+    "gliner_direct_choice": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+    "gliner_direct_three": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+    "gliner_direct_explicit": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-development-v1.json",
+    "gliner_three_single": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/results/action-improvement-gliner-single-development-v1.json"
+  },
+  "selection_dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+  "assessment_source_sha256": "5e3f37d2e261d144bacc52d917b01e8d1b89d4d8b7de75b761571a1c5e2d8f7d",
+  "assessment": "Fresh reviewed mixed-context test; fixed before inference"
+}

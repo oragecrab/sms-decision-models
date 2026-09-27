@@ -1,5 +1,10 @@
 # Base evaluation label review
 
+The review below is historical. The five rubric boundaries are now resolved in
+[annotation rubric v1](../docs/ANNOTATION_RUBRIC.md), with a full paired review
+and six corrected values in `base_eval_v4.jsonl`. v1/v2/v3 labels and historical
+reports remain unchanged.
+
 Reviewed on 2026-09-26 against `src/system_one_models/questions.py`, with an
 independent Astra subagent using high reasoning. All 88 expected values were
 reviewed from the message text and question definitions, independently of model

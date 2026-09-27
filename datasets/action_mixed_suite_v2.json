@@ -1,0 +1,726 @@
+{
+  "version": "action-mixed-holdout-v2-author-draft",
+  "method": "New sealed synthetic heldout scenarios authored before inference against docs/ANNOTATION_RUBRIC.md. Balanced independently in suspicious and routine strata; each scenario has English/French translations. Author labels and rationales pending independent review. No model outputs or question definitions used for authoring.",
+  "scenarios": [
+    {
+      "id": "sus_m01_scoreboard_override",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Pay the rating reinstatement charge",
+        "Upload a photograph of an identity document"
+      ],
+      "rationale": "Payment and a separately submitted identity document are independent.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Rating Override Office",
+          "body": "Your chess rating will be erased tonight unless this review is completed. Pay the reinstatement charge at rating-review.example/pay. Also upload a photograph of your identity document at rating-review.example/id.",
+          "subject": "Your chess rating will disappear"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Rating Override Office",
+          "body": "Votre classement aux échecs sera effacé ce soir si cette vérification n'est pas terminée. Réglez les frais de rétablissement sur rating-review.example/pay. Téléversez également une photographie de votre pièce d'identité sur rating-review.example/id.",
+          "subject": "Votre classement va disparaître"
+        }
+      }
+    },
+    {
+      "id": "sus_m02_manuscript_tool",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Install the manuscript checker",
+        "Email the unpublished manuscript"
+      ],
+      "rationale": "Installing software and separately sending a document are independent.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Rapid Journal Acceptance",
+          "body": "Congratulations: your paper has guaranteed acceptance. Install our manuscript checker from journal-ready.example/tool, then email your unpublished manuscript to the address shown in the acceptance portal.",
+          "subject": "Guaranteed publication"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Rapid Journal Acceptance",
+          "body": "Félicitations : votre article est assuré d'être accepté. Installez notre outil de vérification des manuscrits depuis journal-ready.example/tool, puis envoyez votre manuscrit inédit par courriel à l'adresse indiquée dans le portail d'acceptation.",
+          "subject": "Publication garantie"
+        }
+      }
+    },
+    {
+      "id": "sus_m03_two_broker_transfers",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Transfer the reservation deposit to the broker",
+        "Transfer a separate administration fee to the listing agent"
+      ],
+      "rationale": "Two distinct transfers to different recipients; neither is a payment method for the other.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Private Mooring Broker",
+          "body": "Last private berth available. Transfer the reservation deposit to the broker and a separate administration fee to the listing agent. Both transfers are required today; see mooring-priority.example/accounts."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Private Mooring Broker",
+          "body": "Dernier emplacement privé disponible. Virez l'acompte de réservation au courtier et des frais administratifs distincts à l'agent chargé de l'annonce. Les deux virements sont exigés aujourd'hui ; consultez mooring-priority.example/accounts."
+        }
+      }
+    },
+    {
+      "id": "sus_m04_call_camera_access",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Upload the private room photograph",
+        "Disable automatic security updates"
+      ],
+      "rationale": "Separate disclosure and device setting change, neither a navigation step.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Express Exam Clearance",
+          "body": "Your exam access is suspended. Upload a photograph of your private study room at exam-clearance.example/room. Also disable automatic security updates on your computer so our examiner will not be interrupted. Do both immediately.",
+          "subject": "Exam access suspended"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Express Exam Clearance",
+          "body": "Votre accès à l'examen est suspendu. Téléversez une photographie de votre salle d'étude privée sur exam-clearance.example/room. Désactivez également les mises à jour de sécurité automatiques de votre ordinateur afin que notre examinateur ne soit pas interrompu. Faites les deux immédiatement.",
+          "subject": "Accès à l’examen suspendu"
+        }
+      }
+    },
+    {
+      "id": "sus_m05_license_card_receipt",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Submit the complete card details in the audit form",
+        "Forward the latest licence receipt to the audit inbox"
+      ],
+      "rationale": "Credential disclosure and separate document forwarding are two operations.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Drone Certificate Auditor",
+          "body": "Final warning: your drone certificate is flagged. Submit your card number, expiry date and security code together in our audit form. Separately, forward your latest licence receipt to our audit inbox.",
+          "subject": "Final certificate audit"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Drone Certificate Auditor",
+          "body": "Dernier avertissement : votre certificat de pilote de drone est signalé. Envoyez ensemble votre numéro de carte, sa date d'expiration et son code de sécurité dans notre formulaire d'audit. Séparément, transmettez votre dernier reçu de licence à notre boîte de réception d'audit.",
+          "subject": "Dernier audit du certificat"
+        }
+      }
+    },
+    {
+      "id": "sus_m06_donation_optout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Claim the supposed donor bonus",
+        "Reply SILENT to unsubscribe"
+      ],
+      "rationale": "Explicit claim invitation plus optional opt-out.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Donor Rewards Registry",
+          "body": "You have been selected for a donor bonus! Claim it at donor-award.example/claim before midnight. To stop these messages, reply SILENT."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Donor Rewards Registry",
+          "body": "Vous avez été sélectionné pour recevoir un bonus réservé aux donateurs ! Réclamez-le sur donor-award.example/claim avant minuit. Pour ne plus recevoir ces messages, répondez SILENT."
+        }
+      }
+    },
+    {
+      "id": "sus_m07_two_permissions",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Approve the new payroll delegate",
+        "Approve a separate file-sharing delegate"
+      ],
+      "rationale": "Independent approvals in separate systems with one shared verb.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Executive Delegation Desk",
+          "body": "The director is unavailable. Approve both the new payroll delegate in the payroll console and a separate file-sharing delegate in the document console. These are unrelated permissions; approve both now.",
+          "subject": "Urgent delegated access"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Executive Delegation Desk",
+          "body": "La direction est indisponible. Approuvez la nouvelle délégation dans la console de paie et une délégation distincte de partage de fichiers dans la console documentaire. Ces autorisations sont indépendantes ; approuvez les deux maintenant.",
+          "subject": "Accès délégués urgents"
+        }
+      }
+    },
+    {
+      "id": "sus_m08_leak_clearance",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Delete the local complaint archive",
+        "Submit an electronic signature on the waiver"
+      ],
+      "rationale": "Two distinct operations even though framed as one clearance process.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Confidential Reputation Service",
+          "body": "We found complaints linked to your name. To avoid public disclosure, delete your local complaint archive and submit your electronic signature on our waiver at reputation-clearance.example/waiver. Both actions are necessary.",
+          "subject": "Avoid public disclosure"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Confidential Reputation Service",
+          "body": "Nous avons trouvé des plaintes associées à votre nom. Pour éviter leur divulgation publique, supprimez votre archive locale des plaintes et apposez votre signature électronique sur notre décharge à reputation-clearance.example/waiver. Les deux actions sont nécessaires.",
+          "subject": "Évitez une divulgation publique"
+        }
+      }
+    },
+    {
+      "id": "sus_s01_router_passphrase",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Submit the router administrator password"
+      ],
+      "rationale": "Reply/upload transport are not additional tasks for one secret submission.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Wireless Compliance Team",
+          "body": "Your home network may be cut off. Open wireless-check.example/form, enter your router administrator password, and press Send so we can validate it. Do this immediately."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Wireless Compliance Team",
+          "body": "Votre réseau domestique risque d'être coupé. Ouvrez wireless-check.example/form, saisissez le mot de passe d'administration de votre routeur et appuyez sur Envoyer pour que nous puissions le vérifier. Faites-le immédiatement."
+        }
+      }
+    },
+    {
+      "id": "sus_s02_two_codes_one_form",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Submit both security codes in one verification form"
+      ],
+      "rationale": "Two sensitive fields in one submission constitute one task.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Emergency Vault Recovery",
+          "body": "An emergency vault recovery has started. Submit your archive recovery code and your signing recovery code together in the same verification form at vault-urgent.example/check. Both fields must be filled before submitting the form.",
+          "subject": "Two recovery codes needed"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Emergency Vault Recovery",
+          "body": "Une récupération d'urgence du coffre d'archives a commencé. Envoyez votre code de récupération des archives et votre code de récupération de signature ensemble dans le même formulaire de vérification sur vault-urgent.example/check. Les deux champs doivent être remplis avant l'envoi du formulaire.",
+          "subject": "Deux codes de récupération nécessaires"
+        }
+      }
+    },
+    {
+      "id": "sus_s03_fake_inspector_choice",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Choose online or telephone payment of the charge"
+      ],
+      "rationale": "Alternative payment routes for the same charge, not both tasks.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Food Stall Inspection Desk",
+          "body": "Your market stall will be shut down today. Either pay the inspection charge at stall-release.example or call our payment desk to pay it by phone. Choose one route, not both."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Food Stall Inspection Desk",
+          "body": "Votre stand de marché sera fermé aujourd'hui. Réglez les frais d'inspection sur stall-release.example ou appelez notre service de paiement pour les régler par téléphone. Choisissez une seule méthode, pas les deux."
+        }
+      }
+    },
+    {
+      "id": "sus_s04_fake_story_only",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Suspicious alarming statements and link alone do not request an action.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Private Surveillance Bulletin",
+          "body": "We hold a confidential report about your vehicle. Copies are available at vehicle-secret.example/report. The report will be public tomorrow. This notice requests no response or other action.",
+          "subject": "A report about your vehicle"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Private Surveillance Bulletin",
+          "body": "Nous détenons un rapport confidentiel concernant votre véhicule. Des copies sont disponibles sur vehicle-secret.example/report. Le rapport sera public demain. Cet avis ne demande aucune réponse ni aucune autre démarche.",
+          "subject": "Un rapport sur votre véhicule"
+        }
+      }
+    },
+    {
+      "id": "sus_s05_one_remote_permission",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Grant remote access through the helper app"
+      ],
+      "rationale": "Opening app settings and toggling permission are steps of one grant.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Studio Recovery Desk",
+          "body": "Your recording files are at risk. Open our helper app, go to Permissions, and enable Remote Control to let our operator recover them. No separate call or payment is requested."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Studio Recovery Desk",
+          "body": "Vos fichiers d'enregistrement sont en danger. Ouvrez notre application d'assistance, accédez aux autorisations et activez Contrôle à distance pour permettre à notre opérateur de les récupérer. Aucun appel ni paiement distinct n'est demandé."
+        }
+      }
+    },
+    {
+      "id": "sus_s06_optout_only_claim",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Reply EXIT to stop messages"
+      ],
+      "rationale": "Advertised reward availability not explicit claim invitation; only opt-out task.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Accredited Benefit Finder",
+          "body": "A secret cash allowance is available in your name today. More details: allowance-secret.example. Reply EXIT to stop these messages."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Accredited Benefit Finder",
+          "body": "Une allocation secrète en espèces est disponible à votre nom aujourd'hui. Détails : allowance-secret.example. Répondez EXIT pour ne plus recevoir ces messages."
+        }
+      }
+    },
+    {
+      "id": "sus_s07_negated_dispatch",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Upload the access-badge image"
+      ],
+      "rationale": "Prohibited call and payment must not count beside one upload.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Factory Badge Reactivation",
+          "body": "Upload an image of your access badge to badge-rescue.example now or the badge will be disabled. Do not contact the site manager and do not pay the usual reception fee; we are handling the case privately.",
+          "subject": "Immediate badge review"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Factory Badge Reactivation",
+          "body": "Téléversez une image de votre badge d'accès sur badge-rescue.example maintenant, sinon le badge sera désactivé. Ne contactez pas le responsable du site et ne payez pas les frais habituels de l'accueil ; nous traitons le dossier en privé.",
+          "subject": "Vérification immédiate du badge"
+        }
+      }
+    },
+    {
+      "id": "sus_s08_claim_ship_factual",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Pay the document release charge"
+      ],
+      "rationale": "Sender promise and timing are not a second recipient operation.",
+      "risk_stratum": "suspicious",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Express Patent Release",
+          "body": "Pay the document release charge at patent-express.example/payment. Once you pay, we will print your certificate, ship it tomorrow and register it in our database. No additional task is required from you.",
+          "subject": "Patent release fee"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Express Patent Release",
+          "body": "Réglez les frais de délivrance du document sur patent-express.example/payment. Une fois le paiement reçu, nous imprimerons votre certificat, l'expédierons demain et l'enregistrerons dans notre base de données. Aucune autre démarche ne vous est demandée.",
+          "subject": "Frais de délivrance du brevet"
+        }
+      }
+    },
+    {
+      "id": "rou_m01_two_mechanisms",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Reserve a kiln firing slot",
+        "Complete the glaze ingredients questionnaire"
+      ],
+      "rationale": "Separate reservation and technical questionnaire.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Community Kiln",
+          "body": "Reserve a kiln firing slot in the calendar. Also complete the separate glaze ingredients questionnaire; reserving a slot does not submit the questionnaire.",
+          "subject": "Firing preparation"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Community Kiln",
+          "body": "Réservez un créneau de cuisson au four dans le calendrier. Remplissez également le questionnaire distinct sur les ingrédients de votre glaçure ; la réservation d'un créneau n'envoie pas le questionnaire.",
+          "subject": "Préparation de la cuisson"
+        }
+      }
+    },
+    {
+      "id": "rou_m02_two_returns",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Return the borrowed projector to the media desk",
+        "Return the borrowed extension cable to the caretaker"
+      ],
+      "rationale": "Two separately requested returns to different recipients, same category.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Residents Film Night",
+          "body": "Please return the borrowed projector to the media desk and the borrowed extension cable to the caretaker. They maintain separate loan records."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Residents Film Night",
+          "body": "Veuillez rapporter le projecteur emprunté au bureau multimédia et la rallonge empruntée au gardien. Ils tiennent des registres de prêt distincts."
+        }
+      }
+    },
+    {
+      "id": "rou_m03_schedule_and_trees",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Cancel the duplicate room reservation",
+        "Shred the obsolete printed guest list"
+      ],
+      "rationale": "Separate cancellation and physical disposal; the second is not a cancellation step.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Civic Debate Society",
+          "body": "Cancel the duplicate room reservation through the booking desk. Also shred the obsolete printed guest list; a corrected list has already been distributed.",
+          "subject": "Duplicate reservation"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Civic Debate Society",
+          "body": "Annulez la réservation de salle en double auprès du bureau des réservations. Détruisez également à la déchiqueteuse l'ancienne liste imprimée des invités ; une liste corrigée a déjà été distribuée.",
+          "subject": "Réservation en double"
+        }
+      }
+    },
+    {
+      "id": "rou_m04_sale_cancel",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Order the lamp kit",
+        "Reply UNSUB to leave the sales list"
+      ],
+      "rationale": "Optional opt-out alongside explicit purchase invitation.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Lamp Makers Guild",
+          "body": "Order the desk-lamp kit from lampguild.example/shop if you would like to join the build-along. Reply UNSUB if you want to leave this sales list."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Lamp Makers Guild",
+          "body": "Commandez le kit de lampe de bureau sur lampguild.example/shop si vous souhaitez participer à l'atelier de montage. Répondez UNSUB si vous souhaitez quitter cette liste commerciale."
+        }
+      }
+    },
+    {
+      "id": "rou_m05_two_archive_updates",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Revoke the departing editor’s voting access",
+        "Export the final ballot results"
+      ],
+      "rationale": "Access revocation and exporting results are distinct operations even in one system.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Local Folklore Archive",
+          "body": "Revoke the departing editor's voting access, then export the final ballot results as a spreadsheet. The results export is required whether or not any access changes are needed.",
+          "subject": "Ballot close-out"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Local Folklore Archive",
+          "body": "Révoquez l'accès au vote de la personne qui quitte la rédaction, puis exportez les résultats définitifs du scrutin dans un tableur. L'exportation des résultats est requise, que des modifications d'accès soient nécessaires ou non.",
+          "subject": "Clôture du scrutin"
+        }
+      }
+    },
+    {
+      "id": "rou_m06_permission_vote",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Grant the curator access to the gallery folder",
+        "Vote for the exhibition title"
+      ],
+      "rationale": "Independent access grant and vote.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Student Photo Collective",
+          "body": "Grant the curator access to your gallery folder. Separately, vote for an exhibition title using the collective’s poll.",
+          "subject": "Exhibition setup"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Student Photo Collective",
+          "body": "Autorisez la personne chargée de l'exposition à accéder à votre dossier de galerie. Séparément, votez pour un titre d'exposition dans le sondage du collectif.",
+          "subject": "Préparation de l’exposition"
+        }
+      }
+    },
+    {
+      "id": "rou_m07_receipt_shutdown",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Send the ticket-sales receipt to the treasurer",
+        "Switch off the portable speaker"
+      ],
+      "rationale": "Separate communication and physical operation.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Park Storytelling Crew",
+          "body": "Send the ticket-sales receipt to the treasurer, then switch off the portable speaker before leaving. Both are on the closing checklist."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Park Storytelling Crew",
+          "body": "Envoyez le reçu des ventes de billets à la trésorerie, puis éteignez l'enceinte portable avant de partir. Les deux figurent sur la liste de fermeture."
+        }
+      }
+    },
+    {
+      "id": "rou_m08_applicable_extra",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Assign a mentor to the new club member",
+        "Send the equipment inventory to the insurer"
+      ],
+      "rationale": "Two independent club administration operations with different objects and outcomes.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Amateur Radio Club",
+          "body": "Assign a mentor to the new club member in the membership register. Send our equipment inventory to the insurer as a separate administration item. Neither action depends on the other.",
+          "subject": "Two administration items"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Amateur Radio Club",
+          "body": "Attribuez un mentor au nouveau membre du club dans le registre des adhésions. Envoyez notre inventaire du matériel à l'assureur dans le cadre d'une démarche administrative distincte. Aucune des deux actions ne dépend de l'autre.",
+          "subject": "Deux démarches administratives"
+        }
+      }
+    },
+    {
+      "id": "rou_s01_one_poll",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Submit the one poll about dates and topics"
+      ],
+      "rationale": "Multiple choices within one submitted poll are one task.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Museum Seminar Circle",
+          "body": "Submit the seminar poll with both your preferred date and your preferred topic. These are two questions in the same poll; press Submit once at the end.",
+          "subject": "Next seminar"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Museum Seminar Circle",
+          "body": "Envoyez le sondage du séminaire en indiquant votre date préférée et votre sujet préféré. Ce sont deux questions dans le même sondage ; appuyez une seule fois sur Envoyer à la fin.",
+          "subject": "Prochain séminaire"
+        }
+      }
+    },
+    {
+      "id": "rou_s02_unavailable_extra",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Approve the recorded minutes"
+      ],
+      "rationale": "Quoted earlier directives describe other actors; only approval is requested of recipient.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Archive Trustees",
+          "body": "Please approve these minutes. They record the chair telling the catering team, 'Order snacks and invite the visiting lecturer.' Those instructions were for the catering team, not for you; your sole task is approval of the minutes.",
+          "subject": "Minutes for approval"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Archive Trustees",
+          "body": "Veuillez approuver ce procès-verbal. Il rapporte que la présidence a dit à l'équipe de restauration : « Commandez des collations et invitez la personne qui donnera la conférence. » Ces instructions s'adressaient à l'équipe de restauration, pas à vous ; votre seule tâche est d'approuver le procès-verbal.",
+          "subject": "Procès-verbal à approuver"
+        }
+      }
+    },
+    {
+      "id": "rou_s03_booking_alternatives",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Select one of two rehearsal studios"
+      ],
+      "rationale": "One booking with mutually exclusive room alternatives.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Soundproof Rooms",
+          "body": "Book either Studio Blue or Studio Green for your rehearsal. One studio is sufficient; please do not book both."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Soundproof Rooms",
+          "body": "Réservez le studio Bleu ou le studio Vert pour votre répétition. Un seul studio suffit ; veuillez ne pas réserver les deux."
+        }
+      }
+    },
+    {
+      "id": "rou_s04_event_news",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Recipient registration already complete; sender operations and dates only.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Regional Puzzle League",
+          "body": "Your registration is complete. We will assign your table this evening and email the puzzle booklet tomorrow. The round begins at 14:00. No confirmation, download or payment is requested.",
+          "subject": "Round information"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Regional Puzzle League",
+          "body": "Votre inscription est terminée. Nous attribuerons votre table ce soir et enverrons le livret d'énigmes par courriel demain. La manche commence à 14 h. Aucune confirmation, aucun téléchargement et aucun paiement ne sont demandés.",
+          "subject": "Informations sur la manche"
+        }
+      }
+    },
+    {
+      "id": "rou_s05_ad_product",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Service menu and prices alone do not explicitly invite an operation.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Paper Workshop",
+          "body": "Service menu: poster trimming, 4 credits per sheet; book-edge repair, 12 credits per volume. Both services are now part of our standard range. This message lists available services and prices only."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Paper Workshop",
+          "body": "Liste des services : découpe d'affiches, 4 crédits par feuille ; réparation des bords de livres, 12 crédits par volume. Les deux services font désormais partie de notre gamme habituelle. Ce message présente uniquement les services disponibles et leurs prix."
+        }
+      }
+    },
+    {
+      "id": "rou_s06_report_one_file",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Create one combined ZIP archive of the rehearsal folder and photographs"
+      ],
+      "rationale": "One requested archive creation bundles two inputs; no independent operations requested.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Community Dance Archive",
+          "body": "Create one ZIP archive containing the rehearsal folder together with the photographs. Use a single archive operation to combine both inputs; no upload or separate archive is requested.",
+          "subject": "Combined archive"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Community Dance Archive",
+          "body": "Créez une seule archive ZIP contenant le dossier des répétitions ainsi que les photographies. Utilisez une seule opération d'archivage pour réunir les deux ensembles ; aucun téléversement ni aucune archive distincte ne sont demandés.",
+          "subject": "Archive combinée"
+        }
+      }
+    },
+    {
+      "id": "rou_s07_permission_archive",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Imperatives appear solely in a fictional transcript, expressly not addressed to recipient.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Stage Dialogue Workshop",
+          "body": "This handout reproduces a fictional coach's line: 'Pack the props and phone the stage manager.' It is sample dialogue for discussion, not instructions to you. We request no action from the reader.",
+          "subject": "Example dialogue"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Stage Dialogue Workshop",
+          "body": "Ce document reproduit la réplique d'un entraîneur fictif : « Emballez les accessoires et appelez le responsable de scène. » Il s'agit d'un exemple de dialogue à discuter, pas d'instructions qui vous sont adressées. Nous ne demandons aucune action à la personne qui lit le document.",
+          "subject": "Exemple de dialogue"
+        }
+      }
+    },
+    {
+      "id": "rou_s08_handover_steps",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Return the rented board game"
+      ],
+      "rationale": "Packing and placing the item are steps of one return, not independent tasks.",
+      "risk_stratum": "routine",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Board Game Lending Desk",
+          "body": "To return your rented board game, put all pieces in its box, close the lid, and place the box in the return cabinet. That completes the return."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Board Game Lending Desk",
+          "body": "Pour rendre le jeu de société loué, remettez toutes les pièces dans sa boîte, fermez le couvercle et déposez la boîte dans l'armoire des retours. Le retour sera ainsi terminé."
+        }
+      }
+    }
+  ]
+}

@@ -40,6 +40,7 @@ def format_output(
     elapsed_ms: float | None = None,
     details: bool = False,
     compact: bool = False,
+    model_name: str = "Laya",
 ) -> str:
     """Render the message first, followed by Laya's decision data."""
     use_color = sys.stdout.isatty() and "NO_COLOR" not in os.environ
@@ -95,7 +96,7 @@ def format_output(
         if state.get("subject"):
             lines.append(f"  Subject: {state['subject']}")
         lines.append(f"  Message: {state.get('body', '')}")
-    result_heading = "Laya result"
+    result_heading = f"{model_name} result"
     if compact and elapsed_ms is not None:
         result_heading += f" ({elapsed_ms:.1f} ms)"
     lines.extend(("", paint(result_heading, "1;36")))
@@ -108,6 +109,7 @@ def format_output(
             if compact
             else QUESTION_LABELS.get(question_id, question_id.replace("_", " ").title())
         )
+        uncalibrated = question_answer.get("score_semantics") == "uncalibrated_relative_weights"
         choice = question_answer.get("choice")
         probabilities = question_answer.get("probabilities", {})
         predicted = prediction(question_id, question_answer)
@@ -118,7 +120,7 @@ def format_output(
             display_choice = choice.replace("_", " ").title()
             colored_choice = paint(display_choice, colors.get(choice, "1"))
             confidence = probabilities.get(choice)
-            suffix = f" · {confidence:.1%}" if confidence is not None else ""
+            suffix = (f" · weight {confidence:.1%}" if uncalibrated else f" · {confidence:.1%}") if confidence is not None else ""
             expected_suffix = (
                 f" · exp {display_value(expected_value)} "
                 f"{paint('✓' if matched else '✗', '32' if matched else '31')}"
@@ -143,7 +145,7 @@ def format_output(
             yes_probability = question_answer["noul"]
             likely_answer = "yes" if yes_probability >= 0.5 else "no"
             color = "33" if yes_probability >= 0.5 else "32"
-            confidence = f" · P(yes) {yes_probability:.0%}" if not compact else ""
+            confidence = (f" · relative yes weight {yes_probability:.0%}" if uncalibrated else f" · P(yes) {yes_probability:.0%}") if not compact else ""
             expected_mark = paint("✓" if matched else "✗", "32" if matched else "31")
             expected_suffix = (
                 f" · exp {display_value(expected_value)} {expected_mark}"

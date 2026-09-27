@@ -1,0 +1,945 @@
+{
+  "version": "action-boundary-v1-author-draft",
+  "annotation_method": "Synthetic English/French pairs authored against docs/ANNOTATION_RUBRIC.md before inference. Scenario-level balanced development/heldout split assigned during authorship. Gold task lists and rationales are author annotations pending independent review. No model predictions used.",
+  "scenarios": [
+    {
+      "id": "dev_p01_archive_attendance",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Download the archival audio recording",
+        "Submit a separate attendance correction"
+      ],
+      "rationale": "Two separately requested deliverables; neither completes the other.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Orchard History Circle",
+          "body": "Download the audio recording from the archive. Also submit an attendance correction if your name was omitted. We left your name off the list by mistake.",
+          "subject": "Meeting follow-up"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Orchard History Circle",
+          "body": "Téléchargez l'enregistrement audio depuis les archives. Soumettez également une correction de présence si votre nom a été oublié. Nous avons omis votre nom par erreur.",
+          "subject": "Suivi de la réunion"
+        }
+      },
+      "template_group": "template_5cd58d245a74"
+    },
+    {
+      "id": "dev_p02_two_subscriptions",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Cancel the map newsletter subscription",
+        "Cancel the separate trail-alert subscription"
+      ],
+      "rationale": "Distinct cancellations in the same category count independently.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Ridge Walking Club",
+          "body": "Cancel your map newsletter subscription in Newsletter Settings and cancel your trail-alert subscription in Alert Settings. These are separate subscriptions."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Ridge Walking Club",
+          "body": "Annulez votre abonnement au bulletin cartographique dans les paramètres du bulletin et annulez votre abonnement aux alertes de sentier dans les paramètres des alertes. Ce sont deux abonnements distincts."
+        }
+      },
+      "template_group": "template_11926d39a0c9"
+    },
+    {
+      "id": "dev_p03_sample_photo",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Mail the soil sample",
+        "Upload a photograph of the garden plot"
+      ],
+      "rationale": "Mailing an object and uploading evidence are independent requests.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Sprout Soil Project",
+          "body": "Mail the soil sample in the supplied envelope, then upload a photograph of your garden plot to the project gallery.",
+          "subject": "Your sample kit"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Sprout Soil Project",
+          "body": "Envoyez l'échantillon de terre dans l'enveloppe fournie, puis téléversez une photographie de votre parcelle dans la galerie du projet.",
+          "subject": "Votre kit de prélèvement"
+        }
+      },
+      "template_group": "template_6c9e042632e3"
+    },
+    {
+      "id": "dev_p04_booking_optout",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Reserve a pottery session",
+        "Reply STOP to unsubscribe"
+      ],
+      "rationale": "Optional opt-out counts beside the main explicit invitation.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Clay Room",
+          "body": "Reserve a pottery session at clayroom.example/reserve. Reply STOP if you want to stop receiving workshop messages."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Clay Room",
+          "body": "Réservez une séance de poterie sur clayroom.example/reserve. Répondez STOP si vous souhaitez ne plus recevoir les messages sur les ateliers."
+        }
+      },
+      "template_group": "template_272d5b9546a2"
+    },
+    {
+      "id": "dev_p05_invoice_profile",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Pay the microscope rental invoice",
+        "Change the emergency contact in the laboratory profile"
+      ],
+      "rationale": "Separate payment and profile update.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Elm Research Co-op",
+          "body": "Pay the microscope rental invoice using the billing page, and change the emergency contact in your laboratory profile to your current contact.",
+          "subject": "Rental account"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Elm Research Co-op",
+          "body": "Payez la facture de location du microscope sur la page de facturation et remplacez le contact d'urgence dans votre profil de laboratoire par votre contact actuel.",
+          "subject": "Compte de location"
+        }
+      },
+      "template_group": "template_d06dd1516465"
+    },
+    {
+      "id": "dev_p06_two_votes",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Vote in the sculpture-name poll",
+        "Vote in the separate board-seat election"
+      ],
+      "rationale": "Two separate votes remain two tasks despite the shared verb.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Harbour Arts Association",
+          "body": "Please vote in both: the sculpture-name poll and the separate board-seat election. Each has its own ballot and submission button.",
+          "subject": "Two ballots"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Harbour Arts Association",
+          "body": "Veuillez voter dans les deux scrutins : le sondage sur le nom de la sculpture et l'élection distincte au siège du conseil. Chacun possède son propre bulletin et son propre bouton d'envoi.",
+          "subject": "Deux scrutins"
+        }
+      },
+      "template_group": "template_b05ed7c6dc65"
+    },
+    {
+      "id": "dev_p07_receipt_password",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Forward the repair receipt",
+        "Reset the workshop portal password"
+      ],
+      "rationale": "Independent communication and account change.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Cycle Bench",
+          "body": "Forward the repair receipt to your insurer. Separately, reset your workshop portal password; your existing password will no longer work.",
+          "subject": "Repair paperwork"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Cycle Bench",
+          "body": "Transmettez le reçu de réparation à votre assureur. Séparément, réinitialisez votre mot de passe du portail de l'atelier ; votre mot de passe actuel ne fonctionnera plus.",
+          "subject": "Documents de réparation"
+        }
+      },
+      "template_group": "template_090052ee6eb5"
+    },
+    {
+      "id": "dev_p08_approval_report",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Approve the roster change",
+        "Report the broken room lock"
+      ],
+      "rationale": "Separate approval and incident report; both concrete requests.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Stage Volunteers",
+          "body": "Approve the proposed roster change in the volunteer app, and report the broken dressing-room lock through the incident form."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Stage Volunteers",
+          "body": "Approuvez la modification proposée du planning dans l'application des bénévoles et signalez la serrure cassée de la loge au moyen du formulaire d'incident."
+        }
+      },
+      "template_group": "template_a3a160388c73"
+    },
+    {
+      "id": "dev_p09_return_survey",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Return the loaned binoculars",
+        "Complete the wildlife survey"
+      ],
+      "rationale": "Independent physical return and data submission.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Wetland Watch",
+          "body": "Return the loaned binoculars to the field desk. Please also complete the wildlife survey, even if you observed no animals.",
+          "subject": "End of field week"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Wetland Watch",
+          "body": "Rapportez les jumelles prêtées au bureau de terrain. Veuillez également remplir le questionnaire sur la faune, même si vous n'avez observé aucun animal.",
+          "subject": "Fin de la semaine sur le terrain"
+        }
+      },
+      "template_group": "template_a2ad515478ed"
+    },
+    {
+      "id": "dev_p10_call_install",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Call the captioning coordinator",
+        "Install the subtitle editor"
+      ],
+      "rationale": "Calling then installing are distinct operations, not navigation.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Caption Crew",
+          "body": "Call the captioning coordinator to discuss your assignment, then install the subtitle editor from our tools page."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Caption Crew",
+          "body": "Appelez la personne responsable du sous-titrage pour discuter de votre mission, puis installez l'éditeur de sous-titres depuis notre page d'outils."
+        }
+      },
+      "template_group": "template_5aa1942ee7de"
+    },
+    {
+      "id": "dev_p11_two_appointments",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Book the hearing assessment",
+        "Book a separate mobility assessment"
+      ],
+      "rationale": "Distinct appointments in the same category, explicitly both.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Access Centre",
+          "body": "Book a hearing assessment and a separate mobility assessment. You need both appointments; booking one does not reserve the other.",
+          "subject": "Assessments"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Access Centre",
+          "body": "Réservez une évaluation auditive et une évaluation distincte de la mobilité. Vous avez besoin des deux rendez-vous ; la réservation de l'un ne réserve pas l'autre.",
+          "subject": "Évaluations"
+        }
+      },
+      "template_group": "template_b05ed7c6dc65"
+    },
+    {
+      "id": "dev_p12_confirm_delete",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Confirm the exhibition attendance",
+        "Delete the obsolete draft brochure"
+      ],
+      "rationale": "Separate confirmation and file deletion.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Moss Gallery",
+          "body": "Confirm your attendance at the exhibition. Then delete the obsolete draft brochure from the shared folder; do not delete the final brochure.",
+          "subject": "Exhibition preparation"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Moss Gallery",
+          "body": "Confirmez votre présence à l'exposition. Puis supprimez la version provisoire obsolète de la brochure dans le dossier partagé ; ne supprimez pas la brochure finale.",
+          "subject": "Préparation de l’exposition"
+        }
+      },
+      "template_group": "template_606506bfddfb"
+    },
+    {
+      "id": "dev_n01_one_form",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Submit the equipment form"
+      ],
+      "rationale": "Multiple fields in one submission are one task.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "North Canoe Shed",
+          "body": "Submit the equipment form with your height, preferred paddle length, and collection time. Enter all three fields before pressing Submit.",
+          "subject": "Equipment form"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "North Canoe Shed",
+          "body": "Envoyez le formulaire de matériel en indiquant votre taille, la longueur de pagaie souhaitée et l'heure de retrait. Remplissez les trois champs avant d'appuyer sur Envoyer.",
+          "subject": "Formulaire de matériel"
+        }
+      },
+      "template_group": "template_b4c678e32594"
+    },
+    {
+      "id": "dev_n02_navigation_pay",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Pay the choir dues"
+      ],
+      "rationale": "Navigation and confirmation steps of one payment are not independent.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Evening Choir",
+          "body": "Open the members page, select Dues, enter the amount, and confirm the payment to pay your choir dues."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Evening Choir",
+          "body": "Ouvrez la page des membres, sélectionnez Cotisation, saisissez le montant et confirmez le paiement pour régler votre cotisation à la chorale."
+        }
+      },
+      "template_group": "template_3b1b7e548073"
+    },
+    {
+      "id": "dev_n03_alternative_delivery",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Choose a collection or delivery option"
+      ],
+      "rationale": "Mutually exclusive alternatives for the same transaction.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Seed Exchange",
+          "body": "Either collect your seed packet at the Saturday table or request postal delivery using this form. Choose one option only.",
+          "subject": "Your seed packet"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Seed Exchange",
+          "body": "Retirez votre sachet de graines au stand du samedi ou demandez un envoi postal avec ce formulaire. Choisissez une seule option.",
+          "subject": "Votre sachet de graines"
+        }
+      },
+      "template_group": "template_71c2fd76ba58"
+    },
+    {
+      "id": "dev_n04_statement_negation",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Prohibitions and statements contain no affirmative requested task.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Lighthouse Tours",
+          "body": "Do not send a deposit or call to reconfirm. Your lighthouse tour is already reserved. No action is needed."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Lighthouse Tours",
+          "body": "N'envoyez pas d'acompte et n'appelez pas pour reconfirmer. Votre visite du phare est déjà réservée. Aucune démarche n'est nécessaire."
+        }
+      },
+      "template_group": "template_da3d6301d5da"
+    },
+    {
+      "id": "dev_n05_discount_stop",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Reply STOP to unsubscribe"
+      ],
+      "rationale": "Advertisement is not purchase request; only opt-out requested.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Thread Basket",
+          "body": "Cotton bundles are 15% off through Sunday. threadbasket.example/offers. Reply STOP to unsubscribe."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Thread Basket",
+          "body": "Les lots de coton sont à moins 15 % jusqu'à dimanche. threadbasket.example/offers. Répondez STOP pour vous désabonner."
+        }
+      },
+      "template_group": "template_a34c02e82a84"
+    },
+    {
+      "id": "dev_n06_future_information",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Upcoming events and sender actions are information only.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Public Observatory",
+          "body": "The telescope demonstration starts at 19:00. We will send the viewing notes tomorrow and open the terrace at 18:30. This is an information notice.",
+          "subject": "Programme update"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Public Observatory",
+          "body": "La démonstration du télescope commence à 19 h. Nous enverrons les notes d'observation demain et ouvrirons la terrasse à 18 h 30. Ce message est informatif.",
+          "subject": "Mise à jour du programme"
+        }
+      },
+      "template_group": "template_ef4d0f15e27e"
+    },
+    {
+      "id": "dev_n07_permission",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Availability and permission explicitly no request.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Music Archive",
+          "body": "Your session recording is available. You can listen or download it whenever convenient. No action is needed, and there is no response deadline.",
+          "subject": "Session recording"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Music Archive",
+          "body": "L'enregistrement de votre séance est disponible. Vous pouvez l'écouter ou le télécharger quand cela vous convient. Aucune démarche n'est nécessaire et aucune réponse n'est attendue avant une date limite.",
+          "subject": "Enregistrement de la séance"
+        }
+      },
+      "template_group": "template_c5ae0ffe4429"
+    },
+    {
+      "id": "dev_n08_shared_object",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Send one photograph showing both markings"
+      ],
+      "rationale": "Two objects of one photograph do not create two tasks.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Repair Café",
+          "body": "Send one photograph showing both the model number and the crack in the casing. One image is enough."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Repair Café",
+          "body": "Envoyez une seule photographie montrant à la fois le numéro de modèle et la fissure du boîtier. Une image suffit."
+        }
+      },
+      "template_group": "template_deadeae18e9b"
+    },
+    {
+      "id": "dev_n09_one_positive",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Confirm the lunch attendance"
+      ],
+      "rationale": "Negated operations should not become positive tasks.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Hilltop Tutors",
+          "body": "Confirm whether you will attend the tutors’ lunch. Do not make a payment and do not send dietary records; catering already has those details.",
+          "subject": "Lunch count"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Hilltop Tutors",
+          "body": "Confirmez si vous participerez au déjeuner des personnes assurant le tutorat. N'effectuez aucun paiement et n'envoyez pas de renseignements alimentaires ; le traiteur possède déjà ces informations.",
+          "subject": "Nombre de repas"
+        }
+      },
+      "template_group": "template_4d3a79d60bd6"
+    },
+    {
+      "id": "dev_n10_transport",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Send the locker number"
+      ],
+      "rationale": "Replying is transport for one requested disclosure.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Pool Desk",
+          "body": "Reply to this message with your locker number so we can label your lost-property bag."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Pool Desk",
+          "body": "Répondez à ce message en indiquant votre numéro de casier pour que nous puissions étiqueter votre sac d'objets trouvés."
+        }
+      },
+      "template_group": "template_d1c750452951"
+    },
+    {
+      "id": "dev_n11_inapplicable_condition",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Confirm the existing poster proof"
+      ],
+      "rationale": "Explicit false condition does not activate a second task.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Print Co-op",
+          "body": "Confirm the poster proof. If we had attached a colour sample, you would also need to return it, but no colour sample was attached to your order.",
+          "subject": "Poster proof"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Print Co-op",
+          "body": "Validez l'épreuve de l'affiche. Si nous avions joint un échantillon de couleur, vous devriez également le renvoyer, mais aucun échantillon de couleur n'a été joint à votre commande.",
+          "subject": "Épreuve de l’affiche"
+        }
+      },
+      "template_group": "template_968fae32de4c"
+    },
+    {
+      "id": "dev_n12_payment_methods",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Pay the skating lesson fee"
+      ],
+      "rationale": "Alternative payment methods for one fee.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "River Ice School",
+          "body": "Pay the skating lesson fee by bank transfer or at the reception desk. Please use only one payment method.",
+          "subject": "Lesson fee"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "River Ice School",
+          "body": "Réglez les frais du cours de patinage par virement bancaire ou à l'accueil. Veuillez utiliser un seul moyen de paiement.",
+          "subject": "Frais de cours"
+        }
+      },
+      "template_group": "template_0c5b5ddb9230"
+    },
+    {
+      "id": "held_p01_two_files",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Upload the route map to the route archive",
+        "Upload the budget to the finance archive"
+      ],
+      "rationale": "Separate submissions and purposes in the same action category.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Community Cycling Week",
+          "body": "Upload the route map to the route archive and the budget to the finance archive. These are two separate submissions.",
+          "subject": "Planning documents"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Community Cycling Week",
+          "body": "Téléversez le plan du parcours dans les archives des parcours et le budget dans les archives financières. Il s'agit de deux envois distincts.",
+          "subject": "Documents de préparation"
+        }
+      },
+      "template_group": "template_b05ed7c6dc65"
+    },
+    {
+      "id": "held_p02_read_acknowledge",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Download the accessibility guide",
+        "Confirm the volunteer shift"
+      ],
+      "rationale": "Independent download and shift confirmation.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Festival Access Team",
+          "body": "Download the accessibility guide from our document page. Also confirm your volunteer shift in the roster tool."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Festival Access Team",
+          "body": "Téléchargez le guide d'accessibilité depuis notre page de documents. Confirmez également votre créneau de bénévolat dans l'outil de planning."
+        }
+      },
+      "template_group": "template_5cd58d245a74"
+    },
+    {
+      "id": "held_p03_payment_optout",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Pay the allotment renewal fee",
+        "Reply REMOVE to leave the reminder list"
+      ],
+      "rationale": "Optional opt-out remains an explicit second request.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Allotment Office",
+          "body": "Pay your allotment renewal fee through the tenant page. If you want to leave this reminder list, reply REMOVE."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Allotment Office",
+          "body": "Réglez les frais de renouvellement de votre parcelle sur la page des locataires. Si vous souhaitez quitter cette liste de rappels, répondez REMOVE."
+        }
+      },
+      "template_group": "template_272d5b9546a2"
+    },
+    {
+      "id": "held_p04_condition_applies",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Submit the rehearsal availability",
+        "Collect the assigned costume"
+      ],
+      "rationale": "Second conditional task expressly applies.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Lantern Theatre",
+          "body": "Submit your rehearsal availability. If you have been assigned a costume, collect it from wardrobe. You have been assigned costume number 12.",
+          "subject": "Rehearsal planning"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Lantern Theatre",
+          "body": "Envoyez vos disponibilités pour les répétitions. Si un costume vous a été attribué, retirez-le auprès du service des costumes. Le costume numéro 12 vous a été attribué.",
+          "subject": "Préparation des répétitions"
+        }
+      },
+      "template_group": "template_5cd58d245a74"
+    },
+    {
+      "id": "held_p05_two_accounts",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Change the display name in the member account",
+        "Change the display name in the tournament account"
+      ],
+      "rationale": "Two independent accounts require separate updates despite shared verb.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Table Games Union",
+          "body": "Change your display name in both your member account and your tournament account. Updating one does not update the other.",
+          "subject": "Account names"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Table Games Union",
+          "body": "Modifiez votre nom d'affichage dans votre compte de membre et dans votre compte de tournoi. La modification de l'un ne modifie pas l'autre.",
+          "subject": "Noms des comptes"
+        }
+      },
+      "template_group": "template_b05ed7c6dc65"
+    },
+    {
+      "id": "held_p06_approve_collect",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Approve the translation proof",
+        "Collect the printed badges"
+      ],
+      "rationale": "Distinct approval and physical collection.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Neighbourhood Language Fair",
+          "body": "Approve the translation proof in the review portal, then collect the printed badges from the fair office.",
+          "subject": "Ready for review"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Neighbourhood Language Fair",
+          "body": "Validez l'épreuve de traduction dans le portail de relecture, puis retirez les badges imprimés au bureau de la foire.",
+          "subject": "Prêt pour validation"
+        }
+      },
+      "template_group": "template_6c9e042632e3"
+    },
+    {
+      "id": "held_p07_report_cancel",
+      "split": "development",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Report the duplicate charge",
+        "Cancel the recurring donation"
+      ],
+      "rationale": "Distinct reporting and cancellation.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Friends of the Dunes",
+          "body": "Report the duplicate charge using the billing form and cancel the recurring donation in Donation Settings. Please complete both tasks."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Friends of the Dunes",
+          "body": "Signalez le prélèvement en double avec le formulaire de facturation et annulez le don récurrent dans les paramètres des dons. Veuillez effectuer les deux démarches."
+        }
+      },
+      "template_group": "template_a3a160388c73"
+    },
+    {
+      "id": "held_p08_shared_verb_contact",
+      "split": "heldout",
+      "expected_multiple_actions": true,
+      "tasks": [
+        "Contact the workshop host to confirm arrival",
+        "Contact the separate tool lender to arrange a return"
+      ],
+      "rationale": "Two separate contacts to different recipients for distinct purposes.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Boatbuilding Circle",
+          "body": "Contact the workshop host to confirm your arrival and the tool lender to arrange the return of the plane. They are different people; please contact both.",
+          "subject": "Two arrangements"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Boatbuilding Circle",
+          "body": "Contactez la personne qui accueille l'atelier pour confirmer votre arrivée et la personne qui prête les outils pour organiser le retour du rabot. Ce sont deux personnes différentes ; veuillez contacter les deux.",
+          "subject": "Deux dispositions"
+        }
+      },
+      "template_group": "template_b05ed7c6dc65"
+    },
+    {
+      "id": "held_n01_negation_two",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "No affirmative task; two prohibitions explicitly no action.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Cedar Orchestra",
+          "body": "Do not upload another recording or book another audition. Your first recording and appointment are already on file. No action is required.",
+          "subject": "Audition status"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Cedar Orchestra",
+          "body": "Ne téléversez pas d'autre enregistrement et ne réservez pas d'autre audition. Votre premier enregistrement et votre rendez-vous sont déjà enregistrés. Aucune démarche n'est nécessaire.",
+          "subject": "État de l’audition"
+        }
+      },
+      "template_group": "template_da3d6301d5da"
+    },
+    {
+      "id": "held_n02_one_attachment",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Download the combined programme PDF"
+      ],
+      "rationale": "One download containing two documents is one operation.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Small Press Fair",
+          "body": "Download the single attached PDF containing both the exhibitor list and the workshop schedule. They are combined in one file.",
+          "subject": "Programme PDF"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Small Press Fair",
+          "body": "Téléchargez le seul PDF joint, qui contient la liste des exposants et le programme des ateliers. Ils sont réunis dans un seul fichier.",
+          "subject": "Programme PDF"
+        }
+      },
+      "template_group": "template_deadeae18e9b"
+    },
+    {
+      "id": "held_n03_alternative_confirmation",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Confirm or decline the ticket allocation"
+      ],
+      "rationale": "Mutually exclusive responses are one decision task.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Chamber Music Club",
+          "body": "Reply ACCEPT to confirm your ticket allocation or DECLINE to release it. Send one response only."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Chamber Music Club",
+          "body": "Répondez ACCEPT pour confirmer votre attribution de billets ou DECLINE pour y renoncer. Envoyez une seule réponse."
+        }
+      },
+      "template_group": "template_71c2fd76ba58"
+    },
+    {
+      "id": "held_n04_sender_two_actions",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Sender operations and event dates do not request recipient actions.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Watercolour Society",
+          "body": "We have framed your painting and printed its label. The exhibition opens on Thursday, and we will send photographs on Friday. No reply is needed.",
+          "subject": "Exhibition update"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Watercolour Society",
+          "body": "Nous avons encadré votre tableau et imprimé son étiquette. L'exposition ouvre jeudi et nous enverrons des photographies vendredi. Aucune réponse n'est nécessaire.",
+          "subject": "Mise à jour de l’exposition"
+        }
+      },
+      "template_group": "template_ef4d0f15e27e"
+    },
+    {
+      "id": "held_n05_checkout_steps",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Order the repair part"
+      ],
+      "rationale": "Checkout fields/navigation are one purchase.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Bench Parts",
+          "body": "To order the replacement hinge, open our shop, select hinge H4, enter your delivery address, and press Place Order."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Bench Parts",
+          "body": "Pour commander la charnière de remplacement, ouvrez notre boutique, sélectionnez la charnière H4, saisissez votre adresse de livraison et appuyez sur Commander."
+        }
+      },
+      "template_group": "template_3b1b7e548073"
+    },
+    {
+      "id": "held_n06_advertisement",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [],
+      "rationale": "Promotional availability and link do not constitute invitation/directive.",
+      "messages": {
+        "en": {
+          "channel": "sms",
+          "sender": "Garden Loom",
+          "body": "Weekend offer: weaving kits and wool packs are half price until Monday. Product details: gardenloom.example/weekend."
+        },
+        "fr": {
+          "channel": "sms",
+          "sender": "Garden Loom",
+          "body": "Offre du week-end : les kits de tissage et les lots de laine sont à moitié prix jusqu'à lundi. Détails des produits : gardenloom.example/weekend."
+        }
+      },
+      "template_group": "template_a34c02e82a84"
+    },
+    {
+      "id": "held_n07_form_negation",
+      "split": "heldout",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Submit the meal selection form"
+      ],
+      "rationale": "Multiple fields remain one submission; prohibited call is not task.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Mountain Hostel",
+          "body": "Submit one form containing your meal choice and arrival time. Do not call the kitchen separately; the form supplies everything it needs.",
+          "subject": "Meal selection"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Mountain Hostel",
+          "body": "Envoyez un seul formulaire contenant votre choix de repas et votre heure d'arrivée. N'appelez pas la cuisine séparément ; le formulaire lui fournit toutes les informations nécessaires.",
+          "subject": "Choix du repas"
+        }
+      },
+      "template_group": "template_b4c678e32594"
+    },
+    {
+      "id": "held_n08_inapplicable_second",
+      "split": "development",
+      "expected_multiple_actions": false,
+      "tasks": [
+        "Renew the climbing membership"
+      ],
+      "rationale": "Expressly inapplicable conditional second request is not counted.",
+      "messages": {
+        "en": {
+          "channel": "email",
+          "sender": "Granite Climbing Club",
+          "body": "Renew your climbing membership. Members with borrowed harnesses must also return them; you have no borrowed harnesses.",
+          "subject": "Membership renewal"
+        },
+        "fr": {
+          "channel": "email",
+          "sender": "Granite Climbing Club",
+          "body": "Renouvelez votre adhésion au club d'escalade. Les membres ayant emprunté des baudriers doivent également les rapporter ; vous n'avez aucun baudrier emprunté.",
+          "subject": "Renouvellement de l’adhésion"
+        }
+      },
+      "template_group": "template_968fae32de4c"
+    }
+  ],
+  "split_method": "Reviewer-identified related templates grouped; deterministic hash-ordered exact class stratification assigns8positive8negative scenarios toheldout,12positive12negative todevelopment; no predictions used."
+}

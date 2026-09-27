@@ -1,0 +1,109 @@
+{
+  "version": "sweep-family-balanced-compact-v1",
+  "questions": {
+    "classification": {
+      "type": "choice",
+      "instructions": "Base the category on what is requested and how the message is framed. Routine notices and bills can be legitimate; ordinary advertisements can be marketing. Suspicious fees, explicit secret or identity/bank disclosure, and unsolicited remote access indicate suspected_scam. This judgment concerns textual suspicion, without verifying fraud or authenticity.",
+      "criteria": {
+        "legitimate": "Routine communication or normal service bill.",
+        "marketing": "Ordinary commercial advertisement or promotion.",
+        "suspected_scam": "Suspicious release fees, secret/identity/financial disclosure or unsolicited device access."
+      }
+    },
+    "industry": {
+      "type": "choice",
+      "instructions": "Use the message’s claimed service context to choose the closest listed industry. Avoid letting a payment mechanism or authenticity judgment change that sector. Where no listed category fits, distinguish a recognizable alternative industry from insufficient information.",
+      "criteria": {
+        "banking_finance": "Banking, finance, investing or insurance.",
+        "retail_ecommerce": "Retail goods, shopping or marketplaces.",
+        "shipping_logistics": "Parcels, post, couriers or freight.",
+        "government_public_services": "Government, taxes, benefits or utilities.",
+        "technology_telecom": "Software, devices, online accounts, internet or phones.",
+        "healthcare": "Medical care, pharmacy or health insurance.",
+        "employment": "Jobs, recruiting, payroll or workplace services.",
+        "travel_hospitality": "Travel, transport, hotels or hospitality.",
+        "other": "Recognizable sector outside these categories.",
+        "unclear": "Insufficient evidence to identify a sector."
+      }
+    },
+    "urgent_action": {
+      "type": "noul",
+      "instructions": "Does the message impose time pressure? Include explicit near-term demands, expiring offers and threats for delay. Exclude ordinary schedules, distant due dates and receiving a benefit today without a deadline to act. Apply equally to routine and suspicious messages.",
+      "criteria": {
+        "true": "Prompt action pressure, limited offer expiry or harm threatened for delay.",
+        "false": "No pressure; routine dates or benefit timing alone."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    },
+    "sentiment": {
+      "type": "choice",
+      "instructions": "Choose tone from the sender’s expressed framing of the main premise. Positive celebration, enthusiasm, or reward is happy; explicit alarm, threat, worry, frustration, or distress is sad; factual presentation is neutral. Neither factual inconvenience nor urgency or suspected fraud alone supplies negative emotional framing.",
+      "criteria": {
+        "happy": "Expressed celebration, enthusiasm or exciting reward.",
+        "neutral": "Factual framing, including adverse facts without alarm.",
+        "sad": "Explicit alarm, threat, worry, frustration or distress."
+      }
+    },
+    "requested_action": {
+      "type": "choice",
+      "instructions": "Choose the main requested task using only explicit directives or invitations. Optional opt-outs count; advertising and permissive viewing alone do not. For equal independent tasks prefer access, disclosure, payment, approval, update, sign-in, purchase, attachment, link, contact, other. Navigation/transport is not a separate main task.",
+      "criteria": {
+        "no_action": "No explicit request; information or permissive viewing.",
+        "reply_or_contact": "Reply, call, contact or unsubscribe.",
+        "click_or_scan": "Open a link, website or QR code.",
+        "sign_in_or_verify": "Sign in, reset password or verify identity/account.",
+        "share_sensitive_info_or_documents": "Disclose secrets, personal/financial data or documents.",
+        "pay_or_transfer": "Pay fees/bills or transfer money, gift cards or crypto.",
+        "purchase_or_claim": "Buy, subscribe, redeem or claim an offer/benefit.",
+        "open_or_download_attachment": "Open or download a file or attachment.",
+        "install_or_grant_access": "Install software or grant device/account access.",
+        "approve_login_or_transaction": "Approve a login, MFA prompt or transaction.",
+        "update_account_or_delivery_details": "Change account, payment, profile or delivery details.",
+        "other_or_unclear": "Other explicit task or task too vague to identify."
+      }
+    },
+    "multiple_actions": {
+      "type": "noul",
+      "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+      "criteria": {
+        "true": "At least two independent explicit tasks requested together.",
+        "false": "At most one task; alternatives and steps do not add tasks."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    },
+    "message_hook": {
+      "type": "choice",
+      "instructions": "Choose the main attention premise independently of action and industry. Respect government/legal, job/investment, and nongovernment-prize overlaps. Separate real parcels, account/payment problems, and device support/renewal. Ordinary municipal bills are debt; ordinary offers are sales; routine records and appointments are none/other unless another hook is explicitly established.",
+      "criteria": {
+        "account_or_payment_problem": "Account compromise, blockage, security alert or failed transaction.",
+        "delivery_or_order_update": "Real parcel, delivery fee, address or order status.",
+        "invoice_or_debt": "Ordinary bill, debt or owed money; not a statement/receipt.",
+        "prize_refund_or_gift": "Nongovernment prize, refund, compensation or gift.",
+        "government_or_legal_matter": "Taxes, public benefits, police, courts or legal enforcement.",
+        "job_or_investment": "Job, paid work, investment or promised financial return.",
+        "tech_support_or_subscription": "Device infection/repair or subscription renewal.",
+        "relationship_or_emergency": "Personal relationship or family emergency; not appointments.",
+        "sale_or_promotion": "Ordinary sale, product promotion or subscription offer.",
+        "none_or_other_unclear": "Routine records/appointments, other premise or unclear hook."
+      }
+    },
+    "sensitive_data_requested": {
+      "type": "noul",
+      "instructions": "Judge explicit disclosure requests, regardless of claimed legitimacy. Include passwords, one-time security codes, recovery phrases, government identity numbers/documents and bank/card details. Exclude routine sign-in/payment alone, opt-outs and voucher codes used as payment.",
+      "criteria": {
+        "true": "Explicit disclosure of credentials, recovery phrase, identity document/number or bank/card details.",
+        "false": "No such disclosure; routine actions and voucher payment codes alone."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "version": "action-improvement-jev-development-v1",
+  "split": "development",
+  "status": "aborted_runtime_limit",
+  "created_at": "2026-09-27T14:15:16.883461+00:00",
+  "dataset": "/Users/sol/.codex/worktrees/model-evaluation/system-one-models/datasets/action_boundary_eval_v1.jsonl",
+  "dataset_sha256": "c2ec4665cc8f1a73007ea22ca049361773ff0e4791bc6a8e910f06304fde0628",
+  "configs": {
+    "jev_original": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Does the sender request BOTH of two independent actions, rather than one action or alternatives? Count different requests, not link steps or multiple data fields. An explicit opt-out counts; advertising alone does not request purchase.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "jev_balanced": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+          "criteria": {
+            "true": "Yes, it asks for two or more distinct actions.",
+            "false": "No, it asks for at most one distinct action."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    },
+    "jev_direct_choice": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "single_or_none": "Zero or one independent recipient operation is requested.",
+            "multiple": "At least two independent recipient operations are requested together."
+          }
+        }
+      }
+    },
+    "jev_direct_three": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "choice",
+          "instructions": "Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks. Either/or alternatives count as one task. Calling support then installing a tool count as two tasks.",
+          "criteria": {
+            "zero_tasks": "No recipient task is explicitly requested.",
+            "one_task": "One recipient task is requested, including its steps or alternatives.",
+            "multiple_tasks": "At least two distinct recipient tasks are requested together."
+          }
+        }
+      }
+    },
+    "jev_direct_explicit": {
+      "kind": "direct",
+      "questions": {
+        "multiple_actions": {
+          "type": "noul",
+          "instructions": "Are at least two separate recipient operations explicitly requested together? Count independent operations explicitly requested of the recipient. Include invitations and optional opt-outs. Do not count factual information, available benefits, negated requests, sender actions, or alternatives as extra tasks. Navigation, reply transport, multiple fields and payment steps belong to one task. Two separate requests of the same category can be two tasks.",
+          "criteria": {
+            "true": "Two or more independent tasks are requested together.",
+            "false": "At most one independent task is requested."
+          },
+          "labels": {
+            "true": "A",
+            "false": "B"
+          }
+        }
+      }
+    }
+  },
+  "config_hashes": {
+    "jev_original": "fd4eb1c742f9b1116cdab44ea5c162f8844f42b216f85446c4696e6aa9f12b21",
+    "jev_balanced": "1688874f55dc9495ba224907470da02f4b537c4f4b462cacba04f3b753db675d",
+    "jev_direct_choice": "8fa1dcea2bf74f13709fbe65eaf7e63680ec485f06436e17d253adba7dec993f",
+    "jev_direct_three": "47a53adcf948e132785fd162eead08f642e411ee1eb7c9ec923222ad3ae58349",
+    "jev_direct_explicit": "a4a19d88e565ffd8211947d03e905b5375776828c0a026fe86b21c9b237f36da"
+  },
+  "model": {
+    "backend": "jevk5",
+    "model": "alibiserikbay/JevK5",
+    "resolved_snapshot": "/Users/sol/.cache/huggingface/hub/models--alibiserikbay--JevK5/snapshots/c4f7fdb3aeab5582336406e78d3bef11bf98833d",
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "torch_threads": 2,
+    "graphs": false,
+    "calibration": {
+      "temperature": 1.22,
+      "knockout_temperature": 0.93
+    },
+    "checkpoints": {
+      "config.json": {
+        "resolved": "/Users/sol/.cache/huggingface/hub/models--alibiserikbay--JevK5/blobs/fb849c71825b3d42be90bc7a5a52438f9143118d",
+        "bytes": 1979,
+        "sha256": "63f47812d0f11118e4d252d2b3ad488707eb9287a11589f4fd382a1d31182724"
+      },
+      "generation_config.json": {
+        "resolved": "/Users/sol/.cache/huggingface/hub/models--alibiserikbay--JevK5/blobs/31ec2a53cc9cde720b0a8fbc68b9c4e73ac5a18f",
+        "bytes": 116,
+        "sha256": "62153eb6c69f2e1f426beaa8002b7186437e949c7588167085df14e10e9c0a73"
+      },
+      "jevk5_config.json": {
+        "resolved": "/Users/sol/.cache/huggingface/hub/models--alibiserikbay--JevK5/blobs/bba060486718a6dbd9680b8d0f8d2eb3c07679b4",
+        "bytes": 52,
+        "sha256": "0d689fd13d15dc962265e2ae10b56359706ab5d05ad24e00e6334e4c19cf83d2"
+      },
+      "model.safetensors": {
+        "resolved": "/Users/sol/.cache/huggingface/hub/blobs/01/01bc5354fb1681eef4cc5f674f981caaf830d3436f700f78a9900e28d344c2fb",
+        "bytes": 8411558400
+      },
+      "tokenizer.json": {
+        "resolved": "/Users/sol/.cache/huggingface/hub/blobs/77/777bcaa63794fa47b8f53680be9d6d176f1fcbd7ba03cdc6c3bae2b3d76b323f",
+        "bytes": 19989325,
+        "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+      },
+      "tokenizer_config.json": {
+        "resolved": "/Users/sol/.cache/huggingface/hub/models--alibiserikbay--JevK5/blobs/ed1f99f3d50eecc9850623be644bd1131686cbe1",
+        "bytes": 1125,
+        "sha256": "9cf04fffe3d8c3b85e439fb35c7acad0761ab51c422a8c4256d9f887c3a0be7d"
+      }
+    }
+  },
+  "packages": {
+    "jevk5": "0.3.0",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "numpy": "1.26.4"
+  },
+  "predictions": [],
+  "scored_rows": 0,
+  "heldout_used": false,
+  "runtime_observation": {
+    "model_load_seconds_approx": 17,
+    "en_warmup_completed": true,
+    "en_warmup_seconds_approx": 60,
+    "fr_warmup_completed": false,
+    "kernels": "PyTorch reference causal_conv1d and chunk_gated_delta_rule; optional optimized kernels not installed",
+    "five_positive_five_negative_heads": true,
+    "projected_48_row_seconds_approx": 2880,
+    "timing_note": "Wall-clock estimate from process elapsed and observed console load/warmup milestones; concurrent MPS experiments active. No scored timing or accuracy comparison."
+  },
+  "reason": "Stopped during French warmup before scored inference because the native CPU reference-kernel ten-head evaluation projected approximately 48 minutes for the 48-row development suite. No packages installed or downloaded."
+}

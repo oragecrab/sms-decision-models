@@ -1,0 +1,1352 @@
+{
+  "version": "action-boundary-independent-review-v1",
+  "method": "Independent complete-source bilingual review against docs/ANNOTATION_RUBRIC.md, before inference. Candidate IDs generated mechanically by action_decomposition.propose_spans. Gate positives require a concrete recipient operation or repeated explicit task obligation; shared imperative verbs count, bare field/object fragments do not. Navigation and repeated directives belong to the same task; explicit invitations including optional opt-outs count. Task groups may overlap when one candidate repeats multiple operations. All 40 paired labels and task lists agree; no text/label corrections recommended.",
+  "issues": [
+    {
+      "severity": "annotation_note",
+      "scenario_id": "dev_p11_two_appointments",
+      "issue": "An explicit obligation repeats both operations in one candidate, so candidate task groups overlap. Do not assume a partition of candidates."
+    },
+    {
+      "severity": "annotation_note",
+      "scenario_id": "held_p07_report_cancel",
+      "issue": "One broad repeated imperative covers two operations; candidate groups overlap, but this does not create a third task."
+    },
+    {
+      "severity": "annotation_note",
+      "scenario_id": "held_p08_shared_verb_contact",
+      "issue": "One broad repeated imperative covers two operations; candidate groups overlap, but this does not create a third task."
+    },
+    {
+      "severity": "proposal_limitation",
+      "issue": "Some coordinated candidates are bare fields or objects and have no operation, while others inherit a shared imperative verb. Gate annotations distinguish these by full-message meaning. A task operation can be recoverable from context despite an incomplete isolated span."
+    },
+    {
+      "severity": "relationship_note",
+      "issue": "Alternatives share a task group, but their pair relationship is alternatives rather than same_task_steps; explicit pair annotations are retained."
+    },
+    {
+      "severity": "split_integrity",
+      "issue": "Development and heldout were balanced by boundary types but several messages remain close structural paraphrases with changed topics. They should be grouped before final split; current holdout supports topic transfer on familiar constructions, not unseen template transfer. All provisional heldout rows below have a close development structural analogue; do not claim a template-disjoint split.",
+      "related_scenario_templates": [
+        [
+          "dev_p01_archive_attendance",
+          "held_p02_read_acknowledge",
+          "held_p04_condition_applies"
+        ],
+        [
+          "dev_p04_booking_optout",
+          "held_p03_payment_optout"
+        ],
+        [
+          "dev_p06_two_votes",
+          "dev_p11_two_appointments",
+          "held_p01_two_files",
+          "held_p05_two_accounts",
+          "held_p08_shared_verb_contact"
+        ],
+        [
+          "dev_p03_sample_photo",
+          "held_p06_approve_collect"
+        ],
+        [
+          "dev_p08_approval_report",
+          "held_p07_report_cancel"
+        ],
+        [
+          "dev_n04_statement_negation",
+          "held_n01_negation_two"
+        ],
+        [
+          "dev_n08_shared_object",
+          "held_n02_one_attachment"
+        ],
+        [
+          "dev_n03_alternative_delivery",
+          "held_n03_alternative_confirmation"
+        ],
+        [
+          "dev_n06_future_information",
+          "held_n04_sender_two_actions"
+        ],
+        [
+          "dev_n02_navigation_pay",
+          "held_n05_checkout_steps"
+        ],
+        [
+          "dev_n05_discount_stop",
+          "held_n06_advertisement"
+        ],
+        [
+          "dev_n01_one_form",
+          "held_n07_form_negation"
+        ],
+        [
+          "dev_n11_inapplicable_condition",
+          "held_n08_inapplicable_second"
+        ]
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "id": "dev_p01_archive_attendance__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Two separately requested deliverables; neither completes the other. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p01_archive_attendance__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Two separately requested deliverables; neither completes the other. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p02_two_subscriptions__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Distinct cancellations in the same category count independently. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p02_two_subscriptions__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Distinct cancellations in the same category count independently. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p03_sample_photo__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Mailing an object and uploading evidence are independent requests. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p03_sample_photo__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Mailing an object and uploading evidence are independent requests. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p04_booking_optout__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Optional opt-out counts beside the main explicit invitation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p04_booking_optout__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Optional opt-out counts beside the main explicit invitation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p05_invoice_profile__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate payment and profile update. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p05_invoice_profile__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate payment and profile update. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p06_two_votes__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The second ballot fragment inherits vote from the preceding coordinated directive. Ballot/button availability is factual, not a new operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p06_two_votes__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The second ballot fragment inherits vote from the preceding coordinated directive. Ballot/button availability is factual, not a new operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p07_receipt_password__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Independent communication and account change. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p07_receipt_password__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Independent communication and account change. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p08_approval_report__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate approval and incident report; both concrete requests. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p08_approval_report__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate approval and incident report; both concrete requests. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p09_return_survey__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Independent physical return and data submission. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p09_return_survey__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Independent physical return and data submission. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p10_call_install__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Calling then installing are distinct operations, not navigation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p10_call_install__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Calling then installing are distinct operations, not navigation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p11_two_appointments__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c3": [
+          "task1",
+          "task2"
+        ],
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The second appointment fragment inherits Book. You need both appointments is a repeated explicit obligation covering both task groups, not a third task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together",
+        "c1__c3": "same_task_steps",
+        "c2__c3": "same_task_steps"
+      },
+      "compound_span": true
+    },
+    {
+      "id": "dev_p11_two_appointments__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c3": [
+          "task1",
+          "task2"
+        ],
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The second appointment fragment inherits Book. You need both appointments is a repeated explicit obligation covering both task groups, not a third task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together",
+        "c1__c3": "same_task_steps",
+        "c2__c3": "same_task_steps"
+      },
+      "compound_span": true
+    },
+    {
+      "id": "dev_p12_confirm_delete__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate confirmation and file deletion. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_p12_confirm_delete__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate confirmation and file deletion. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n01_one_form__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c3": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The form submission and instruction to enter its fields are one operation. A bare field-name fragment is not a concrete operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c3": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n01_one_form__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c3": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The form submission and instruction to enter its fields are one operation. A bare field-name fragment is not a concrete operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c3": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n02_navigation_pay__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Opening the page, selecting dues, entering the amount and confirming payment are steps of one payment. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n02_navigation_pay__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Opening the page, selecting dues, entering the amount and confirming payment are steps of one payment. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n03_alternative_delivery__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task1",
+        "c3": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Collection and postal delivery are mutually exclusive alternatives. Choose one repeats that single decision task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "alternatives",
+        "c1__c3": "same_task_steps",
+        "c2__c3": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n03_alternative_delivery__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task1",
+        "c3": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Collection and postal delivery are mutually exclusive alternatives. Choose one repeats that single decision task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "alternatives",
+        "c1__c3": "same_task_steps",
+        "c2__c3": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n04_statement_negation__en",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Negation scopes over both coordinated verbs; neither is an affirmative request. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n04_statement_negation__fr",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Negation scopes over both coordinated verbs; neither is an affirmative request. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n05_discount_stop__en",
+      "requested_candidate_ids": [
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c2": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Advertisement is not purchase request; only opt-out requested. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n05_discount_stop__fr",
+      "requested_candidate_ids": [
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c2": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Advertisement is not purchase request; only opt-out requested. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n06_future_information__en",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "The apparent open fragment inherits We will and describes the sender operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n06_future_information__fr",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "The apparent open fragment inherits We will and describes the sender operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n07_permission__en",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Both listen and download inherit permissive can in an explicitly no-action context. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n07_permission__fr",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Both listen and download inherit permissive can in an explicitly no-action context. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n08_shared_object__en",
+      "requested_candidate_ids": [
+        "c0"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The second fragment names another thing shown in the one photograph; it does not request an operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n08_shared_object__fr",
+      "requested_candidate_ids": [
+        "c0"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The second fragment names another thing shown in the one photograph; it does not request an operation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n09_one_positive__en",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Negated operations should not become positive tasks. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n09_one_positive__fr",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Negated operations should not become positive tasks. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n10_transport__en",
+      "requested_candidate_ids": [
+        "c0"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Replying is transport for one requested disclosure. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n10_transport__fr",
+      "requested_candidate_ids": [
+        "c0"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Replying is transport for one requested disclosure. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n11_inapplicable_condition__en",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Explicit false condition does not activate a second task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n11_inapplicable_condition__fr",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Explicit false condition does not activate a second task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "dev_n12_payment_methods__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c3": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Reception desk is an alternative payment location, not a separate operation. Use only one method is a repeated constraint on the payment. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c3": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "dev_n12_payment_methods__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c3"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c3": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Reception desk is an alternative payment location, not a separate operation. Use only one method is a repeated constraint on the payment. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c3": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p01_two_files__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate submissions and purposes in the same action category. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p01_two_files__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Separate submissions and purposes in the same action category. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p02_read_acknowledge__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Independent download and shift confirmation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p02_read_acknowledge__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Independent download and shift confirmation. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p03_payment_optout__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Optional opt-out remains an explicit second request. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p03_payment_optout__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Optional opt-out remains an explicit second request. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p04_condition_applies__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Second conditional task expressly applies. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p04_condition_applies__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Second conditional task expressly applies. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p05_two_accounts__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Two independent accounts require separate updates despite shared verb. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p05_two_accounts__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Two independent accounts require separate updates despite shared verb. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p06_approve_collect__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Distinct approval and physical collection. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p06_approve_collect__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "Distinct approval and physical collection. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_p07_report_cancel__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c2": [
+          "task1",
+          "task2"
+        ],
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The final imperative repeats both requested operations and belongs to both existing task groups; it creates no third task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together",
+        "c0__c2": "same_task_steps",
+        "c1__c2": "same_task_steps"
+      },
+      "compound_span": true
+    },
+    {
+      "id": "held_p07_report_cancel__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c2": [
+          "task1",
+          "task2"
+        ],
+        "c1": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The final imperative repeats both requested operations and belongs to both existing task groups; it creates no third task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "independent_together",
+        "c0__c2": "same_task_steps",
+        "c1__c2": "same_task_steps"
+      },
+      "compound_span": true
+    },
+    {
+      "id": "held_p08_shared_verb_contact__en",
+      "requested_candidate_ids": [
+        "c1",
+        "c2",
+        "c4"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c4": [
+          "task1",
+          "task2"
+        ],
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The second recipient fragment inherits Contact. Contact both repeats the two operations and belongs to both groups. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together",
+        "c1__c4": "same_task_steps",
+        "c2__c4": "same_task_steps"
+      },
+      "compound_span": true
+    },
+    {
+      "id": "held_p08_shared_verb_contact__fr",
+      "requested_candidate_ids": [
+        "c1",
+        "c2",
+        "c4"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1",
+        "c4": [
+          "task1",
+          "task2"
+        ],
+        "c2": "task2"
+      },
+      "missing_operation": false,
+      "rationale": "The second recipient fragment inherits Contact. Contact both repeats the two operations and belongs to both groups. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c1__c2": "independent_together",
+        "c1__c4": "same_task_steps",
+        "c2__c4": "same_task_steps"
+      },
+      "compound_span": true
+    },
+    {
+      "id": "held_n01_negation_two__en",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "No affirmative task; two prohibitions explicitly no action. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n01_negation_two__fr",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "No affirmative task; two prohibitions explicitly no action. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n02_one_attachment__en",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The schedule is a second item contained in the single file, not a second download. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n02_one_attachment__fr",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The schedule is a second item contained in the single file, not a second download. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n03_alternative_confirmation__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task1",
+        "c2": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Both responses are requested only as mutually exclusive alternatives. Send one response constrains the same decision task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "alternatives",
+        "c0__c2": "same_task_steps",
+        "c1__c2": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_n03_alternative_confirmation__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1",
+        "c2"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task1",
+        "c2": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "Both responses are requested only as mutually exclusive alternatives. Send one response constrains the same decision task. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "alternatives",
+        "c0__c2": "same_task_steps",
+        "c1__c2": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_n04_sender_two_actions__en",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Sender operations and event dates do not request recipient actions. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n04_sender_two_actions__fr",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Sender operations and event dates do not request recipient actions. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n05_checkout_steps__en",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "All checkout instructions implement one purchase. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_n05_checkout_steps__fr",
+      "requested_candidate_ids": [
+        "c0",
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c0": "task1",
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "All checkout instructions implement one purchase. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {
+        "c0__c1": "same_task_steps"
+      },
+      "compound_span": false
+    },
+    {
+      "id": "held_n06_advertisement__en",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Promotional availability and link do not constitute invitation/directive. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n06_advertisement__fr",
+      "requested_candidate_ids": [],
+      "candidate_task_groups": {},
+      "missing_operation": false,
+      "rationale": "Promotional availability and link do not constitute invitation/directive. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n07_form_negation__en",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The second item is a field of one form. The independent call is explicitly prohibited. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n07_form_negation__fr",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The second item is a field of one form. The independent call is explicitly prohibited. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n08_inapplicable_second__en",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The return obligation expressly does not apply to this recipient. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    },
+    {
+      "id": "held_n08_inapplicable_second__fr",
+      "requested_candidate_ids": [
+        "c1"
+      ],
+      "candidate_task_groups": {
+        "c1": "task1"
+      },
+      "missing_operation": false,
+      "rationale": "The return obligation expressly does not apply to this recipient. Paired translation preserves the operations and applicability; no prediction evidence used.",
+      "candidate_pair_relationships": {},
+      "compound_span": false
+    }
+  ],
+  "split_resolution": "Reviewer-identified related templates grouped; deterministic hash-ordered exact class stratification assigns8positive8negative scenarios toheldout,12positive12negative todevelopment; no predictions used."
+}
