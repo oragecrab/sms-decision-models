@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from .questions import QUESTIONS
+from .runtime import create_router
 
 
 def build_state(*, channel: str, sender: str, subject: str, body: str) -> dict[str, str]:
@@ -84,9 +85,7 @@ def classify(state: dict[str, Any], router: Any | None = None) -> dict[str, Any]
     Pass a Router instance to reuse a loaded model across multiple messages.
     """
     if router is None:
-        from laya import Router
-
-        router = Router()
+        router = create_router()
     result = router.predict(
         state, QUESTIONS, on_predict_start=_check_token_budget, hooks_raise=True
     )

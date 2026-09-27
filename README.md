@@ -19,6 +19,45 @@ must fit every question's remaining token budget. Oversized inputs are rejected 
 “No prediction was made” and need review; the tool does not classify a truncated prefix.
 This check can load or download the model before reporting that an input is too long.
 
+Choose a device explicitly, or leave `--device auto` to let Laya select an
+available accelerator (including Apple GPU/MPS). The demo and single-message
+command report the actual loaded device, including fallback to CPU:
+
+```sh
+uv run system-one-models --demo --device cpu
+uv run system-one-models --demo --simulate-server --device mps --repeats 2
+```
+
+For CPU inference, tune the number of PyTorch computation threads:
+
+```sh
+uv run system-one-models --demo --simulate-server --device cpu --offline --cpu-threads 4
+```
+
+The demo prints the actual CPU thread setting. A single inference worker can use
+several cores through PyTorch's native tensor operations; this flag does not
+create more Routers or request workers. Without the flag, PyTorch's existing
+setting is preserved. Thread count is not a guarantee that every operation uses
+all those cores; tokenization, loading, and smaller operations can be serial.
+Compare counts such as 1, 4, and 8 using the timing summary. More threads can add
+overhead or memory contention rather than improve throughput. The setting applies
+to PyTorch CPU computations; it does not increase GPU parallelism. It configures
+the PyTorch runtime rather than reserving separate cores for each Router.
+
+Checkpoint files are already cached by Hugging Face (normally under
+`~/.cache/huggingface/hub`, configurable through `HF_HOME`/`HF_HUB_CACHE`). Online
+runs may check for newer revisions and show file-fetch progress even when weights
+are cached. Each new process still loads cached weights into memory; this is not
+a fresh download. To skip remote checks and use the cached checkpoint only:
+
+```sh
+uv run system-one-models --demo --device cpu --offline
+```
+
+`--offline` resolves only the required inference files to a local snapshot and
+loads from that path. If those files are missing, it asks you to run once without
+`--offline`. The same flags work in the server simulation and single-message CLI.
+
 Classify one message:
 
 ```sh
@@ -40,6 +79,38 @@ uv run system-one-models --demo --details
 ```
 
 Some smoke-test messages previously exposed errors such as confusing a parcel-fee scam with marketing and missing a sign-in request. The checkpoint also warns that some confidence values, including large-choice questions, are uncalibrated. The base set is intended to make such behavior visible, not to imply that a particular score is reliable.
+
+## Checkpoint calibration warning
+
+The cached checkpoint contains `choice:11+` temperature `0.10058280825614929`.
+Laya accepts temperatures in `[0.5, 5]`, clamps this value to `0.5`, and warns that
+the affected probabilities are uncalibrated. The demo's 12-choice requested-action
+question uses that bucket. This temperature scales decision logits; it is not
+a GPU temperature or a download error. Inference continues, but its reported
+requested-action probabilities should not be interpreted as calibrated accuracy.
+The warning is kept visible; the cached checkpoint is not edited.
+
+## Simulating an HTTP serving workload
+
+```sh
+uv run system-one-models --demo --simulate-server --queue-size 4 --repeats 3
+```
+
+`--repeats 3` submits 33 concurrent requests: three copies of the 11-message set,
+all in one burst through the same worker. The default is one repeat. Repeats also
+work with the sequential demo, reusing one Router across every pass. One worker
+thread loads an English checkpoint, warms up one Router, and reuses it for every
+request. Blocking inference stays outside the asyncio event loop. A bounded queue
+holds up to four waiting requests; additional callers await capacity rather than
+being rejected. This opens no HTTP listener and does not batch model inference.
+
+Each result shows inference time, waiting time (including waiting for queue
+capacity), and total request latency. Startup/loading/warmup is timed separately
+from serving time and throughput. Results are displayed in dataset order. Under a
+burst, later requests wait longer; this simulation does not increase model speed.
+The summary includes p50, p95 (nearest rank), and maximum inference, wait, and
+request latency, plus label consistency against the first pass. Repeated inputs
+increase the workload, not the number of independent evaluation examples.
 
 ## Brand names and further analysis
 
@@ -67,6 +138,8 @@ tokenizer, set `LAYA_TEST_TOKENIZER` to its tokenizer directory when running pyt
 - `formatting.py`: terminal output and display labels.
 - `evaluation.py`: base dataset loading and scoring.
 - `cli.py`: command-line arguments and orchestration.
+- `simulation.py`: bounded concurrent-request simulation with one preloaded worker.
+- `runtime.py`: device configuration, cache-only loading, and actual device reporting.
 
 `__init__.py` contains only the package docstring. Import functions from their
 own modules, such as `from system_one_models.classifier import classify`.

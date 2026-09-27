@@ -78,3 +78,25 @@ The paraphrase checks used a separate scratch driver and the same guarded
 classifier with a reused Router. Their raw records are in
 `/private/tmp/system-one-models-smoke-before.json` and
 `/private/tmp/system-one-models-smoke-after.json` for this session.
+
+## Batching experiment (reverted)
+
+A warm-model CPU comparison took 15.9 seconds for sequential classification and
+16.1 seconds for batches of four. All 88 predicted labels were unchanged. Since
+this showed no throughput benefit on this machine, the batching implementation
+and CLI option were removed. The demo again classifies sequentially using one
+shared Router. GPU behavior and other batch sizes were not measured.
+
+## CPU computation threads
+
+`--cpu-threads` controls PyTorch intra-operation CPU parallelism before loading
+or inference. The server simulation applies and reads the setting inside its
+single inference worker. The default preserves PyTorch's existing setting,
+which was 8 threads here; having one Python worker does not limit native tensor
+operations to one core.
+
+A small warm-model comparison on the first three base examples measured 8.47s
+with 1 thread, 5.02s with 4, and 4.73s with 8. Process CPU time divided by wall time
+was respectively 1.30, 2.39, and 2.92 core-equivalents, demonstrating concurrent
+CPU work. Other native libraries may also use threads. These are one-off timings
+on this machine, not guaranteed speedups or a full-set benchmark.

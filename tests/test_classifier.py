@@ -205,7 +205,7 @@ def test_truncated_prompt_is_rejected_before_inference():
 def test_cli_reports_long_message_as_usage_error(monkeypatch, capsys):
     from system_one_models import cli
 
-    def reject(state):
+    def reject(state, router=None):
         raise MessageTooLongError("No prediction was made; the complete message needs review.")
 
     monkeypatch.setattr(cli, "classify", reject)
