@@ -1,0 +1,2071 @@
+{
+  "id": "industry--baseline",
+  "question_id": "industry",
+  "family": "baseline",
+  "kind": "baseline",
+  "sha256": "4cd96b1f46465cbc04ed602faeff34c84d70174c30a4e6d3bad455dcd3f32686",
+  "definition": {
+    "type": "choice",
+    "instructions": "Which business or service is the message about? Classify the service being provided, not the method used to pay for it. Identify the claimed industry without verifying identity.",
+    "criteria": {
+      "banking_finance": "Banks, financial accounts, investing, insurance, or personal finance.",
+      "retail_ecommerce": "Shopping, online orders, marketplaces, or consumer products.",
+      "shipping_logistics": "Parcel delivery, postal services, freight, or courier tracking.",
+      "government_public_services": "Government agencies, taxes, benefits, water, electricity, utilities, or public services.",
+      "technology_telecom": "Software, online accounts, devices, internet, or phone services.",
+      "healthcare": "Healthcare providers, pharmacies, medical services, or health insurance.",
+      "employment": "Jobs, recruiting, payroll, or workplace services.",
+      "travel_hospitality": "Travel, accommodation, transport, or hospitality.",
+      "other": "A recognizable industry that does not fit the listed categories.",
+      "unclear": "There is not enough information to identify an industry."
+    }
+  },
+  "status": "complete",
+  "predictions": [
+    {
+      "id": "sms_delivery_fee",
+      "language": "en",
+      "pair_id": "sms_delivery_fee",
+      "expected": "shipping_logistics",
+      "answer": {
+        "type": "choice",
+        "choice": "shipping_logistics",
+        "probabilities": {
+          "banking_finance": 0.001,
+          "retail_ecommerce": 0.0083,
+          "shipping_logistics": 0.9769,
+          "government_public_services": 0.0005,
+          "technology_telecom": 0.0025,
+          "healthcare": 0.0003,
+          "employment": 0.0005,
+          "travel_hospitality": 0.0003,
+          "other": 0.0063,
+          "unclear": 0.0035
+        },
+        "confidence": 0.9356,
+        "answer_confidence": 0.9769,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 62.057208037003875,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_delivery_fee",
+      "language": "fr",
+      "pair_id": "sms_delivery_fee",
+      "expected": "shipping_logistics",
+      "answer": {
+        "type": "choice",
+        "choice": "shipping_logistics",
+        "probabilities": {
+          "banking_finance": 0.0,
+          "retail_ecommerce": 0.0,
+          "shipping_logistics": 1.0,
+          "government_public_services": 0.0,
+          "technology_telecom": 0.0,
+          "healthcare": 0.0,
+          "employment": 0.0,
+          "travel_hospitality": 0.0,
+          "other": 0.0,
+          "unclear": 0.0
+        },
+        "confidence": 1.0,
+        "answer_confidence": 1.0,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 28.85750005953014,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0071,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_bank_statement",
+      "language": "en",
+      "pair_id": "email_bank_statement",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.9504,
+          "retail_ecommerce": 0.0059,
+          "shipping_logistics": 0.002,
+          "government_public_services": 0.0038,
+          "technology_telecom": 0.0065,
+          "healthcare": 0.003,
+          "employment": 0.0051,
+          "travel_hospitality": 0.0016,
+          "other": 0.0172,
+          "unclear": 0.0045
+        },
+        "confidence": 0.8725,
+        "answer_confidence": 0.9504,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 65.8659579930827,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_bank_statement",
+      "language": "fr",
+      "pair_id": "email_bank_statement",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.9502,
+          "retail_ecommerce": 0.0305,
+          "shipping_logistics": 0.0023,
+          "government_public_services": 0.0006,
+          "technology_telecom": 0.0055,
+          "healthcare": 0.0004,
+          "employment": 0.004,
+          "travel_hospitality": 0.0002,
+          "other": 0.0059,
+          "unclear": 0.0002
+        },
+        "confidence": 0.8863,
+        "answer_confidence": 0.9502,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 32.945374958217144,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_retail_promotion",
+      "language": "en",
+      "pair_id": "sms_retail_promotion",
+      "expected": "retail_ecommerce",
+      "answer": {
+        "type": "choice",
+        "choice": "retail_ecommerce",
+        "probabilities": {
+          "banking_finance": 0.0696,
+          "retail_ecommerce": 0.6427,
+          "shipping_logistics": 0.0096,
+          "government_public_services": 0.0089,
+          "technology_telecom": 0.1257,
+          "healthcare": 0.0141,
+          "employment": 0.0093,
+          "travel_hospitality": 0.0057,
+          "other": 0.0872,
+          "unclear": 0.0273
+        },
+        "confidence": 0.4524,
+        "answer_confidence": 0.6427,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 63.45133297145367,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_retail_promotion",
+      "language": "fr",
+      "pair_id": "sms_retail_promotion",
+      "expected": "retail_ecommerce",
+      "answer": {
+        "type": "choice",
+        "choice": "retail_ecommerce",
+        "probabilities": {
+          "banking_finance": 0.0002,
+          "retail_ecommerce": 0.9595,
+          "shipping_logistics": 0.0007,
+          "government_public_services": 0.0,
+          "technology_telecom": 0.039,
+          "healthcare": 0.0,
+          "employment": 0.0001,
+          "travel_hospitality": 0.0,
+          "other": 0.0004,
+          "unclear": 0.0
+        },
+        "confidence": 0.9223,
+        "answer_confidence": 0.9595,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 30.887207947671413,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_government_rebate",
+      "language": "en",
+      "pair_id": "email_government_rebate",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "government_public_services",
+        "probabilities": {
+          "banking_finance": 0.3069,
+          "retail_ecommerce": 0.1163,
+          "shipping_logistics": 0.0294,
+          "government_public_services": 0.3929,
+          "technology_telecom": 0.0117,
+          "healthcare": 0.0197,
+          "employment": 0.0166,
+          "travel_hospitality": 0.0077,
+          "other": 0.0489,
+          "unclear": 0.0499
+        },
+        "confidence": 0.2983,
+        "answer_confidence": 0.3929,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 69.4565000012517,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_government_rebate",
+      "language": "fr",
+      "pair_id": "email_government_rebate",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.8335,
+          "retail_ecommerce": 0.0069,
+          "shipping_logistics": 0.0032,
+          "government_public_services": 0.1455,
+          "technology_telecom": 0.0024,
+          "healthcare": 0.0008,
+          "employment": 0.0025,
+          "travel_hospitality": 0.0008,
+          "other": 0.0039,
+          "unclear": 0.0008
+        },
+        "confidence": 0.7602,
+        "answer_confidence": 0.8335,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 32.23279200028628,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0113,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_job_onboarding_fee",
+      "language": "en",
+      "pair_id": "sms_job_onboarding_fee",
+      "expected": "employment",
+      "answer": {
+        "type": "choice",
+        "choice": "employment",
+        "probabilities": {
+          "banking_finance": 0.0009,
+          "retail_ecommerce": 0.0024,
+          "shipping_logistics": 0.0005,
+          "government_public_services": 0.0003,
+          "technology_telecom": 0.0005,
+          "healthcare": 0.0001,
+          "employment": 0.9942,
+          "travel_hospitality": 0.0002,
+          "other": 0.0005,
+          "unclear": 0.0004
+        },
+        "confidence": 0.9799,
+        "answer_confidence": 0.9942,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 63.94191598519683,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_job_onboarding_fee",
+      "language": "fr",
+      "pair_id": "sms_job_onboarding_fee",
+      "expected": "employment",
+      "answer": {
+        "type": "choice",
+        "choice": "employment",
+        "probabilities": {
+          "banking_finance": 0.0,
+          "retail_ecommerce": 0.0,
+          "shipping_logistics": 0.0,
+          "government_public_services": 0.0,
+          "technology_telecom": 0.0,
+          "healthcare": 0.0,
+          "employment": 1.0,
+          "travel_hospitality": 0.0,
+          "other": 0.0,
+          "unclear": 0.0
+        },
+        "confidence": 1.0,
+        "answer_confidence": 1.0,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 30.371541040949523,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0609,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_remote_support",
+      "language": "en",
+      "pair_id": "email_remote_support",
+      "expected": "technology_telecom",
+      "answer": {
+        "type": "choice",
+        "choice": "technology_telecom",
+        "probabilities": {
+          "banking_finance": 0.0047,
+          "retail_ecommerce": 0.0068,
+          "shipping_logistics": 0.0019,
+          "government_public_services": 0.0014,
+          "technology_telecom": 0.9784,
+          "healthcare": 0.0014,
+          "employment": 0.0014,
+          "travel_hospitality": 0.0005,
+          "other": 0.0019,
+          "unclear": 0.0014
+        },
+        "confidence": 0.9366,
+        "answer_confidence": 0.9784,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 68.08787502814084,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_remote_support",
+      "language": "fr",
+      "pair_id": "email_remote_support",
+      "expected": "technology_telecom",
+      "answer": {
+        "type": "choice",
+        "choice": "technology_telecom",
+        "probabilities": {
+          "banking_finance": 0.0,
+          "retail_ecommerce": 0.0001,
+          "shipping_logistics": 0.0,
+          "government_public_services": 0.0,
+          "technology_telecom": 0.9998,
+          "healthcare": 0.0,
+          "employment": 0.0,
+          "travel_hospitality": 0.0,
+          "other": 0.0,
+          "unclear": 0.0
+        },
+        "confidence": 0.9989,
+        "answer_confidence": 0.9998,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 33.80962507799268,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0181,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_clinic_reminder",
+      "language": "en",
+      "pair_id": "sms_clinic_reminder",
+      "expected": "healthcare",
+      "answer": {
+        "type": "choice",
+        "choice": "healthcare",
+        "probabilities": {
+          "banking_finance": 0.018,
+          "retail_ecommerce": 0.0244,
+          "shipping_logistics": 0.0071,
+          "government_public_services": 0.0102,
+          "technology_telecom": 0.0093,
+          "healthcare": 0.8642,
+          "employment": 0.0085,
+          "travel_hospitality": 0.0048,
+          "other": 0.0326,
+          "unclear": 0.0209
+        },
+        "confidence": 0.7078,
+        "answer_confidence": 0.8642,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 63.342250068672,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_clinic_reminder",
+      "language": "fr",
+      "pair_id": "sms_clinic_reminder",
+      "expected": "healthcare",
+      "answer": {
+        "type": "choice",
+        "choice": "healthcare",
+        "probabilities": {
+          "banking_finance": 0.0118,
+          "retail_ecommerce": 0.0924,
+          "shipping_logistics": 0.1377,
+          "government_public_services": 0.0031,
+          "technology_telecom": 0.0204,
+          "healthcare": 0.6445,
+          "employment": 0.0032,
+          "travel_hospitality": 0.0028,
+          "other": 0.0218,
+          "unclear": 0.0622
+        },
+        "confidence": 0.4715,
+        "answer_confidence": 0.6445,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 32.025708933360875,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0144,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_bank_security_code",
+      "language": "en",
+      "pair_id": "sms_bank_security_code",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.9192,
+          "retail_ecommerce": 0.0255,
+          "shipping_logistics": 0.003,
+          "government_public_services": 0.0035,
+          "technology_telecom": 0.0199,
+          "healthcare": 0.0026,
+          "employment": 0.003,
+          "travel_hospitality": 0.0018,
+          "other": 0.0144,
+          "unclear": 0.0071
+        },
+        "confidence": 0.8148,
+        "answer_confidence": 0.9192,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 63.656084006652236,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_bank_security_code",
+      "language": "fr",
+      "pair_id": "sms_bank_security_code",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.9824,
+          "retail_ecommerce": 0.0067,
+          "shipping_logistics": 0.002,
+          "government_public_services": 0.0002,
+          "technology_telecom": 0.0076,
+          "healthcare": 0.0002,
+          "employment": 0.0002,
+          "travel_hospitality": 0.0002,
+          "other": 0.0003,
+          "unclear": 0.0003
+        },
+        "confidence": 0.9517,
+        "answer_confidence": 0.9824,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 32.17533300630748,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0597,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_parcel_tracking",
+      "language": "en",
+      "pair_id": "email_parcel_tracking",
+      "expected": "shipping_logistics",
+      "answer": {
+        "type": "choice",
+        "choice": "shipping_logistics",
+        "probabilities": {
+          "banking_finance": 0.0005,
+          "retail_ecommerce": 0.0021,
+          "shipping_logistics": 0.983,
+          "government_public_services": 0.0008,
+          "technology_telecom": 0.0012,
+          "healthcare": 0.0004,
+          "employment": 0.0008,
+          "travel_hospitality": 0.0005,
+          "other": 0.0081,
+          "unclear": 0.0026
+        },
+        "confidence": 0.9503,
+        "answer_confidence": 0.983,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 67.77116598095745,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_parcel_tracking",
+      "language": "fr",
+      "pair_id": "email_parcel_tracking",
+      "expected": "shipping_logistics",
+      "answer": {
+        "type": "choice",
+        "choice": "shipping_logistics",
+        "probabilities": {
+          "banking_finance": 0.0015,
+          "retail_ecommerce": 0.0028,
+          "shipping_logistics": 0.9837,
+          "government_public_services": 0.0015,
+          "technology_telecom": 0.0029,
+          "healthcare": 0.0015,
+          "employment": 0.0015,
+          "travel_hospitality": 0.0016,
+          "other": 0.0015,
+          "unclear": 0.0015
+        },
+        "confidence": 0.9485,
+        "answer_confidence": 0.9837,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 30.39420791901648,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0546,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_utility_bill",
+      "language": "en",
+      "pair_id": "email_utility_bill",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "government_public_services",
+        "probabilities": {
+          "banking_finance": 0.2569,
+          "retail_ecommerce": 0.0451,
+          "shipping_logistics": 0.0152,
+          "government_public_services": 0.5215,
+          "technology_telecom": 0.0159,
+          "healthcare": 0.0112,
+          "employment": 0.0153,
+          "travel_hospitality": 0.0103,
+          "other": 0.0702,
+          "unclear": 0.0384
+        },
+        "confidence": 0.3786,
+        "answer_confidence": 0.5215,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 67.23595899529755,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_utility_bill",
+      "language": "fr",
+      "pair_id": "email_utility_bill",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.9797,
+          "retail_ecommerce": 0.0073,
+          "shipping_logistics": 0.0028,
+          "government_public_services": 0.0022,
+          "technology_telecom": 0.0028,
+          "healthcare": 0.0023,
+          "employment": 0.0012,
+          "travel_hospitality": 0.0002,
+          "other": 0.001,
+          "unclear": 0.0005
+        },
+        "confidence": 0.9406,
+        "answer_confidence": 0.9797,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 33.701500040479004,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_prize_claim",
+      "language": "en",
+      "pair_id": "sms_prize_claim",
+      "expected": "retail_ecommerce",
+      "answer": {
+        "type": "choice",
+        "choice": "retail_ecommerce",
+        "probabilities": {
+          "banking_finance": 0.0336,
+          "retail_ecommerce": 0.5102,
+          "shipping_logistics": 0.0248,
+          "government_public_services": 0.0189,
+          "technology_telecom": 0.2143,
+          "healthcare": 0.0092,
+          "employment": 0.0177,
+          "travel_hospitality": 0.0085,
+          "other": 0.122,
+          "unclear": 0.0409
+        },
+        "confidence": 0.3501,
+        "answer_confidence": 0.5102,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 68.54679202660918,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_prize_claim",
+      "language": "fr",
+      "pair_id": "sms_prize_claim",
+      "expected": "retail_ecommerce",
+      "answer": {
+        "type": "choice",
+        "choice": "technology_telecom",
+        "probabilities": {
+          "banking_finance": 0.0001,
+          "retail_ecommerce": 0.2746,
+          "shipping_logistics": 0.0056,
+          "government_public_services": 0.0001,
+          "technology_telecom": 0.7194,
+          "healthcare": 0.0001,
+          "employment": 0.0001,
+          "travel_hospitality": 0.0001,
+          "other": 0.0001,
+          "unclear": 0.0
+        },
+        "confidence": 0.7285,
+        "answer_confidence": 0.7194,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 31.18133300449699,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0345,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_streaming_security",
+      "language": "fr",
+      "pair_id": "fr_email_streaming_security",
+      "expected": "technology_telecom",
+      "answer": {
+        "type": "choice",
+        "choice": "technology_telecom",
+        "probabilities": {
+          "banking_finance": 0.0,
+          "retail_ecommerce": 0.0,
+          "shipping_logistics": 0.0,
+          "government_public_services": 0.0,
+          "technology_telecom": 0.9999,
+          "healthcare": 0.0,
+          "employment": 0.0,
+          "travel_hospitality": 0.0,
+          "other": 0.0,
+          "unclear": 0.0
+        },
+        "confidence": 0.9995,
+        "answer_confidence": 0.9999,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 33.95612502936274,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_streaming_security",
+      "language": "en",
+      "pair_id": "fr_email_streaming_security",
+      "expected": "technology_telecom",
+      "answer": {
+        "type": "choice",
+        "choice": "technology_telecom",
+        "probabilities": {
+          "banking_finance": 0.0795,
+          "retail_ecommerce": 0.218,
+          "shipping_logistics": 0.0119,
+          "government_public_services": 0.0118,
+          "technology_telecom": 0.6151,
+          "healthcare": 0.0053,
+          "employment": 0.0112,
+          "travel_hospitality": 0.0038,
+          "other": 0.0309,
+          "unclear": 0.0124
+        },
+        "confidence": 0.4793,
+        "answer_confidence": 0.6151,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 71.8540420057252,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_traffic_fine",
+      "language": "fr",
+      "pair_id": "fr_sms_traffic_fine",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "shipping_logistics",
+        "probabilities": {
+          "banking_finance": 0.0058,
+          "retail_ecommerce": 0.0195,
+          "shipping_logistics": 0.9313,
+          "government_public_services": 0.005,
+          "technology_telecom": 0.0209,
+          "healthcare": 0.0012,
+          "employment": 0.0033,
+          "travel_hospitality": 0.0014,
+          "other": 0.0102,
+          "unclear": 0.0015
+        },
+        "confidence": 0.8382,
+        "answer_confidence": 0.9313,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 34.05483404640108,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0203,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_traffic_fine",
+      "language": "en",
+      "pair_id": "fr_sms_traffic_fine",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "other",
+        "probabilities": {
+          "banking_finance": 0.0443,
+          "retail_ecommerce": 0.1354,
+          "shipping_logistics": 0.1081,
+          "government_public_services": 0.1432,
+          "technology_telecom": 0.1832,
+          "healthcare": 0.0138,
+          "employment": 0.0321,
+          "travel_hospitality": 0.0131,
+          "other": 0.2866,
+          "unclear": 0.0404
+        },
+        "confidence": 0.1522,
+        "answer_confidence": 0.2866,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 65.54033304564655,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_hotel_offer",
+      "language": "fr",
+      "pair_id": "fr_email_hotel_offer",
+      "expected": "travel_hospitality",
+      "answer": {
+        "type": "choice",
+        "choice": "travel_hospitality",
+        "probabilities": {
+          "banking_finance": 0.0001,
+          "retail_ecommerce": 0.0014,
+          "shipping_logistics": 0.0003,
+          "government_public_services": 0.0,
+          "technology_telecom": 0.0001,
+          "healthcare": 0.0,
+          "employment": 0.0,
+          "travel_hospitality": 0.998,
+          "other": 0.0,
+          "unclear": 0.0
+        },
+        "confidence": 0.9929,
+        "answer_confidence": 0.998,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 33.11787499114871,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0283,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_hotel_offer",
+      "language": "en",
+      "pair_id": "fr_email_hotel_offer",
+      "expected": "travel_hospitality",
+      "answer": {
+        "type": "choice",
+        "choice": "travel_hospitality",
+        "probabilities": {
+          "banking_finance": 0.0005,
+          "retail_ecommerce": 0.0018,
+          "shipping_logistics": 0.0004,
+          "government_public_services": 0.0005,
+          "technology_telecom": 0.0002,
+          "healthcare": 0.0001,
+          "employment": 0.0003,
+          "travel_hospitality": 0.9954,
+          "other": 0.0004,
+          "unclear": 0.0003
+        },
+        "confidence": 0.9835,
+        "answer_confidence": 0.9954,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 70.54399990011007,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0045,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_library_closure",
+      "language": "fr",
+      "pair_id": "fr_sms_library_closure",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "government_public_services",
+        "probabilities": {
+          "banking_finance": 0.0388,
+          "retail_ecommerce": 0.0453,
+          "shipping_logistics": 0.2338,
+          "government_public_services": 0.2561,
+          "technology_telecom": 0.2342,
+          "healthcare": 0.019,
+          "employment": 0.0287,
+          "travel_hospitality": 0.023,
+          "other": 0.1002,
+          "unclear": 0.0209
+        },
+        "confidence": 0.1879,
+        "answer_confidence": 0.2561,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 33.775582909584045,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0343,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_library_closure",
+      "language": "en",
+      "pair_id": "fr_sms_library_closure",
+      "expected": "government_public_services",
+      "answer": {
+        "type": "choice",
+        "choice": "government_public_services",
+        "probabilities": {
+          "banking_finance": 0.0628,
+          "retail_ecommerce": 0.2021,
+          "shipping_logistics": 0.0384,
+          "government_public_services": 0.3074,
+          "technology_telecom": 0.0717,
+          "healthcare": 0.0155,
+          "employment": 0.0353,
+          "travel_hospitality": 0.0168,
+          "other": 0.1798,
+          "unclear": 0.0702
+        },
+        "confidence": 0.1662,
+        "answer_confidence": 0.3074,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 64.77095896843821,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_insurance_receipt",
+      "language": "fr",
+      "pair_id": "fr_email_insurance_receipt",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "shipping_logistics",
+        "probabilities": {
+          "banking_finance": 0.2369,
+          "retail_ecommerce": 0.1906,
+          "shipping_logistics": 0.4875,
+          "government_public_services": 0.0208,
+          "technology_telecom": 0.0149,
+          "healthcare": 0.0194,
+          "employment": 0.0073,
+          "travel_hospitality": 0.0072,
+          "other": 0.008,
+          "unclear": 0.0072
+        },
+        "confidence": 0.4036,
+        "answer_confidence": 0.4875,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 35.21554102189839,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0293,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_insurance_receipt",
+      "language": "en",
+      "pair_id": "fr_email_insurance_receipt",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.2378,
+          "retail_ecommerce": 0.0782,
+          "shipping_logistics": 0.0488,
+          "government_public_services": 0.0846,
+          "technology_telecom": 0.0444,
+          "healthcare": 0.1075,
+          "employment": 0.0483,
+          "travel_hospitality": 0.0287,
+          "other": 0.1409,
+          "unclear": 0.1807
+        },
+        "confidence": 0.0841,
+        "answer_confidence": 0.2378,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 70.61075000092387,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_pharmacy_password",
+      "language": "fr",
+      "pair_id": "fr_sms_pharmacy_password",
+      "expected": "healthcare",
+      "answer": {
+        "type": "choice",
+        "choice": "technology_telecom",
+        "probabilities": {
+          "banking_finance": 0.0422,
+          "retail_ecommerce": 0.1767,
+          "shipping_logistics": 0.0131,
+          "government_public_services": 0.0019,
+          "technology_telecom": 0.4072,
+          "healthcare": 0.3509,
+          "employment": 0.002,
+          "travel_hospitality": 0.0021,
+          "other": 0.002,
+          "unclear": 0.0019
+        },
+        "confidence": 0.4392,
+        "answer_confidence": 0.4072,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 33.01645803730935,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0297,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_pharmacy_password",
+      "language": "en",
+      "pair_id": "fr_sms_pharmacy_password",
+      "expected": "healthcare",
+      "answer": {
+        "type": "choice",
+        "choice": "healthcare",
+        "probabilities": {
+          "banking_finance": 0.1206,
+          "retail_ecommerce": 0.0498,
+          "shipping_logistics": 0.0055,
+          "government_public_services": 0.0083,
+          "technology_telecom": 0.0134,
+          "healthcare": 0.7784,
+          "employment": 0.0087,
+          "travel_hospitality": 0.002,
+          "other": 0.0067,
+          "unclear": 0.0065
+        },
+        "confidence": 0.6327,
+        "answer_confidence": 0.7784,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 66.50170788634568,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_investment_wallet",
+      "language": "fr",
+      "pair_id": "fr_email_investment_wallet",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.7303,
+          "retail_ecommerce": 0.1393,
+          "shipping_logistics": 0.0413,
+          "government_public_services": 0.0008,
+          "technology_telecom": 0.0821,
+          "healthcare": 0.0009,
+          "employment": 0.0009,
+          "travel_hospitality": 0.0009,
+          "other": 0.002,
+          "unclear": 0.0015
+        },
+        "confidence": 0.6144,
+        "answer_confidence": 0.7303,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 33.03608309943229,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0111,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_investment_wallet",
+      "language": "en",
+      "pair_id": "fr_email_investment_wallet",
+      "expected": "banking_finance",
+      "answer": {
+        "type": "choice",
+        "choice": "banking_finance",
+        "probabilities": {
+          "banking_finance": 0.3146,
+          "retail_ecommerce": 0.2381,
+          "shipping_logistics": 0.0312,
+          "government_public_services": 0.0385,
+          "technology_telecom": 0.184,
+          "healthcare": 0.0115,
+          "employment": 0.0294,
+          "travel_hospitality": 0.0167,
+          "other": 0.0889,
+          "unclear": 0.0472
+        },
+        "confidence": 0.2039,
+        "answer_confidence": 0.3146,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 72.18012504745275,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_lottery_voucher",
+      "language": "fr",
+      "pair_id": "fr_sms_lottery_voucher",
+      "expected": "retail_ecommerce",
+      "answer": {
+        "type": "choice",
+        "choice": "retail_ecommerce",
+        "probabilities": {
+          "banking_finance": 0.0331,
+          "retail_ecommerce": 0.8415,
+          "shipping_logistics": 0.0271,
+          "government_public_services": 0.0009,
+          "technology_telecom": 0.0849,
+          "healthcare": 0.0009,
+          "employment": 0.001,
+          "travel_hospitality": 0.0009,
+          "other": 0.0085,
+          "unclear": 0.0012
+        },
+        "confidence": 0.7223,
+        "answer_confidence": 0.8415,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 33.854875015094876,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_lottery_voucher",
+      "language": "en",
+      "pair_id": "fr_sms_lottery_voucher",
+      "expected": "retail_ecommerce",
+      "answer": {
+        "type": "choice",
+        "choice": "technology_telecom",
+        "probabilities": {
+          "banking_finance": 0.0247,
+          "retail_ecommerce": 0.167,
+          "shipping_logistics": 0.0158,
+          "government_public_services": 0.0158,
+          "technology_telecom": 0.6658,
+          "healthcare": 0.0042,
+          "employment": 0.0087,
+          "travel_hospitality": 0.0057,
+          "other": 0.0739,
+          "unclear": 0.0185
+        },
+        "confidence": 0.4998,
+        "answer_confidence": 0.6658,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 68.20500001776963,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_building_inspection",
+      "language": "fr",
+      "pair_id": "fr_email_building_inspection",
+      "expected": "other",
+      "answer": {
+        "type": "choice",
+        "choice": "employment",
+        "probabilities": {
+          "banking_finance": 0.0202,
+          "retail_ecommerce": 0.0247,
+          "shipping_logistics": 0.0544,
+          "government_public_services": 0.0152,
+          "technology_telecom": 0.374,
+          "healthcare": 0.0222,
+          "employment": 0.3797,
+          "travel_hospitality": 0.013,
+          "other": 0.0324,
+          "unclear": 0.0641
+        },
+        "confidence": 0.3241,
+        "answer_confidence": 0.3797,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 35.244291997514665,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0401,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_building_inspection",
+      "language": "en",
+      "pair_id": "fr_email_building_inspection",
+      "expected": "other",
+      "answer": {
+        "type": "choice",
+        "choice": "other",
+        "probabilities": {
+          "banking_finance": 0.0671,
+          "retail_ecommerce": 0.0661,
+          "shipping_logistics": 0.0467,
+          "government_public_services": 0.0663,
+          "technology_telecom": 0.0909,
+          "healthcare": 0.026,
+          "employment": 0.0361,
+          "travel_hospitality": 0.0221,
+          "other": 0.4324,
+          "unclear": 0.1462
+        },
+        "confidence": 0.1988,
+        "answer_confidence": 0.4324,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 68.25291702989489,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.007,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_transit_schedule",
+      "language": "fr",
+      "pair_id": "fr_sms_transit_schedule",
+      "expected": "travel_hospitality",
+      "answer": {
+        "type": "choice",
+        "choice": "shipping_logistics",
+        "probabilities": {
+          "banking_finance": 0.0345,
+          "retail_ecommerce": 0.0239,
+          "shipping_logistics": 0.7505,
+          "government_public_services": 0.1014,
+          "technology_telecom": 0.0082,
+          "healthcare": 0.0035,
+          "employment": 0.0044,
+          "travel_hospitality": 0.0158,
+          "other": 0.0536,
+          "unclear": 0.0042
+        },
+        "confidence": 0.5738,
+        "answer_confidence": 0.7505,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 32.49758400488645,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0426,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_transit_schedule",
+      "language": "en",
+      "pair_id": "fr_sms_transit_schedule",
+      "expected": "travel_hospitality",
+      "answer": {
+        "type": "choice",
+        "choice": "other",
+        "probabilities": {
+          "banking_finance": 0.0531,
+          "retail_ecommerce": 0.0949,
+          "shipping_logistics": 0.1089,
+          "government_public_services": 0.0681,
+          "technology_telecom": 0.0398,
+          "healthcare": 0.0126,
+          "employment": 0.0239,
+          "travel_hospitality": 0.0306,
+          "other": 0.454,
+          "unclear": 0.1141
+        },
+        "confidence": 0.2229,
+        "answer_confidence": 0.454,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 63.78137494903058,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_recruiting_identity",
+      "language": "fr",
+      "pair_id": "fr_email_recruiting_identity",
+      "expected": "employment",
+      "answer": {
+        "type": "choice",
+        "choice": "employment",
+        "probabilities": {
+          "banking_finance": 0.0,
+          "retail_ecommerce": 0.0,
+          "shipping_logistics": 0.0,
+          "government_public_services": 0.0,
+          "technology_telecom": 0.0,
+          "healthcare": 0.0,
+          "employment": 1.0,
+          "travel_hospitality": 0.0,
+          "other": 0.0,
+          "unclear": 0.0
+        },
+        "confidence": 1.0,
+        "answer_confidence": 1.0,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 34.45008397102356,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0059,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_recruiting_identity",
+      "language": "en",
+      "pair_id": "fr_email_recruiting_identity",
+      "expected": "employment",
+      "answer": {
+        "type": "choice",
+        "choice": "employment",
+        "probabilities": {
+          "banking_finance": 0.024,
+          "retail_ecommerce": 0.0022,
+          "shipping_logistics": 0.0014,
+          "government_public_services": 0.0013,
+          "technology_telecom": 0.0007,
+          "healthcare": 0.0003,
+          "employment": 0.9683,
+          "travel_hospitality": 0.0003,
+          "other": 0.0005,
+          "unclear": 0.001
+        },
+        "confidence": 0.9251,
+        "answer_confidence": 0.9683,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 68.68666596710682,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    }
+  ],
+  "summary": {
+    "correct": 33,
+    "total": 44,
+    "accuracy": 0.75,
+    "per_language": {
+      "en": {
+        "correct": 19,
+        "total": 22,
+        "accuracy": 0.8636363636363636
+      },
+      "fr": {
+        "correct": 14,
+        "total": 22,
+        "accuracy": 0.6363636363636364
+      }
+    },
+    "latency_ms": {
+      "p50": 48.65075001725927,
+      "p95": 70.61075000092387
+    }
+  }
+}

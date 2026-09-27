@@ -208,7 +208,7 @@ def test_cli_reports_long_message_as_usage_error(monkeypatch, capsys):
     def reject(state):
         raise MessageTooLongError("No prediction was made; the complete message needs review.")
 
-    monkeypatch.setattr(cli, "classify", reject)
+    monkeypatch.setattr(cli, "create_backend", lambda *a, **kw: SimpleNamespace(predict=reject))
     monkeypatch.setattr("sys.argv", ["system-one-models", "--body", "long message"])
     with pytest.raises(SystemExit) as error:
         cli.main()

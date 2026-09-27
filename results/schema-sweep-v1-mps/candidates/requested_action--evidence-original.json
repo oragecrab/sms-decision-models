@@ -1,0 +1,2164 @@
+{
+  "id": "requested_action--evidence-original",
+  "question_id": "requested_action",
+  "family": "evidence-original",
+  "kind": "wording_description",
+  "sha256": "096f7805f95312d604816a0237f9165306751c8664a4869cdd7945b7d724b42a",
+  "definition": {
+    "type": "choice",
+    "instructions": "Use explicit directives and invitations as evidence of the recipient's main task. Do not infer shopping from advertising. Distinguish a concrete task from its navigation, reply transport and promised result. An opt-out is a request.",
+    "criteria": {
+      "no_action": "No concrete action; informational or a notification only.",
+      "reply_or_contact": "Reply, call, contact someone, unsubscribe, or continue elsewhere.",
+      "click_or_scan": "Open a link, visit a website, or scan a QR code.",
+      "sign_in_or_verify": "Sign in, reset a password, or verify an account or identity.",
+      "share_sensitive_info_or_documents": "Provide passwords, security codes, personal or financial details, or documents.",
+      "pay_or_transfer": "Pay a fee, bill, fine, or send money, gift cards, or cryptocurrency.",
+      "purchase_or_claim": "Buy, subscribe, redeem an offer, or claim a prize, refund, or benefit.",
+      "open_or_download_attachment": "Open or download an attachment or file.",
+      "install_or_grant_access": "Install software or grant remote access to a device or account.",
+      "approve_login_or_transaction": "Approve a login, multi-factor prompt, or transaction.",
+      "update_account_or_delivery_details": "Change account, payment, profile, or delivery details.",
+      "other_or_unclear": "Another requested action, or the requested action is too vague to tell."
+    }
+  },
+  "status": "complete",
+  "predictions": [
+    {
+      "id": "sms_delivery_fee",
+      "language": "en",
+      "pair_id": "sms_delivery_fee",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.5142,
+          "reply_or_contact": 0.0019,
+          "click_or_scan": 0.0033,
+          "sign_in_or_verify": 0.0036,
+          "share_sensitive_info_or_documents": 0.0584,
+          "pay_or_transfer": 0.4098,
+          "purchase_or_claim": 0.0014,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0004,
+          "update_account_or_delivery_details": 0.0051,
+          "other_or_unclear": 0.0019
+        },
+        "confidence": 0.6073,
+        "answer_confidence": 0.5142,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 81.6041249781847,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_delivery_fee",
+      "language": "fr",
+      "pair_id": "sms_delivery_fee",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "reply_or_contact",
+        "probabilities": {
+          "no_action": 0.0382,
+          "reply_or_contact": 0.3345,
+          "click_or_scan": 0.0283,
+          "sign_in_or_verify": 0.0375,
+          "share_sensitive_info_or_documents": 0.0439,
+          "pay_or_transfer": 0.2552,
+          "purchase_or_claim": 0.1346,
+          "open_or_download_attachment": 0.0238,
+          "install_or_grant_access": 0.0233,
+          "approve_login_or_transaction": 0.0222,
+          "update_account_or_delivery_details": 0.0218,
+          "other_or_unclear": 0.0368
+        },
+        "confidence": 0.2207,
+        "answer_confidence": 0.3345,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 39.15004199370742,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0071,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_bank_statement",
+      "language": "en",
+      "pair_id": "email_bank_statement",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.9999,
+          "reply_or_contact": 0.0,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0,
+          "share_sensitive_info_or_documents": 0.0,
+          "pay_or_transfer": 0.0,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0
+        },
+        "confidence": 0.9996,
+        "answer_confidence": 0.9999,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 82.18820893671364,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_bank_statement",
+      "language": "fr",
+      "pair_id": "email_bank_statement",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.9367,
+          "reply_or_contact": 0.0018,
+          "click_or_scan": 0.0249,
+          "sign_in_or_verify": 0.0063,
+          "share_sensitive_info_or_documents": 0.0031,
+          "pay_or_transfer": 0.0049,
+          "purchase_or_claim": 0.0037,
+          "open_or_download_attachment": 0.0012,
+          "install_or_grant_access": 0.0063,
+          "approve_login_or_transaction": 0.002,
+          "update_account_or_delivery_details": 0.0013,
+          "other_or_unclear": 0.0079
+        },
+        "confidence": 0.8552,
+        "answer_confidence": 0.9367,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 41.14758304785937,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_retail_promotion",
+      "language": "en",
+      "pair_id": "sms_retail_promotion",
+      "expected": "reply_or_contact",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.0309,
+          "reply_or_contact": 0.1268,
+          "click_or_scan": 0.0177,
+          "sign_in_or_verify": 0.0089,
+          "share_sensitive_info_or_documents": 0.2861,
+          "pay_or_transfer": 0.0295,
+          "purchase_or_claim": 0.1261,
+          "open_or_download_attachment": 0.0005,
+          "install_or_grant_access": 0.0089,
+          "approve_login_or_transaction": 0.2244,
+          "update_account_or_delivery_details": 0.0877,
+          "other_or_unclear": 0.0524
+        },
+        "confidence": 0.2133,
+        "answer_confidence": 0.2861,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 84.05787497758865,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_retail_promotion",
+      "language": "fr",
+      "pair_id": "sms_retail_promotion",
+      "expected": "reply_or_contact",
+      "answer": {
+        "type": "choice",
+        "choice": "purchase_or_claim",
+        "probabilities": {
+          "no_action": 0.0132,
+          "reply_or_contact": 0.3556,
+          "click_or_scan": 0.0917,
+          "sign_in_or_verify": 0.0122,
+          "share_sensitive_info_or_documents": 0.0145,
+          "pay_or_transfer": 0.0142,
+          "purchase_or_claim": 0.3672,
+          "open_or_download_attachment": 0.0117,
+          "install_or_grant_access": 0.0361,
+          "approve_login_or_transaction": 0.0115,
+          "update_account_or_delivery_details": 0.0117,
+          "other_or_unclear": 0.0603
+        },
+        "confidence": 0.3431,
+        "answer_confidence": 0.3672,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 41.20116704143584,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_government_rebate",
+      "language": "en",
+      "pair_id": "email_government_rebate",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.2206,
+          "reply_or_contact": 0.0392,
+          "click_or_scan": 0.0014,
+          "sign_in_or_verify": 0.0032,
+          "share_sensitive_info_or_documents": 0.6955,
+          "pay_or_transfer": 0.0087,
+          "purchase_or_claim": 0.0005,
+          "open_or_download_attachment": 0.0009,
+          "install_or_grant_access": 0.0001,
+          "approve_login_or_transaction": 0.0032,
+          "update_account_or_delivery_details": 0.0266,
+          "other_or_unclear": 0.0002
+        },
+        "confidence": 0.6343,
+        "answer_confidence": 0.6955,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 79.84174997545779,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_government_rebate",
+      "language": "fr",
+      "pair_id": "email_government_rebate",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "pay_or_transfer",
+        "probabilities": {
+          "no_action": 0.0045,
+          "reply_or_contact": 0.001,
+          "click_or_scan": 0.0006,
+          "sign_in_or_verify": 0.0006,
+          "share_sensitive_info_or_documents": 0.0006,
+          "pay_or_transfer": 0.9825,
+          "purchase_or_claim": 0.0021,
+          "open_or_download_attachment": 0.0006,
+          "install_or_grant_access": 0.0012,
+          "approve_login_or_transaction": 0.0006,
+          "update_account_or_delivery_details": 0.0017,
+          "other_or_unclear": 0.004
+        },
+        "confidence": 0.9499,
+        "answer_confidence": 0.9825,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 43.50891604553908,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0113,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_job_onboarding_fee",
+      "language": "en",
+      "pair_id": "sms_job_onboarding_fee",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "pay_or_transfer",
+        "probabilities": {
+          "no_action": 0.0,
+          "reply_or_contact": 0.0,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0,
+          "share_sensitive_info_or_documents": 0.0,
+          "pay_or_transfer": 1.0,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0
+        },
+        "confidence": 0.9999,
+        "answer_confidence": 1.0,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 81.83004101738334,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_job_onboarding_fee",
+      "language": "fr",
+      "pair_id": "sms_job_onboarding_fee",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "reply_or_contact",
+        "probabilities": {
+          "no_action": 0.0,
+          "reply_or_contact": 0.9959,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0,
+          "share_sensitive_info_or_documents": 0.0,
+          "pay_or_transfer": 0.0034,
+          "purchase_or_claim": 0.0002,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0003
+        },
+        "confidence": 0.9879,
+        "answer_confidence": 0.9959,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 43.11466601211578,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0609,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_remote_support",
+      "language": "en",
+      "pair_id": "email_remote_support",
+      "expected": "install_or_grant_access",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.0252,
+          "reply_or_contact": 0.1791,
+          "click_or_scan": 0.0027,
+          "sign_in_or_verify": 0.0063,
+          "share_sensitive_info_or_documents": 0.5118,
+          "pay_or_transfer": 0.0017,
+          "purchase_or_claim": 0.0011,
+          "open_or_download_attachment": 0.0771,
+          "install_or_grant_access": 0.182,
+          "approve_login_or_transaction": 0.0094,
+          "update_account_or_delivery_details": 0.0032,
+          "other_or_unclear": 0.0004
+        },
+        "confidence": 0.4435,
+        "answer_confidence": 0.5118,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 84.43625003565103,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_remote_support",
+      "language": "fr",
+      "pair_id": "email_remote_support",
+      "expected": "install_or_grant_access",
+      "answer": {
+        "type": "choice",
+        "choice": "reply_or_contact",
+        "probabilities": {
+          "no_action": 0.0034,
+          "reply_or_contact": 0.4908,
+          "click_or_scan": 0.124,
+          "sign_in_or_verify": 0.0057,
+          "share_sensitive_info_or_documents": 0.0172,
+          "pay_or_transfer": 0.0114,
+          "purchase_or_claim": 0.0309,
+          "open_or_download_attachment": 0.0033,
+          "install_or_grant_access": 0.292,
+          "approve_login_or_transaction": 0.0067,
+          "update_account_or_delivery_details": 0.0032,
+          "other_or_unclear": 0.0115
+        },
+        "confidence": 0.4501,
+        "answer_confidence": 0.4908,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 43.90004195738584,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0181,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_clinic_reminder",
+      "language": "en",
+      "pair_id": "sms_clinic_reminder",
+      "expected": "reply_or_contact",
+      "answer": {
+        "type": "choice",
+        "choice": "reply_or_contact",
+        "probabilities": {
+          "no_action": 0.0431,
+          "reply_or_contact": 0.9058,
+          "click_or_scan": 0.0001,
+          "sign_in_or_verify": 0.0005,
+          "share_sensitive_info_or_documents": 0.0484,
+          "pay_or_transfer": 0.0001,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0018,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0003
+        },
+        "confidence": 0.8426,
+        "answer_confidence": 0.9058,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 85.44329192955047,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_clinic_reminder",
+      "language": "fr",
+      "pair_id": "sms_clinic_reminder",
+      "expected": "reply_or_contact",
+      "answer": {
+        "type": "choice",
+        "choice": "reply_or_contact",
+        "probabilities": {
+          "no_action": 0.0,
+          "reply_or_contact": 0.9998,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0,
+          "share_sensitive_info_or_documents": 0.0,
+          "pay_or_transfer": 0.0,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0001
+        },
+        "confidence": 0.999,
+        "answer_confidence": 0.9998,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 39.53254199586809,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0144,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_bank_security_code",
+      "language": "en",
+      "pair_id": "sms_bank_security_code",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.0369,
+          "reply_or_contact": 0.0056,
+          "click_or_scan": 0.0005,
+          "sign_in_or_verify": 0.0153,
+          "share_sensitive_info_or_documents": 0.8045,
+          "pay_or_transfer": 0.0027,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0001,
+          "approve_login_or_transaction": 0.0595,
+          "update_account_or_delivery_details": 0.0707,
+          "other_or_unclear": 0.0042
+        },
+        "confidence": 0.6825,
+        "answer_confidence": 0.8045,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 81.91324991639704,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_bank_security_code",
+      "language": "fr",
+      "pair_id": "sms_bank_security_code",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "reply_or_contact",
+        "probabilities": {
+          "no_action": 0.0,
+          "reply_or_contact": 0.9979,
+          "click_or_scan": 0.0001,
+          "sign_in_or_verify": 0.0002,
+          "share_sensitive_info_or_documents": 0.0002,
+          "pay_or_transfer": 0.0003,
+          "purchase_or_claim": 0.0001,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0007,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0004
+        },
+        "confidence": 0.9924,
+        "answer_confidence": 0.9979,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 41.96845798287541,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0597,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_parcel_tracking",
+      "language": "en",
+      "pair_id": "email_parcel_tracking",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.9989,
+          "reply_or_contact": 0.0001,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0001,
+          "share_sensitive_info_or_documents": 0.0008,
+          "pay_or_transfer": 0.0,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0001,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0001
+        },
+        "confidence": 0.9961,
+        "answer_confidence": 0.9989,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 81.83979208115488,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_parcel_tracking",
+      "language": "fr",
+      "pair_id": "email_parcel_tracking",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "click_or_scan",
+        "probabilities": {
+          "no_action": 0.2684,
+          "reply_or_contact": 0.0457,
+          "click_or_scan": 0.2698,
+          "sign_in_or_verify": 0.022,
+          "share_sensitive_info_or_documents": 0.0558,
+          "pay_or_transfer": 0.0209,
+          "purchase_or_claim": 0.1852,
+          "open_or_download_attachment": 0.0195,
+          "install_or_grant_access": 0.0306,
+          "approve_login_or_transaction": 0.0195,
+          "update_account_or_delivery_details": 0.0199,
+          "other_or_unclear": 0.0427
+        },
+        "confidence": 0.2118,
+        "answer_confidence": 0.2698,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 41.465707938186824,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0546,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "email_utility_bill",
+      "language": "en",
+      "pair_id": "email_utility_bill",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "pay_or_transfer",
+        "probabilities": {
+          "no_action": 0.0017,
+          "reply_or_contact": 0.001,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0,
+          "share_sensitive_info_or_documents": 0.0007,
+          "pay_or_transfer": 0.9965,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0
+        },
+        "confidence": 0.9889,
+        "answer_confidence": 0.9965,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 79.79133306071162,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_email_utility_bill",
+      "language": "fr",
+      "pair_id": "email_utility_bill",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "pay_or_transfer",
+        "probabilities": {
+          "no_action": 0.0018,
+          "reply_or_contact": 0.0015,
+          "click_or_scan": 0.0017,
+          "sign_in_or_verify": 0.0005,
+          "share_sensitive_info_or_documents": 0.0005,
+          "pay_or_transfer": 0.9747,
+          "purchase_or_claim": 0.0085,
+          "open_or_download_attachment": 0.0005,
+          "install_or_grant_access": 0.0005,
+          "approve_login_or_transaction": 0.0005,
+          "update_account_or_delivery_details": 0.0005,
+          "other_or_unclear": 0.0086
+        },
+        "confidence": 0.9347,
+        "answer_confidence": 0.9747,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 41.0351250320673,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "sms_prize_claim",
+      "language": "en",
+      "pair_id": "sms_prize_claim",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.3918,
+          "reply_or_contact": 0.0173,
+          "click_or_scan": 0.0173,
+          "sign_in_or_verify": 0.0315,
+          "share_sensitive_info_or_documents": 0.2371,
+          "pay_or_transfer": 0.0072,
+          "purchase_or_claim": 0.2719,
+          "open_or_download_attachment": 0.0001,
+          "install_or_grant_access": 0.0002,
+          "approve_login_or_transaction": 0.0142,
+          "update_account_or_delivery_details": 0.0048,
+          "other_or_unclear": 0.0066
+        },
+        "confidence": 0.4089,
+        "answer_confidence": 0.3918,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 83.9477920671925,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_translation_sms_prize_claim",
+      "language": "fr",
+      "pair_id": "sms_prize_claim",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "purchase_or_claim",
+        "probabilities": {
+          "no_action": 0.0001,
+          "reply_or_contact": 0.0052,
+          "click_or_scan": 0.0007,
+          "sign_in_or_verify": 0.0001,
+          "share_sensitive_info_or_documents": 0.0001,
+          "pay_or_transfer": 0.0002,
+          "purchase_or_claim": 0.9919,
+          "open_or_download_attachment": 0.0001,
+          "install_or_grant_access": 0.0002,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0015,
+          "other_or_unclear": 0.0
+        },
+        "confidence": 0.9772,
+        "answer_confidence": 0.9919,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 41.787541937083006,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0345,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_streaming_security",
+      "language": "fr",
+      "pair_id": "fr_email_streaming_security",
+      "expected": "install_or_grant_access",
+      "answer": {
+        "type": "choice",
+        "choice": "install_or_grant_access",
+        "probabilities": {
+          "no_action": 0.0,
+          "reply_or_contact": 0.0,
+          "click_or_scan": 0.0003,
+          "sign_in_or_verify": 0.0001,
+          "share_sensitive_info_or_documents": 0.0,
+          "pay_or_transfer": 0.0,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.9993,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0
+        },
+        "confidence": 0.9973,
+        "answer_confidence": 0.9993,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 41.838458040729165,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_streaming_security",
+      "language": "en",
+      "pair_id": "fr_email_streaming_security",
+      "expected": "install_or_grant_access",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.0481,
+          "reply_or_contact": 0.0182,
+          "click_or_scan": 0.0002,
+          "sign_in_or_verify": 0.0053,
+          "share_sensitive_info_or_documents": 0.532,
+          "pay_or_transfer": 0.0005,
+          "purchase_or_claim": 0.0064,
+          "open_or_download_attachment": 0.001,
+          "install_or_grant_access": 0.3219,
+          "approve_login_or_transaction": 0.0501,
+          "update_account_or_delivery_details": 0.0158,
+          "other_or_unclear": 0.0004
+        },
+        "confidence": 0.5127,
+        "answer_confidence": 0.532,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 79.68304201494902,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_traffic_fine",
+      "language": "fr",
+      "pair_id": "fr_sms_traffic_fine",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "reply_or_contact",
+        "probabilities": {
+          "no_action": 0.0918,
+          "reply_or_contact": 0.6512,
+          "click_or_scan": 0.0081,
+          "sign_in_or_verify": 0.0092,
+          "share_sensitive_info_or_documents": 0.0097,
+          "pay_or_transfer": 0.097,
+          "purchase_or_claim": 0.0626,
+          "open_or_download_attachment": 0.0061,
+          "install_or_grant_access": 0.008,
+          "approve_login_or_transaction": 0.0199,
+          "update_account_or_delivery_details": 0.0062,
+          "other_or_unclear": 0.0302
+        },
+        "confidence": 0.4726,
+        "answer_confidence": 0.6512,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 43.11958292964846,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0203,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_traffic_fine",
+      "language": "en",
+      "pair_id": "fr_sms_traffic_fine",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "pay_or_transfer",
+        "probabilities": {
+          "no_action": 0.0499,
+          "reply_or_contact": 0.0006,
+          "click_or_scan": 0.0005,
+          "sign_in_or_verify": 0.0003,
+          "share_sensitive_info_or_documents": 0.0068,
+          "pay_or_transfer": 0.9412,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0001,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0003,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0003
+        },
+        "confidence": 0.8963,
+        "answer_confidence": 0.9412,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 82.42745802272111,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_hotel_offer",
+      "language": "fr",
+      "pair_id": "fr_email_hotel_offer",
+      "expected": "purchase_or_claim",
+      "answer": {
+        "type": "choice",
+        "choice": "purchase_or_claim",
+        "probabilities": {
+          "no_action": 0.0018,
+          "reply_or_contact": 0.0116,
+          "click_or_scan": 0.0322,
+          "sign_in_or_verify": 0.0011,
+          "share_sensitive_info_or_documents": 0.0173,
+          "pay_or_transfer": 0.0044,
+          "purchase_or_claim": 0.92,
+          "open_or_download_attachment": 0.0006,
+          "install_or_grant_access": 0.0015,
+          "approve_login_or_transaction": 0.0069,
+          "update_account_or_delivery_details": 0.0013,
+          "other_or_unclear": 0.0013
+        },
+        "confidence": 0.8319,
+        "answer_confidence": 0.92,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 45.83583399653435,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0283,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_hotel_offer",
+      "language": "en",
+      "pair_id": "fr_email_hotel_offer",
+      "expected": "purchase_or_claim",
+      "answer": {
+        "type": "choice",
+        "choice": "purchase_or_claim",
+        "probabilities": {
+          "no_action": 0.0298,
+          "reply_or_contact": 0.0521,
+          "click_or_scan": 0.0021,
+          "sign_in_or_verify": 0.043,
+          "share_sensitive_info_or_documents": 0.2309,
+          "pay_or_transfer": 0.022,
+          "purchase_or_claim": 0.5263,
+          "open_or_download_attachment": 0.0002,
+          "install_or_grant_access": 0.0015,
+          "approve_login_or_transaction": 0.0848,
+          "update_account_or_delivery_details": 0.0066,
+          "other_or_unclear": 0.0008
+        },
+        "confidence": 0.4261,
+        "answer_confidence": 0.5263,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 76.97508309502155,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0045,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_library_closure",
+      "language": "fr",
+      "pair_id": "fr_sms_library_closure",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.8082,
+          "reply_or_contact": 0.076,
+          "click_or_scan": 0.004,
+          "sign_in_or_verify": 0.0043,
+          "share_sensitive_info_or_documents": 0.005,
+          "pay_or_transfer": 0.0215,
+          "purchase_or_claim": 0.0138,
+          "open_or_download_attachment": 0.004,
+          "install_or_grant_access": 0.0071,
+          "approve_login_or_transaction": 0.004,
+          "update_account_or_delivery_details": 0.0039,
+          "other_or_unclear": 0.0481
+        },
+        "confidence": 0.6664,
+        "answer_confidence": 0.8082,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 39.261416997760534,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0343,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_library_closure",
+      "language": "en",
+      "pair_id": "fr_sms_library_closure",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 1.0,
+          "reply_or_contact": 0.0,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0,
+          "share_sensitive_info_or_documents": 0.0,
+          "pay_or_transfer": 0.0,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0
+        },
+        "confidence": 1.0,
+        "answer_confidence": 1.0,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 81.95104193873703,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_insurance_receipt",
+      "language": "fr",
+      "pair_id": "fr_email_insurance_receipt",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "pay_or_transfer",
+        "probabilities": {
+          "no_action": 0.0004,
+          "reply_or_contact": 0.0001,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0002,
+          "share_sensitive_info_or_documents": 0.0001,
+          "pay_or_transfer": 0.999,
+          "purchase_or_claim": 0.0001,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0
+        },
+        "confidence": 0.9962,
+        "answer_confidence": 0.999,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 43.46020892262459,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0293,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_insurance_receipt",
+      "language": "en",
+      "pair_id": "fr_email_insurance_receipt",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.8179,
+          "reply_or_contact": 0.013,
+          "click_or_scan": 0.0005,
+          "sign_in_or_verify": 0.0044,
+          "share_sensitive_info_or_documents": 0.0915,
+          "pay_or_transfer": 0.0613,
+          "purchase_or_claim": 0.0005,
+          "open_or_download_attachment": 0.0017,
+          "install_or_grant_access": 0.0002,
+          "approve_login_or_transaction": 0.0035,
+          "update_account_or_delivery_details": 0.0011,
+          "other_or_unclear": 0.0044
+        },
+        "confidence": 0.7158,
+        "answer_confidence": 0.8179,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 82.87912490777671,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_pharmacy_password",
+      "language": "fr",
+      "pair_id": "fr_sms_pharmacy_password",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "approve_login_or_transaction",
+        "probabilities": {
+          "no_action": 0.0002,
+          "reply_or_contact": 0.0006,
+          "click_or_scan": 0.0007,
+          "sign_in_or_verify": 0.0281,
+          "share_sensitive_info_or_documents": 0.0002,
+          "pay_or_transfer": 0.0001,
+          "purchase_or_claim": 0.0002,
+          "open_or_download_attachment": 0.0001,
+          "install_or_grant_access": 0.0108,
+          "approve_login_or_transaction": 0.9585,
+          "update_account_or_delivery_details": 0.0005,
+          "other_or_unclear": 0.0001
+        },
+        "confidence": 0.9154,
+        "answer_confidence": 0.9585,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 39.38087495043874,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0297,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_pharmacy_password",
+      "language": "en",
+      "pair_id": "fr_sms_pharmacy_password",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.1355,
+          "reply_or_contact": 0.0398,
+          "click_or_scan": 0.001,
+          "sign_in_or_verify": 0.0127,
+          "share_sensitive_info_or_documents": 0.7757,
+          "pay_or_transfer": 0.0048,
+          "purchase_or_claim": 0.0005,
+          "open_or_download_attachment": 0.0007,
+          "install_or_grant_access": 0.0001,
+          "approve_login_or_transaction": 0.0164,
+          "update_account_or_delivery_details": 0.0125,
+          "other_or_unclear": 0.0002
+        },
+        "confidence": 0.6705,
+        "answer_confidence": 0.7757,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 83.26987503096461,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_investment_wallet",
+      "language": "fr",
+      "pair_id": "fr_email_investment_wallet",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "purchase_or_claim",
+        "probabilities": {
+          "no_action": 0.0101,
+          "reply_or_contact": 0.0377,
+          "click_or_scan": 0.1559,
+          "sign_in_or_verify": 0.0049,
+          "share_sensitive_info_or_documents": 0.0065,
+          "pay_or_transfer": 0.0416,
+          "purchase_or_claim": 0.6609,
+          "open_or_download_attachment": 0.0034,
+          "install_or_grant_access": 0.0429,
+          "approve_login_or_transaction": 0.0035,
+          "update_account_or_delivery_details": 0.0037,
+          "other_or_unclear": 0.0288
+        },
+        "confidence": 0.5083,
+        "answer_confidence": 0.6609,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 41.494542034342885,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0111,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_investment_wallet",
+      "language": "en",
+      "pair_id": "fr_email_investment_wallet",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.0342,
+          "reply_or_contact": 0.0626,
+          "click_or_scan": 0.0119,
+          "sign_in_or_verify": 0.0263,
+          "share_sensitive_info_or_documents": 0.6145,
+          "pay_or_transfer": 0.0444,
+          "purchase_or_claim": 0.0375,
+          "open_or_download_attachment": 0.0043,
+          "install_or_grant_access": 0.0049,
+          "approve_login_or_transaction": 0.1371,
+          "update_account_or_delivery_details": 0.0185,
+          "other_or_unclear": 0.0038
+        },
+        "confidence": 0.4306,
+        "answer_confidence": 0.6145,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 79.7291659982875,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_lottery_voucher",
+      "language": "fr",
+      "pair_id": "fr_sms_lottery_voucher",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "purchase_or_claim",
+        "probabilities": {
+          "no_action": 0.0018,
+          "reply_or_contact": 0.0261,
+          "click_or_scan": 0.0144,
+          "sign_in_or_verify": 0.0008,
+          "share_sensitive_info_or_documents": 0.0009,
+          "pay_or_transfer": 0.0067,
+          "purchase_or_claim": 0.9426,
+          "open_or_download_attachment": 0.0008,
+          "install_or_grant_access": 0.0018,
+          "approve_login_or_transaction": 0.001,
+          "update_account_or_delivery_details": 0.0008,
+          "other_or_unclear": 0.0024
+        },
+        "confidence": 0.8742,
+        "answer_confidence": 0.9426,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 42.942582978866994,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0291,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_lottery_voucher",
+      "language": "en",
+      "pair_id": "fr_sms_lottery_voucher",
+      "expected": "pay_or_transfer",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.151,
+          "reply_or_contact": 0.0069,
+          "click_or_scan": 0.0332,
+          "sign_in_or_verify": 0.0158,
+          "share_sensitive_info_or_documents": 0.3596,
+          "pay_or_transfer": 0.3139,
+          "purchase_or_claim": 0.0385,
+          "open_or_download_attachment": 0.0003,
+          "install_or_grant_access": 0.0025,
+          "approve_login_or_transaction": 0.0632,
+          "update_account_or_delivery_details": 0.0086,
+          "other_or_unclear": 0.0065
+        },
+        "confidence": 0.3479,
+        "answer_confidence": 0.3596,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 79.50849994085729,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_building_inspection",
+      "language": "fr",
+      "pair_id": "fr_email_building_inspection",
+      "expected": "reply_or_contact",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.2695,
+          "reply_or_contact": 0.1995,
+          "click_or_scan": 0.0977,
+          "sign_in_or_verify": 0.0954,
+          "share_sensitive_info_or_documents": 0.0183,
+          "pay_or_transfer": 0.0132,
+          "purchase_or_claim": 0.0346,
+          "open_or_download_attachment": 0.0115,
+          "install_or_grant_access": 0.0284,
+          "approve_login_or_transaction": 0.0208,
+          "update_account_or_delivery_details": 0.0115,
+          "other_or_unclear": 0.1996
+        },
+        "confidence": 0.2036,
+        "answer_confidence": 0.2695,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 45.98687496036291,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0401,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_building_inspection",
+      "language": "en",
+      "pair_id": "fr_email_building_inspection",
+      "expected": "reply_or_contact",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.8825,
+          "reply_or_contact": 0.0484,
+          "click_or_scan": 0.0007,
+          "sign_in_or_verify": 0.0012,
+          "share_sensitive_info_or_documents": 0.0609,
+          "pay_or_transfer": 0.0007,
+          "purchase_or_claim": 0.0003,
+          "open_or_download_attachment": 0.0003,
+          "install_or_grant_access": 0.0002,
+          "approve_login_or_transaction": 0.0011,
+          "update_account_or_delivery_details": 0.0001,
+          "other_or_unclear": 0.0035
+        },
+        "confidence": 0.8066,
+        "answer_confidence": 0.8825,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 93.2965410174802,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.007,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_sms_transit_schedule",
+      "language": "fr",
+      "pair_id": "fr_sms_transit_schedule",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.2486,
+          "reply_or_contact": 0.0899,
+          "click_or_scan": 0.0317,
+          "sign_in_or_verify": 0.0795,
+          "share_sensitive_info_or_documents": 0.0247,
+          "pay_or_transfer": 0.0399,
+          "purchase_or_claim": 0.0646,
+          "open_or_download_attachment": 0.0234,
+          "install_or_grant_access": 0.1047,
+          "approve_login_or_transaction": 0.025,
+          "update_account_or_delivery_details": 0.0227,
+          "other_or_unclear": 0.2453
+        },
+        "confidence": 0.148,
+        "answer_confidence": 0.2486,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 42.92291705496609,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0426,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_sms_transit_schedule",
+      "language": "en",
+      "pair_id": "fr_sms_transit_schedule",
+      "expected": "no_action",
+      "answer": {
+        "type": "choice",
+        "choice": "no_action",
+        "probabilities": {
+          "no_action": 0.9999,
+          "reply_or_contact": 0.0,
+          "click_or_scan": 0.0,
+          "sign_in_or_verify": 0.0,
+          "share_sensitive_info_or_documents": 0.0,
+          "pay_or_transfer": 0.0,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0,
+          "update_account_or_delivery_details": 0.0,
+          "other_or_unclear": 0.0001
+        },
+        "confidence": 0.9994,
+        "answer_confidence": 0.9999,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 83.66354100871831,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "fr_email_recruiting_identity",
+      "language": "fr",
+      "pair_id": "fr_email_recruiting_identity",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "purchase_or_claim",
+        "probabilities": {
+          "no_action": 0.0002,
+          "reply_or_contact": 0.0315,
+          "click_or_scan": 0.0002,
+          "sign_in_or_verify": 0.0004,
+          "share_sensitive_info_or_documents": 0.0002,
+          "pay_or_transfer": 0.0003,
+          "purchase_or_claim": 0.9668,
+          "open_or_download_attachment": 0.0,
+          "install_or_grant_access": 0.0001,
+          "approve_login_or_transaction": 0.0002,
+          "update_account_or_delivery_details": 0.0001,
+          "other_or_unclear": 0.0001
+        },
+        "confidence": 0.9372,
+        "answer_confidence": 0.9668,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": false,
+      "inference_ms": 47.471458092331886,
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "Latin script but language looks like 'fr', not English",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "fr",
+          "is_english": false,
+          "language_undecided": false,
+          "diacritic_rate": 0.0059,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    },
+    {
+      "id": "en_translation_fr_email_recruiting_identity",
+      "language": "en",
+      "pair_id": "fr_email_recruiting_identity",
+      "expected": "share_sensitive_info_or_documents",
+      "answer": {
+        "type": "choice",
+        "choice": "share_sensitive_info_or_documents",
+        "probabilities": {
+          "no_action": 0.0102,
+          "reply_or_contact": 0.0059,
+          "click_or_scan": 0.0001,
+          "sign_in_or_verify": 0.0001,
+          "share_sensitive_info_or_documents": 0.945,
+          "pay_or_transfer": 0.0001,
+          "purchase_or_claim": 0.0,
+          "open_or_download_attachment": 0.0336,
+          "install_or_grant_access": 0.0,
+          "approve_login_or_transaction": 0.0036,
+          "update_account_or_delivery_details": 0.0002,
+          "other_or_unclear": 0.0011
+        },
+        "confidence": 0.8885,
+        "answer_confidence": 0.945,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "correct": true,
+      "inference_ms": 95.069499919191,
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0
+        },
+        "workflow": null
+      }
+    }
+  ],
+  "summary": {
+    "correct": 22,
+    "total": 44,
+    "accuracy": 0.5,
+    "per_language": {
+      "en": {
+        "correct": 15,
+        "total": 22,
+        "accuracy": 0.6818181818181818
+      },
+      "fr": {
+        "correct": 7,
+        "total": 22,
+        "accuracy": 0.3181818181818182
+      }
+    },
+    "latency_ms": {
+      "p50": 62.223270593676716,
+      "p95": 85.44329192955047
+    },
+    "answers_changed": 7,
+    "errors_fixed": 0,
+    "correct_broken": 7
+  }
+}

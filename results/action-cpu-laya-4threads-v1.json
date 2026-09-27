@@ -1,0 +1,2721 @@
+{
+  "version": "action-cpu-latency-v1",
+  "backend": "laya",
+  "threads": 4,
+  "interop_threads": 1,
+  "repeats": 3,
+  "device": "cpu",
+  "precision": "torch.float32",
+  "host": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "logical_cpus": 10,
+    "torch_build": "PyTorch built with:\n  - GCC 4.2\n  - C++ Version: 202002\n  - clang 21.0.0\n  - OpenMP 202011\n  - LAPACK is enabled (usually provided by MKL)\n  - NNPACK is enabled\n  - CPU capability usage: DEFAULT\n  - Build settings: BLAS_INFO=accelerate, BUILD_TYPE=Release, COMMIT_SHA=08187d9e0fba026dc8217405802ab5381dc88d90, CUDA_FLAGS= -DLIBCUDACXX_ENABLE_SIMPLIFIED_COMPLEX_OPERATIONS -Xfatbin -compress-all  -Wno-deprecated-gpu-targets --expt-extended-lambda -DCUB_WRAPPED_NAMESPACE=at_cuda_detail -DDISABLE_CUSPARSE_DEPRECATED -DCUDA_HAS_FP16=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -DC10_NODEPRECATED, CXX_COMPILER=/usr/bin/c++, CXX_FLAGS= -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DUSE_PYTORCH_QNNPACK -DAT_BUILD_ARM_VEC256_WITH_SLEEF -DUSE_PYTORCH_METAL_EXPORT -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DUSE_COREML_DELEGATE -O2 -fPIC -DC10_NODEPRECATED -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=braced-scalar-init -Werror=range-loop-construct -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-unknown-pragmas -Wno-unused-parameter -Wno-strict-overflow -Wno-strict-aliasing -Wvla-extension -Wsuggest-override -Wnewline-eof -Winconsistent-missing-override -Winconsistent-missing-destructor-override -Wno-pass-failed -Wno-error=old-style-cast -Wconstant-conversion -Qunused-arguments -faligned-new -fno-math-errno -fno-trapping-math -Werror=format -fclang-abi-compat=17 -DUSE_MPS -Wno-missing-braces, LAPACK_INFO=accelerate, TORCH_VERSION=2.14.0, USE_CUDA=OFF, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_EIGEN_FOR_BLAS=ON, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_HIPSPARSELT=OFF, USE_MKL=OFF, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=OFF, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=OFF, USE_XPU=OFF, \n"
+  },
+  "dataset_sha256": "0f36d0ac1c4a3b890030d398b512a1a8fb5d57e9300f3b643d5533a08352f100",
+  "harness_sha256": "dc07806545b4faec024f7fce3ecbed80ae51179510f0fc0d4a4dca79576e2896",
+  "selected_pair_ids": [
+    "rou_s03_booking_alternatives",
+    "rou_s07_permission_archive",
+    "rou_m02_two_returns",
+    "rou_m07_receipt_shutdown",
+    "sus_s08_claim_ship_factual",
+    "sus_s01_router_passphrase",
+    "sus_m06_donation_optout",
+    "sus_m02_manuscript_tool"
+  ],
+  "timing_note": "Sequential batch-one message requests. Positive and actual opposition passes timed separately; warmup excluded. Includes tokenization/schema preparation. No HTTP or container overhead.",
+  "predictions": [
+    {
+      "id": "rou_s03_booking_alternatives_en",
+      "pair_id": "rou_s03_booking_alternatives",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 170,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7538,
+            "confidence": 0.7538,
+            "answer_confidence": 0.7538,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7538,
+        "positive_ms": 148.01083295606077,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.3165,
+            "confidence": 0.6835,
+            "answer_confidence": 0.6835,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 159.04712490737438
+      }
+    },
+    {
+      "id": "rou_s03_booking_alternatives_fr",
+      "pair_id": "rou_s03_booking_alternatives",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 183,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.9606,
+            "confidence": 0.9606,
+            "answer_confidence": 0.9606,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.9606,
+        "positive_ms": 62.031667097471654,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6731,
+            "confidence": 0.6731,
+            "answer_confidence": 0.6731,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 64.16333303786814
+      }
+    },
+    {
+      "id": "rou_s07_permission_archive_en",
+      "pair_id": "rou_s07_permission_archive",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 296,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4723,
+            "confidence": 0.5277,
+            "answer_confidence": 0.5277,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5277000000000001,
+        "positive_ms": 157.0052090100944,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4593,
+            "confidence": 0.5407,
+            "answer_confidence": 0.5407,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 174.70712505746633
+      }
+    },
+    {
+      "id": "rou_s07_permission_archive_fr",
+      "pair_id": "rou_s07_permission_archive",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 384,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4736,
+            "confidence": 0.5264,
+            "answer_confidence": 0.5264,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5264,
+        "positive_ms": 70.65216696355492,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5483,
+            "confidence": 0.5483,
+            "answer_confidence": 0.5483,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 83.44504097476602
+      }
+    },
+    {
+      "id": "rou_m02_two_returns_en",
+      "pair_id": "rou_m02_two_returns",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 206,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7855,
+            "confidence": 0.7855,
+            "answer_confidence": 0.7855,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7855,
+        "positive_ms": 151.9642500206828,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.3503,
+            "confidence": 0.6497,
+            "answer_confidence": 0.6497,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 166.00445797666907
+      }
+    },
+    {
+      "id": "rou_m02_two_returns_fr",
+      "pair_id": "rou_m02_two_returns",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 209,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7039,
+            "confidence": 0.7039,
+            "answer_confidence": 0.7039,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7039,
+        "positive_ms": 74.96362493839115,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4944,
+            "confidence": 0.5056,
+            "answer_confidence": 0.5056,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 75.97291690763086
+      }
+    },
+    {
+      "id": "rou_m07_receipt_shutdown_en",
+      "pair_id": "rou_m07_receipt_shutdown",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 201,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8814,
+            "confidence": 0.8814,
+            "answer_confidence": 0.8814,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8814,
+        "positive_ms": 163.82987494580448,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.1243,
+            "confidence": 0.8757,
+            "answer_confidence": 0.8757,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 184.18125004973263
+      }
+    },
+    {
+      "id": "rou_m07_receipt_shutdown_fr",
+      "pair_id": "rou_m07_receipt_shutdown",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 216,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8902,
+            "confidence": 0.8902,
+            "answer_confidence": 0.8902,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8902,
+        "positive_ms": 95.05629097111523,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4336,
+            "confidence": 0.5664,
+            "answer_confidence": 0.5664,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 77.20887497998774
+      }
+    },
+    {
+      "id": "sus_s08_claim_ship_factual_en",
+      "pair_id": "sus_s08_claim_ship_factual",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 304,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.447,
+            "confidence": 0.553,
+            "answer_confidence": 0.553,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5529999999999999,
+        "positive_ms": 167.0566250104457,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5595,
+            "confidence": 0.5595,
+            "answer_confidence": 0.5595,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 281.7654579412192
+      }
+    },
+    {
+      "id": "sus_s08_claim_ship_factual_fr",
+      "pair_id": "sus_s08_claim_ship_factual",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 365,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7135,
+            "confidence": 0.7135,
+            "answer_confidence": 0.7135,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7135,
+        "positive_ms": 120.44704100117087,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8273,
+            "confidence": 0.8273,
+            "answer_confidence": 0.8273,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 98.0288750724867
+      }
+    },
+    {
+      "id": "sus_s01_router_passphrase_en",
+      "pair_id": "sus_s01_router_passphrase",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 236,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4755,
+            "confidence": 0.5245,
+            "answer_confidence": 0.5245,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5245,
+        "positive_ms": 170.01495801378042,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6105,
+            "confidence": 0.6105,
+            "answer_confidence": 0.6105,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 185.42241700924933
+      }
+    },
+    {
+      "id": "sus_s01_router_passphrase_fr",
+      "pair_id": "sus_s01_router_passphrase",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 0,
+      "input_chars": 293,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8816,
+            "confidence": 0.8816,
+            "answer_confidence": 0.8816,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8816,
+        "positive_ms": 72.47237500268966,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5017,
+            "confidence": 0.5017,
+            "answer_confidence": 0.5017,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 80.92679199762642
+      }
+    },
+    {
+      "id": "sus_m06_donation_optout_en",
+      "pair_id": "sus_m06_donation_optout",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 200,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6075,
+            "confidence": 0.6075,
+            "answer_confidence": 0.6075,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.6075,
+        "positive_ms": 166.23104095924646,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4653,
+            "confidence": 0.5347,
+            "answer_confidence": 0.5347,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 181.32199998944998
+      }
+    },
+    {
+      "id": "sus_m06_donation_optout_fr",
+      "pair_id": "sus_m06_donation_optout",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 247,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7453,
+            "confidence": 0.7453,
+            "answer_confidence": 0.7453,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7453,
+        "positive_ms": 68.53433302603662,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6004,
+            "confidence": 0.6004,
+            "answer_confidence": 0.6004,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 74.99829097650945
+      }
+    },
+    {
+      "id": "sus_m02_manuscript_tool_en",
+      "pair_id": "sus_m02_manuscript_tool",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 311,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5484,
+            "confidence": 0.5484,
+            "answer_confidence": 0.5484,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5484,
+        "positive_ms": 165.6050420133397,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4884,
+            "confidence": 0.5116,
+            "answer_confidence": 0.5116,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 185.29037502594292
+      }
+    },
+    {
+      "id": "sus_m02_manuscript_tool_fr",
+      "pair_id": "sus_m02_manuscript_tool",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 0,
+      "input_chars": 350,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.9295,
+            "confidence": 0.9295,
+            "answer_confidence": 0.9295,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.9295,
+        "positive_ms": 74.12620796822011,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5092,
+            "confidence": 0.5092,
+            "answer_confidence": 0.5092,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 78.68595910258591
+      }
+    },
+    {
+      "id": "sus_m02_manuscript_tool_fr",
+      "pair_id": "sus_m02_manuscript_tool",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 350,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.9295,
+            "confidence": 0.9295,
+            "answer_confidence": 0.9295,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.9295,
+        "positive_ms": 74.19762492645532,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5092,
+            "confidence": 0.5092,
+            "answer_confidence": 0.5092,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 78.34474998526275
+      }
+    },
+    {
+      "id": "sus_m02_manuscript_tool_en",
+      "pair_id": "sus_m02_manuscript_tool",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 311,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5484,
+            "confidence": 0.5484,
+            "answer_confidence": 0.5484,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5484,
+        "positive_ms": 169.4099580636248,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4884,
+            "confidence": 0.5116,
+            "answer_confidence": 0.5116,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 187.29475000873208
+      }
+    },
+    {
+      "id": "sus_m06_donation_optout_fr",
+      "pair_id": "sus_m06_donation_optout",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 247,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7453,
+            "confidence": 0.7453,
+            "answer_confidence": 0.7453,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7453,
+        "positive_ms": 71.08150003477931,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6004,
+            "confidence": 0.6004,
+            "answer_confidence": 0.6004,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 70.69125003181398
+      }
+    },
+    {
+      "id": "sus_m06_donation_optout_en",
+      "pair_id": "sus_m06_donation_optout",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 200,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6075,
+            "confidence": 0.6075,
+            "answer_confidence": 0.6075,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.6075,
+        "positive_ms": 151.89891611225903,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4653,
+            "confidence": 0.5347,
+            "answer_confidence": 0.5347,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 168.86954195797443
+      }
+    },
+    {
+      "id": "sus_s01_router_passphrase_fr",
+      "pair_id": "sus_s01_router_passphrase",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 293,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8816,
+            "confidence": 0.8816,
+            "answer_confidence": 0.8816,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8816,
+        "positive_ms": 63.812708016484976,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5017,
+            "confidence": 0.5017,
+            "answer_confidence": 0.5017,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 71.03779201861471
+      }
+    },
+    {
+      "id": "sus_s01_router_passphrase_en",
+      "pair_id": "sus_s01_router_passphrase",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 236,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4755,
+            "confidence": 0.5245,
+            "answer_confidence": 0.5245,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5245,
+        "positive_ms": 155.1269160117954,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6105,
+            "confidence": 0.6105,
+            "answer_confidence": 0.6105,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 170.43337505310774
+      }
+    },
+    {
+      "id": "sus_s08_claim_ship_factual_fr",
+      "pair_id": "sus_s08_claim_ship_factual",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 365,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7135,
+            "confidence": 0.7135,
+            "answer_confidence": 0.7135,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7135,
+        "positive_ms": 68.84824996814132,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8273,
+            "confidence": 0.8273,
+            "answer_confidence": 0.8273,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 82.21045800019056
+      }
+    },
+    {
+      "id": "sus_s08_claim_ship_factual_en",
+      "pair_id": "sus_s08_claim_ship_factual",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 304,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.447,
+            "confidence": 0.553,
+            "answer_confidence": 0.553,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5529999999999999,
+        "positive_ms": 158.804832957685,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5595,
+            "confidence": 0.5595,
+            "answer_confidence": 0.5595,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 179.56325004342943
+      }
+    },
+    {
+      "id": "rou_m07_receipt_shutdown_fr",
+      "pair_id": "rou_m07_receipt_shutdown",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 216,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8902,
+            "confidence": 0.8902,
+            "answer_confidence": 0.8902,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8902,
+        "positive_ms": 65.62812498304993,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4336,
+            "confidence": 0.5664,
+            "answer_confidence": 0.5664,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 71.72975002322346
+      }
+    },
+    {
+      "id": "rou_m07_receipt_shutdown_en",
+      "pair_id": "rou_m07_receipt_shutdown",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 201,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8814,
+            "confidence": 0.8814,
+            "answer_confidence": 0.8814,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8814,
+        "positive_ms": 157.00474998448044,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.1243,
+            "confidence": 0.8757,
+            "answer_confidence": 0.8757,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 170.7182910759002
+      }
+    },
+    {
+      "id": "rou_m02_two_returns_fr",
+      "pair_id": "rou_m02_two_returns",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 209,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7039,
+            "confidence": 0.7039,
+            "answer_confidence": 0.7039,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7039,
+        "positive_ms": 65.2709580026567,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4944,
+            "confidence": 0.5056,
+            "answer_confidence": 0.5056,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 70.65483299084008
+      }
+    },
+    {
+      "id": "rou_m02_two_returns_en",
+      "pair_id": "rou_m02_two_returns",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 1,
+      "input_chars": 206,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7855,
+            "confidence": 0.7855,
+            "answer_confidence": 0.7855,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7855,
+        "positive_ms": 150.9869999717921,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.3503,
+            "confidence": 0.6497,
+            "answer_confidence": 0.6497,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 157.7500420389697
+      }
+    },
+    {
+      "id": "rou_s07_permission_archive_fr",
+      "pair_id": "rou_s07_permission_archive",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 384,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4736,
+            "confidence": 0.5264,
+            "answer_confidence": 0.5264,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5264,
+        "positive_ms": 68.70058306958526,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5483,
+            "confidence": 0.5483,
+            "answer_confidence": 0.5483,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 83.41333293356001
+      }
+    },
+    {
+      "id": "rou_s07_permission_archive_en",
+      "pair_id": "rou_s07_permission_archive",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 296,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4723,
+            "confidence": 0.5277,
+            "answer_confidence": 0.5277,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5277000000000001,
+        "positive_ms": 155.57066607289016,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4593,
+            "confidence": 0.5407,
+            "answer_confidence": 0.5407,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 171.5120419394225
+      }
+    },
+    {
+      "id": "rou_s03_booking_alternatives_fr",
+      "pair_id": "rou_s03_booking_alternatives",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 183,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.9606,
+            "confidence": 0.9606,
+            "answer_confidence": 0.9606,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.9606,
+        "positive_ms": 60.549500049091876,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6731,
+            "confidence": 0.6731,
+            "answer_confidence": 0.6731,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 63.316875020973384
+      }
+    },
+    {
+      "id": "rou_s03_booking_alternatives_en",
+      "pair_id": "rou_s03_booking_alternatives",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 1,
+      "input_chars": 170,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7538,
+            "confidence": 0.7538,
+            "answer_confidence": 0.7538,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7538,
+        "positive_ms": 148.37637497112155,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.3165,
+            "confidence": 0.6835,
+            "answer_confidence": 0.6835,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 157.09208301268518
+      }
+    },
+    {
+      "id": "rou_s03_booking_alternatives_en",
+      "pair_id": "rou_s03_booking_alternatives",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 170,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7538,
+            "confidence": 0.7538,
+            "answer_confidence": 0.7538,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7538,
+        "positive_ms": 148.92258308827877,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.3165,
+            "confidence": 0.6835,
+            "answer_confidence": 0.6835,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 156.89691703300923
+      }
+    },
+    {
+      "id": "rou_s03_booking_alternatives_fr",
+      "pair_id": "rou_s03_booking_alternatives",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 183,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.9606,
+            "confidence": 0.9606,
+            "answer_confidence": 0.9606,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.9606,
+        "positive_ms": 59.934500022791326,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6731,
+            "confidence": 0.6731,
+            "answer_confidence": 0.6731,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 64.7947919787839
+      }
+    },
+    {
+      "id": "rou_s07_permission_archive_en",
+      "pair_id": "rou_s07_permission_archive",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 296,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4723,
+            "confidence": 0.5277,
+            "answer_confidence": 0.5277,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5277000000000001,
+        "positive_ms": 159.14333402179182,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4593,
+            "confidence": 0.5407,
+            "answer_confidence": 0.5407,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 172.4199999589473
+      }
+    },
+    {
+      "id": "rou_s07_permission_archive_fr",
+      "pair_id": "rou_s07_permission_archive",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 384,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4736,
+            "confidence": 0.5264,
+            "answer_confidence": 0.5264,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5264,
+        "positive_ms": 68.8245000783354,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5483,
+            "confidence": 0.5483,
+            "answer_confidence": 0.5483,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 81.1524169985205
+      }
+    },
+    {
+      "id": "rou_m02_two_returns_en",
+      "pair_id": "rou_m02_two_returns",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 206,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7855,
+            "confidence": 0.7855,
+            "answer_confidence": 0.7855,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7855,
+        "positive_ms": 148.04433297831565,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.3503,
+            "confidence": 0.6497,
+            "answer_confidence": 0.6497,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 156.97933395858854
+      }
+    },
+    {
+      "id": "rou_m02_two_returns_fr",
+      "pair_id": "rou_m02_two_returns",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 209,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7039,
+            "confidence": 0.7039,
+            "answer_confidence": 0.7039,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7039,
+        "positive_ms": 62.19937501009554,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4944,
+            "confidence": 0.5056,
+            "answer_confidence": 0.5056,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 67.11166689638048
+      }
+    },
+    {
+      "id": "rou_m07_receipt_shutdown_en",
+      "pair_id": "rou_m07_receipt_shutdown",
+      "language": "en",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 201,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8814,
+            "confidence": 0.8814,
+            "answer_confidence": 0.8814,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8814,
+        "positive_ms": 158.32616691477597,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.1243,
+            "confidence": 0.8757,
+            "answer_confidence": 0.8757,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 169.2069589626044
+      }
+    },
+    {
+      "id": "rou_m07_receipt_shutdown_fr",
+      "pair_id": "rou_m07_receipt_shutdown",
+      "language": "fr",
+      "risk_stratum": "routine",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 216,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8902,
+            "confidence": 0.8902,
+            "answer_confidence": 0.8902,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8902,
+        "positive_ms": 62.67954094801098,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4336,
+            "confidence": 0.5664,
+            "answer_confidence": 0.5664,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 69.61245799902827
+      }
+    },
+    {
+      "id": "sus_s08_claim_ship_factual_en",
+      "pair_id": "sus_s08_claim_ship_factual",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 304,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.447,
+            "confidence": 0.553,
+            "answer_confidence": 0.553,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5529999999999999,
+        "positive_ms": 158.22133293841034,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5595,
+            "confidence": 0.5595,
+            "answer_confidence": 0.5595,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 179.65199996251613
+      }
+    },
+    {
+      "id": "sus_s08_claim_ship_factual_fr",
+      "pair_id": "sus_s08_claim_ship_factual",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 365,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7135,
+            "confidence": 0.7135,
+            "answer_confidence": 0.7135,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7135,
+        "positive_ms": 72.44954199995846,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8273,
+            "confidence": 0.8273,
+            "answer_confidence": 0.8273,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 85.88104206137359
+      }
+    },
+    {
+      "id": "sus_s01_router_passphrase_en",
+      "pair_id": "sus_s01_router_passphrase",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 236,
+      "result": {
+        "predicted": false,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4755,
+            "confidence": 0.5245,
+            "answer_confidence": 0.5245,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5245,
+        "positive_ms": 157.82787511125207,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6105,
+            "confidence": 0.6105,
+            "answer_confidence": 0.6105,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 176.9697080599144
+      }
+    },
+    {
+      "id": "sus_s01_router_passphrase_fr",
+      "pair_id": "sus_s01_router_passphrase",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": false,
+      "repeat": 2,
+      "input_chars": 293,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.8816,
+            "confidence": 0.8816,
+            "answer_confidence": 0.8816,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.8816,
+        "positive_ms": 68.74862499535084,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5017,
+            "confidence": 0.5017,
+            "answer_confidence": 0.5017,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 73.66520795039833
+      }
+    },
+    {
+      "id": "sus_m06_donation_optout_en",
+      "pair_id": "sus_m06_donation_optout",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 200,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6075,
+            "confidence": 0.6075,
+            "answer_confidence": 0.6075,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.6075,
+        "positive_ms": 153.94108300097287,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4653,
+            "confidence": 0.5347,
+            "answer_confidence": 0.5347,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 169.8274159571156
+      }
+    },
+    {
+      "id": "sus_m06_donation_optout_fr",
+      "pair_id": "sus_m06_donation_optout",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 247,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.7453,
+            "confidence": 0.7453,
+            "answer_confidence": 0.7453,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.7453,
+        "positive_ms": 64.08791698049754,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.6004,
+            "confidence": 0.6004,
+            "answer_confidence": 0.6004,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 69.79320803657174
+      }
+    },
+    {
+      "id": "sus_m02_manuscript_tool_en",
+      "pair_id": "sus_m02_manuscript_tool",
+      "language": "en",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 311,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5484,
+            "confidence": 0.5484,
+            "answer_confidence": 0.5484,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.5484,
+        "positive_ms": 158.7973750429228,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.4884,
+            "confidence": 0.5116,
+            "answer_confidence": 0.5116,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 174.12483401130885
+      }
+    },
+    {
+      "id": "sus_m02_manuscript_tool_fr",
+      "pair_id": "sus_m02_manuscript_tool",
+      "language": "fr",
+      "risk_stratum": "suspicious",
+      "expected": true,
+      "repeat": 2,
+      "input_chars": 350,
+      "result": {
+        "predicted": true,
+        "unresolved": false,
+        "answers": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.9295,
+            "confidence": 0.9295,
+            "answer_confidence": 0.9295,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "answer_confidence": 0.9295,
+        "positive_ms": 68.9681249205023,
+        "negative": {
+          "multiple_actions": {
+            "type": "noul",
+            "noul": 0.5092,
+            "confidence": 0.5092,
+            "answer_confidence": 0.5092,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "negative_questions": {
+          "multiple_actions": {
+            "type": "noul",
+            "instructions": "Apply the original question's rubric. Answer its complementary question: is the condition in the original question FALSE for this message? Original question: Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+            "criteria": {
+              "true": "No, it asks for at most one distinct action.",
+              "false": "Yes, it asks for two or more distinct actions."
+            },
+            "labels": {
+              "true": "A",
+              "false": "B"
+            }
+          }
+        },
+        "negative_ms": 74.24679095856845
+      }
+    }
+  ],
+  "config": {
+    "kind": "direct",
+    "questions": {
+      "multiple_actions": {
+        "type": "noul",
+        "instructions": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation.",
+        "criteria": {
+          "true": "Yes, it asks for two or more distinct actions.",
+          "false": "No, it asks for at most one distinct action."
+        },
+        "labels": {
+          "true": "A",
+          "false": "B"
+        }
+      }
+    }
+  },
+  "checkpoint_identity": {
+    "english": {
+      "repo": "convaiinnovations/laya",
+      "subfolder": null,
+      "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+      "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/dd/dd8562d713759821a0bc049e79abd09e5817d218d18fa51478ad16986d018764",
+      "weights_bytes": 842609210,
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "amp_enabled": false,
+      "mps_amp_min_rows": 5,
+      "temperature_raw": [
+        1.6369030475616455,
+        1.2514300346374512,
+        1.983399510383606
+      ],
+      "temperature": [
+        1.6369030475616455,
+        1.2514300346374512,
+        1.983399510383606
+      ],
+      "temperature_by_options_raw": {
+        "choice:3-5": 1.7601518630981445,
+        "choice:6-10": 1.0000158548355103,
+        "score:3-5": 1.2514300346374512,
+        "noul:2": 1.983399510383606,
+        "choice:11+": 0.10058280825614929,
+        "choice:2": 1.9063563346862793
+      },
+      "temperature_by_options": {
+        "choice:3-5": 1.7601518630981445,
+        "choice:6-10": 1.0000158548355103,
+        "score:3-5": 1.2514300346374512,
+        "noul:2": 1.983399510383606,
+        "choice:11+": 0.5,
+        "choice:2": 1.9063563346862793
+      },
+      "config": {
+        "encoder": "answerdotai/ModernBERT-large",
+        "head_layers": 2,
+        "max_len": 512,
+        "head_max_len": 192,
+        "max_prefixes": 6,
+        "act_costs": {
+          "escalate": 0.5
+        },
+        "cost_wrong_act": 3.0,
+        "amp_dtype": "bf16",
+        "model_name": "rl-agent",
+        "temperature": [
+          1.6369030475616455,
+          1.2514300346374512,
+          1.983399510383606
+        ],
+        "temperature_by_options": {
+          "choice:3-5": 1.7601518630981445,
+          "choice:6-10": 1.0000158548355103,
+          "score:3-5": 1.2514300346374512,
+          "noul:2": 1.983399510383606,
+          "choice:11+": 0.10058280825614929,
+          "choice:2": 1.9063563346862793
+        },
+        "training": {
+          "updates": 7313,
+          "epochs_completed": 1,
+          "hours": 1.96,
+          "world_size": 1,
+          "fine_tuned_from_checkpoint": true
+        }
+      }
+    },
+    "multilingual": {
+      "repo": "convaiinnovations/laya",
+      "subfolder": "multilingual",
+      "snapshot": "/Users/sol/.cache/huggingface/hub/models--convaiinnovations--laya/snapshots/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+      "weights_blob": "/Users/sol/.cache/huggingface/hub/blobs/53/53499790a05bdabd4023a797e9e2776d39efd3bac72d6ddaed70495da40c6eb0",
+      "weights_bytes": 643835514,
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "amp_enabled": false,
+      "mps_amp_min_rows": 5,
+      "temperature_raw": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "temperature": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "temperature_by_options_raw": {},
+      "temperature_by_options": {},
+      "config": {
+        "encoder": "jhu-clsp/mmBERT-base",
+        "head_layers": 2,
+        "max_len": 1024,
+        "head_max_len": 256,
+        "max_prefixes": 6,
+        "act_costs": {
+          "escalate": 0.5
+        },
+        "cost_wrong_act": 3.0,
+        "amp_dtype": "bf16",
+        "model_name": "rl-agent",
+        "temperature": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "temperature_by_options": {},
+        "training": {
+          "updates": 15987,
+          "epochs_completed": 4,
+          "hours": 4.97,
+          "world_size": 1,
+          "fine_tuned_from_checkpoint": false
+        }
+      }
+    }
+  },
+  "packages": {
+    "laya": "0.3.20",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "numpy": "1.26.4"
+  },
+  "cold_load_ms": 5941.073999973014,
+  "cold_load_note": "Checkpoint construction plus identity/package validation; both Laya routed checkpoints loaded.",
+  "process_peak_rss_bytes": 4513579008,
+  "memory_note": "Peak resident memory of the whole benchmark process, not model-only memory.",
+  "summary": {
+    "overall": {
+      "positive_ms": {
+        "p50": 134.22893697861582,
+        "p95": 167.0566250104457,
+        "mean": 114.25805023221376,
+        "n": 48
+      },
+      "including_opposition_ms": {
+        "p50": 261.7497915052809,
+        "p95": 355.43737502302974,
+        "mean": 240.2609139389824,
+        "n": 48
+      }
+    },
+    "per_language": {
+      "en": {
+        "positive_ms": {
+          "p50": 157.41654206067324,
+          "p95": 169.4099580636248,
+          "mean": 157.50505542382598,
+          "n": 24
+        },
+        "including_opposition_ms": {
+          "p50": 329.6431875205599,
+          "p95": 356.7047080723569,
+          "mean": 334.04883671513136,
+          "n": 24
+        }
+      },
+      "fr": {
+        "positive_ms": {
+          "p50": 68.78656253684312,
+          "p95": 95.05629097111523,
+          "mean": 71.01104504060156,
+          "n": 24
+        },
+        "including_opposition_ms": {
+          "p50": 143.37376994080842,
+          "p95": 172.26516595110297,
+          "mean": 146.47299116283344,
+          "n": 24
+        }
+      }
+    }
+  }
+}

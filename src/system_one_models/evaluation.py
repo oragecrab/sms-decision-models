@@ -13,7 +13,7 @@ from .questions import QUESTIONS
 
 
 def load_examples() -> list[dict[str, Any]]:
-    path = Path(__file__).resolve().parents[2] / "datasets" / "base_eval_v1.jsonl"
+    path = Path(__file__).resolve().parents[2] / "datasets" / "base_eval_v3.jsonl"
     with path.open(encoding="utf-8") as dataset:
         return [json.loads(line) for line in dataset if line.strip()]
 
@@ -25,6 +25,7 @@ def run_demo(*, details: bool = False) -> int:
     examples = load_examples()
     scores = {question_id: 0 for question_id in QUESTIONS}
     exact_matches = 0
+    language_scores = {}
     for index, example in enumerate(examples, start=1):
         state = example["state"]
         started = time.perf_counter()
@@ -51,6 +52,10 @@ def run_demo(*, details: bool = False) -> int:
         }
         for question_id, expected_value in example["expected"].items():
             scores[question_id] += results.get(question_id) == expected_value
+        language = example.get("language", "unspecified")
+        counts = language_scores.setdefault(language, {"messages": 0, "correct": 0})
+        counts["messages"] += 1
+        counts["correct"] += sum(results.get(key) == value for key, value in example["expected"].items())
         exact_matches += all(
             results.get(question_id) == expected_value
             for question_id, expected_value in example["expected"].items()
@@ -65,4 +70,7 @@ def run_demo(*, details: bool = False) -> int:
         f"{COMPACT_LABELS[question_id]} {scores[question_id]}/{len(examples)}"
         for question_id in QUESTIONS
     ))
+    for language, counts in sorted(language_scores.items()):
+        total = counts["messages"] * len(QUESTIONS)
+        print(f"  {language}: {counts['messages']} messages; {counts['correct']}/{total} labels correct")
     return 0

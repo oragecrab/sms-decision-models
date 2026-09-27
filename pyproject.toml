@@ -11,6 +11,23 @@ dependencies = [
     "laya>=0.3.20",
 ]
 
+[project.optional-dependencies]
+decider = ["decider-ai>=1.4.0,<2"]
+jevk5 = ["jevk5 @ git+https://github.com/allebee/jevk5@v0.3.0"]
+
+zerank = ["sentence-transformers>=5.7,<6"]
+
+gliner = ["gliner2[local] @ git+https://github.com/fastino-ai/GLiNER2@55656fbfa01d3d4a77485e1a1eeeaf682990ccdf", "sentencepiece>=0.2"]
+clm = ["accelerate>=1.12", "transformers>=5.17,<6", "huggingface-hub>=1", "numpy>=1.24", "torch>=2.7"]
+
+[tool.uv]
+conflicts = [
+    [{extra = "gliner"}, {extra = "decider"}],
+    [{extra = "gliner"}, {extra = "jevk5"}],
+    [{extra = "gliner"}, {extra = "zerank"}],
+    [{extra = "gliner"}, {extra = "clm"}],
+]
+
 [project.scripts]
 system-one-models = "system_one_models.cli:main"
 

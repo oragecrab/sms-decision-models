@@ -1,0 +1,179 @@
+{
+  "version": "wording-catalog-v1",
+  "instructions": {
+    "classification": {
+      "direct": "Choose legitimate, marketing, or suspected_scam from the supplied text. Routine notices and normal bills are legitimate; ordinary promotions are marketing. Suspicious fees, explicit secret or identity/financial disclosure, and unsolicited remote access indicate suspected_scam. Judge textual suspicion without verifying authenticity.",
+      "concise_rubric": "Apply the textual-risk rubric: routine service communication → legitimate; ordinary commercial promotion → marketing; suspicious fees, secrets, identity/bank disclosure, or unsolicited remote access → suspected_scam. Claimed official status does not establish legitimacy. Routine sign-in and payment alone do not establish sensitive disclosure.",
+      "evidence": "Look for concrete evidence in sender, subject, and body. Distinguish routine notices and normal billing from ordinary advertising and suspicious demands. Fees for jobs, winnings, or unexpected parcels; secret credentials; identity/bank disclosure; and unsolicited remote access support suspected_scam. Do not infer authentication from the sender name.",
+      "rules": "First check for suspicious demands: unusual release fees, secret credentials, identity or bank details, or unsolicited remote access. If present, choose suspected_scam. Otherwise choose marketing for ordinary advertising and legitimate for routine communication or normal service bills. Use only supplied evidence, without verifying the sender.",
+      "contrast": "A claimed institution can still send suspicious text. A normal bill or sign-in instruction alone can be routine. A discount can be ordinary advertising. Separate legitimate service messages, marketing offers, and suspected_scam demands using explicit suspicious fees, disclosure, or unsolicited access as evidence.",
+      "boundary": "Do not label every payment, login, deadline, or official-looking message a scam. Mark suspected_scam when the text contains suspicious fees, secret or identity/financial disclosure, or unsolicited remote access. Ordinary promotions are marketing; routine notices and normal bills are legitimate. Classification expresses suspicion, not proven authenticity.",
+      "examples": "Use these generic contrasts: a routine appointment notice is legitimate; an ordinary discount advertisement is marketing; paying to obtain a job or winnings, sharing secret codes, or granting unsolicited remote access suggests suspected_scam. Apply the same textual-risk distinction to the supplied message without authenticating its sender.",
+      "imperative": "Read the whole message and select its textual-risk category. Identify suspicious fee, secret-disclosure, identity/bank-disclosure, or unsolicited-access demands. Classify those as suspected_scam; classify ordinary advertising as marketing and routine notices or normal service bills as legitimate. Do not trust claimed authority as proof.",
+      "plain_question": "Is this a routine legitimate communication, ordinary marketing, or a suspected scam according to its text? Consider suspicious fees, requests to disclose secrets or identity/bank details, and unsolicited remote access. Do not treat normal payment or sign-in alone as suspicious disclosure, or claimed authority as verified authenticity.",
+      "checklist": "Check the message for: routine notice or normal bill; ordinary sales promotion; suspicious fee; explicit secret or identity/bank disclosure; unsolicited remote access. Choose legitimate, marketing, or suspected_scam using those observations. Treat sender identity as a claim and judge only the supplied wording.",
+      "category_reasoning": "Compare the category definitions against the complete message. Legitimate fits routine communications and normal bills; marketing fits ordinary advertising; suspected_scam fits suspicious fee, credential, identity/financial disclosure, or unsolicited-access demands. Give concrete risky requests more weight than claimed institutional authority. Do not infer fraud solely from ordinary payment or login.",
+      "balanced": "Base the category on what is requested and how the message is framed. Routine notices and bills can be legitimate; ordinary advertisements can be marketing. Suspicious fees, explicit secret or identity/bank disclosure, and unsolicited remote access indicate suspected_scam. This judgment concerns textual suspicion, without verifying fraud or authenticity."
+    },
+    "industry": {
+      "direct": "Choose the sector of the claimed service. Use the business or service discussed in the message, regardless of authenticity. A payment method does not determine industry. Use other for a recognizable unlisted sector and unclear when evidence is insufficient.",
+      "concise_rubric": "Industry means the claimed service sector, not its payment method, requested action, or fraud status. Match the supplied content to the listed sectors. A recognizable unlisted sector is other; insufficient information is unclear.",
+      "evidence": "Find the service nouns and context in the sender, subject, and body. Select the sector those details support. Ignore the way money is paid and do not authenticate the sender. Distinguish a recognizable unlisted sector from missing evidence.",
+      "rules": "Identify the service being offered or discussed, then map it to a sector. Do not map by payment instrument or requested action. If the sector is identifiable but unlisted, choose other; if it cannot be identified, choose unclear.",
+      "contrast": "A message about a service keeps that service’s sector even if it requests a bank transfer, gift card, or cryptocurrency payment. Choose the claimed service industry, rather than the payment channel or suspicion category. Use other versus unclear according to whether the sector is recognizable.",
+      "boundary": "Keep industry separate from the hook and action. Official claims need no authentication; payment instruments need no sector inference. Select the claimed service’s listed sector. Reserve other for a known unlisted industry and unclear for insufficient service information.",
+      "examples": "For example, a courier asking for payment concerns shipping; a pharmacy asking for account access concerns healthcare; a job offer concerns employment. Apply the service-based distinction to this message. Choose other for a known unlisted sector, unclear when no sector is supported.",
+      "imperative": "Identify the claimed business or service and assign its industry. Ignore payment mechanisms and whether the claim is authentic. Use the listed sector definitions; choose other only for a recognizable unlisted sector, and unclear only when the message gives insufficient evidence.",
+      "plain_question": "Which industry provides the service this message claims to discuss? What is that service, independent of the payment method and requested action? Select its listed sector, other for an identifiable unlisted sector, or unclear if the service cannot be identified.",
+      "checklist": "Check: what service is discussed; which listed sector covers it; whether only a payment method is being mentioned; whether the service is identifiable. Classify the claimed service. An identifiable unlisted sector is other, while insufficient evidence is unclear.",
+      "category_reasoning": "Compare the service context with the industry definitions. Select the category describing the claimed provider or service, even when the sender is suspicious. Payment methods do not establish industry. Use other for a sector outside the list and unclear for an unidentified sector.",
+      "balanced": "Use the message’s claimed service context to choose the closest listed industry. Avoid letting a payment mechanism or authenticity judgment change that sector. Where no listed category fits, distinguish a recognizable alternative industry from insufficient information."
+    },
+    "sentiment": {
+      "direct": "Choose the sender’s expressed emotional framing: happy for positive celebration, enthusiasm, or reward; sad for explicit alarm, threat, worry, frustration, or distress; neutral for factual wording without either. Factual adverse news and urgency alone do not establish sad. For mixed tone, use the main premise’s framing.",
+      "concise_rubric": "Apply expressed-tone rules: happy = positive or celebratory/reward framing; sad = explicit negative emotional framing, including alarm or threat; neutral = matter-of-fact wording. Judge the sender’s language, not the reader’s reaction, truth, urgency, or scam status. Use the main premise when tones are mixed.",
+      "evidence": "Find words that explicitly convey celebration, enthusiasm, rewards, alarm, threats, worry, frustration, or distress. Classify that framing as happy or sad. Without such emotional evidence choose neutral, even for factual bad news. Focus on the main premise rather than your reaction or suspicion.",
+      "rules": "Identify the message’s main premise. If its framing explicitly celebrates, enthuses, or presents a reward, choose happy. If it explicitly alarms, threatens, worries, frustrates, or distresses, choose sad. If it reports facts without clear emotional framing, choose neutral. Urgency and scam status do not determine tone.",
+      "contrast": "An inconvenient fact is different from an alarm or threat; urgent wording is different from expressed distress. Judge the sender’s framing: happy for positive celebration or reward, sad for explicit negative emotion, neutral for matter-of-fact content. In a mixed message, follow the main premise.",
+      "boundary": "Do not infer sad merely because news is adverse, action is urgent, or the message seems fraudulent. Require explicit alarm, threat, worry, frustration, or distress. Happy requires positive, celebratory, enthusiastic, or reward framing. Otherwise select neutral. Evaluate the main premise’s tone when framing is mixed.",
+      "examples": "Generic tone examples: “Congratulations” expresses happy; “your files are at risk” expresses sad; a factual service-status notice can be neutral. Use explicit framing, not inconvenience, urgency, or suspected fraud. Sad includes alarm and threat as well as sorrow. For mixed wording, attend to the main premise.",
+      "imperative": "Read for the sender’s emotional language. Select happy for positive, celebratory, enthusiastic, or reward framing; sad for explicit alarm, threat, worry, frustration, or distress; neutral for factual presentation. Keep urgency, authenticity, and your own response separate. Resolve mixed tone using the main premise.",
+      "plain_question": "What emotional framing does the sender express in the main premise? Is it celebratory, enthusiastic, or reward-oriented; alarming, threatening, worried, frustrated, or distressed; or simply factual? Choose happy, sad, or neutral respectively. An adverse fact or urgent directive alone is not negative emotional framing.",
+      "checklist": "Check the main premise for explicit positive/reward framing and explicit alarm/threat/distress framing. Match positive to happy and negative to sad. If neither is expressed, choose neutral. Do not substitute reader reaction, inconvenience, urgency, or suspected fraud for the sender’s emotional tone.",
+      "category_reasoning": "Compare the tone definitions with the main premise’s language. Happy covers expressed positivity and reward framing. Sad covers expressed alarm, threat, worry, frustration, or distress, not only sorrow. Neutral covers factual presentation, including unemotional adverse news. Judge framing independently of urgency and authenticity.",
+      "balanced": "Choose tone from the sender’s expressed framing of the main premise. Positive celebration, enthusiasm, or reward is happy; explicit alarm, threat, worry, frustration, or distress is sad; factual presentation is neutral. Neither factual inconvenience nor urgency or suspected fraud alone supplies negative emotional framing."
+    },
+    "message_hook": {
+      "direct": "Choose the main attention-getting premise, separate from sector and action. Government/legal overrides generic money; jobs/investments override rewards; nongovernment prizes override fees; real parcel updates mean delivery. Account compromise remains account trouble; device repair or renewal means tech support. Ordinary offers mean sales; routine records and appointments mean none/other.",
+      "concise_rubric": "Premise rules: government/legal before monetary benefit; job/investment before reward; prize before release fee; actual parcel updates mean delivery. Account compromise/payment failure is account trouble; device repair/renewal is tech support. Ordinary offers are sales. Routine records or appointments are none/other. Ordinary municipal bills remain invoice/debt.",
+      "evidence": "Find the central claim attracting attention, not the requested task or sector. Prioritize explicit government/legal, jobs/investments, and nongovernment prizes over incidental money or fees. Distinguish real parcel news, account trouble, and device/renewal problems. Routine records/appointments have no special hook; ordinary municipal bills are debt.",
+      "rules": "Apply premise precedence: government/legal; jobs/investments over rewards; nongovernment prizes over release fees. Otherwise distinguish real delivery/order, account/payment trouble, device support/renewal, ordinary sales, debt, or personal emergency. A municipal bill remains debt; routine records and appointments default to none/other. Ignore requested action and industry.",
+      "contrast": "A fee does not turn a prize into delivery; remote software does not turn account compromise into device support. Government benefits use government/legal, jobs/investments retain their own hook. Use the main premise, not sector/action. Municipal bills are debt; routine statements and appointments are none/other; ordinary offers are sales.",
+      "boundary": "A bank statement is not debt; an appointment is not a personal emergency; public-service industry does not make an ordinary municipal bill legal. Choose the attention premise. Prefer government/legal, job/investment, or nongovernment prize over incidental money. Separate account compromise from device support and renewal.",
+      "examples": "Generic overlaps: a government rebate is government/legal; a job promising earnings is job/investment; a prize with a release fee is prize; compromised login is account trouble. Real parcel status is delivery; device repair/renewal is tech support. Routine records/appointments are none/other. Classify the premise, not its task.",
+      "imperative": "Identify the main premise. Apply government/legal, job/investment, and nongovernment-prize precedence over generic money. Distinguish real parcel news, account/payment trouble, device repair/renewal, ordinary sale, debt, and personal emergency. Keep municipal bills as debt and routine records/appointments as none/other. Ignore industry and requested operations.",
+      "plain_question": "What central claim draws the reader’s attention? Use government/legal for explicit public benefits or legal enforcement, job/investment for opportunities, prize for nongovernment rewards, delivery for actual parcels, account trouble for compromise, and tech support for devices/renewal. Ordinary offers are sales; routine records/appointments are none/other; municipal bills are debt.",
+      "checklist": "Check the premise for government/legal, job/investment, nongovernment reward, real delivery, account/payment problem, device support/renewal, sale, debt, or personal emergency. Resolve monetary overlaps in favor of government, opportunity, or prize. Municipal bills remain debt; routine records/appointments are none/other. The action and industry do not supply the hook.",
+      "category_reasoning": "Match the main premise to its category. Government/legal outranks monetary reward; job/investment outranks generic earnings; prize outranks release fees. Account compromise differs from device support/renewal. Real parcel updates are delivery, ordinary offers sales, municipal bills debt. Routine records and appointments are none/other. Judge claims regardless of truth.",
+      "balanced": "Choose the main attention premise independently of action and industry. Respect government/legal, job/investment, and nongovernment-prize overlaps. Separate real parcels, account/payment problems, and device support/renewal. Ordinary municipal bills are debt; ordinary offers are sales; routine records and appointments are none/other unless another hook is explicitly established."
+    },
+    "urgent_action": {
+      "direct": "Does the text demand prompt action, present an expiring offer, or threaten harm from delay? Ordinary scheduled dates and promised delivery timing do not count.",
+      "concise_rubric": "Urgency means pressure to act now or soon, a limited offer window, or a harmful consequence of delay. A routine due date, appointment time or benefit arriving today alone is not urgency.",
+      "evidence": "Look for wording that pushes action now/today, limits an offer's availability, or says delay causes harm. Is that evidence present? Do not infer urgency from an ordinary date or promised benefit timing.",
+      "rules": "Return true for demands to act immediately, expiring offers or threats if action is delayed. Otherwise return false. Routine bills, event dates and receiving a reward today without an action cutoff are false.",
+      "contrast": "Distinguish pressure on the recipient's action from a date about an event or benefit. Immediate demands, limited offers and delay threats are urgent; routine scheduling and delivery promises are not.",
+      "boundary": "A date alone is insufficient: appointments and ordinary future bill dates are not urgent. Today attached only to receiving a benefit is not urgent. Explicit act-now language, offer expiry and threatened harm from delay are urgent.",
+      "examples": "Examples of urgency: 'Act immediately', 'Offer ends Friday', 'Pay today or lose access'. Nonurgent examples: 'Appointment on Monday', 'Bill due next month', 'Pay to receive your gift today' without a cutoff. Apply the same distinction here.",
+      "imperative": "Identify pressure to act promptly, an expiring opportunity or a threat tied to delay. Exclude routine scheduling and promises about when a benefit arrives. Decide whether the message contains qualifying urgency.",
+      "plain_question": "Is the sender pushing the reader to do something soon or before an offer disappears? A threat for waiting also counts. A routine date or a promise to receive something today does not.",
+      "checklist": "Check for: immediate action words; a limited offer window; harm threatened for waiting. Any of these makes urgency true. Merely stating a routine due date, scheduled event or benefit arrival time makes it false.",
+      "category_reasoning": "Choose true only when urgency concerns action pressure, expiring availability or harmful delay. Choose false for timing that merely describes an event, ordinary obligation or promised result. Judge the sender's wording, not the real date or credibility.",
+      "balanced": "Does the message impose time pressure? Include explicit near-term demands, expiring offers and threats for delay. Exclude ordinary schedules, distant due dates and receiving a benefit today without a deadline to act. Apply equally to routine and suspicious messages."
+    },
+    "requested_action": {
+      "direct": "Which explicit task is primarily requested? Choose the substantive task over its link or reply step. Ads and permissive viewing alone request nothing; opt-outs count.",
+      "concise_rubric": "Choose the main explicit recipient task. Clicking to pay means payment; replying with secrets means disclosure. Availability alone is no request; unsubscribe instructions count. Equal prominence: access, disclosure, payment, approval, update, sign-in, purchase, attachment, link, contact, other.",
+      "evidence": "Use explicit directives and invitations as evidence of the recipient's main task. Do not infer shopping from advertising. Distinguish a concrete task from its navigation, reply transport and promised result. An opt-out is a request.",
+      "rules": "First identify explicit requests, including optional opt-outs. Remove navigation and transport steps of a named task. Select the main remaining task, not the promised reward. No requests means no_action.",
+      "contrast": "Identify what the recipient is asked to do, rather than what they are promised. Pay to get a prize is payment; click to pay is payment; reply with a code is disclosure. A discount alone does not ask for purchase.",
+      "boundary": "Do not count a link without an instruction, optional viewing with no action needed, or a sale without a purchase invitation. Explicit opt-out directives count. Select the substantive requested operation, not how to reach it.",
+      "examples": "'Click to pay' means pay; 'reply with your password' means disclose; 'call then install' has installation as main; 'offer available, reply STOP' means contact; 'no action needed, you may view' means no action. Apply these distinctions.",
+      "imperative": "Extract the main explicit recipient task. Collapse link, reply and payment-instrument steps into their substantive operation. Exclude implied purchases and purely permissive viewing. Include explicit opt-outs. Select the matching action category.",
+      "plain_question": "What concrete thing does the sender ask the reader to do? Select the task itself, not clicking or replying used to carry it out. Buying must be requested explicitly. Instructions to unsubscribe count too.",
+      "checklist": "Check: is an action explicitly requested? What substantive task does it accomplish? Is clicking/replying only a step? Are buying or viewing merely implied or permitted? Choose the main actual task; explicit opt-outs count.",
+      "category_reasoning": "Match the main explicit request to its substantive action category. Payment outranks clicking to pay; disclosure outranks replying with secrets; installation outranks downloading its installer. Do not choose the promised prize or infer buying from an advertisement.",
+      "balanced": "Choose the main requested task using only explicit directives or invitations. Optional opt-outs count; advertising and permissive viewing alone do not. For equal independent tasks prefer access, disclosure, payment, approval, update, sign-in, purchase, attachment, link, contact, other. Navigation/transport is not a separate main task."
+    },
+    "multiple_actions": {
+      "direct": "Are at least two independent tasks requested together? Alternatives and steps of one task do not count separately. Explicit opt-outs count; implied purchases do not.",
+      "concise_rubric": "Count distinct explicit tasks requested together, including optional opt-outs. Collapse navigation, reply transport, payment instruments and fields in one submission. Alternative methods count once. Calling and installing are two tasks even for one purpose.",
+      "evidence": "Find explicit requests and ask whether two independent tasks are both wanted. Evidence must be requests, not implied shopping. Opt-outs count. Links, reply transport, multiple data fields and alternative methods are not extra tasks.",
+      "rules": "True if the message requests two independent tasks together. False for zero or one task, alternatives, navigation to a task, several fields in one disclosure or gift-card steps of one payment. Explicit optional opt-outs count.",
+      "contrast": "Distinguish two requested tasks from one task with several steps or alternatives. Calling then installing is two; clicking to pay, replying with secrets and choosing a payment method are one. Advertising alone adds no purchase; explicit STOP adds a task.",
+      "boundary": "Do not multiply the task count for URLs, several form fields, reply transport, payment instruments or alternative ways to act. Include explicit opt-outs. A separately requested call and software installation are independent tasks, even with a shared goal.",
+      "examples": "Two tasks: 'Call us and install the tool'; 'Send ID and call to choose hours'. One task: 'Click to pay'; 'Send name and account number'; 'Confirm or reschedule'; 'Discount available; reply STOP'. Are there two independent requests here?",
+      "imperative": "Extract explicit recipient tasks. Merge transport and navigation steps, fields in one submission and payment instruments. Exclude inferred purchases. Keep separately requested contact, installation and optional opt-out tasks. Decide whether at least two tasks are requested together.",
+      "plain_question": "Does the sender ask the reader to do two separate things, both of them? Do not count two ways to do the same thing or steps like clicking to pay. Explicit unsubscribe instructions count; simply showing a sale does not.",
+      "checklist": "Identify requests, exclude implied purchases, include explicit opt-outs, merge steps and fields, and collapse alternatives. Are two independent tasks still requested together? A call followed by installation stays two tasks.",
+      "category_reasoning": "True requires two independent recipient tasks requested together. Several action categories may describe one task, such as clicking to pay, and two requests in one category may still be two tasks. Count semantic tasks, including explicit opt-outs.",
+      "balanced": "Is there more than one independent explicit task requested together? Include optional opt-outs. Exclude alternatives, inferred purchases, navigation/transport, fields of one submission and steps of one payment. Shared purpose alone does not merge a call and installation."
+    },
+    "sensitive_data_requested": {
+      "direct": "Does the sender explicitly ask the recipient to disclose secret credentials, identity data/documents or bank/card details? Ordinary sign-in and payment alone do not count.",
+      "concise_rubric": "Sensitive disclosure includes passwords, one-time authentication codes, wallet recovery phrases, government identity numbers/documents and bank/card details. Normal sign-in/payment is not disclosure by itself. Gift-card codes used for payment are payment instruments, not credentials.",
+      "evidence": "Look for an explicit demand to send or submit secret credentials, government identity information/documents or banking/card details. Wallet recovery phrases count. Do not infer disclosure merely from sign-in or payment; voucher payment codes do not count.",
+      "rules": "True for explicit disclosure of passwords, authentication codes, recovery phrases, identity numbers/documents or bank/card details. False when only sign-in, payment, opt-out or a gift/voucher payment code is requested.",
+      "contrast": "Separate disclosing secret or identity information from performing a routine action. Sending a password or wallet recovery phrase is sensitive; signing in alone is not. Paying with a voucher code is payment, not authentication-data disclosure.",
+      "boundary": "A request to log in or pay does not itself establish sensitive disclosure. Gift-card/voucher codes used as payment are excluded. Explicitly sending a password, security code, recovery phrase, identity document/number or bank/card details is included.",
+      "examples": "Sensitive: 'Send your password', 'Reply with the login code', 'Submit your passport', 'Send your wallet recovery phrase'. Not enough: 'Sign in', 'Pay the invoice', 'Reply STOP'. A voucher code used only to pay is excluded.",
+      "imperative": "Find an explicit request to disclose credentials, recovery phrases, government identity data/documents or bank/card details. Ignore disclosure inferred only from ordinary sign-in or payment. Exclude gift-card codes used as payment. Decide whether qualifying information is requested.",
+      "plain_question": "Is the reader asked to give away a secret login credential, identity document/number or bank/card details? A wallet recovery phrase counts. Simply signing in or paying does not, and a gift-card payment code does not count as a login secret.",
+      "checklist": "Check for explicitly requested passwords, authentication codes, recovery phrases, government identity numbers/documents or bank/card details. If any is requested, true. Routine sign-in/payment/opt-out alone and voucher payment codes are false.",
+      "category_reasoning": "Use true for explicit disclosure of protected identity/financial information or authentication secrets. Use false for actions without such disclosure. Recovery phrases are secrets; gift-card/voucher codes used for payment are payment instruments.",
+      "balanced": "Judge explicit disclosure requests, regardless of claimed legitimacy. Include passwords, one-time security codes, recovery phrases, government identity numbers/documents and bank/card details. Exclude routine sign-in/payment alone, opt-outs and voucher codes used as payment."
+    }
+  },
+  "compact_criteria": {
+    "classification": {
+      "legitimate": "Routine communication or normal service bill.",
+      "marketing": "Ordinary commercial advertisement or promotion.",
+      "suspected_scam": "Suspicious release fees, secret/identity/financial disclosure or unsolicited device access."
+    },
+    "industry": {
+      "banking_finance": "Banking, finance, investing or insurance.",
+      "retail_ecommerce": "Retail goods, shopping or marketplaces.",
+      "shipping_logistics": "Parcels, post, couriers or freight.",
+      "government_public_services": "Government, taxes, benefits or utilities.",
+      "technology_telecom": "Software, devices, online accounts, internet or phones.",
+      "healthcare": "Medical care, pharmacy or health insurance.",
+      "employment": "Jobs, recruiting, payroll or workplace services.",
+      "travel_hospitality": "Travel, transport, hotels or hospitality.",
+      "other": "Recognizable sector outside these categories.",
+      "unclear": "Insufficient evidence to identify a sector."
+    },
+    "urgent_action": {
+      "true": "Prompt action pressure, limited offer expiry or harm threatened for delay.",
+      "false": "No pressure; routine dates or benefit timing alone."
+    },
+    "sentiment": {
+      "happy": "Expressed celebration, enthusiasm or exciting reward.",
+      "neutral": "Factual framing, including adverse facts without alarm.",
+      "sad": "Explicit alarm, threat, worry, frustration or distress."
+    },
+    "requested_action": {
+      "no_action": "No explicit request; information or permissive viewing.",
+      "reply_or_contact": "Reply, call, contact or unsubscribe.",
+      "click_or_scan": "Open a link, website or QR code.",
+      "sign_in_or_verify": "Sign in, reset password or verify identity/account.",
+      "share_sensitive_info_or_documents": "Disclose secrets, personal/financial data or documents.",
+      "pay_or_transfer": "Pay fees/bills or transfer money, gift cards or crypto.",
+      "purchase_or_claim": "Buy, subscribe, redeem or claim an offer/benefit.",
+      "open_or_download_attachment": "Open or download a file or attachment.",
+      "install_or_grant_access": "Install software or grant device/account access.",
+      "approve_login_or_transaction": "Approve a login, MFA prompt or transaction.",
+      "update_account_or_delivery_details": "Change account, payment, profile or delivery details.",
+      "other_or_unclear": "Other explicit task or task too vague to identify."
+    },
+    "multiple_actions": {
+      "true": "At least two independent explicit tasks requested together.",
+      "false": "At most one task; alternatives and steps do not add tasks."
+    },
+    "message_hook": {
+      "account_or_payment_problem": "Account compromise, blockage, security alert or failed transaction.",
+      "delivery_or_order_update": "Real parcel, delivery fee, address or order status.",
+      "invoice_or_debt": "Ordinary bill, debt or owed money; not a statement/receipt.",
+      "prize_refund_or_gift": "Nongovernment prize, refund, compensation or gift.",
+      "government_or_legal_matter": "Taxes, public benefits, police, courts or legal enforcement.",
+      "job_or_investment": "Job, paid work, investment or promised financial return.",
+      "tech_support_or_subscription": "Device infection/repair or subscription renewal.",
+      "relationship_or_emergency": "Personal relationship or family emergency; not appointments.",
+      "sale_or_promotion": "Ordinary sale, product promotion or subscription offer.",
+      "none_or_other_unclear": "Routine records/appointments, other premise or unclear hook."
+    },
+    "sensitive_data_requested": {
+      "true": "Explicit disclosure of credentials, recovery phrase, identity document/number or bank/card details.",
+      "false": "No such disclosure; routine actions and voucher payment codes alone."
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "version": "sweep-family-examples-compact-v1",
+  "questions": {
+    "classification": {
+      "type": "choice",
+      "instructions": "Use these generic contrasts: a routine appointment notice is legitimate; an ordinary discount advertisement is marketing; paying to obtain a job or winnings, sharing secret codes, or granting unsolicited remote access suggests suspected_scam. Apply the same textual-risk distinction to the supplied message without authenticating its sender.",
+      "criteria": {
+        "legitimate": "Routine communication or normal service bill.",
+        "marketing": "Ordinary commercial advertisement or promotion.",
+        "suspected_scam": "Suspicious release fees, secret/identity/financial disclosure or unsolicited device access."
+      }
+    },
+    "industry": {
+      "type": "choice",
+      "instructions": "For example, a courier asking for payment concerns shipping; a pharmacy asking for account access concerns healthcare; a job offer concerns employment. Apply the service-based distinction to this message. Choose other for a known unlisted sector, unclear when no sector is supported.",
+      "criteria": {
+        "banking_finance": "Banking, finance, investing or insurance.",
+        "retail_ecommerce": "Retail goods, shopping or marketplaces.",
+        "shipping_logistics": "Parcels, post, couriers or freight.",
+        "government_public_services": "Government, taxes, benefits or utilities.",
+        "technology_telecom": "Software, devices, online accounts, internet or phones.",
+        "healthcare": "Medical care, pharmacy or health insurance.",
+        "employment": "Jobs, recruiting, payroll or workplace services.",
+        "travel_hospitality": "Travel, transport, hotels or hospitality.",
+        "other": "Recognizable sector outside these categories.",
+        "unclear": "Insufficient evidence to identify a sector."
+      }
+    },
+    "urgent_action": {
+      "type": "noul",
+      "instructions": "Examples of urgency: 'Act immediately', 'Offer ends Friday', 'Pay today or lose access'. Nonurgent examples: 'Appointment on Monday', 'Bill due next month', 'Pay to receive your gift today' without a cutoff. Apply the same distinction here.",
+      "criteria": {
+        "true": "Prompt action pressure, limited offer expiry or harm threatened for delay.",
+        "false": "No pressure; routine dates or benefit timing alone."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    },
+    "sentiment": {
+      "type": "choice",
+      "instructions": "Generic tone examples: “Congratulations” expresses happy; “your files are at risk” expresses sad; a factual service-status notice can be neutral. Use explicit framing, not inconvenience, urgency, or suspected fraud. Sad includes alarm and threat as well as sorrow. For mixed wording, attend to the main premise.",
+      "criteria": {
+        "happy": "Expressed celebration, enthusiasm or exciting reward.",
+        "neutral": "Factual framing, including adverse facts without alarm.",
+        "sad": "Explicit alarm, threat, worry, frustration or distress."
+      }
+    },
+    "requested_action": {
+      "type": "choice",
+      "instructions": "'Click to pay' means pay; 'reply with your password' means disclose; 'call then install' has installation as main; 'offer available, reply STOP' means contact; 'no action needed, you may view' means no action. Apply these distinctions.",
+      "criteria": {
+        "no_action": "No explicit request; information or permissive viewing.",
+        "reply_or_contact": "Reply, call, contact or unsubscribe.",
+        "click_or_scan": "Open a link, website or QR code.",
+        "sign_in_or_verify": "Sign in, reset password or verify identity/account.",
+        "share_sensitive_info_or_documents": "Disclose secrets, personal/financial data or documents.",
+        "pay_or_transfer": "Pay fees/bills or transfer money, gift cards or crypto.",
+        "purchase_or_claim": "Buy, subscribe, redeem or claim an offer/benefit.",
+        "open_or_download_attachment": "Open or download a file or attachment.",
+        "install_or_grant_access": "Install software or grant device/account access.",
+        "approve_login_or_transaction": "Approve a login, MFA prompt or transaction.",
+        "update_account_or_delivery_details": "Change account, payment, profile or delivery details.",
+        "other_or_unclear": "Other explicit task or task too vague to identify."
+      }
+    },
+    "multiple_actions": {
+      "type": "noul",
+      "instructions": "Two tasks: 'Call us and install the tool'; 'Send ID and call to choose hours'. One task: 'Click to pay'; 'Send name and account number'; 'Confirm or reschedule'; 'Discount available; reply STOP'. Are there two independent requests here?",
+      "criteria": {
+        "true": "At least two independent explicit tasks requested together.",
+        "false": "At most one task; alternatives and steps do not add tasks."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    },
+    "message_hook": {
+      "type": "choice",
+      "instructions": "Generic overlaps: a government rebate is government/legal; a job promising earnings is job/investment; a prize with a release fee is prize; compromised login is account trouble. Real parcel status is delivery; device repair/renewal is tech support. Routine records/appointments are none/other. Classify the premise, not its task.",
+      "criteria": {
+        "account_or_payment_problem": "Account compromise, blockage, security alert or failed transaction.",
+        "delivery_or_order_update": "Real parcel, delivery fee, address or order status.",
+        "invoice_or_debt": "Ordinary bill, debt or owed money; not a statement/receipt.",
+        "prize_refund_or_gift": "Nongovernment prize, refund, compensation or gift.",
+        "government_or_legal_matter": "Taxes, public benefits, police, courts or legal enforcement.",
+        "job_or_investment": "Job, paid work, investment or promised financial return.",
+        "tech_support_or_subscription": "Device infection/repair or subscription renewal.",
+        "relationship_or_emergency": "Personal relationship or family emergency; not appointments.",
+        "sale_or_promotion": "Ordinary sale, product promotion or subscription offer.",
+        "none_or_other_unclear": "Routine records/appointments, other premise or unclear hook."
+      }
+    },
+    "sensitive_data_requested": {
+      "type": "noul",
+      "instructions": "Sensitive: 'Send your password', 'Reply with the login code', 'Submit your passport', 'Send your wallet recovery phrase'. Not enough: 'Sign in', 'Pay the invoice', 'Reply STOP'. A voucher code used only to pay is excluded.",
+      "criteria": {
+        "true": "Explicit disclosure of credentials, recovery phrase, identity document/number or bank/card details.",
+        "false": "No such disclosure; routine actions and voucher payment codes alone."
+      },
+      "labels": {
+        "true": "A",
+        "false": "B"
+      }
+    }
+  }
+}
